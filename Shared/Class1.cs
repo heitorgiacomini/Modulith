@@ -1,4 +1,4 @@
-﻿namespace Catalog
+﻿namespace Shared
 {
 	public class Class1
 	{
