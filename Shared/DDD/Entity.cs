@@ -1,7 +1,7 @@
 ﻿
 namespace Shared.DDD
 {
-	public abstract class Entity<T> : IEntity<T> where T : class
+	public abstract class Entity<T> : IEntity<T> where T : struct
 	{
 		public required T Id { get; set; }
 		public DateTime? CreatedAt { get; set; }

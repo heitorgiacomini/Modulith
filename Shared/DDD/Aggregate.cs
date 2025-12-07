@@ -1,6 +1,6 @@
 ﻿namespace Shared.DDD
 {
-	public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId> where TId : class
+	public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId> where TId : struct
 	{
 		private readonly List<IDomainEvent> _domainEvents = [];
 

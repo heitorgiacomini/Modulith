@@ -1,0 +1,22 @@
+services:
+  eshopdb:
+    container_name: eshopdb
+    environment:
+      - POSTGRES_USER=eshopdb
+      - POSTGRES_PASSWORD=eshopdb
+      - POSTGRES_DB=eshopdb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_eshopdb:/var/lib/postgresql/
+
+#       - ASPNETCORE_HTTPS_PORTS=8081
+#     ports:
+#       - "8080"
+#       - "8081"
+#     volumes:
+#       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+#       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+#       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+#       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

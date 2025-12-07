@@ -1,24 +1,24 @@
 
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder webAppbuilder = WebApplication.CreateBuilder(args);
 
 // add services to the container.
 
-builder.Services
-  .AddCatalogModule(builder.Configuration)
-  .AddOrderingModule(builder.Configuration)
-  .AddBasketModule(builder.Configuration);
+webAppbuilder.Services
+  .AddCatalogModule(webAppbuilder.Configuration)
+  .AddOrderingModule(webAppbuilder.Configuration)
+  .AddBasketModule(webAppbuilder.Configuration);
 
-WebApplication app = builder.Build();
+WebApplication webApp = webAppbuilder.Build();
 
-app.UseCatalogModule()
+webApp.UseCatalogModule()
   .UseOrderingModule()
   .UseBasketModule();
 
-//app.UseCatalogModule();
+
 //Configure the HTTP request pipeline.
 
-app.UseStaticFiles();
+//app.UseStaticFiles();
 
 //app.UseRouting();
 
@@ -32,4 +32,4 @@ app.UseStaticFiles();
 //	endpoints.MapControllers();
 //});	
 
-app.Run();
+webApp.Run();
