@@ -1,2 +1,1 @@
-# EshopModularMonoliths-Sections
-EshopModularMonoliths-Sections
+Modular Monolith Architecture Example
