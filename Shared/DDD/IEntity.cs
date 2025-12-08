@@ -1,6 +1,6 @@
 ﻿namespace Shared.DDD
 {
-
+	//IAuditableEntity
 	public interface IEntity<T> : IEntity where T : struct
 	{
 		T Id { get; set; }

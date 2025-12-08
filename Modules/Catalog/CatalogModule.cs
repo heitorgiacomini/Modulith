@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Data.Interceptors;
 
 namespace Catalog
 {
@@ -17,6 +18,7 @@ namespace Catalog
 
 			_ = services.AddDbContext<CatalogDbContext>(options =>
 			{
+				_ = options.AddInterceptors(new AuditableEntityInterceptor());
 				_ = options.UseNpgsql(connectionString);
 			});
 
