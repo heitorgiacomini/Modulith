@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Data.Interceptors;
@@ -13,14 +14,24 @@ namespace Catalog
 			// Add services to the container.
 			// Api Endpoint services
 			// Application Use Case services
+			_ = services.AddMediatR(cfg =>
+			{
+				_ = cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+			});
+
+
 			//Data — Infrastructure servlces
 			string? connectionString = configuration.GetConnectionString("Database");
 
-			_ = services.AddDbContext<CatalogDbContext>(options =>
+			_ = services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+			_ = services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+
+			_ = services.AddDbContext<CatalogDbContext>((serviceProvider, options) =>
 			{
-				_ = options.AddInterceptors(new AuditableEntityInterceptor());
+				_ = options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());
 				_ = options.UseNpgsql(connectionString);
 			});
+
 
 			_ = services.AddScoped<IDataSeeder, CatalogDataSeeder>();
 			return services;
