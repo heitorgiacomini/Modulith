@@ -17,13 +17,9 @@ public class GetProductsHandler(CatalogDbContext catalogDbContext)
 			.OrderBy(p => p.Name)
 			.ToListAsync(cancellationToken);
 
-		List<ProductDto> productsDto = this.ProjectToProductDto(products);
+		List<ProductDto> productsDto = products.Adapt<List<ProductDto>>();
 
 		return new GetProductsResul(productsDto);
 	}
 
-	private List<ProductDto> ProjectToProductDto(List<Product> products)
-	{
-		throw new NotImplementedException();
-	}
 }

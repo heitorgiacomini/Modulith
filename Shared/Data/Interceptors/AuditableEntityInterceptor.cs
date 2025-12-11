@@ -7,16 +7,16 @@ namespace Shared.Data.Interceptors;
 
 public class AuditableEntityInterceptor : SaveChangesInterceptor
 {
-	public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
+	public override InterceptionResult<Int32> SavingChanges(DbContextEventData eventData, InterceptionResult<Int32> result)
 	{
-		UpdateEntities(eventData.Context);
+		this.UpdateEntities(eventData.Context);
 		eventData.Context?.ChangeTracker.DetectChanges();
 		return base.SavingChanges(eventData, result);
 	}
 
-	public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+	public override ValueTask<InterceptionResult<Int32>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<Int32> result, CancellationToken cancellationToken = default)
 	{
-		UpdateEntities(eventData.Context);
+		this.UpdateEntities(eventData.Context);
 		return base.SavingChangesAsync(eventData, result, cancellationToken);
 	}
 
@@ -46,7 +46,7 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
 
 public static class Extensions
 {
-	public static bool HasChangedOwnedEntities(this EntityEntry entry)
+	public static Boolean HasChangedOwnedEntities(this EntityEntry entry)
 	{
 		return entry.References.Any(r =>
 			r.TargetEntry != null &&

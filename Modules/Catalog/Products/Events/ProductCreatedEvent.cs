@@ -1,4 +1,3 @@
-﻿namespace Catalog.Products.Events
-{
-	public record ProductCreatedEvent(Product Product) : IDomainEvent;
-}
+﻿namespace Catalog.Products.Events;
+
+public record ProductCreatedEvent(Product Product) : IDomainEvent;

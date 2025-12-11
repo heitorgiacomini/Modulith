@@ -7,15 +7,15 @@ namespace Shared.Data.Interceptors;
 
 public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesInterceptor
 {
-	public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
+	public override InterceptionResult<Int32> SavingChanges(DbContextEventData eventData, InterceptionResult<Int32> result)
 	{
-		DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
+		this.DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
 		return base.SavingChanges(eventData, result);
 	}
 
-	public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+	public override async ValueTask<InterceptionResult<Int32>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<Int32> result, CancellationToken cancellationToken = default)
 	{
-		DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
+		this.DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
 		return await base.SavingChangesAsync(eventData, result, cancellationToken);
 	}
 

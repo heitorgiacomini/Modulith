@@ -1,50 +1,49 @@
 ﻿
 
-namespace Catalog.Products.Models
+namespace Catalog.Products.Models;
+
+public class Product : Aggregate<Guid>
 {
-	public class Product : Aggregate<Guid>
+	public String Name { get; private set; } = default!;
+	public List<String> Category { get; set; } = [];
+	public String Description { get; set; } = default!;
+	public String ImageFile { get; set; } = default!;
+	public Decimal Price { get; private set; }
+
+
+	public static Product Create(Guid id, String name, List<String> category, String description, String imageFile, Decimal price)
 	{
-		public string Name { get; private set; } = default!;
-		public List<string> Category { get; set; } = [];
-		public string Description { get; set; } = default!;
-		public string ImageFile { get; set; } = default!;
-		public decimal Price { get; private set; }
+		ArgumentException.ThrowIfNullOrEmpty(name);
+		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
-
-		public static Product Create(Guid id, string name, List<string> category, string description, string imageFile, decimal price)
+		Product product = new()
 		{
-			ArgumentException.ThrowIfNullOrEmpty(name);
-			ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
+			Id = id,
+			Name = name,
+			Category = category,
+			Description = description,
+			ImageFile = imageFile,
+			Price = price
+		};
+		product.AddDomainEvent(new ProductCreatedEvent(product));
+		return product;
+	}
 
-			Product product = new()
-			{
-				Id = id,
-				Name = name,
-				Category = category,
-				Description = description,
-				ImageFile = imageFile,
-				Price = price
-			};
-			product.AddDomainEvent(new ProductCreatedEvent(product));
-			return product;
-		}
+	public void Update(String name, List<String> category, String description, String imageFile, Decimal price)
+	{
+		ArgumentException.ThrowIfNullOrEmpty(name);
+		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
-		public void Update(string name, List<string> category, string description, string imageFile, decimal price)
+		this.Name = name;
+		this.Category = category;
+		this.Description = description;
+		this.ImageFile = imageFile;
+		this.Price = price;
+
+		if (this.Price != price)
 		{
-			ArgumentException.ThrowIfNullOrEmpty(name);
-			ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
-
-			Name = name;
-			Category = category;
-			Description = description;
-			ImageFile = imageFile;
-			Price = price;
-
-			if (Price != price)
-			{
-				Price = price;
-				AddDomainEvent(new ProductPriceChangedEvent(this));
-			}
+			this.Price = price;
+			this.AddDomainEvent(new ProductPriceChangedEvent(this));
 		}
 	}
 }
