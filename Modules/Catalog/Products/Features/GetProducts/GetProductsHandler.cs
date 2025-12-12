@@ -1,25 +1,41 @@
-﻿namespace Catalog.Products.Features.GetProducts;
+﻿using Shared.Pagination;
 
-public record GetProductsQuery()
-	: IQuery<GetProductsResul>;
+namespace Catalog.Products.Features.GetProducts;
 
-public record GetProductsResul(
-	IEnumerable<ProductDto> Products
+
+public record GetProductsQuery(PaginationRequest PaginationRequest)
+		: IQuery<GetProductsResult>;
+public record GetProductsResult(
+	PaginatedResult<ProductDto> Products
 );
 
 public class GetProductsHandler(CatalogDbContext catalogDbContext)
-	: IQueryHandler<GetProductsQuery, GetProductsResul>
+	: IQueryHandler<GetProductsQuery, GetProductsResult>
 {
-	public async Task<GetProductsResul> Handle(GetProductsQuery comamnd, CancellationToken cancellationToken)
+	public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)
 	{
-		List<Product> products = await catalogDbContext.Products
-			.AsNoTracking()
-			.OrderBy(p => p.Name)
-			.ToListAsync(cancellationToken);
+		Int32 pageIndex = query.PaginationRequest.PageIndex;
+		Int32 pageSize = query.PaginationRequest.PageSize;
 
-		List<ProductDto> productsDto = products.Adapt<List<ProductDto>>();
+		Int64 totalCount = await catalogDbContext.Products.LongCountAsync(cancellationToken);
 
-		return new GetProductsResul(productsDto);
+		var products = await catalogDbContext.Products
+										.AsNoTracking()
+										.OrderBy(p => p.Name)
+										.Skip(pageSize * pageIndex)
+										.Take(pageSize)
+										.ToListAsync(cancellationToken);
+
+		//mapping product entity to ProductDto using Mapster
+		var productDtos = products.Adapt<List<ProductDto>>();
+
+		return new GetProductsResult(
+				new PaginatedResult<ProductDto>(
+						pageIndex,
+						pageSize,
+						totalCount,
+						productDtos)
+				);
 	}
 
 }

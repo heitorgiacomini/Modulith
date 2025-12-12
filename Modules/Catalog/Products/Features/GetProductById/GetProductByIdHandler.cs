@@ -1,17 +1,17 @@
 ﻿
 namespace Catalog.Products.Features.GetProductById;
 
-public record GetProductsByIdQuery(Guid Id)
-	: IQuery<GetProductsByIdResul>;
+public record GetProductByIdQuery(Guid Id)
+	: IQuery<GetProductByIdResult>;
 
-public record GetProductsByIdResul(
-	ProductDto Products
+public record GetProductByIdResult(
+	ProductDto Product
 );
 
 public class GetProductsByIdHandler(CatalogDbContext catalogDbContext)
-	: IQueryHandler<GetProductsByIdQuery, GetProductsByIdResul>
+	: IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
 {
-	public async Task<GetProductsByIdResul> Handle(GetProductsByIdQuery comamnd, CancellationToken cancellationToken)
+	public async Task<GetProductByIdResult> Handle(GetProductByIdQuery comamnd, CancellationToken cancellationToken)
 	{
 		Product? product = await catalogDbContext.Products
 			.AsNoTracking()
@@ -19,7 +19,7 @@ public class GetProductsByIdHandler(CatalogDbContext catalogDbContext)
 
 		ProductDto productsDto = product.Adapt<ProductDto>();
 
-		return new GetProductsByIdResul(productsDto);
+		return new GetProductByIdResult(productsDto);
 	}
 
 }

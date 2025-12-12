@@ -38,7 +38,6 @@ public class Product : Aggregate<Guid>
 		this.Category = category;
 		this.Description = description;
 		this.ImageFile = imageFile;
-		this.Price = price;
 
 		if (this.Price != price)
 		{

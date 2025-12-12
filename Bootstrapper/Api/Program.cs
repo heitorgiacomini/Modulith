@@ -1,8 +1,9 @@
-
-
 WebApplicationBuilder webAppbuilder = WebApplication.CreateBuilder(args);
 
 // add services to the container.
+webAppbuilder.Services.AddCarterWithAssemblies(
+	typeof(CatalogModule).Assembly
+	);
 
 webAppbuilder.Services
   .AddCatalogModule(webAppbuilder.Configuration)
@@ -10,6 +11,8 @@ webAppbuilder.Services
   .AddBasketModule(webAppbuilder.Configuration);
 
 WebApplication webApp = webAppbuilder.Build();
+
+webApp.MapCarter();
 
 webApp.UseCatalogModule()
   .UseOrderingModule()
