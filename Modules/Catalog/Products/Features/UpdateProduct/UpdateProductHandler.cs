@@ -1,6 +1,4 @@
-﻿
-
-namespace Catalog.Products.Features.UpdateProduct;
+﻿namespace Catalog.Products.Features.UpdateProduct;
 
 public record UpdateProductCommand
 				(ProductDto Product)
@@ -27,7 +25,7 @@ public class UpdateProductHandler(CatalogDbContext dbContext)
 
 		if (product == null)
 		{
-			return new UpdateProductResult(false);
+			throw new ProductNotFoundException(command.Product.Id);
 		}
 
 		UpdateProductWithNewValue(product, command.Product);
