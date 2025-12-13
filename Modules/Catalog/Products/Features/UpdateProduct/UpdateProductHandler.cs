@@ -6,8 +6,15 @@ public record UpdateProductCommand
 				(ProductDto Product)
 				: ICommand<UpdateProductResult>;
 
-public record UpdateProductResult(Boolean IsSuccess)
+public record UpdateProductResult(Boolean IsSuccess);
+public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
 {
+	public UpdateProductCommandValidator()
+	{
+		_ = this.RuleFor(x => x.Product.Id).NotEmpty().WithMessage("Id is required");
+		_ = this.RuleFor(x => x.Product.Name).NotEmpty().WithMessage("Name is required");
+		_ = this.RuleFor(x => x.Product.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
+	}
 }
 
 public class UpdateProductHandler(CatalogDbContext dbContext)

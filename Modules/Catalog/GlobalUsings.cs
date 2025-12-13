@@ -4,6 +4,7 @@ global using Catalog.Data.Seed;
 global using Catalog.Products.Dtos;
 global using Catalog.Products.Events;
 global using Catalog.Products.Models;
+global using FluentValidation;
 global using Mapster;
 global using MediatR;
 global using Microsoft.AspNetCore.Builder;
