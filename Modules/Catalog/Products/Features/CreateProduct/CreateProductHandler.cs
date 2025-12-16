@@ -17,8 +17,8 @@ public class CreateProductCommandValidator
 	}
 }
 public class CreateProductHandler(
-	CatalogDbContext dbContext,
-	ILogger<CreateProductHandler> logger)
+	CatalogDbContext dbContext
+	)
 	: ICommandHandler<CreateProductCommand, CreateProductResult>
 {
 
@@ -26,7 +26,7 @@ public class CreateProductHandler(
 		CancellationToken cancellationToken)
 	{
 
-		logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
+		//logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
 
 		Product product = CreateNewProduct(command.Product);
 		_ = dbContext.Products.Add(product);

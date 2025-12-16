@@ -1,71 +1,38 @@
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
 
-WebApplicationBuilder webAppbuilder = WebApplication.CreateBuilder(args);
+//webAppBuilder.Logging.ClearProviders();
+webAppBuilder.Host.UseSerilog((context, config) =>
+	config.ReadFrom.Configuration(context.Configuration)
+);
+
 
 // add services to the container.
-webAppbuilder.Services.AddCarterWithAssemblies(
+webAppBuilder.Services.AddCarterWithAssemblies(
 	typeof(CatalogModule).Assembly
 	);
 
-webAppbuilder.Services
-  .AddCatalogModule(webAppbuilder.Configuration)
-  .AddOrderingModule(webAppbuilder.Configuration)
-  .AddBasketModule(webAppbuilder.Configuration);
+webAppBuilder.Services
+  .AddCatalogModule(webAppBuilder.Configuration)
+  .AddOrderingModule(webAppBuilder.Configuration)
+  .AddBasketModule(webAppBuilder.Configuration);
 
-WebApplication webApp = webAppbuilder.Build();
+webAppBuilder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+WebApplication webApp = webAppBuilder.Build();
 
 webApp.MapCarter();
 
-webApp.UseCatalogModule()
+webApp.UseSerilogRequestLogging();
+webApp.UseExceptionHandler(options => { });
+
+webApp
+	.UseCatalogModule()
   .UseOrderingModule()
   .UseBasketModule();
 
-webApp.UseExceptionHandler(exceptionHandlerApp =>
-{
-	exceptionHandlerApp.Run(async context =>
-	{
 
-		var exception = context.Features.Get<IExceptionHandlerFeature>()?.Error;
-		if (exception == null)
-		{
-			return;
-		}
 
-		ProblemDetails problemDetails = new()
-		{
-			Title = exception.Message,
-			Status = StatusCodes.Status500InternalServerError,
-			Detail = exception.StackTrace
-		};
 
-		var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-		logger.LogError(exception, exception.Message);
-
-		context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-		context.Response.ContentType = "application/problem+json";
-		await context.Response.WriteAsJsonAsync(problemDetails);
-		//context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-
-		//// using static System.Net.Mime.MediaTypeNames;
-		//context.Response.ContentType = Text.Plain;
-
-		//await context.Response.WriteAsync("An exception was thrown.");
-
-		//IExceptionHandlerPathFeature? exceptionHandlerPathFeature =
-		//		context.Features.Get<IExceptionHandlerPathFeature>();
-
-		//if (exceptionHandlerPathFeature?.Error is FileNotFoundException)
-		//{
-		//	await context.Response.WriteAsync(" The file was not found.");
-		//}
-
-		//if (exceptionHandlerPathFeature?.Path == "/")
-		//{
-		//	await context.Response.WriteAsync(" Page: Home.");
-		//}
-	});
-});
 //Configure the HTTP request pipeline.
 
 //app.UseStaticFiles();
