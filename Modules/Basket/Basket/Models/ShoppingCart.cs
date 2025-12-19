@@ -1,6 +1,4 @@
-﻿using Shared.DDD;
-
-namespace Basket.Basket.Models;
+﻿namespace Basket.Basket.Models;
 
 public class ShoppingCart : Aggregate<Guid>
 {
@@ -38,7 +36,7 @@ public class ShoppingCart : Aggregate<Guid>
         {
             ShoppingCartItem newItem = new ShoppingCartItem(this.Id, productId, quantity, color, price, productName)
             {
-                Id = Guid.NewGuid()
+                //Id = Guid.NewGuid()
             };
             this._items.Add(newItem);
         }

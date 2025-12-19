@@ -1,15 +1,36 @@
+using FluentValidation;
+using Shared.Behaviors;
+using System.Reflection;
+
 WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
 
 //webAppBuilder.Logging.ClearProviders();
-webAppBuilder.Host.UseSerilog((context, config) =>
-	config.ReadFrom.Configuration(context.Configuration)
+webAppBuilder.Host
+  .UseSerilog((context, config) =>
+    config.ReadFrom.Configuration(context.Configuration)
 );
 
-
+Assembly catalogAssembly = typeof(CatalogModule).Assembly;
+Assembly basketAssembly = typeof(BasketModule).Assembly;
 // add services to the container.
-webAppBuilder.Services.AddCarterWithAssemblies(
-	typeof(CatalogModule).Assembly
-	);
+webAppBuilder.Services
+  .AddCarterWithAssemblies(
+      catalogAssembly,
+      basketAssembly
+    );
+
+
+_ = webAppBuilder.Services.AddMediatR(cfg =>
+{
+    _ = cfg.RegisterServicesFromAssemblies(catalogAssembly, basketAssembly);
+    //_ = cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+    _ = cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+    _ = cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+});
+
+
+_ = webAppBuilder.Services.AddValidatorsFromAssemblies([catalogAssembly, basketAssembly]);
+
 
 webAppBuilder.Services
   .AddCatalogModule(webAppBuilder.Configuration)
@@ -26,7 +47,7 @@ webApp.UseSerilogRequestLogging();
 webApp.UseExceptionHandler(options => { });
 
 webApp
-	.UseCatalogModule()
+    .UseCatalogModule()
   .UseOrderingModule()
   .UseBasketModule();
 

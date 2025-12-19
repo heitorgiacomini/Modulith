@@ -5,3 +5,5 @@ global using Ordering;
 global using Serilog;
 global using Shared.Exceptions.Handler;
 global using Shared.Extensions;
+global using FluentValidation;
+global using Shared.Behaviors;
