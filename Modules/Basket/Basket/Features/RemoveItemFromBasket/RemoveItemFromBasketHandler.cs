@@ -1,34 +1,28 @@
-﻿namespace Basket.Basket.Features.RemoveItemFromBasket;
+﻿
+namespace Basket.Basket.Features.RemoveItemFromBasket;
 
-public record RemoveItemFromBasketCommand(string UserName, Guid ProductId)
+public record RemoveItemFromBasketCommand(String UserName, Guid ProductId)
     : ICommand<RemoveItemFromBasketResult>;
 public record RemoveItemFromBasketResult(Guid Id);
 public class RemoveItemFromBasketCommandValidator : AbstractValidator<RemoveItemFromBasketCommand>
 {
     public RemoveItemFromBasketCommandValidator()
     {
-        RuleFor(x => x.UserName).NotEmpty().WithMessage("UserName is required");
-        RuleFor(x => x.ProductId).NotEmpty().WithMessage("ProductId is required");
+        _ = this.RuleFor(x => x.UserName).NotEmpty().WithMessage("UserName is required");
+        _ = this.RuleFor(x => x.ProductId).NotEmpty().WithMessage("ProductId is required");
     }
 }
 
-internal class RemoveItemFromBasketHandler(BasketDbContext dbContext)
+internal class RemoveItemFromBasketHandler(IBasketRepository repository)
     : ICommandHandler<RemoveItemFromBasketCommand, RemoveItemFromBasketResult>
 {
     public async Task<RemoveItemFromBasketResult> Handle(RemoveItemFromBasketCommand command, CancellationToken cancellationToken)
     {
-        var shoppingCart = await dbContext.ShoppingCarts
-            .Include(x => x.Items)
-            .SingleOrDefaultAsync(x => x.UserName == command.UserName, cancellationToken);
-
-        if (shoppingCart is null)
-        {
-            throw new BasketNotFoundException(command.UserName);
-        }
+        ShoppingCart shoppingCart = await repository.GetBasketAsync(command.UserName, false, cancellationToken);
 
         shoppingCart.RemoveItem(command.ProductId);
 
-        await dbContext.SaveChangesAsync(cancellationToken);
+        _ = await repository.SaveChangesAsync(cancellationToken);
 
         return new RemoveItemFromBasketResult(shoppingCart.Id);
     }

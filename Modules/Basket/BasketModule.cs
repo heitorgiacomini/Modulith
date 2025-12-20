@@ -1,4 +1,5 @@
 ﻿
+using Basket.Data.Repository;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,8 @@ public static class BasketModule
 {
     public static IServiceCollection AddBasketModule(this IServiceCollection services, IConfiguration configuration)
     {
+
+        _ = services.AddScoped<IBasketRepository, BasketRepository>();
 
         String? connectionString = configuration.GetConnectionString("Database");
 

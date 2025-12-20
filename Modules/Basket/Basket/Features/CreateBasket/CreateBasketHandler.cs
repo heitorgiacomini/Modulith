@@ -7,11 +7,11 @@ public class CreateBasketCommandValidator : AbstractValidator<CreateBasketComman
 {
     public CreateBasketCommandValidator()
     {
-        RuleFor(x => x.ShoppingCart.UserName).NotEmpty().WithMessage("UserName is required");
+        _ = this.RuleFor(x => x.ShoppingCart.UserName).NotEmpty().WithMessage("UserName is required");
     }
 }
 
-internal class CreateBasketHandler(BasketDbContext dbContext)
+internal class CreateBasketHandler(IBasketRepository repository)
     : ICommandHandler<CreateBasketCommand, CreateBasketResult>
 {
     public async Task<CreateBasketResult> Handle(CreateBasketCommand command, CancellationToken cancellationToken)
@@ -20,20 +20,18 @@ internal class CreateBasketHandler(BasketDbContext dbContext)
         //save to database
         //return result
 
-        var shoppingCart = CreateNewBasket(command.ShoppingCart);
+        ShoppingCart shoppingCart = this.CreateNewBasket(command.ShoppingCart);
 
-        dbContext.ShoppingCarts.Add(shoppingCart);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
+        _ = await repository.CreateBasketAsync(shoppingCart, cancellationToken);
         return new CreateBasketResult(shoppingCart.Id);
     }
 
     private ShoppingCart CreateNewBasket(ShoppingCartDto shoppingCartDto)
     {
         // create new basket
-        var newBasket = ShoppingCart.Create(
-            Guid.NewGuid(),
-            shoppingCartDto.UserName);
+        ShoppingCart newBasket = ShoppingCart.Create(
+        Guid.NewGuid(),
+        shoppingCartDto.UserName);
 
         shoppingCartDto.Items.ForEach(item =>
         {
