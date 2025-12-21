@@ -19,7 +19,6 @@ public static class BasketModule
     //  return new CachedBasketRepository(basketRepository, provider.GetRequiredService<IDistributedCache>());
     //});
 
-    _ = services.AddScoped<IBasketRepository, CachedBasketRepository>();
 
     String? connectionString = configuration.GetConnectionString("Database");
 

@@ -1,9 +1,14 @@
+version: '3.8'
 services:
   eshopdb:
     image: postgres
 
   seq:
     image: datalust/seq:latest
+
+  distributedcache:
+    image: redis:latest
+
 volumes:
   postgres_eshopdb:
 

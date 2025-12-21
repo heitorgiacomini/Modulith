@@ -1,5 +1,3 @@
-using FluentValidation;
-using Shared.Behaviors;
 using System.Reflection;
 
 WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
@@ -15,21 +13,19 @@ Assembly basketAssembly = typeof(BasketModule).Assembly;
 // add services to the container.
 webAppBuilder.Services
   .AddCarterWithAssemblies(
-      catalogAssembly,
-      basketAssembly
-    );
+    catalogAssembly,
+    basketAssembly
+  );
 
+webAppBuilder.Services.AddMediatRWithAssemblies(
+  catalogAssembly,
+  basketAssembly
+);
 
-_ = webAppBuilder.Services.AddMediatR(cfg =>
+webAppBuilder.Services.AddStackExchangeRedisCache(options =>
 {
-    _ = cfg.RegisterServicesFromAssemblies(catalogAssembly, basketAssembly);
-    //_ = cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-    _ = cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
-    _ = cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+  options.Configuration = webAppBuilder.Configuration.GetConnectionString("Redis");
 });
-
-
-_ = webAppBuilder.Services.AddValidatorsFromAssemblies([catalogAssembly, basketAssembly]);
 
 
 webAppBuilder.Services
