@@ -1,4 +1,4 @@
-﻿
+
 namespace Basket.Basket.Features.RemoveItemFromBasket;
 
 public record RemoveItemFromBasketCommand(String UserName, Guid ProductId)
@@ -6,24 +6,24 @@ public record RemoveItemFromBasketCommand(String UserName, Guid ProductId)
 public record RemoveItemFromBasketResult(Guid Id);
 public class RemoveItemFromBasketCommandValidator : AbstractValidator<RemoveItemFromBasketCommand>
 {
-    public RemoveItemFromBasketCommandValidator()
-    {
-        _ = this.RuleFor(x => x.UserName).NotEmpty().WithMessage("UserName is required");
-        _ = this.RuleFor(x => x.ProductId).NotEmpty().WithMessage("ProductId is required");
-    }
+  public RemoveItemFromBasketCommandValidator()
+  {
+    _ = this.RuleFor(x => x.UserName).NotEmpty().WithMessage("UserName is required");
+    _ = this.RuleFor(x => x.ProductId).NotEmpty().WithMessage("ProductId is required");
+  }
 }
 
 internal class RemoveItemFromBasketHandler(IBasketRepository repository)
     : ICommandHandler<RemoveItemFromBasketCommand, RemoveItemFromBasketResult>
 {
-    public async Task<RemoveItemFromBasketResult> Handle(RemoveItemFromBasketCommand command, CancellationToken cancellationToken)
-    {
-        ShoppingCart shoppingCart = await repository.GetBasketAsync(command.UserName, false, cancellationToken);
+  public async Task<RemoveItemFromBasketResult> Handle(RemoveItemFromBasketCommand command, CancellationToken cancellationToken)
+  {
+    ShoppingCart shoppingCart = await repository.GetBasketAsync(command.UserName, false, cancellationToken);
 
-        shoppingCart.RemoveItem(command.ProductId);
+    shoppingCart.RemoveItem(command.ProductId);
 
-        _ = await repository.SaveChangesAsync(cancellationToken);
+    _ = await repository.SaveChangesAsync(command.UserName, cancellationToken);
 
-        return new RemoveItemFromBasketResult(shoppingCart.Id);
-    }
+    return new RemoveItemFromBasketResult(shoppingCart.Id);
+  }
 }
