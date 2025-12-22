@@ -43,7 +43,7 @@ webApp.UseSerilogRequestLogging();
 webApp.UseExceptionHandler(options => { });
 
 webApp
-    .UseCatalogModule()
+  .UseCatalogModule()
   .UseOrderingModule()
   .UseBasketModule();
 

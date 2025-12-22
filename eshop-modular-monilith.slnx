@@ -7,13 +7,14 @@
     <Project Path="Modules/Basket/Basket.csproj" Id="628ec612-f7ad-41ab-84d7-b6b68c0551ee" />
   </Folder>
   <Folder Name="/Modules/Catalog/">
-    <Project Path="Modules/Catalog/Catalog.csproj" />
+    <Project Path="Modules/Catalog/Catalog.Contracts/Catalog.Contracts.csproj" Id="fe287efe-f0ad-4134-98bb-46eef9a96e6d" />
+    <Project Path="Modules/Catalog/Catalog/Catalog.csproj" />
   </Folder>
   <Folder Name="/Modules/Ordering/">
     <Project Path="Modules/Ordering/Ordering.csproj" Id="91f33566-2d9f-4810-a643-28a604b32291" />
   </Folder>
   <Folder Name="/Shared/">
-    <Project Path="Shared/Shared.csproj" Id="fe5a350d-1ce2-4b38-9993-6e0f76c1d51e" />
+    <Project Path="Shared/Shared/Shared.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
