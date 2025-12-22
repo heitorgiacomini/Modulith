@@ -27,6 +27,10 @@ webAppBuilder.Services.AddStackExchangeRedisCache(options =>
   options.Configuration = webAppBuilder.Configuration.GetConnectionString("Redis");
 });
 
+webAppBuilder.Services.AddMassTransitWithAssemblies(
+  catalogAssembly,
+  basketAssembly
+);
 
 webAppBuilder.Services
   .AddCatalogModule(webAppBuilder.Configuration)

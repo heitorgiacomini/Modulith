@@ -1,4 +1,4 @@
-using Shared.CQRS;
+using Shared.Contracts.CQRS;
 
 namespace Catalog.Contracts.Products.Features.GetProductById;
 

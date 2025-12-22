@@ -14,6 +14,8 @@
     <Project Path="Modules/Ordering/Ordering.csproj" Id="91f33566-2d9f-4810-a643-28a604b32291" />
   </Folder>
   <Folder Name="/Shared/">
+    <Project Path="Shared/Shared.Contracts/Shared.Contracts.csproj" />
+    <Project Path="Shared/Shared.Messaging/Shared.Messaging.csproj" Id="b16fbefa-662b-4809-9256-f777a3df346e" />
     <Project Path="Shared/Shared/Shared.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">

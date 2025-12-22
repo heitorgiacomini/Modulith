@@ -1,6 +1,3 @@
-
-using Catalog.Contracts.Products.Features.GetProductById;
-
 namespace Basket.Basket.Features.AddItemIntoBasket;
 
 public record AddItemIntoBasketCommand(String UserName, ShoppingCartItemDto ShoppingCartItem)

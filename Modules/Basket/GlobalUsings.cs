@@ -1,4 +1,4 @@
-﻿global using Shared.DDD;
+global using Shared.DDD;
 global using Basket.Basket.Models;
 global using Microsoft.EntityFrameworkCore;
 global using System.Reflection;
@@ -13,5 +13,6 @@ global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Routing;
 global using Microsoft.AspNetCore.Mvc;
-global using Shared.CQRS;
 global using Basket.Data.Repository;
+global using Catalog.Contracts.Products.Features.GetProductById;
+global using Shared.Contracts.CQRS;
