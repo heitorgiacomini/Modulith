@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Catalog\Catalog.Contracts\Catalog.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Basket\NewFolder\" />
+  </ItemGroup>
+
 </Project>
