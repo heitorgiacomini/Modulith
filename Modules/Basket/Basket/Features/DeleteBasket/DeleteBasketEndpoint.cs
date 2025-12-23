@@ -1,23 +1,24 @@
-﻿namespace Basket.Basket.Features.DeleteBasket;
+namespace Basket.Basket.Features.DeleteBasket;
 
 //public record DeleteBasketRequest(string UserName);
-public record DeleteBasketResponse(bool IsSuccess);
+public record DeleteBasketResponse(Boolean IsSuccess);
 
 public class DeleteBasketEndpoint : ICarterModule
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+  public void AddRoutes(IEndpointRouteBuilder app)
+  {
+    _ = app.MapDelete("/basket/{userName}", async (String userName, ISender sender) =>
     {
-        app.MapDelete("/basket/{userName}", async (string userName, ISender sender) =>
-        {
-            var result = await sender.Send(new DeleteBasketCommand(userName));
+      DeleteBasketResult result = await sender.Send(new DeleteBasketCommand(userName));
 
-            var response = result.Adapt<DeleteBasketResponse>();
+      DeleteBasketResponse response = result.Adapt<DeleteBasketResponse>();
 
-            return Results.Ok(response);
-        })
-        .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
-        .ProducesProblem(StatusCodes.Status400BadRequest)
-        .WithSummary("Delete Basket")
-        .WithDescription("Delete Basket");
-    }
+      return Results.Ok(response);
+    })
+    .Produces<DeleteBasketResponse>(StatusCodes.Status200OK)
+    .ProducesProblem(StatusCodes.Status400BadRequest)
+    .WithSummary("Delete Basket")
+    .WithDescription("Delete Basket")
+    .RequireAuthorization();
+  }
 }
