@@ -1,17 +1,22 @@
 version: '3.8'
 services:
-  eshopdb:
+  postgres:
     image: postgres
 
   seq:
     image: datalust/seq:latest
 
-  distributedcache:
+  redis:
     image: redis:latest
+
+  rabbitmq:
+    image: rabbitmq:management
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.3
 
 volumes:
   postgres_eshopdb:
-
 
 
 

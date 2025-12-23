@@ -1,3 +1,4 @@
+using Keycloak.AuthServices.Authentication;
 using System.Reflection;
 
 WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
@@ -28,10 +29,15 @@ webAppBuilder.Services.AddStackExchangeRedisCache(options =>
 });
 
 webAppBuilder.Services.AddMassTransitWithAssemblies(
+  webAppBuilder.Configuration,
   catalogAssembly,
   basketAssembly
 );
 
+webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
+webAppBuilder.Services.AddAuthorization();
+
+//module services: catalog, basket, ordering
 webAppBuilder.Services
   .AddCatalogModule(webAppBuilder.Configuration)
   .AddOrderingModule(webAppBuilder.Configuration)
@@ -45,6 +51,9 @@ webApp.MapCarter();
 
 webApp.UseSerilogRequestLogging();
 webApp.UseExceptionHandler(options => { });
+
+webApp.UseAuthentication();
+webApp.UseAuthorization();
 
 webApp
   .UseCatalogModule()
@@ -70,4 +79,5 @@ webApp
 //	endpoints.MapControllers();
 //});	
 
-webApp.Run();
+//webApp.Run();
+await webApp.RunAsync();
