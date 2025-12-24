@@ -11,16 +11,19 @@ webAppBuilder.Host
 
 Assembly catalogAssembly = typeof(CatalogModule).Assembly;
 Assembly basketAssembly = typeof(BasketModule).Assembly;
+Assembly orderingAssembly = typeof(OrderingModule).Assembly;
 // add services to the container.
 webAppBuilder.Services
   .AddCarterWithAssemblies(
     catalogAssembly,
-    basketAssembly
+    basketAssembly,
+    orderingAssembly
   );
 
 webAppBuilder.Services.AddMediatRWithAssemblies(
   catalogAssembly,
-  basketAssembly
+  basketAssembly,
+  orderingAssembly
 );
 
 webAppBuilder.Services.AddStackExchangeRedisCache(options =>
@@ -31,7 +34,8 @@ webAppBuilder.Services.AddStackExchangeRedisCache(options =>
 webAppBuilder.Services.AddMassTransitWithAssemblies(
   webAppBuilder.Configuration,
   catalogAssembly,
-  basketAssembly
+  basketAssembly,
+  orderingAssembly
 );
 
 webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
