@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Basket\NewFolder\" />
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>
