@@ -12,7 +12,7 @@ public class CreateBasketEndpoint : ICarterModule
     _ = app.MapPost("/basket", async (CreateBasketRequest request, ISender sender, ClaimsPrincipal user) =>
     {
       String? userName = user.Identity?.Name;
-      var updatedShoppingCart = request.ShoppingCart with { UserName = userName };
+      ShoppingCartDto updatedShoppingCart = request.ShoppingCart with { UserName = userName };
 
       CreateBasketCommand command = new CreateBasketCommand(updatedShoppingCart);
       //CreateBasketCommand command = request.Adapt<CreateBasketCommand>();

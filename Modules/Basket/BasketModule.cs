@@ -1,3 +1,4 @@
+using Basket.Data.Processors;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +34,8 @@ public static class BasketModule
 
 
     //_ = services.AddScoped<IDataSeeder, BasketDataSeeder>();
+    _ = services.AddHostedService<OutboxProcessor>();
+
     return services;
   }
 

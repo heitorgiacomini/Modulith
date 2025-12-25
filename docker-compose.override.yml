@@ -57,17 +57,42 @@ services:
     depends_on:
       - postgres
 
-
-
-
-
-
-#       - ASPNETCORE_HTTPS_PORTS=8081
-#     ports:
-#       - "8080"
-#       - "8081"
-#     volumes:
-#       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-#       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-#       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-#       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=eshopdb;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
+      - ConnectionStrings__Redis=redis:6379
+      - MessageBroker__Host=amqp://rabbitmq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
+      - Keycloak__AuthServerUrl=http://keycloak:9090/
+      - Serilog__Using__0=Serilog.Sinks.Console
+      - Serilog__Using__1=Serilog.Sinks.Seq
+      - Serilog__MinimumLevel__Default=Information
+      - Serilog__MinimumLevel__Override__Microsoft=Information
+      - Serilog__MinimumLevel__Override__System=Warning
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=Seq
+      - Serilog__WriteTo__1__Args__serverUrl=http://seq:5341
+      - Serilog__Enrich__0=FromLogContext
+      - Serilog__Enrich__1=WithMachineName
+      - Serilog__Enrich__2=WithProcessId
+      - Serilog__Enrich__3=WithThreadId
+      - Serilog__Properties__Application=EShop ASP.NET Core App
+      - Serilog__Properties__Environment=Development
+    depends_on:
+      - postgres
+      - redis
+      - seq
+      - rabbitmq
+      - keycloak
+    ports:
+      - "6000:8080"
+      - "6060:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
