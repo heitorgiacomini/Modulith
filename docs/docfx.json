@@ -1,0 +1,86 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "..",
+          "files": [
+            "src/Bootstrapper/Api/Api.csproj"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ]
+        }
+      ],
+      "dest": "api/Bootstrapper",
+      "properties": {
+        "TargetFramework": "net10.0"
+      },
+      "monikerRange": "bootstrapper"
+    },
+    {
+      "src": [
+        {
+          "src": "..",
+          "files": [
+            "src/Shared/Shared/Shared.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ]
+        }
+      ],
+      "dest": "api/Shared",
+      "properties": {
+        "TargetFramework": "net10.0"
+      },
+      "monikerRange": "shared"
+    }
+  ],
+  "build": {
+    "template": [
+      "default",
+      "modern",
+      "templates"
+    ],
+    "content": [
+      {
+        "files": [
+          "*.md",
+          "toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "api/**.yml",
+          "api/**.md"
+        ]
+      },
+      {
+        "files": [
+          "articles/**.md",
+          "articles/**/toc.yml"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "styles/**",
+          "images/**"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "SINTER",
+      "_appFooter": "© 2026 Sinter. All rights reserved.",
+      "_disableContribution": false,
+      "_appFaviconPath": "images/sinter-logo.png",
+      "_appLogoPath": "images/sinter-logo.png",
+      "_enableSearch": true
+    }
+  }
+}

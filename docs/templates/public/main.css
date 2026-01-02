@@ -1,0 +1,14 @@
+/* Custom template CSS for Sinter docs */
+#logo {
+  max-height: 32px;
+  width: auto;
+}
+
+@media (max-width: 640px) {
+  #logo {
+    max-height: 28px;
+  }
+}
+/* #breadcrumb {
+  display: none;
+} */
