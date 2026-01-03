@@ -1,0 +1,1265 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor
+  commentId: T:Shared.Data.Interceptors.AuditableEntityInterceptor
+  id: AuditableEntityInterceptor
+  parent: Shared.Data.Interceptors
+  children:
+  - Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  - Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: AuditableEntityInterceptor
+  nameWithType: AuditableEntityInterceptor
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: AuditableEntityInterceptor
+    path: ../src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
+    startLine: 7
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Interceptors
+  syntax:
+    content: 'public class AuditableEntityInterceptor : SaveChangesInterceptor, ISaveChangesInterceptor, IInterceptor'
+    content.vb: Public Class AuditableEntityInterceptor Inherits SaveChangesInterceptor Implements ISaveChangesInterceptor, IInterceptor
+  inheritance:
+  - System.Object
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  implements:
+  - Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor
+  - Microsoft.EntityFrameworkCore.Diagnostics.IInterceptor
+  inheritedMembers:
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyException(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult)
+  - Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult,System.Threading.CancellationToken)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  id: SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  parent: Shared.Data.Interceptors.AuditableEntityInterceptor
+  langs:
+  - csharp
+  - vb
+  name: SavingChanges(DbContextEventData, InterceptionResult<int>)
+  nameWithType: AuditableEntityInterceptor.SavingChanges(DbContextEventData, InterceptionResult<int>)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>)
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: SavingChanges
+    path: ../src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
+    startLine: 9
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Interceptors
+  summary: Called at the start of <see cref="O:DbContext.SaveChanges"></see>.
+  example: []
+  syntax:
+    content: public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
+    parameters:
+    - id: eventData
+      type: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+      description: Contextual information about the <xref href="Microsoft.EntityFrameworkCore.DbContext" data-throw-if-not-resolved="false"></xref> being used.
+    - id: result
+      type: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}
+      description: >-
+        Represents the current result if one exists.
+
+        This value will have <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.HasResult" data-throw-if-not-resolved="false"></xref> set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if some previous
+
+        interceptor suppressed execution by calling <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.SuppressWithResult(%600)" data-throw-if-not-resolved="false"></xref>.
+
+        This value is typically used as the return value for the implementation of this method.
+    return:
+      type: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}
+      description: >-
+        If <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.HasResult" data-throw-if-not-resolved="false"></xref> is false, the EF will continue as normal.
+
+        If <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.HasResult" data-throw-if-not-resolved="false"></xref> is true, then EF will suppress the operation it
+
+        was about to perform and use <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.Result" data-throw-if-not-resolved="false"></xref> instead.
+
+        An implementation of this method for any interceptor that is not attempting to change the result
+
+        is to return the <code class="paramref">result</code> value passed in.
+    content.vb: Public Overrides Function SavingChanges(eventData As DbContextEventData, result As InterceptionResult(Of Integer)) As InterceptionResult(Of Integer)
+  overridden: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  overload: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges*
+  nameWithType.vb: AuditableEntityInterceptor.SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer))
+  name.vb: SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  id: SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  parent: Shared.Data.Interceptors.AuditableEntityInterceptor
+  langs:
+  - csharp
+  - vb
+  name: SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  nameWithType: AuditableEntityInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: SavingChangesAsync
+    path: ../src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
+    startLine: 16
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Interceptors
+  summary: Called at the start of <see cref="O:DbContext.SaveChangesAsync"></see>.
+  example: []
+  syntax:
+    content: public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+    parameters:
+    - id: eventData
+      type: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+      description: Contextual information about the <xref href="Microsoft.EntityFrameworkCore.DbContext" data-throw-if-not-resolved="false"></xref> being used.
+    - id: result
+      type: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}
+      description: >-
+        Represents the current result if one exists.
+
+        This value will have <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.HasResult" data-throw-if-not-resolved="false"></xref> set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if some previous
+
+        interceptor suppressed execution by calling <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.SuppressWithResult(%600)" data-throw-if-not-resolved="false"></xref>.
+
+        This value is typically used as the return value for the implementation of this method.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref> to observe while waiting for the task to complete.
+    return:
+      type: System.Threading.Tasks.ValueTask{Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}}
+      description: >-
+        If <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.HasResult" data-throw-if-not-resolved="false"></xref> is false, the EF will continue as normal.
+
+        If <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.HasResult" data-throw-if-not-resolved="false"></xref> is true, then EF will suppress the operation it
+
+        was about to perform and use <xref href="Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult%601.Result" data-throw-if-not-resolved="false"></xref> instead.
+
+        An implementation of this method for any interceptor that is not attempting to change the result
+
+        is to return the <code class="paramref">result</code> value passed in.
+    content.vb: Public Overrides Function SavingChangesAsync(eventData As DbContextEventData, result As InterceptionResult(Of Integer), cancellationToken As CancellationToken = Nothing) As ValueTask(Of InterceptionResult(Of Integer))
+  overridden: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  overload: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync*
+  exceptions:
+  - type: System.OperationCanceledException
+    commentId: T:System.OperationCanceledException
+    description: If the <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref> is canceled.
+  nameWithType.vb: AuditableEntityInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer), System.Threading.CancellationToken)
+  name.vb: SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+references:
+- uid: Shared.Data.Interceptors
+  commentId: N:Shared.Data.Interceptors
+  href: Shared.html
+  name: Shared.Data.Interceptors
+  nameWithType: Shared.Data.Interceptors
+  fullName: Shared.Data.Interceptors
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Interceptors
+    name: Interceptors
+    href: Shared.Data.Interceptors.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Interceptors
+    name: Interceptors
+    href: Shared.Data.Interceptors.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  commentId: T:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  parent: Microsoft.EntityFrameworkCore.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor
+  name: SaveChangesInterceptor
+  nameWithType: SaveChangesInterceptor
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor
+  commentId: T:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor
+  parent: Microsoft.EntityFrameworkCore.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.isavechangesinterceptor
+  name: ISaveChangesInterceptor
+  nameWithType: ISaveChangesInterceptor
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.IInterceptor
+  commentId: T:Microsoft.EntityFrameworkCore.Diagnostics.IInterceptor
+  parent: Microsoft.EntityFrameworkCore.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.iinterceptor
+  name: IInterceptor
+  nameWithType: IInterceptor
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.IInterceptor
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchanges
+  name: SavedChanges(SaveChangesCompletedEventData, int)
+  nameWithType: SaveChangesInterceptor.SavedChanges(SaveChangesCompletedEventData, int)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, int)
+  nameWithType.vb: SaveChangesInterceptor.SavedChanges(SaveChangesCompletedEventData, Integer)
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, Integer)
+  name.vb: SavedChanges(SaveChangesCompletedEventData, Integer)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+    name: SavedChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchanges
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData
+    name: SaveChangesCompletedEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangescompletedeventdata
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+    name: SavedChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchanges
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData
+    name: SaveChangesCompletedEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangescompletedeventdata
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailed
+  name: SaveChangesFailed(DbContextErrorEventData)
+  nameWithType: SaveChangesInterceptor.SaveChangesFailed(DbContextErrorEventData)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+    name: SaveChangesFailed
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailed
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData
+    name: DbContextErrorEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexterroreventdata
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+    name: SaveChangesFailed
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailed
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData
+    name: DbContextErrorEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexterroreventdata
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchangesasync
+  name: SavedChangesAsync(SaveChangesCompletedEventData, int, CancellationToken)
+  nameWithType: SaveChangesInterceptor.SavedChangesAsync(SaveChangesCompletedEventData, int, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, int, System.Threading.CancellationToken)
+  nameWithType.vb: SaveChangesInterceptor.SavedChangesAsync(SaveChangesCompletedEventData, Integer, CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, Integer, System.Threading.CancellationToken)
+  name.vb: SavedChangesAsync(SaveChangesCompletedEventData, Integer, CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+    name: SavedChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchangesasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData
+    name: SaveChangesCompletedEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangescompletedeventdata
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+    name: SavedChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchangesasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData
+    name: SaveChangesCompletedEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangescompletedeventdata
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailedasync
+  name: SaveChangesFailedAsync(DbContextErrorEventData, CancellationToken)
+  nameWithType: SaveChangesInterceptor.SaveChangesFailedAsync(DbContextErrorEventData, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+    name: SaveChangesFailedAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailedasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData
+    name: DbContextErrorEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexterroreventdata
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+    name: SaveChangesFailedAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailedasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData
+    name: DbContextErrorEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexterroreventdata
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceled
+  name: SaveChangesCanceled(DbContextEventData)
+  nameWithType: SaveChangesInterceptor.SaveChangesCanceled(DbContextEventData)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+    name: SaveChangesCanceled
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceled
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+    name: SaveChangesCanceled
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceled
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceledasync
+  name: SaveChangesCanceledAsync(DbContextEventData, CancellationToken)
+  nameWithType: SaveChangesInterceptor.SaveChangesCanceledAsync(DbContextEventData, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+    name: SaveChangesCanceledAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceledasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+    name: SaveChangesCanceledAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceledasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyException(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyException(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexception
+  name: ThrowingConcurrencyException(ConcurrencyExceptionEventData, InterceptionResult)
+  nameWithType: SaveChangesInterceptor.ThrowingConcurrencyException(ConcurrencyExceptionEventData, InterceptionResult)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyException(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyException(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult)
+    name: ThrowingConcurrencyException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexception
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData
+    name: ConcurrencyExceptionEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.concurrencyexceptioneventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyException(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult)
+    name: ThrowingConcurrencyException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexception
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData
+    name: ConcurrencyExceptionEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.concurrencyexceptioneventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexceptionasync
+  name: ThrowingConcurrencyExceptionAsync(ConcurrencyExceptionEventData, InterceptionResult, CancellationToken)
+  nameWithType: SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(ConcurrencyExceptionEventData, InterceptionResult, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult,System.Threading.CancellationToken)
+    name: ThrowingConcurrencyExceptionAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexceptionasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData
+    name: ConcurrencyExceptionEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.concurrencyexceptioneventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.ThrowingConcurrencyExceptionAsync(Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult,System.Threading.CancellationToken)
+    name: ThrowingConcurrencyExceptionAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexceptionasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.ConcurrencyExceptionEventData
+    name: ConcurrencyExceptionEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.concurrencyexceptioneventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.EntityFrameworkCore.Diagnostics
+  commentId: N:Microsoft.EntityFrameworkCore.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.EntityFrameworkCore.Diagnostics
+  nameWithType: Microsoft.EntityFrameworkCore.Diagnostics
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics
+- uid: Microsoft.EntityFrameworkCore.DbContext
+  commentId: T:Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext
+  name: DbContext
+  nameWithType: DbContext
+  fullName: Microsoft.EntityFrameworkCore.DbContext
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.HasResult
+  commentId: P:Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.HasResult
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1.hasresult
+  name: HasResult
+  nameWithType: InterceptionResult<TResult>.HasResult
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<TResult>.HasResult
+  nameWithType.vb: InterceptionResult(Of TResult).HasResult
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of TResult).HasResult
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.SuppressWithResult(`0)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.SuppressWithResult(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1.suppresswithresult
+  name: SuppressWithResult(TResult)
+  nameWithType: InterceptionResult<TResult>.SuppressWithResult(TResult)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<TResult>.SuppressWithResult(TResult)
+  nameWithType.vb: InterceptionResult(Of TResult).SuppressWithResult(TResult)
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of TResult).SuppressWithResult(TResult)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.SuppressWithResult(`0)
+    name: SuppressWithResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1.suppresswithresult
+  - name: (
+  - name: TResult
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.SuppressWithResult(`0)
+    name: SuppressWithResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1.suppresswithresult
+  - name: (
+  - name: TResult
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.Result
+  commentId: P:Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1.Result
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1.result
+  name: Result
+  nameWithType: InterceptionResult<TResult>.Result
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<TResult>.Result
+  nameWithType.vb: InterceptionResult(Of TResult).Result
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of TResult).Result
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savingchanges
+  name: SavingChanges(DbContextEventData, InterceptionResult<int>)
+  nameWithType: SaveChangesInterceptor.SavingChanges(DbContextEventData, InterceptionResult<int>)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>)
+  nameWithType.vb: SaveChangesInterceptor.SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer))
+  name.vb: SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+    name: SavingChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savingchanges
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+    name: SavingChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savingchanges
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges*
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges
+  href: Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChanges_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__
+  name: SavingChanges
+  nameWithType: AuditableEntityInterceptor.SavingChanges
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+  commentId: T:Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+  parent: Microsoft.EntityFrameworkCore.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  name: DbContextEventData
+  nameWithType: DbContextEventData
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}
+  commentId: T:Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}
+  parent: Microsoft.EntityFrameworkCore.Diagnostics
+  definition: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  name: InterceptionResult<int>
+  nameWithType: InterceptionResult<int>
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>
+  nameWithType.vb: InterceptionResult(Of Integer)
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer)
+  name.vb: InterceptionResult(Of Integer)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+  commentId: T:Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  name: InterceptionResult<TResult>
+  nameWithType: InterceptionResult<TResult>
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<TResult>
+  nameWithType.vb: InterceptionResult(Of TResult)
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of TResult)
+  name.vb: InterceptionResult(Of TResult)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.OperationCanceledException
+  commentId: T:System.OperationCanceledException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.operationcanceledexception
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException
+  fullName: System.OperationCanceledException
+- uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savingchangesasync
+  name: SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  nameWithType: SaveChangesInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>, System.Threading.CancellationToken)
+  nameWithType.vb: SaveChangesInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer), System.Threading.CancellationToken)
+  name.vb: SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+    name: SavingChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savingchangesasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+    name: SavingChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savingchangesasync
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData
+    name: DbContextEventData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata
+  - name: ','
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync*
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync
+  href: Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__System_Threading_CancellationToken_
+  name: SavingChangesAsync
+  nameWithType: AuditableEntityInterceptor.SavingChangesAsync
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync
+- uid: System.Threading.Tasks.ValueTask{Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}}
+  commentId: T:System.Threading.Tasks.ValueTask{Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.ValueTask`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<InterceptionResult<int>>
+  nameWithType: ValueTask<InterceptionResult<int>>
+  fullName: System.Threading.Tasks.ValueTask<Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>>
+  nameWithType.vb: ValueTask(Of InterceptionResult(Of Integer))
+  fullName.vb: System.Threading.Tasks.ValueTask(Of Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer))
+  name.vb: ValueTask(Of InterceptionResult(Of Integer))
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult`1
+    name: InterceptionResult
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.interceptionresult-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.ValueTask`1
+  commentId: T:System.Threading.Tasks.ValueTask`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<TResult>
+  nameWithType: ValueTask<TResult>
+  fullName: System.Threading.Tasks.ValueTask<TResult>
+  nameWithType.vb: ValueTask(Of TResult)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of TResult)
+  name.vb: ValueTask(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

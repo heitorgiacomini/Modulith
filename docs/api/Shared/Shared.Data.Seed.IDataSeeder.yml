@@ -1,0 +1,139 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Seed.IDataSeeder
+  commentId: T:Shared.Data.Seed.IDataSeeder
+  id: IDataSeeder
+  parent: Shared.Data.Seed
+  children:
+  - Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  langs:
+  - csharp
+  - vb
+  name: IDataSeeder
+  nameWithType: IDataSeeder
+  fullName: Shared.Data.Seed.IDataSeeder
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Seed/IDataSeeder.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: IDataSeeder
+    path: ../src/Shared/Shared/Data/Seed/IDataSeeder.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Seed
+  syntax:
+    content: public interface IDataSeeder
+    content.vb: Public Interface IDataSeeder
+- uid: Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  commentId: M:Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  id: SeedAllAsync
+  parent: Shared.Data.Seed.IDataSeeder
+  langs:
+  - csharp
+  - vb
+  name: SeedAllAsync()
+  nameWithType: IDataSeeder.SeedAllAsync()
+  fullName: Shared.Data.Seed.IDataSeeder.SeedAllAsync()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Seed/IDataSeeder.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: SeedAllAsync
+    path: ../src/Shared/Shared/Data/Seed/IDataSeeder.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Seed
+  syntax:
+    content: Task SeedAllAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function SeedAllAsync() As Task
+  overload: Shared.Data.Seed.IDataSeeder.SeedAllAsync*
+references:
+- uid: Shared.Data.Seed
+  commentId: N:Shared.Data.Seed
+  href: Shared.html
+  name: Shared.Data.Seed
+  nameWithType: Shared.Data.Seed
+  fullName: Shared.Data.Seed
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Seed
+    name: Seed
+    href: Shared.Data.Seed.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Seed
+    name: Seed
+    href: Shared.Data.Seed.html
+- uid: Shared.Data.Seed.IDataSeeder.SeedAllAsync*
+  commentId: Overload:Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  href: Shared.Data.Seed.IDataSeeder.html#Shared_Data_Seed_IDataSeeder_SeedAllAsync
+  name: SeedAllAsync
+  nameWithType: IDataSeeder.SeedAllAsync
+  fullName: Shared.Data.Seed.IDataSeeder.SeedAllAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

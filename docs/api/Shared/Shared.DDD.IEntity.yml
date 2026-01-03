@@ -1,0 +1,264 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IEntity
+  commentId: T:Shared.DDD.IEntity
+  id: IEntity
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IEntity.CreatedAt
+  - Shared.DDD.IEntity.CreatedBy
+  - Shared.DDD.IEntity.LastModified
+  - Shared.DDD.IEntity.LastModifiedBy
+  langs:
+  - csharp
+  - vb
+  name: IEntity
+  nameWithType: IEntity
+  fullName: Shared.DDD.IEntity
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: IEntity
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 7
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: public interface IEntity
+    content.vb: Public Interface IEntity
+- uid: Shared.DDD.IEntity.CreatedAt
+  commentId: P:Shared.DDD.IEntity.CreatedAt
+  id: CreatedAt
+  parent: Shared.DDD.IEntity
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: IEntity.CreatedAt
+  fullName: Shared.DDD.IEntity.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: CreatedAt
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 9
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: DateTime? CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Property CreatedAt As Date?
+  overload: Shared.DDD.IEntity.CreatedAt*
+- uid: Shared.DDD.IEntity.CreatedBy
+  commentId: P:Shared.DDD.IEntity.CreatedBy
+  id: CreatedBy
+  parent: Shared.DDD.IEntity
+  langs:
+  - csharp
+  - vb
+  name: CreatedBy
+  nameWithType: IEntity.CreatedBy
+  fullName: Shared.DDD.IEntity.CreatedBy
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: CreatedBy
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 10
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: string? CreatedBy { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property CreatedBy As String
+  overload: Shared.DDD.IEntity.CreatedBy*
+- uid: Shared.DDD.IEntity.LastModified
+  commentId: P:Shared.DDD.IEntity.LastModified
+  id: LastModified
+  parent: Shared.DDD.IEntity
+  langs:
+  - csharp
+  - vb
+  name: LastModified
+  nameWithType: IEntity.LastModified
+  fullName: Shared.DDD.IEntity.LastModified
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: LastModified
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 11
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: DateTime? LastModified { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Property LastModified As Date?
+  overload: Shared.DDD.IEntity.LastModified*
+- uid: Shared.DDD.IEntity.LastModifiedBy
+  commentId: P:Shared.DDD.IEntity.LastModifiedBy
+  id: LastModifiedBy
+  parent: Shared.DDD.IEntity
+  langs:
+  - csharp
+  - vb
+  name: LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+  fullName: Shared.DDD.IEntity.LastModifiedBy
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: LastModifiedBy
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 12
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: string? LastModifiedBy { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property LastModifiedBy As String
+  overload: Shared.DDD.IEntity.LastModifiedBy*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IEntity.CreatedAt*
+  commentId: Overload:Shared.DDD.IEntity.CreatedAt
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
+  name: CreatedAt
+  nameWithType: IEntity.CreatedAt
+  fullName: Shared.DDD.IEntity.CreatedAt
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.DDD.IEntity.CreatedBy*
+  commentId: Overload:Shared.DDD.IEntity.CreatedBy
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
+  name: CreatedBy
+  nameWithType: IEntity.CreatedBy
+  fullName: Shared.DDD.IEntity.CreatedBy
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Shared.DDD.IEntity.LastModified*
+  commentId: Overload:Shared.DDD.IEntity.LastModified
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
+  name: LastModified
+  nameWithType: IEntity.LastModified
+  fullName: Shared.DDD.IEntity.LastModified
+- uid: Shared.DDD.IEntity.LastModifiedBy*
+  commentId: Overload:Shared.DDD.IEntity.LastModifiedBy
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+  fullName: Shared.DDD.IEntity.LastModifiedBy

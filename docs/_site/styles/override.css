@@ -1,0 +1,4 @@
+/* Minimal overrides to ensure logo area is visible and appropriately sized */
+#logo{
+  max-height: 32px !important;
+}

@@ -1,0 +1,202 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IAggregate`1
+  commentId: T:Shared.DDD.IAggregate`1
+  id: IAggregate`1
+  parent: Shared.DDD
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IAggregate<T>
+  nameWithType: IAggregate<T>
+  fullName: Shared.DDD.IAggregate<T>
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IAggregate.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: IAggregate
+    path: ../src/Shared/Shared/DDD/IAggregate.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IAggregate<T> : IAggregate, IEntity<T>, IEntity where T : struct'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IAggregate(Of T As Structure) Inherits IAggregate, IEntity(Of T), IEntity
+  inheritedMembers:
+  - Shared.DDD.IAggregate.DomainEvents
+  - Shared.DDD.IAggregate.ClearDomainEvents
+  - Shared.DDD.IEntity{{T}}.Id
+  - Shared.DDD.IEntity.CreatedAt
+  - Shared.DDD.IEntity.CreatedBy
+  - Shared.DDD.IEntity.LastModified
+  - Shared.DDD.IEntity.LastModifiedBy
+  nameWithType.vb: IAggregate(Of T)
+  fullName.vb: Shared.DDD.IAggregate(Of T)
+  name.vb: IAggregate(Of T)
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IAggregate.DomainEvents
+  commentId: P:Shared.DDD.IAggregate.DomainEvents
+  parent: Shared.DDD.IAggregate
+  href: Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_DomainEvents
+  name: DomainEvents
+  nameWithType: IAggregate.DomainEvents
+  fullName: Shared.DDD.IAggregate.DomainEvents
+- uid: Shared.DDD.IAggregate.ClearDomainEvents
+  commentId: M:Shared.DDD.IAggregate.ClearDomainEvents
+  parent: Shared.DDD.IAggregate
+  href: Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_ClearDomainEvents
+  name: ClearDomainEvents()
+  nameWithType: IAggregate.ClearDomainEvents()
+  fullName: Shared.DDD.IAggregate.ClearDomainEvents()
+  spec.csharp:
+  - uid: Shared.DDD.IAggregate.ClearDomainEvents
+    name: ClearDomainEvents
+    href: Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_ClearDomainEvents
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Shared.DDD.IAggregate.ClearDomainEvents
+    name: ClearDomainEvents
+    href: Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_ClearDomainEvents
+  - name: (
+  - name: )
+- uid: Shared.DDD.IEntity{{T}}.Id
+  commentId: P:Shared.DDD.IEntity{`0}.Id
+  parent: Shared.DDD.IEntity{{T}}
+  definition: Shared.DDD.IEntity`1.Id
+  href: Shared.DDD.IEntity-1.html#Shared_DDD_IEntity_1_Id
+  name: Id
+  nameWithType: IEntity<T>.Id
+  fullName: Shared.DDD.IEntity<T>.Id
+  nameWithType.vb: IEntity(Of T).Id
+  fullName.vb: Shared.DDD.IEntity(Of T).Id
+- uid: Shared.DDD.IEntity.CreatedAt
+  commentId: P:Shared.DDD.IEntity.CreatedAt
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
+  name: CreatedAt
+  nameWithType: IEntity.CreatedAt
+  fullName: Shared.DDD.IEntity.CreatedAt
+- uid: Shared.DDD.IEntity.CreatedBy
+  commentId: P:Shared.DDD.IEntity.CreatedBy
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
+  name: CreatedBy
+  nameWithType: IEntity.CreatedBy
+  fullName: Shared.DDD.IEntity.CreatedBy
+- uid: Shared.DDD.IEntity.LastModified
+  commentId: P:Shared.DDD.IEntity.LastModified
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
+  name: LastModified
+  nameWithType: IEntity.LastModified
+  fullName: Shared.DDD.IEntity.LastModified
+- uid: Shared.DDD.IEntity.LastModifiedBy
+  commentId: P:Shared.DDD.IEntity.LastModifiedBy
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+  fullName: Shared.DDD.IEntity.LastModifiedBy
+- uid: Shared.DDD.IAggregate
+  commentId: T:Shared.DDD.IAggregate
+  parent: Shared.DDD
+  href: Shared.DDD.IAggregate.html
+  name: IAggregate
+  nameWithType: IAggregate
+  fullName: Shared.DDD.IAggregate
+- uid: Shared.DDD.IEntity`1.Id
+  commentId: P:Shared.DDD.IEntity`1.Id
+  href: Shared.DDD.IEntity-1.html#Shared_DDD_IEntity_1_Id
+  name: Id
+  nameWithType: IEntity<T>.Id
+  fullName: Shared.DDD.IEntity<T>.Id
+  nameWithType.vb: IEntity(Of T).Id
+  fullName.vb: Shared.DDD.IEntity(Of T).Id
+- uid: Shared.DDD.IEntity{{T}}
+  commentId: T:Shared.DDD.IEntity{`0}
+  parent: Shared.DDD
+  definition: Shared.DDD.IEntity`1
+  href: Shared.DDD.IEntity-1.html
+  name: IEntity<T>
+  nameWithType: IEntity<T>
+  fullName: Shared.DDD.IEntity<T>
+  nameWithType.vb: IEntity(Of T)
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  name.vb: IEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IEntity
+  commentId: T:Shared.DDD.IEntity
+  parent: Shared.DDD
+  href: Shared.DDD.IEntity.html
+  name: IEntity
+  nameWithType: IEntity
+  fullName: Shared.DDD.IEntity
+- uid: Shared.DDD.IEntity`1
+  commentId: T:Shared.DDD.IEntity`1
+  href: Shared.DDD.IEntity-1.html
+  name: IEntity<T>
+  nameWithType: IEntity<T>
+  fullName: Shared.DDD.IEntity<T>
+  nameWithType.vb: IEntity(Of T)
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  name.vb: IEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

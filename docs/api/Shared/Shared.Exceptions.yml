@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Exceptions
+  commentId: N:Shared.Exceptions
+  id: Shared.Exceptions
+  children:
+  - Shared.Exceptions.BadRequestException
+  - Shared.Exceptions.InternalServerException
+  - Shared.Exceptions.NotFoundException
+  langs:
+  - csharp
+  - vb
+  name: Shared.Exceptions
+  nameWithType: Shared.Exceptions
+  fullName: Shared.Exceptions
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Exceptions.BadRequestException
+  commentId: T:Shared.Exceptions.BadRequestException
+  href: Shared.Exceptions.BadRequestException.html
+  name: BadRequestException
+  nameWithType: BadRequestException
+  fullName: Shared.Exceptions.BadRequestException
+- uid: Shared.Exceptions.InternalServerException
+  commentId: T:Shared.Exceptions.InternalServerException
+  href: Shared.Exceptions.InternalServerException.html
+  name: InternalServerException
+  nameWithType: InternalServerException
+  fullName: Shared.Exceptions.InternalServerException
+- uid: Shared.Exceptions.NotFoundException
+  commentId: T:Shared.Exceptions.NotFoundException
+  href: Shared.Exceptions.NotFoundException.html
+  name: NotFoundException
+  nameWithType: NotFoundException
+  fullName: Shared.Exceptions.NotFoundException

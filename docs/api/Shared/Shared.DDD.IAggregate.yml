@@ -1,0 +1,281 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IAggregate
+  commentId: T:Shared.DDD.IAggregate
+  id: IAggregate
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IAggregate.ClearDomainEvents
+  - Shared.DDD.IAggregate.DomainEvents
+  langs:
+  - csharp
+  - vb
+  name: IAggregate
+  nameWithType: IAggregate
+  fullName: Shared.DDD.IAggregate
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IAggregate.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: IAggregate
+    path: ../src/Shared/Shared/DDD/IAggregate.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IAggregate : IEntity'
+    content.vb: Public Interface IAggregate Inherits IEntity
+  inheritedMembers:
+  - Shared.DDD.IEntity.CreatedAt
+  - Shared.DDD.IEntity.CreatedBy
+  - Shared.DDD.IEntity.LastModified
+  - Shared.DDD.IEntity.LastModifiedBy
+- uid: Shared.DDD.IAggregate.DomainEvents
+  commentId: P:Shared.DDD.IAggregate.DomainEvents
+  id: DomainEvents
+  parent: Shared.DDD.IAggregate
+  langs:
+  - csharp
+  - vb
+  name: DomainEvents
+  nameWithType: IAggregate.DomainEvents
+  fullName: Shared.DDD.IAggregate.DomainEvents
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IAggregate.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: DomainEvents
+    path: ../src/Shared/Shared/DDD/IAggregate.cs
+    startLine: 8
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: IReadOnlyList<IDomainEvent> DomainEvents { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Shared.DDD.IDomainEvent}
+    content.vb: ReadOnly Property DomainEvents As IReadOnlyList(Of IDomainEvent)
+  overload: Shared.DDD.IAggregate.DomainEvents*
+- uid: Shared.DDD.IAggregate.ClearDomainEvents
+  commentId: M:Shared.DDD.IAggregate.ClearDomainEvents
+  id: ClearDomainEvents
+  parent: Shared.DDD.IAggregate
+  langs:
+  - csharp
+  - vb
+  name: ClearDomainEvents()
+  nameWithType: IAggregate.ClearDomainEvents()
+  fullName: Shared.DDD.IAggregate.ClearDomainEvents()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IAggregate.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: ClearDomainEvents
+    path: ../src/Shared/Shared/DDD/IAggregate.cs
+    startLine: 9
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: IDomainEvent[] ClearDomainEvents()
+    return:
+      type: Shared.DDD.IDomainEvent[]
+    content.vb: Function ClearDomainEvents() As IDomainEvent()
+  overload: Shared.DDD.IAggregate.ClearDomainEvents*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IEntity.CreatedAt
+  commentId: P:Shared.DDD.IEntity.CreatedAt
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
+  name: CreatedAt
+  nameWithType: IEntity.CreatedAt
+  fullName: Shared.DDD.IEntity.CreatedAt
+- uid: Shared.DDD.IEntity.CreatedBy
+  commentId: P:Shared.DDD.IEntity.CreatedBy
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
+  name: CreatedBy
+  nameWithType: IEntity.CreatedBy
+  fullName: Shared.DDD.IEntity.CreatedBy
+- uid: Shared.DDD.IEntity.LastModified
+  commentId: P:Shared.DDD.IEntity.LastModified
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
+  name: LastModified
+  nameWithType: IEntity.LastModified
+  fullName: Shared.DDD.IEntity.LastModified
+- uid: Shared.DDD.IEntity.LastModifiedBy
+  commentId: P:Shared.DDD.IEntity.LastModifiedBy
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+  fullName: Shared.DDD.IEntity.LastModifiedBy
+- uid: Shared.DDD.IEntity
+  commentId: T:Shared.DDD.IEntity
+  parent: Shared.DDD
+  href: Shared.DDD.IEntity.html
+  name: IEntity
+  nameWithType: IEntity
+  fullName: Shared.DDD.IEntity
+- uid: Shared.DDD.IAggregate.DomainEvents*
+  commentId: Overload:Shared.DDD.IAggregate.DomainEvents
+  href: Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_DomainEvents
+  name: DomainEvents
+  nameWithType: IAggregate.DomainEvents
+  fullName: Shared.DDD.IAggregate.DomainEvents
+- uid: System.Collections.Generic.IReadOnlyList{Shared.DDD.IDomainEvent}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Shared.DDD.IDomainEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IDomainEvent>
+  nameWithType: IReadOnlyList<IDomainEvent>
+  fullName: System.Collections.Generic.IReadOnlyList<Shared.DDD.IDomainEvent>
+  nameWithType.vb: IReadOnlyList(Of IDomainEvent)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Shared.DDD.IDomainEvent)
+  name.vb: IReadOnlyList(Of IDomainEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Shared.DDD.IDomainEvent
+    name: IDomainEvent
+    href: Shared.DDD.IDomainEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Shared.DDD.IDomainEvent
+    name: IDomainEvent
+    href: Shared.DDD.IDomainEvent.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Shared.DDD.IAggregate.ClearDomainEvents*
+  commentId: Overload:Shared.DDD.IAggregate.ClearDomainEvents
+  href: Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_ClearDomainEvents
+  name: ClearDomainEvents
+  nameWithType: IAggregate.ClearDomainEvents
+  fullName: Shared.DDD.IAggregate.ClearDomainEvents
+- uid: Shared.DDD.IDomainEvent[]
+  isExternal: true
+  href: Shared.DDD.IDomainEvent.html
+  name: IDomainEvent[]
+  nameWithType: IDomainEvent[]
+  fullName: Shared.DDD.IDomainEvent[]
+  nameWithType.vb: IDomainEvent()
+  fullName.vb: Shared.DDD.IDomainEvent()
+  name.vb: IDomainEvent()
+  spec.csharp:
+  - uid: Shared.DDD.IDomainEvent
+    name: IDomainEvent
+    href: Shared.DDD.IDomainEvent.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Shared.DDD.IDomainEvent
+    name: IDomainEvent
+    href: Shared.DDD.IDomainEvent.html
+  - name: (
+  - name: )

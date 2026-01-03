@@ -1,0 +1,1032 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Api
+  name: Api
+  href: api/Bootstrapper/Api.html
+  commentId: N:Api
+  fullName: Api
+  nameWithType: Api
+- uid: Api.Program
+  name: Program
+  href: api/Bootstrapper/Api.Program.html
+  commentId: T:Api.Program
+  fullName: Api.Program
+  nameWithType: Program
+- uid: Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
+  name: UseSerilog(WebApplicationBuilder)
+  href: api/Bootstrapper/Api.Program.html#Api_Program_UseSerilog_Microsoft_AspNetCore_Builder_WebApplicationBuilder_
+  commentId: M:Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
+  fullName: Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
+  nameWithType: Program.UseSerilog(WebApplicationBuilder)
+- uid: Api.Program.UseSerilog*
+  name: UseSerilog
+  href: api/Bootstrapper/Api.Program.html#Api_Program_UseSerilog_
+  commentId: Overload:Api.Program.UseSerilog
+  isSpec: "True"
+  fullName: Api.Program.UseSerilog
+  nameWithType: Program.UseSerilog
+- uid: Shared.Behaviors
+  name: Shared.Behaviors
+  href: api/Shared/Shared.Behaviors.html
+  commentId: N:Shared.Behaviors
+  fullName: Shared.Behaviors
+  nameWithType: Shared.Behaviors
+- uid: Shared.Behaviors.LoggingBehavior`2
+  name: LoggingBehavior<TRequest, TResponse>
+  href: api/Shared/Shared.Behaviors.LoggingBehavior-2.html
+  commentId: T:Shared.Behaviors.LoggingBehavior`2
+  name.vb: LoggingBehavior(Of TRequest, TResponse)
+  fullName: Shared.Behaviors.LoggingBehavior<TRequest, TResponse>
+  fullName.vb: Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse)
+  nameWithType: LoggingBehavior<TRequest, TResponse>
+  nameWithType.vb: LoggingBehavior(Of TRequest, TResponse)
+- uid: Shared.Behaviors.LoggingBehavior`2.#ctor(Microsoft.Extensions.Logging.ILogger{Shared.Behaviors.LoggingBehavior{`0,`1}})
+  name: LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>>)
+  href: api/Shared/Shared.Behaviors.LoggingBehavior-2.html#Shared_Behaviors_LoggingBehavior_2__ctor_Microsoft_Extensions_Logging_ILogger_Shared_Behaviors_LoggingBehavior__0__1___
+  commentId: M:Shared.Behaviors.LoggingBehavior`2.#ctor(Microsoft.Extensions.Logging.ILogger{Shared.Behaviors.LoggingBehavior{`0,`1}})
+  name.vb: New(ILogger(Of LoggingBehavior(Of TRequest, TResponse)))
+  fullName: Shared.Behaviors.LoggingBehavior<TRequest, TResponse>.LoggingBehavior(Microsoft.Extensions.Logging.ILogger<Shared.Behaviors.LoggingBehavior<TRequest, TResponse>>)
+  fullName.vb: Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse).New(Microsoft.Extensions.Logging.ILogger(Of Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse)))
+  nameWithType: LoggingBehavior<TRequest, TResponse>.LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>>)
+  nameWithType.vb: LoggingBehavior(Of TRequest, TResponse).New(ILogger(Of LoggingBehavior(Of TRequest, TResponse)))
+- uid: Shared.Behaviors.LoggingBehavior`2.#ctor*
+  name: LoggingBehavior
+  href: api/Shared/Shared.Behaviors.LoggingBehavior-2.html#Shared_Behaviors_LoggingBehavior_2__ctor_
+  commentId: Overload:Shared.Behaviors.LoggingBehavior`2.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Behaviors.LoggingBehavior<TRequest, TResponse>.LoggingBehavior
+  fullName.vb: Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse).New
+  nameWithType: LoggingBehavior<TRequest, TResponse>.LoggingBehavior
+  nameWithType.vb: LoggingBehavior(Of TRequest, TResponse).New
+- uid: Shared.Behaviors.LoggingBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)
+  name: Handle(TRequest, RequestHandlerDelegate<TResponse>, CancellationToken)
+  href: api/Shared/Shared.Behaviors.LoggingBehavior-2.html#Shared_Behaviors_LoggingBehavior_2_Handle__0_MediatR_RequestHandlerDelegate__1__System_Threading_CancellationToken_
+  commentId: M:Shared.Behaviors.LoggingBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)
+  name.vb: Handle(TRequest, RequestHandlerDelegate(Of TResponse), CancellationToken)
+  fullName: Shared.Behaviors.LoggingBehavior<TRequest, TResponse>.Handle(TRequest, MediatR.RequestHandlerDelegate<TResponse>, System.Threading.CancellationToken)
+  fullName.vb: Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse).Handle(TRequest, MediatR.RequestHandlerDelegate(Of TResponse), System.Threading.CancellationToken)
+  nameWithType: LoggingBehavior<TRequest, TResponse>.Handle(TRequest, RequestHandlerDelegate<TResponse>, CancellationToken)
+  nameWithType.vb: LoggingBehavior(Of TRequest, TResponse).Handle(TRequest, RequestHandlerDelegate(Of TResponse), CancellationToken)
+- uid: Shared.Behaviors.LoggingBehavior`2.Handle*
+  name: Handle
+  href: api/Shared/Shared.Behaviors.LoggingBehavior-2.html#Shared_Behaviors_LoggingBehavior_2_Handle_
+  commentId: Overload:Shared.Behaviors.LoggingBehavior`2.Handle
+  isSpec: "True"
+  fullName: Shared.Behaviors.LoggingBehavior<TRequest, TResponse>.Handle
+  fullName.vb: Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse).Handle
+  nameWithType: LoggingBehavior<TRequest, TResponse>.Handle
+  nameWithType.vb: LoggingBehavior(Of TRequest, TResponse).Handle
+- uid: Shared.Behaviors.ValidationBehavior`2
+  name: ValidationBehavior<TRequest, TResponse>
+  href: api/Shared/Shared.Behaviors.ValidationBehavior-2.html
+  commentId: T:Shared.Behaviors.ValidationBehavior`2
+  name.vb: ValidationBehavior(Of TRequest, TResponse)
+  fullName: Shared.Behaviors.ValidationBehavior<TRequest, TResponse>
+  fullName.vb: Shared.Behaviors.ValidationBehavior(Of TRequest, TResponse)
+  nameWithType: ValidationBehavior<TRequest, TResponse>
+  nameWithType.vb: ValidationBehavior(Of TRequest, TResponse)
+- uid: Shared.Behaviors.ValidationBehavior`2.#ctor(System.Collections.Generic.IEnumerable{FluentValidation.IValidator{`0}})
+  name: ValidationBehavior(IEnumerable<IValidator<TRequest>>)
+  href: api/Shared/Shared.Behaviors.ValidationBehavior-2.html#Shared_Behaviors_ValidationBehavior_2__ctor_System_Collections_Generic_IEnumerable_FluentValidation_IValidator__0___
+  commentId: M:Shared.Behaviors.ValidationBehavior`2.#ctor(System.Collections.Generic.IEnumerable{FluentValidation.IValidator{`0}})
+  name.vb: New(IEnumerable(Of IValidator(Of TRequest)))
+  fullName: Shared.Behaviors.ValidationBehavior<TRequest, TResponse>.ValidationBehavior(System.Collections.Generic.IEnumerable<FluentValidation.IValidator<TRequest>>)
+  fullName.vb: Shared.Behaviors.ValidationBehavior(Of TRequest, TResponse).New(System.Collections.Generic.IEnumerable(Of FluentValidation.IValidator(Of TRequest)))
+  nameWithType: ValidationBehavior<TRequest, TResponse>.ValidationBehavior(IEnumerable<IValidator<TRequest>>)
+  nameWithType.vb: ValidationBehavior(Of TRequest, TResponse).New(IEnumerable(Of IValidator(Of TRequest)))
+- uid: Shared.Behaviors.ValidationBehavior`2.#ctor*
+  name: ValidationBehavior
+  href: api/Shared/Shared.Behaviors.ValidationBehavior-2.html#Shared_Behaviors_ValidationBehavior_2__ctor_
+  commentId: Overload:Shared.Behaviors.ValidationBehavior`2.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Behaviors.ValidationBehavior<TRequest, TResponse>.ValidationBehavior
+  fullName.vb: Shared.Behaviors.ValidationBehavior(Of TRequest, TResponse).New
+  nameWithType: ValidationBehavior<TRequest, TResponse>.ValidationBehavior
+  nameWithType.vb: ValidationBehavior(Of TRequest, TResponse).New
+- uid: Shared.Behaviors.ValidationBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)
+  name: Handle(TRequest, RequestHandlerDelegate<TResponse>, CancellationToken)
+  href: api/Shared/Shared.Behaviors.ValidationBehavior-2.html#Shared_Behaviors_ValidationBehavior_2_Handle__0_MediatR_RequestHandlerDelegate__1__System_Threading_CancellationToken_
+  commentId: M:Shared.Behaviors.ValidationBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)
+  name.vb: Handle(TRequest, RequestHandlerDelegate(Of TResponse), CancellationToken)
+  fullName: Shared.Behaviors.ValidationBehavior<TRequest, TResponse>.Handle(TRequest, MediatR.RequestHandlerDelegate<TResponse>, System.Threading.CancellationToken)
+  fullName.vb: Shared.Behaviors.ValidationBehavior(Of TRequest, TResponse).Handle(TRequest, MediatR.RequestHandlerDelegate(Of TResponse), System.Threading.CancellationToken)
+  nameWithType: ValidationBehavior<TRequest, TResponse>.Handle(TRequest, RequestHandlerDelegate<TResponse>, CancellationToken)
+  nameWithType.vb: ValidationBehavior(Of TRequest, TResponse).Handle(TRequest, RequestHandlerDelegate(Of TResponse), CancellationToken)
+- uid: Shared.Behaviors.ValidationBehavior`2.Handle*
+  name: Handle
+  href: api/Shared/Shared.Behaviors.ValidationBehavior-2.html#Shared_Behaviors_ValidationBehavior_2_Handle_
+  commentId: Overload:Shared.Behaviors.ValidationBehavior`2.Handle
+  isSpec: "True"
+  fullName: Shared.Behaviors.ValidationBehavior<TRequest, TResponse>.Handle
+  fullName.vb: Shared.Behaviors.ValidationBehavior(Of TRequest, TResponse).Handle
+  nameWithType: ValidationBehavior<TRequest, TResponse>.Handle
+  nameWithType.vb: ValidationBehavior(Of TRequest, TResponse).Handle
+- uid: Shared.DDD
+  name: Shared.DDD
+  href: api/Shared/Shared.DDD.html
+  commentId: N:Shared.DDD
+  fullName: Shared.DDD
+  nameWithType: Shared.DDD
+- uid: Shared.DDD.Aggregate`1
+  name: Aggregate<TId>
+  href: api/Shared/Shared.DDD.Aggregate-1.html
+  commentId: T:Shared.DDD.Aggregate`1
+  name.vb: Aggregate(Of TId)
+  fullName: Shared.DDD.Aggregate<TId>
+  fullName.vb: Shared.DDD.Aggregate(Of TId)
+  nameWithType: Aggregate<TId>
+  nameWithType.vb: Aggregate(Of TId)
+- uid: Shared.DDD.Aggregate`1.AddDomainEvent(Shared.DDD.IDomainEvent)
+  name: AddDomainEvent(IDomainEvent)
+  href: api/Shared/Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_AddDomainEvent_Shared_DDD_IDomainEvent_
+  commentId: M:Shared.DDD.Aggregate`1.AddDomainEvent(Shared.DDD.IDomainEvent)
+  fullName: Shared.DDD.Aggregate<TId>.AddDomainEvent(Shared.DDD.IDomainEvent)
+  fullName.vb: Shared.DDD.Aggregate(Of TId).AddDomainEvent(Shared.DDD.IDomainEvent)
+  nameWithType: Aggregate<TId>.AddDomainEvent(IDomainEvent)
+  nameWithType.vb: Aggregate(Of TId).AddDomainEvent(IDomainEvent)
+- uid: Shared.DDD.Aggregate`1.AddDomainEvent*
+  name: AddDomainEvent
+  href: api/Shared/Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_AddDomainEvent_
+  commentId: Overload:Shared.DDD.Aggregate`1.AddDomainEvent
+  isSpec: "True"
+  fullName: Shared.DDD.Aggregate<TId>.AddDomainEvent
+  fullName.vb: Shared.DDD.Aggregate(Of TId).AddDomainEvent
+  nameWithType: Aggregate<TId>.AddDomainEvent
+  nameWithType.vb: Aggregate(Of TId).AddDomainEvent
+- uid: Shared.DDD.Aggregate`1.ClearDomainEvents
+  name: ClearDomainEvents()
+  href: api/Shared/Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_ClearDomainEvents
+  commentId: M:Shared.DDD.Aggregate`1.ClearDomainEvents
+  fullName: Shared.DDD.Aggregate<TId>.ClearDomainEvents()
+  fullName.vb: Shared.DDD.Aggregate(Of TId).ClearDomainEvents()
+  nameWithType: Aggregate<TId>.ClearDomainEvents()
+  nameWithType.vb: Aggregate(Of TId).ClearDomainEvents()
+- uid: Shared.DDD.Aggregate`1.ClearDomainEvents*
+  name: ClearDomainEvents
+  href: api/Shared/Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_ClearDomainEvents_
+  commentId: Overload:Shared.DDD.Aggregate`1.ClearDomainEvents
+  isSpec: "True"
+  fullName: Shared.DDD.Aggregate<TId>.ClearDomainEvents
+  fullName.vb: Shared.DDD.Aggregate(Of TId).ClearDomainEvents
+  nameWithType: Aggregate<TId>.ClearDomainEvents
+  nameWithType.vb: Aggregate(Of TId).ClearDomainEvents
+- uid: Shared.DDD.Aggregate`1.DomainEvents
+  name: DomainEvents
+  href: api/Shared/Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_DomainEvents
+  commentId: P:Shared.DDD.Aggregate`1.DomainEvents
+  fullName: Shared.DDD.Aggregate<TId>.DomainEvents
+  fullName.vb: Shared.DDD.Aggregate(Of TId).DomainEvents
+  nameWithType: Aggregate<TId>.DomainEvents
+  nameWithType.vb: Aggregate(Of TId).DomainEvents
+- uid: Shared.DDD.Aggregate`1.DomainEvents*
+  name: DomainEvents
+  href: api/Shared/Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_DomainEvents_
+  commentId: Overload:Shared.DDD.Aggregate`1.DomainEvents
+  isSpec: "True"
+  fullName: Shared.DDD.Aggregate<TId>.DomainEvents
+  fullName.vb: Shared.DDD.Aggregate(Of TId).DomainEvents
+  nameWithType: Aggregate<TId>.DomainEvents
+  nameWithType.vb: Aggregate(Of TId).DomainEvents
+- uid: Shared.DDD.Entity`1
+  name: Entity<T>
+  href: api/Shared/Shared.DDD.Entity-1.html
+  commentId: T:Shared.DDD.Entity`1
+  name.vb: Entity(Of T)
+  fullName: Shared.DDD.Entity<T>
+  fullName.vb: Shared.DDD.Entity(Of T)
+  nameWithType: Entity<T>
+  nameWithType.vb: Entity(Of T)
+- uid: Shared.DDD.Entity`1.CreatedAt
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt
+  commentId: P:Shared.DDD.Entity`1.CreatedAt
+  fullName: Shared.DDD.Entity<T>.CreatedAt
+  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
+  nameWithType: Entity<T>.CreatedAt
+  nameWithType.vb: Entity(Of T).CreatedAt
+- uid: Shared.DDD.Entity`1.CreatedAt*
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt_
+  commentId: Overload:Shared.DDD.Entity`1.CreatedAt
+  isSpec: "True"
+  fullName: Shared.DDD.Entity<T>.CreatedAt
+  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
+  nameWithType: Entity<T>.CreatedAt
+  nameWithType.vb: Entity(Of T).CreatedAt
+- uid: Shared.DDD.Entity`1.CreatedBy
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy
+  commentId: P:Shared.DDD.Entity`1.CreatedBy
+  fullName: Shared.DDD.Entity<T>.CreatedBy
+  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
+  nameWithType: Entity<T>.CreatedBy
+  nameWithType.vb: Entity(Of T).CreatedBy
+- uid: Shared.DDD.Entity`1.CreatedBy*
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy_
+  commentId: Overload:Shared.DDD.Entity`1.CreatedBy
+  isSpec: "True"
+  fullName: Shared.DDD.Entity<T>.CreatedBy
+  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
+  nameWithType: Entity<T>.CreatedBy
+  nameWithType.vb: Entity(Of T).CreatedBy
+- uid: Shared.DDD.Entity`1.Id
+  name: Id
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_Id
+  commentId: P:Shared.DDD.Entity`1.Id
+  fullName: Shared.DDD.Entity<T>.Id
+  fullName.vb: Shared.DDD.Entity(Of T).Id
+  nameWithType: Entity<T>.Id
+  nameWithType.vb: Entity(Of T).Id
+- uid: Shared.DDD.Entity`1.Id*
+  name: Id
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_Id_
+  commentId: Overload:Shared.DDD.Entity`1.Id
+  isSpec: "True"
+  fullName: Shared.DDD.Entity<T>.Id
+  fullName.vb: Shared.DDD.Entity(Of T).Id
+  nameWithType: Entity<T>.Id
+  nameWithType.vb: Entity(Of T).Id
+- uid: Shared.DDD.Entity`1.LastModified
+  name: LastModified
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified
+  commentId: P:Shared.DDD.Entity`1.LastModified
+  fullName: Shared.DDD.Entity<T>.LastModified
+  fullName.vb: Shared.DDD.Entity(Of T).LastModified
+  nameWithType: Entity<T>.LastModified
+  nameWithType.vb: Entity(Of T).LastModified
+- uid: Shared.DDD.Entity`1.LastModified*
+  name: LastModified
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified_
+  commentId: Overload:Shared.DDD.Entity`1.LastModified
+  isSpec: "True"
+  fullName: Shared.DDD.Entity<T>.LastModified
+  fullName.vb: Shared.DDD.Entity(Of T).LastModified
+  nameWithType: Entity<T>.LastModified
+  nameWithType.vb: Entity(Of T).LastModified
+- uid: Shared.DDD.Entity`1.LastModifiedBy
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy
+  commentId: P:Shared.DDD.Entity`1.LastModifiedBy
+  fullName: Shared.DDD.Entity<T>.LastModifiedBy
+  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
+  nameWithType: Entity<T>.LastModifiedBy
+  nameWithType.vb: Entity(Of T).LastModifiedBy
+- uid: Shared.DDD.Entity`1.LastModifiedBy*
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy_
+  commentId: Overload:Shared.DDD.Entity`1.LastModifiedBy
+  isSpec: "True"
+  fullName: Shared.DDD.Entity<T>.LastModifiedBy
+  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
+  nameWithType: Entity<T>.LastModifiedBy
+  nameWithType.vb: Entity(Of T).LastModifiedBy
+- uid: Shared.DDD.IAggregate
+  name: IAggregate
+  href: api/Shared/Shared.DDD.IAggregate.html
+  commentId: T:Shared.DDD.IAggregate
+  fullName: Shared.DDD.IAggregate
+  nameWithType: IAggregate
+- uid: Shared.DDD.IAggregate.ClearDomainEvents
+  name: ClearDomainEvents()
+  href: api/Shared/Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_ClearDomainEvents
+  commentId: M:Shared.DDD.IAggregate.ClearDomainEvents
+  fullName: Shared.DDD.IAggregate.ClearDomainEvents()
+  nameWithType: IAggregate.ClearDomainEvents()
+- uid: Shared.DDD.IAggregate.ClearDomainEvents*
+  name: ClearDomainEvents
+  href: api/Shared/Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_ClearDomainEvents_
+  commentId: Overload:Shared.DDD.IAggregate.ClearDomainEvents
+  isSpec: "True"
+  fullName: Shared.DDD.IAggregate.ClearDomainEvents
+  nameWithType: IAggregate.ClearDomainEvents
+- uid: Shared.DDD.IAggregate.DomainEvents
+  name: DomainEvents
+  href: api/Shared/Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_DomainEvents
+  commentId: P:Shared.DDD.IAggregate.DomainEvents
+  fullName: Shared.DDD.IAggregate.DomainEvents
+  nameWithType: IAggregate.DomainEvents
+- uid: Shared.DDD.IAggregate.DomainEvents*
+  name: DomainEvents
+  href: api/Shared/Shared.DDD.IAggregate.html#Shared_DDD_IAggregate_DomainEvents_
+  commentId: Overload:Shared.DDD.IAggregate.DomainEvents
+  isSpec: "True"
+  fullName: Shared.DDD.IAggregate.DomainEvents
+  nameWithType: IAggregate.DomainEvents
+- uid: Shared.DDD.IAggregate`1
+  name: IAggregate<T>
+  href: api/Shared/Shared.DDD.IAggregate-1.html
+  commentId: T:Shared.DDD.IAggregate`1
+  name.vb: IAggregate(Of T)
+  fullName: Shared.DDD.IAggregate<T>
+  fullName.vb: Shared.DDD.IAggregate(Of T)
+  nameWithType: IAggregate<T>
+  nameWithType.vb: IAggregate(Of T)
+- uid: Shared.DDD.IDomainEvent
+  name: IDomainEvent
+  href: api/Shared/Shared.DDD.IDomainEvent.html
+  commentId: T:Shared.DDD.IDomainEvent
+  fullName: Shared.DDD.IDomainEvent
+  nameWithType: IDomainEvent
+- uid: Shared.DDD.IDomainEvent.EventId
+  name: EventId
+  href: api/Shared/Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_EventId
+  commentId: P:Shared.DDD.IDomainEvent.EventId
+  fullName: Shared.DDD.IDomainEvent.EventId
+  nameWithType: IDomainEvent.EventId
+- uid: Shared.DDD.IDomainEvent.EventId*
+  name: EventId
+  href: api/Shared/Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_EventId_
+  commentId: Overload:Shared.DDD.IDomainEvent.EventId
+  isSpec: "True"
+  fullName: Shared.DDD.IDomainEvent.EventId
+  nameWithType: IDomainEvent.EventId
+- uid: Shared.DDD.IDomainEvent.EventType
+  name: EventType
+  href: api/Shared/Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_EventType
+  commentId: P:Shared.DDD.IDomainEvent.EventType
+  fullName: Shared.DDD.IDomainEvent.EventType
+  nameWithType: IDomainEvent.EventType
+- uid: Shared.DDD.IDomainEvent.EventType*
+  name: EventType
+  href: api/Shared/Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_EventType_
+  commentId: Overload:Shared.DDD.IDomainEvent.EventType
+  isSpec: "True"
+  fullName: Shared.DDD.IDomainEvent.EventType
+  nameWithType: IDomainEvent.EventType
+- uid: Shared.DDD.IDomainEvent.OccurredOn
+  name: OccurredOn
+  href: api/Shared/Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_OccurredOn
+  commentId: P:Shared.DDD.IDomainEvent.OccurredOn
+  fullName: Shared.DDD.IDomainEvent.OccurredOn
+  nameWithType: IDomainEvent.OccurredOn
+- uid: Shared.DDD.IDomainEvent.OccurredOn*
+  name: OccurredOn
+  href: api/Shared/Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_OccurredOn_
+  commentId: Overload:Shared.DDD.IDomainEvent.OccurredOn
+  isSpec: "True"
+  fullName: Shared.DDD.IDomainEvent.OccurredOn
+  nameWithType: IDomainEvent.OccurredOn
+- uid: Shared.DDD.IEntity
+  name: IEntity
+  href: api/Shared/Shared.DDD.IEntity.html
+  commentId: T:Shared.DDD.IEntity
+  fullName: Shared.DDD.IEntity
+  nameWithType: IEntity
+- uid: Shared.DDD.IEntity.CreatedAt
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
+  commentId: P:Shared.DDD.IEntity.CreatedAt
+  fullName: Shared.DDD.IEntity.CreatedAt
+  nameWithType: IEntity.CreatedAt
+- uid: Shared.DDD.IEntity.CreatedAt*
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt_
+  commentId: Overload:Shared.DDD.IEntity.CreatedAt
+  isSpec: "True"
+  fullName: Shared.DDD.IEntity.CreatedAt
+  nameWithType: IEntity.CreatedAt
+- uid: Shared.DDD.IEntity.CreatedBy
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
+  commentId: P:Shared.DDD.IEntity.CreatedBy
+  fullName: Shared.DDD.IEntity.CreatedBy
+  nameWithType: IEntity.CreatedBy
+- uid: Shared.DDD.IEntity.CreatedBy*
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy_
+  commentId: Overload:Shared.DDD.IEntity.CreatedBy
+  isSpec: "True"
+  fullName: Shared.DDD.IEntity.CreatedBy
+  nameWithType: IEntity.CreatedBy
+- uid: Shared.DDD.IEntity.LastModified
+  name: LastModified
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
+  commentId: P:Shared.DDD.IEntity.LastModified
+  fullName: Shared.DDD.IEntity.LastModified
+  nameWithType: IEntity.LastModified
+- uid: Shared.DDD.IEntity.LastModified*
+  name: LastModified
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified_
+  commentId: Overload:Shared.DDD.IEntity.LastModified
+  isSpec: "True"
+  fullName: Shared.DDD.IEntity.LastModified
+  nameWithType: IEntity.LastModified
+- uid: Shared.DDD.IEntity.LastModifiedBy
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
+  commentId: P:Shared.DDD.IEntity.LastModifiedBy
+  fullName: Shared.DDD.IEntity.LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+- uid: Shared.DDD.IEntity.LastModifiedBy*
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy_
+  commentId: Overload:Shared.DDD.IEntity.LastModifiedBy
+  isSpec: "True"
+  fullName: Shared.DDD.IEntity.LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+- uid: Shared.DDD.IEntity`1
+  name: IEntity<T>
+  href: api/Shared/Shared.DDD.IEntity-1.html
+  commentId: T:Shared.DDD.IEntity`1
+  name.vb: IEntity(Of T)
+  fullName: Shared.DDD.IEntity<T>
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  nameWithType: IEntity<T>
+  nameWithType.vb: IEntity(Of T)
+- uid: Shared.DDD.IEntity`1.Id
+  name: Id
+  href: api/Shared/Shared.DDD.IEntity-1.html#Shared_DDD_IEntity_1_Id
+  commentId: P:Shared.DDD.IEntity`1.Id
+  fullName: Shared.DDD.IEntity<T>.Id
+  fullName.vb: Shared.DDD.IEntity(Of T).Id
+  nameWithType: IEntity<T>.Id
+  nameWithType.vb: IEntity(Of T).Id
+- uid: Shared.DDD.IEntity`1.Id*
+  name: Id
+  href: api/Shared/Shared.DDD.IEntity-1.html#Shared_DDD_IEntity_1_Id_
+  commentId: Overload:Shared.DDD.IEntity`1.Id
+  isSpec: "True"
+  fullName: Shared.DDD.IEntity<T>.Id
+  fullName.vb: Shared.DDD.IEntity(Of T).Id
+  nameWithType: IEntity<T>.Id
+  nameWithType.vb: IEntity(Of T).Id
+- uid: Shared.Data
+  name: Shared.Data
+  href: api/Shared/Shared.Data.html
+  commentId: N:Shared.Data
+  fullName: Shared.Data
+  nameWithType: Shared.Data
+- uid: Shared.Data.Extentions
+  name: Extentions
+  href: api/Shared/Shared.Data.Extentions.html
+  commentId: T:Shared.Data.Extentions
+  fullName: Shared.Data.Extentions
+  nameWithType: Extentions
+- uid: Shared.Data.Extentions.UseMigration*
+  name: UseMigration
+  href: api/Shared/Shared.Data.Extentions.html#Shared_Data_Extentions_UseMigration_
+  commentId: Overload:Shared.Data.Extentions.UseMigration
+  isSpec: "True"
+  fullName: Shared.Data.Extentions.UseMigration
+  nameWithType: Extentions.UseMigration
+- uid: Shared.Data.Extentions.UseMigration``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  name: UseMigration<TContext>(IApplicationBuilder)
+  href: api/Shared/Shared.Data.Extentions.html#Shared_Data_Extentions_UseMigration__1_Microsoft_AspNetCore_Builder_IApplicationBuilder_
+  commentId: M:Shared.Data.Extentions.UseMigration``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  name.vb: UseMigration(Of TContext)(IApplicationBuilder)
+  fullName: Shared.Data.Extentions.UseMigration<TContext>(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  fullName.vb: Shared.Data.Extentions.UseMigration(Of TContext)(Microsoft.AspNetCore.Builder.IApplicationBuilder)
+  nameWithType: Extentions.UseMigration<TContext>(IApplicationBuilder)
+  nameWithType.vb: Extentions.UseMigration(Of TContext)(IApplicationBuilder)
+- uid: Shared.Data.Interceptors
+  name: Shared.Data.Interceptors
+  href: api/Shared/Shared.Data.Interceptors.html
+  commentId: N:Shared.Data.Interceptors
+  fullName: Shared.Data.Interceptors
+  nameWithType: Shared.Data.Interceptors
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor
+  name: AuditableEntityInterceptor
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html
+  commentId: T:Shared.Data.Interceptors.AuditableEntityInterceptor
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor
+  nameWithType: AuditableEntityInterceptor
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  name: SavingChanges(DbContextEventData, InterceptionResult<int>)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChanges_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  name.vb: SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>)
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer))
+  nameWithType: AuditableEntityInterceptor.SavingChanges(DbContextEventData, InterceptionResult<int>)
+  nameWithType.vb: AuditableEntityInterceptor.SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges*
+  name: SavingChanges
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChanges_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges
+  nameWithType: AuditableEntityInterceptor.SavingChanges
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  name: SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__System_Threading_CancellationToken_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  name.vb: SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>, System.Threading.CancellationToken)
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer), System.Threading.CancellationToken)
+  nameWithType: AuditableEntityInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  nameWithType.vb: AuditableEntityInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync*
+  name: SavingChangesAsync
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChangesAsync_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync
+  nameWithType: AuditableEntityInterceptor.SavingChangesAsync
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+  name: DispatchDomainEventsInterceptor
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html
+  commentId: T:Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+  nameWithType: DispatchDomainEventsInterceptor
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.#ctor(MediatR.IMediator)
+  name: DispatchDomainEventsInterceptor(IMediator)
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html#Shared_Data_Interceptors_DispatchDomainEventsInterceptor__ctor_MediatR_IMediator_
+  commentId: M:Shared.Data.Interceptors.DispatchDomainEventsInterceptor.#ctor(MediatR.IMediator)
+  name.vb: New(IMediator)
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.DispatchDomainEventsInterceptor(MediatR.IMediator)
+  fullName.vb: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.New(MediatR.IMediator)
+  nameWithType: DispatchDomainEventsInterceptor.DispatchDomainEventsInterceptor(IMediator)
+  nameWithType.vb: DispatchDomainEventsInterceptor.New(IMediator)
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.#ctor*
+  name: DispatchDomainEventsInterceptor
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html#Shared_Data_Interceptors_DispatchDomainEventsInterceptor__ctor_
+  commentId: Overload:Shared.Data.Interceptors.DispatchDomainEventsInterceptor.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.DispatchDomainEventsInterceptor
+  fullName.vb: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.New
+  nameWithType: DispatchDomainEventsInterceptor.DispatchDomainEventsInterceptor
+  nameWithType.vb: DispatchDomainEventsInterceptor.New
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  name: SavingChanges(DbContextEventData, InterceptionResult<int>)
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html#Shared_Data_Interceptors_DispatchDomainEventsInterceptor_SavingChanges_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__
+  commentId: M:Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  name.vb: SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>)
+  fullName.vb: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer))
+  nameWithType: DispatchDomainEventsInterceptor.SavingChanges(DbContextEventData, InterceptionResult<int>)
+  nameWithType.vb: DispatchDomainEventsInterceptor.SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges*
+  name: SavingChanges
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html#Shared_Data_Interceptors_DispatchDomainEventsInterceptor_SavingChanges_
+  commentId: Overload:Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges
+  nameWithType: DispatchDomainEventsInterceptor.SavingChanges
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  name: SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html#Shared_Data_Interceptors_DispatchDomainEventsInterceptor_SavingChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__System_Threading_CancellationToken_
+  commentId: M:Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  name.vb: SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>, System.Threading.CancellationToken)
+  fullName.vb: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer), System.Threading.CancellationToken)
+  nameWithType: DispatchDomainEventsInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  nameWithType.vb: DispatchDomainEventsInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync*
+  name: SavingChangesAsync
+  href: api/Shared/Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html#Shared_Data_Interceptors_DispatchDomainEventsInterceptor_SavingChangesAsync_
+  commentId: Overload:Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync
+  nameWithType: DispatchDomainEventsInterceptor.SavingChangesAsync
+- uid: Shared.Data.Interceptors.Extensions
+  name: Extensions
+  href: api/Shared/Shared.Data.Interceptors.Extensions.html
+  commentId: T:Shared.Data.Interceptors.Extensions
+  fullName: Shared.Data.Interceptors.Extensions
+  nameWithType: Extensions
+- uid: Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry)
+  name: HasChangedOwnedEntities(EntityEntry)
+  href: api/Shared/Shared.Data.Interceptors.Extensions.html#Shared_Data_Interceptors_Extensions_HasChangedOwnedEntities_Microsoft_EntityFrameworkCore_ChangeTracking_EntityEntry_
+  commentId: M:Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry)
+  fullName: Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry)
+  nameWithType: Extensions.HasChangedOwnedEntities(EntityEntry)
+- uid: Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities*
+  name: HasChangedOwnedEntities
+  href: api/Shared/Shared.Data.Interceptors.Extensions.html#Shared_Data_Interceptors_Extensions_HasChangedOwnedEntities_
+  commentId: Overload:Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities
+  nameWithType: Extensions.HasChangedOwnedEntities
+- uid: Shared.Data.Seed
+  name: Shared.Data.Seed
+  href: api/Shared/Shared.Data.Seed.html
+  commentId: N:Shared.Data.Seed
+  fullName: Shared.Data.Seed
+  nameWithType: Shared.Data.Seed
+- uid: Shared.Data.Seed.IDataSeeder
+  name: IDataSeeder
+  href: api/Shared/Shared.Data.Seed.IDataSeeder.html
+  commentId: T:Shared.Data.Seed.IDataSeeder
+  fullName: Shared.Data.Seed.IDataSeeder
+  nameWithType: IDataSeeder
+- uid: Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  name: SeedAllAsync()
+  href: api/Shared/Shared.Data.Seed.IDataSeeder.html#Shared_Data_Seed_IDataSeeder_SeedAllAsync
+  commentId: M:Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  fullName: Shared.Data.Seed.IDataSeeder.SeedAllAsync()
+  nameWithType: IDataSeeder.SeedAllAsync()
+- uid: Shared.Data.Seed.IDataSeeder.SeedAllAsync*
+  name: SeedAllAsync
+  href: api/Shared/Shared.Data.Seed.IDataSeeder.html#Shared_Data_Seed_IDataSeeder_SeedAllAsync_
+  commentId: Overload:Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  isSpec: "True"
+  fullName: Shared.Data.Seed.IDataSeeder.SeedAllAsync
+  nameWithType: IDataSeeder.SeedAllAsync
+- uid: Shared.Exceptions
+  name: Shared.Exceptions
+  href: api/Shared/Shared.Exceptions.html
+  commentId: N:Shared.Exceptions
+  fullName: Shared.Exceptions
+  nameWithType: Shared.Exceptions
+- uid: Shared.Exceptions.BadRequestException
+  name: BadRequestException
+  href: api/Shared/Shared.Exceptions.BadRequestException.html
+  commentId: T:Shared.Exceptions.BadRequestException
+  fullName: Shared.Exceptions.BadRequestException
+  nameWithType: BadRequestException
+- uid: Shared.Exceptions.BadRequestException.#ctor(System.String)
+  name: BadRequestException(string)
+  href: api/Shared/Shared.Exceptions.BadRequestException.html#Shared_Exceptions_BadRequestException__ctor_System_String_
+  commentId: M:Shared.Exceptions.BadRequestException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Shared.Exceptions.BadRequestException.BadRequestException(string)
+  fullName.vb: Shared.Exceptions.BadRequestException.New(String)
+  nameWithType: BadRequestException.BadRequestException(string)
+  nameWithType.vb: BadRequestException.New(String)
+- uid: Shared.Exceptions.BadRequestException.#ctor(System.String,System.String)
+  name: BadRequestException(string, string)
+  href: api/Shared/Shared.Exceptions.BadRequestException.html#Shared_Exceptions_BadRequestException__ctor_System_String_System_String_
+  commentId: M:Shared.Exceptions.BadRequestException.#ctor(System.String,System.String)
+  name.vb: New(String, String)
+  fullName: Shared.Exceptions.BadRequestException.BadRequestException(string, string)
+  fullName.vb: Shared.Exceptions.BadRequestException.New(String, String)
+  nameWithType: BadRequestException.BadRequestException(string, string)
+  nameWithType.vb: BadRequestException.New(String, String)
+- uid: Shared.Exceptions.BadRequestException.#ctor*
+  name: BadRequestException
+  href: api/Shared/Shared.Exceptions.BadRequestException.html#Shared_Exceptions_BadRequestException__ctor_
+  commentId: Overload:Shared.Exceptions.BadRequestException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Exceptions.BadRequestException.BadRequestException
+  fullName.vb: Shared.Exceptions.BadRequestException.New
+  nameWithType: BadRequestException.BadRequestException
+  nameWithType.vb: BadRequestException.New
+- uid: Shared.Exceptions.BadRequestException.Details
+  name: Details
+  href: api/Shared/Shared.Exceptions.BadRequestException.html#Shared_Exceptions_BadRequestException_Details
+  commentId: P:Shared.Exceptions.BadRequestException.Details
+  fullName: Shared.Exceptions.BadRequestException.Details
+  nameWithType: BadRequestException.Details
+- uid: Shared.Exceptions.BadRequestException.Details*
+  name: Details
+  href: api/Shared/Shared.Exceptions.BadRequestException.html#Shared_Exceptions_BadRequestException_Details_
+  commentId: Overload:Shared.Exceptions.BadRequestException.Details
+  isSpec: "True"
+  fullName: Shared.Exceptions.BadRequestException.Details
+  nameWithType: BadRequestException.Details
+- uid: Shared.Exceptions.Handler
+  name: Shared.Exceptions.Handler
+  href: api/Shared/Shared.Exceptions.Handler.html
+  commentId: N:Shared.Exceptions.Handler
+  fullName: Shared.Exceptions.Handler
+  nameWithType: Shared.Exceptions.Handler
+- uid: Shared.Exceptions.Handler.CustomExceptionHandler
+  name: CustomExceptionHandler
+  href: api/Shared/Shared.Exceptions.Handler.CustomExceptionHandler.html
+  commentId: T:Shared.Exceptions.Handler.CustomExceptionHandler
+  fullName: Shared.Exceptions.Handler.CustomExceptionHandler
+  nameWithType: CustomExceptionHandler
+- uid: Shared.Exceptions.Handler.CustomExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Shared.Exceptions.Handler.CustomExceptionHandler})
+  name: CustomExceptionHandler(ILogger<CustomExceptionHandler>)
+  href: api/Shared/Shared.Exceptions.Handler.CustomExceptionHandler.html#Shared_Exceptions_Handler_CustomExceptionHandler__ctor_Microsoft_Extensions_Logging_ILogger_Shared_Exceptions_Handler_CustomExceptionHandler__
+  commentId: M:Shared.Exceptions.Handler.CustomExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Shared.Exceptions.Handler.CustomExceptionHandler})
+  name.vb: New(ILogger(Of CustomExceptionHandler))
+  fullName: Shared.Exceptions.Handler.CustomExceptionHandler.CustomExceptionHandler(Microsoft.Extensions.Logging.ILogger<Shared.Exceptions.Handler.CustomExceptionHandler>)
+  fullName.vb: Shared.Exceptions.Handler.CustomExceptionHandler.New(Microsoft.Extensions.Logging.ILogger(Of Shared.Exceptions.Handler.CustomExceptionHandler))
+  nameWithType: CustomExceptionHandler.CustomExceptionHandler(ILogger<CustomExceptionHandler>)
+  nameWithType.vb: CustomExceptionHandler.New(ILogger(Of CustomExceptionHandler))
+- uid: Shared.Exceptions.Handler.CustomExceptionHandler.#ctor*
+  name: CustomExceptionHandler
+  href: api/Shared/Shared.Exceptions.Handler.CustomExceptionHandler.html#Shared_Exceptions_Handler_CustomExceptionHandler__ctor_
+  commentId: Overload:Shared.Exceptions.Handler.CustomExceptionHandler.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Exceptions.Handler.CustomExceptionHandler.CustomExceptionHandler
+  fullName.vb: Shared.Exceptions.Handler.CustomExceptionHandler.New
+  nameWithType: CustomExceptionHandler.CustomExceptionHandler
+  nameWithType.vb: CustomExceptionHandler.New
+- uid: Shared.Exceptions.Handler.CustomExceptionHandler.TryHandleAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception,System.Threading.CancellationToken)
+  name: TryHandleAsync(HttpContext, Exception, CancellationToken)
+  href: api/Shared/Shared.Exceptions.Handler.CustomExceptionHandler.html#Shared_Exceptions_Handler_CustomExceptionHandler_TryHandleAsync_Microsoft_AspNetCore_Http_HttpContext_System_Exception_System_Threading_CancellationToken_
+  commentId: M:Shared.Exceptions.Handler.CustomExceptionHandler.TryHandleAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception,System.Threading.CancellationToken)
+  fullName: Shared.Exceptions.Handler.CustomExceptionHandler.TryHandleAsync(Microsoft.AspNetCore.Http.HttpContext, System.Exception, System.Threading.CancellationToken)
+  nameWithType: CustomExceptionHandler.TryHandleAsync(HttpContext, Exception, CancellationToken)
+- uid: Shared.Exceptions.Handler.CustomExceptionHandler.TryHandleAsync*
+  name: TryHandleAsync
+  href: api/Shared/Shared.Exceptions.Handler.CustomExceptionHandler.html#Shared_Exceptions_Handler_CustomExceptionHandler_TryHandleAsync_
+  commentId: Overload:Shared.Exceptions.Handler.CustomExceptionHandler.TryHandleAsync
+  isSpec: "True"
+  fullName: Shared.Exceptions.Handler.CustomExceptionHandler.TryHandleAsync
+  nameWithType: CustomExceptionHandler.TryHandleAsync
+- uid: Shared.Exceptions.InternalServerException
+  name: InternalServerException
+  href: api/Shared/Shared.Exceptions.InternalServerException.html
+  commentId: T:Shared.Exceptions.InternalServerException
+  fullName: Shared.Exceptions.InternalServerException
+  nameWithType: InternalServerException
+- uid: Shared.Exceptions.InternalServerException.#ctor(System.String)
+  name: InternalServerException(string)
+  href: api/Shared/Shared.Exceptions.InternalServerException.html#Shared_Exceptions_InternalServerException__ctor_System_String_
+  commentId: M:Shared.Exceptions.InternalServerException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Shared.Exceptions.InternalServerException.InternalServerException(string)
+  fullName.vb: Shared.Exceptions.InternalServerException.New(String)
+  nameWithType: InternalServerException.InternalServerException(string)
+  nameWithType.vb: InternalServerException.New(String)
+- uid: Shared.Exceptions.InternalServerException.#ctor(System.String,System.String)
+  name: InternalServerException(string, string)
+  href: api/Shared/Shared.Exceptions.InternalServerException.html#Shared_Exceptions_InternalServerException__ctor_System_String_System_String_
+  commentId: M:Shared.Exceptions.InternalServerException.#ctor(System.String,System.String)
+  name.vb: New(String, String)
+  fullName: Shared.Exceptions.InternalServerException.InternalServerException(string, string)
+  fullName.vb: Shared.Exceptions.InternalServerException.New(String, String)
+  nameWithType: InternalServerException.InternalServerException(string, string)
+  nameWithType.vb: InternalServerException.New(String, String)
+- uid: Shared.Exceptions.InternalServerException.#ctor*
+  name: InternalServerException
+  href: api/Shared/Shared.Exceptions.InternalServerException.html#Shared_Exceptions_InternalServerException__ctor_
+  commentId: Overload:Shared.Exceptions.InternalServerException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Exceptions.InternalServerException.InternalServerException
+  fullName.vb: Shared.Exceptions.InternalServerException.New
+  nameWithType: InternalServerException.InternalServerException
+  nameWithType.vb: InternalServerException.New
+- uid: Shared.Exceptions.InternalServerException.Details
+  name: Details
+  href: api/Shared/Shared.Exceptions.InternalServerException.html#Shared_Exceptions_InternalServerException_Details
+  commentId: P:Shared.Exceptions.InternalServerException.Details
+  fullName: Shared.Exceptions.InternalServerException.Details
+  nameWithType: InternalServerException.Details
+- uid: Shared.Exceptions.InternalServerException.Details*
+  name: Details
+  href: api/Shared/Shared.Exceptions.InternalServerException.html#Shared_Exceptions_InternalServerException_Details_
+  commentId: Overload:Shared.Exceptions.InternalServerException.Details
+  isSpec: "True"
+  fullName: Shared.Exceptions.InternalServerException.Details
+  nameWithType: InternalServerException.Details
+- uid: Shared.Exceptions.NotFoundException
+  name: NotFoundException
+  href: api/Shared/Shared.Exceptions.NotFoundException.html
+  commentId: T:Shared.Exceptions.NotFoundException
+  fullName: Shared.Exceptions.NotFoundException
+  nameWithType: NotFoundException
+- uid: Shared.Exceptions.NotFoundException.#ctor(System.String)
+  name: NotFoundException(string)
+  href: api/Shared/Shared.Exceptions.NotFoundException.html#Shared_Exceptions_NotFoundException__ctor_System_String_
+  commentId: M:Shared.Exceptions.NotFoundException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Shared.Exceptions.NotFoundException.NotFoundException(string)
+  fullName.vb: Shared.Exceptions.NotFoundException.New(String)
+  nameWithType: NotFoundException.NotFoundException(string)
+  nameWithType.vb: NotFoundException.New(String)
+- uid: Shared.Exceptions.NotFoundException.#ctor(System.String,System.Object)
+  name: NotFoundException(string, object)
+  href: api/Shared/Shared.Exceptions.NotFoundException.html#Shared_Exceptions_NotFoundException__ctor_System_String_System_Object_
+  commentId: M:Shared.Exceptions.NotFoundException.#ctor(System.String,System.Object)
+  name.vb: New(String, Object)
+  fullName: Shared.Exceptions.NotFoundException.NotFoundException(string, object)
+  fullName.vb: Shared.Exceptions.NotFoundException.New(String, Object)
+  nameWithType: NotFoundException.NotFoundException(string, object)
+  nameWithType.vb: NotFoundException.New(String, Object)
+- uid: Shared.Exceptions.NotFoundException.#ctor*
+  name: NotFoundException
+  href: api/Shared/Shared.Exceptions.NotFoundException.html#Shared_Exceptions_NotFoundException__ctor_
+  commentId: Overload:Shared.Exceptions.NotFoundException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Exceptions.NotFoundException.NotFoundException
+  fullName.vb: Shared.Exceptions.NotFoundException.New
+  nameWithType: NotFoundException.NotFoundException
+  nameWithType.vb: NotFoundException.New
+- uid: Shared.Extensions
+  name: Shared.Extensions
+  href: api/Shared/Shared.Extensions.html
+  commentId: N:Shared.Extensions
+  fullName: Shared.Extensions
+  nameWithType: Shared.Extensions
+- uid: Shared.Extensions.CarterExtensions
+  name: CarterExtensions
+  href: api/Shared/Shared.Extensions.CarterExtensions.html
+  commentId: T:Shared.Extensions.CarterExtensions
+  fullName: Shared.Extensions.CarterExtensions
+  nameWithType: CarterExtensions
+- uid: Shared.Extensions.CarterExtensions.AddCarterWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name: AddCarterWithAssemblies(IServiceCollection, params Assembly[])
+  href: api/Shared/Shared.Extensions.CarterExtensions.html#Shared_Extensions_CarterExtensions_AddCarterWithAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___
+  commentId: M:Shared.Extensions.CarterExtensions.AddCarterWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name.vb: AddCarterWithAssemblies(IServiceCollection, ParamArray Assembly())
+  fullName: Shared.Extensions.CarterExtensions.AddCarterWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, params System.Reflection.Assembly[])
+  fullName.vb: Shared.Extensions.CarterExtensions.AddCarterWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, ParamArray System.Reflection.Assembly())
+  nameWithType: CarterExtensions.AddCarterWithAssemblies(IServiceCollection, params Assembly[])
+  nameWithType.vb: CarterExtensions.AddCarterWithAssemblies(IServiceCollection, ParamArray Assembly())
+- uid: Shared.Extensions.CarterExtensions.AddCarterWithAssemblies*
+  name: AddCarterWithAssemblies
+  href: api/Shared/Shared.Extensions.CarterExtensions.html#Shared_Extensions_CarterExtensions_AddCarterWithAssemblies_
+  commentId: Overload:Shared.Extensions.CarterExtensions.AddCarterWithAssemblies
+  isSpec: "True"
+  fullName: Shared.Extensions.CarterExtensions.AddCarterWithAssemblies
+  nameWithType: CarterExtensions.AddCarterWithAssemblies
+- uid: Shared.Extensions.MediatRExtension
+  name: MediatRExtension
+  href: api/Shared/Shared.Extensions.MediatRExtension.html
+  commentId: T:Shared.Extensions.MediatRExtension
+  fullName: Shared.Extensions.MediatRExtension
+  nameWithType: MediatRExtension
+- uid: Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name: AddMediatRWithAssemblies(IServiceCollection, params Assembly[])
+  href: api/Shared/Shared.Extensions.MediatRExtension.html#Shared_Extensions_MediatRExtension_AddMediatRWithAssemblies_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___
+  commentId: M:Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name.vb: AddMediatRWithAssemblies(IServiceCollection, ParamArray Assembly())
+  fullName: Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, params System.Reflection.Assembly[])
+  fullName.vb: Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies(Microsoft.Extensions.DependencyInjection.IServiceCollection, ParamArray System.Reflection.Assembly())
+  nameWithType: MediatRExtension.AddMediatRWithAssemblies(IServiceCollection, params Assembly[])
+  nameWithType.vb: MediatRExtension.AddMediatRWithAssemblies(IServiceCollection, ParamArray Assembly())
+- uid: Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies*
+  name: AddMediatRWithAssemblies
+  href: api/Shared/Shared.Extensions.MediatRExtension.html#Shared_Extensions_MediatRExtension_AddMediatRWithAssemblies_
+  commentId: Overload:Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies
+  isSpec: "True"
+  fullName: Shared.Extensions.MediatRExtension.AddMediatRWithAssemblies
+  nameWithType: MediatRExtension.AddMediatRWithAssemblies
+- uid: Shared.Extensions.StringExtension
+  name: StringExtension
+  href: api/Shared/Shared.Extensions.StringExtension.html
+  commentId: T:Shared.Extensions.StringExtension
+  fullName: Shared.Extensions.StringExtension
+  nameWithType: StringExtension
+- uid: Shared.Extensions.StringExtension.HasContent(System.String)
+  name: HasContent(string?)
+  href: api/Shared/Shared.Extensions.StringExtension.html#Shared_Extensions_StringExtension_HasContent_System_String_
+  commentId: M:Shared.Extensions.StringExtension.HasContent(System.String)
+  name.vb: HasContent(String)
+  fullName: Shared.Extensions.StringExtension.HasContent(string?)
+  fullName.vb: Shared.Extensions.StringExtension.HasContent(String)
+  nameWithType: StringExtension.HasContent(string?)
+  nameWithType.vb: StringExtension.HasContent(String)
+- uid: Shared.Extensions.StringExtension.HasContent*
+  name: HasContent
+  href: api/Shared/Shared.Extensions.StringExtension.html#Shared_Extensions_StringExtension_HasContent_
+  commentId: Overload:Shared.Extensions.StringExtension.HasContent
+  isSpec: "True"
+  fullName: Shared.Extensions.StringExtension.HasContent
+  nameWithType: StringExtension.HasContent
+- uid: Shared.Pagination
+  name: Shared.Pagination
+  href: api/Shared/Shared.Pagination.html
+  commentId: N:Shared.Pagination
+  fullName: Shared.Pagination
+  nameWithType: Shared.Pagination
+- uid: Shared.Pagination.PaginatedResult`1
+  name: PaginatedResult<TEntity>
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html
+  commentId: T:Shared.Pagination.PaginatedResult`1
+  name.vb: PaginatedResult(Of TEntity)
+  fullName: Shared.Pagination.PaginatedResult<TEntity>
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity)
+  nameWithType: PaginatedResult<TEntity>
+  nameWithType.vb: PaginatedResult(Of TEntity)
+- uid: Shared.Pagination.PaginatedResult`1.#ctor(System.Int32,System.Int32,System.Int64,System.Collections.Generic.IEnumerable{`0})
+  name: PaginatedResult(int, int, long, IEnumerable<TEntity>)
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1__ctor_System_Int32_System_Int32_System_Int64_System_Collections_Generic_IEnumerable__0__
+  commentId: M:Shared.Pagination.PaginatedResult`1.#ctor(System.Int32,System.Int32,System.Int64,System.Collections.Generic.IEnumerable{`0})
+  name.vb: New(Integer, Integer, Long, IEnumerable(Of TEntity))
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PaginatedResult(int, int, long, System.Collections.Generic.IEnumerable<TEntity>)
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).New(Integer, Integer, Long, System.Collections.Generic.IEnumerable(Of TEntity))
+  nameWithType: PaginatedResult<TEntity>.PaginatedResult(int, int, long, IEnumerable<TEntity>)
+  nameWithType.vb: PaginatedResult(Of TEntity).New(Integer, Integer, Long, IEnumerable(Of TEntity))
+- uid: Shared.Pagination.PaginatedResult`1.#ctor*
+  name: PaginatedResult
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1__ctor_
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PaginatedResult
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).New
+  nameWithType: PaginatedResult<TEntity>.PaginatedResult
+  nameWithType.vb: PaginatedResult(Of TEntity).New
+- uid: Shared.Pagination.PaginatedResult`1.Count
+  name: Count
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_Count
+  commentId: P:Shared.Pagination.PaginatedResult`1.Count
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Count
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Count
+  nameWithType: PaginatedResult<TEntity>.Count
+  nameWithType.vb: PaginatedResult(Of TEntity).Count
+- uid: Shared.Pagination.PaginatedResult`1.Count*
+  name: Count
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_Count_
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.Count
+  isSpec: "True"
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Count
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Count
+  nameWithType: PaginatedResult<TEntity>.Count
+  nameWithType.vb: PaginatedResult(Of TEntity).Count
+- uid: Shared.Pagination.PaginatedResult`1.Data
+  name: Data
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_Data
+  commentId: P:Shared.Pagination.PaginatedResult`1.Data
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Data
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Data
+  nameWithType: PaginatedResult<TEntity>.Data
+  nameWithType.vb: PaginatedResult(Of TEntity).Data
+- uid: Shared.Pagination.PaginatedResult`1.Data*
+  name: Data
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_Data_
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.Data
+  isSpec: "True"
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Data
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Data
+  nameWithType: PaginatedResult<TEntity>.Data
+  nameWithType.vb: PaginatedResult(Of TEntity).Data
+- uid: Shared.Pagination.PaginatedResult`1.PageIndex
+  name: PageIndex
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_PageIndex
+  commentId: P:Shared.Pagination.PaginatedResult`1.PageIndex
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageIndex
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageIndex
+  nameWithType: PaginatedResult<TEntity>.PageIndex
+  nameWithType.vb: PaginatedResult(Of TEntity).PageIndex
+- uid: Shared.Pagination.PaginatedResult`1.PageIndex*
+  name: PageIndex
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_PageIndex_
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.PageIndex
+  isSpec: "True"
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageIndex
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageIndex
+  nameWithType: PaginatedResult<TEntity>.PageIndex
+  nameWithType.vb: PaginatedResult(Of TEntity).PageIndex
+- uid: Shared.Pagination.PaginatedResult`1.PageSize
+  name: PageSize
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_PageSize
+  commentId: P:Shared.Pagination.PaginatedResult`1.PageSize
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageSize
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageSize
+  nameWithType: PaginatedResult<TEntity>.PageSize
+  nameWithType.vb: PaginatedResult(Of TEntity).PageSize
+- uid: Shared.Pagination.PaginatedResult`1.PageSize*
+  name: PageSize
+  href: api/Shared/Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_PageSize_
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.PageSize
+  isSpec: "True"
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageSize
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageSize
+  nameWithType: PaginatedResult<TEntity>.PageSize
+  nameWithType.vb: PaginatedResult(Of TEntity).PageSize
+- uid: Shared.Pagination.PaginationRequest
+  name: PaginationRequest
+  href: api/Shared/Shared.Pagination.PaginationRequest.html
+  commentId: T:Shared.Pagination.PaginationRequest
+  fullName: Shared.Pagination.PaginationRequest
+  nameWithType: PaginationRequest
+- uid: Shared.Pagination.PaginationRequest.#ctor(System.Int32,System.Int32)
+  name: PaginationRequest(int, int)
+  href: api/Shared/Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest__ctor_System_Int32_System_Int32_
+  commentId: M:Shared.Pagination.PaginationRequest.#ctor(System.Int32,System.Int32)
+  name.vb: New(Integer, Integer)
+  fullName: Shared.Pagination.PaginationRequest.PaginationRequest(int, int)
+  fullName.vb: Shared.Pagination.PaginationRequest.New(Integer, Integer)
+  nameWithType: PaginationRequest.PaginationRequest(int, int)
+  nameWithType.vb: PaginationRequest.New(Integer, Integer)
+- uid: Shared.Pagination.PaginationRequest.#ctor*
+  name: PaginationRequest
+  href: api/Shared/Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest__ctor_
+  commentId: Overload:Shared.Pagination.PaginationRequest.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Pagination.PaginationRequest.PaginationRequest
+  fullName.vb: Shared.Pagination.PaginationRequest.New
+  nameWithType: PaginationRequest.PaginationRequest
+  nameWithType.vb: PaginationRequest.New
+- uid: Shared.Pagination.PaginationRequest.PageIndex
+  name: PageIndex
+  href: api/Shared/Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest_PageIndex
+  commentId: P:Shared.Pagination.PaginationRequest.PageIndex
+  fullName: Shared.Pagination.PaginationRequest.PageIndex
+  nameWithType: PaginationRequest.PageIndex
+- uid: Shared.Pagination.PaginationRequest.PageIndex*
+  name: PageIndex
+  href: api/Shared/Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest_PageIndex_
+  commentId: Overload:Shared.Pagination.PaginationRequest.PageIndex
+  isSpec: "True"
+  fullName: Shared.Pagination.PaginationRequest.PageIndex
+  nameWithType: PaginationRequest.PageIndex
+- uid: Shared.Pagination.PaginationRequest.PageSize
+  name: PageSize
+  href: api/Shared/Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest_PageSize
+  commentId: P:Shared.Pagination.PaginationRequest.PageSize
+  fullName: Shared.Pagination.PaginationRequest.PageSize
+  nameWithType: PaginationRequest.PageSize
+- uid: Shared.Pagination.PaginationRequest.PageSize*
+  name: PageSize
+  href: api/Shared/Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest_PageSize_
+  commentId: Overload:Shared.Pagination.PaginationRequest.PageSize
+  isSpec: "True"
+  fullName: Shared.Pagination.PaginationRequest.PageSize
+  nameWithType: PaginationRequest.PageSize

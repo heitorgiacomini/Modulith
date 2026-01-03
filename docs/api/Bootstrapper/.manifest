@@ -1,0 +1,5 @@
+{
+  "Api": "Api.yml",
+  "Api.Program": "Api.Program.yml",
+  "Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)": "Api.Program.yml"
+}

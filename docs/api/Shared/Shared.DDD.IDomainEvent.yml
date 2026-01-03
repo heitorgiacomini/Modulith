@@ -1,0 +1,196 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IDomainEvent
+  commentId: T:Shared.DDD.IDomainEvent
+  id: IDomainEvent
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IDomainEvent.EventId
+  - Shared.DDD.IDomainEvent.EventType
+  - Shared.DDD.IDomainEvent.OccurredOn
+  langs:
+  - csharp
+  - vb
+  name: IDomainEvent
+  nameWithType: IDomainEvent
+  fullName: Shared.DDD.IDomainEvent
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IDomainEvent.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: IDomainEvent
+    path: ../src/Shared/Shared/DDD/IDomainEvent.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IDomainEvent : INotification'
+    content.vb: Public Interface IDomainEvent Inherits INotification
+- uid: Shared.DDD.IDomainEvent.EventId
+  commentId: P:Shared.DDD.IDomainEvent.EventId
+  id: EventId
+  parent: Shared.DDD.IDomainEvent
+  langs:
+  - csharp
+  - vb
+  name: EventId
+  nameWithType: IDomainEvent.EventId
+  fullName: Shared.DDD.IDomainEvent.EventId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IDomainEvent.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: EventId
+    path: ../src/Shared/Shared/DDD/IDomainEvent.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: Guid EventId { get; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: ReadOnly Property EventId As Guid
+  overload: Shared.DDD.IDomainEvent.EventId*
+- uid: Shared.DDD.IDomainEvent.OccurredOn
+  commentId: P:Shared.DDD.IDomainEvent.OccurredOn
+  id: OccurredOn
+  parent: Shared.DDD.IDomainEvent
+  langs:
+  - csharp
+  - vb
+  name: OccurredOn
+  nameWithType: IDomainEvent.OccurredOn
+  fullName: Shared.DDD.IDomainEvent.OccurredOn
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IDomainEvent.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: OccurredOn
+    path: ../src/Shared/Shared/DDD/IDomainEvent.cs
+    startLine: 7
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: DateTime OccurredOn { get; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: ReadOnly Property OccurredOn As Date
+  overload: Shared.DDD.IDomainEvent.OccurredOn*
+- uid: Shared.DDD.IDomainEvent.EventType
+  commentId: P:Shared.DDD.IDomainEvent.EventType
+  id: EventType
+  parent: Shared.DDD.IDomainEvent
+  langs:
+  - csharp
+  - vb
+  name: EventType
+  nameWithType: IDomainEvent.EventType
+  fullName: Shared.DDD.IDomainEvent.EventType
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IDomainEvent.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: EventType
+    path: ../src/Shared/Shared/DDD/IDomainEvent.cs
+    startLine: 8
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: string EventType { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property EventType As String
+  overload: Shared.DDD.IDomainEvent.EventType*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IDomainEvent.EventId*
+  commentId: Overload:Shared.DDD.IDomainEvent.EventId
+  href: Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_EventId
+  name: EventId
+  nameWithType: IDomainEvent.EventId
+  fullName: Shared.DDD.IDomainEvent.EventId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.DDD.IDomainEvent.OccurredOn*
+  commentId: Overload:Shared.DDD.IDomainEvent.OccurredOn
+  href: Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_OccurredOn
+  name: OccurredOn
+  nameWithType: IDomainEvent.OccurredOn
+  fullName: Shared.DDD.IDomainEvent.OccurredOn
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Shared.DDD.IDomainEvent.EventType*
+  commentId: Overload:Shared.DDD.IDomainEvent.EventType
+  href: Shared.DDD.IDomainEvent.html#Shared_DDD_IDomainEvent_EventType
+  name: EventType
+  nameWithType: IDomainEvent.EventType
+  fullName: Shared.DDD.IDomainEvent.EventType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

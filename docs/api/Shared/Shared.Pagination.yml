@@ -1,0 +1,49 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Pagination
+  commentId: N:Shared.Pagination
+  id: Shared.Pagination
+  children:
+  - Shared.Pagination.PaginatedResult`1
+  - Shared.Pagination.PaginationRequest
+  langs:
+  - csharp
+  - vb
+  name: Shared.Pagination
+  nameWithType: Shared.Pagination
+  fullName: Shared.Pagination
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Pagination.PaginatedResult`1
+  commentId: T:Shared.Pagination.PaginatedResult`1
+  href: Shared.Pagination.PaginatedResult-1.html
+  name: PaginatedResult<TEntity>
+  nameWithType: PaginatedResult<TEntity>
+  fullName: Shared.Pagination.PaginatedResult<TEntity>
+  nameWithType.vb: PaginatedResult(Of TEntity)
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity)
+  name.vb: PaginatedResult(Of TEntity)
+  spec.csharp:
+  - uid: Shared.Pagination.PaginatedResult`1
+    name: PaginatedResult
+    href: Shared.Pagination.PaginatedResult-1.html
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Pagination.PaginatedResult`1
+    name: PaginatedResult
+    href: Shared.Pagination.PaginatedResult-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Shared.Pagination.PaginationRequest
+  commentId: T:Shared.Pagination.PaginationRequest
+  href: Shared.Pagination.PaginationRequest.html
+  name: PaginationRequest
+  nameWithType: PaginationRequest
+  fullName: Shared.Pagination.PaginationRequest

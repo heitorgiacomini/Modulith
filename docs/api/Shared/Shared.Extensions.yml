@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Extensions
+  commentId: N:Shared.Extensions
+  id: Shared.Extensions
+  children:
+  - Shared.Extensions.CarterExtensions
+  - Shared.Extensions.MediatRExtension
+  - Shared.Extensions.StringExtension
+  langs:
+  - csharp
+  - vb
+  name: Shared.Extensions
+  nameWithType: Shared.Extensions
+  fullName: Shared.Extensions
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Extensions.CarterExtensions
+  commentId: T:Shared.Extensions.CarterExtensions
+  href: Shared.Extensions.CarterExtensions.html
+  name: CarterExtensions
+  nameWithType: CarterExtensions
+  fullName: Shared.Extensions.CarterExtensions
+- uid: Shared.Extensions.MediatRExtension
+  commentId: T:Shared.Extensions.MediatRExtension
+  href: Shared.Extensions.MediatRExtension.html
+  name: MediatRExtension
+  nameWithType: MediatRExtension
+  fullName: Shared.Extensions.MediatRExtension
+- uid: Shared.Extensions.StringExtension
+  commentId: T:Shared.Extensions.StringExtension
+  href: Shared.Extensions.StringExtension.html
+  name: StringExtension
+  nameWithType: StringExtension
+  fullName: Shared.Extensions.StringExtension

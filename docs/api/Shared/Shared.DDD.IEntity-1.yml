@@ -1,0 +1,146 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IEntity`1
+  commentId: T:Shared.DDD.IEntity`1
+  id: IEntity`1
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IEntity`1.Id
+  langs:
+  - csharp
+  - vb
+  name: IEntity<T>
+  nameWithType: IEntity<T>
+  fullName: Shared.DDD.IEntity<T>
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: IEntity
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 3
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IEntity<T> : IEntity where T : struct'
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IEntity(Of T As Structure) Inherits IEntity
+  inheritedMembers:
+  - Shared.DDD.IEntity.CreatedAt
+  - Shared.DDD.IEntity.CreatedBy
+  - Shared.DDD.IEntity.LastModified
+  - Shared.DDD.IEntity.LastModifiedBy
+  nameWithType.vb: IEntity(Of T)
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  name.vb: IEntity(Of T)
+- uid: Shared.DDD.IEntity`1.Id
+  commentId: P:Shared.DDD.IEntity`1.Id
+  id: Id
+  parent: Shared.DDD.IEntity`1
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IEntity<T>.Id
+  fullName: Shared.DDD.IEntity<T>.Id
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IEntity.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: Id
+    path: ../src/Shared/Shared/DDD/IEntity.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: T Id { get; set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Property Id As T
+  overload: Shared.DDD.IEntity`1.Id*
+  nameWithType.vb: IEntity(Of T).Id
+  fullName.vb: Shared.DDD.IEntity(Of T).Id
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IEntity.CreatedAt
+  commentId: P:Shared.DDD.IEntity.CreatedAt
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
+  name: CreatedAt
+  nameWithType: IEntity.CreatedAt
+  fullName: Shared.DDD.IEntity.CreatedAt
+- uid: Shared.DDD.IEntity.CreatedBy
+  commentId: P:Shared.DDD.IEntity.CreatedBy
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
+  name: CreatedBy
+  nameWithType: IEntity.CreatedBy
+  fullName: Shared.DDD.IEntity.CreatedBy
+- uid: Shared.DDD.IEntity.LastModified
+  commentId: P:Shared.DDD.IEntity.LastModified
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
+  name: LastModified
+  nameWithType: IEntity.LastModified
+  fullName: Shared.DDD.IEntity.LastModified
+- uid: Shared.DDD.IEntity.LastModifiedBy
+  commentId: P:Shared.DDD.IEntity.LastModifiedBy
+  parent: Shared.DDD.IEntity
+  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IEntity.LastModifiedBy
+  fullName: Shared.DDD.IEntity.LastModifiedBy
+- uid: Shared.DDD.IEntity
+  commentId: T:Shared.DDD.IEntity
+  parent: Shared.DDD
+  href: Shared.DDD.IEntity.html
+  name: IEntity
+  nameWithType: IEntity
+  fullName: Shared.DDD.IEntity
+- uid: Shared.DDD.IEntity`1.Id*
+  commentId: Overload:Shared.DDD.IEntity`1.Id
+  href: Shared.DDD.IEntity-1.html#Shared_DDD_IEntity_1_Id
+  name: Id
+  nameWithType: IEntity<T>.Id
+  fullName: Shared.DDD.IEntity<T>.Id
+  nameWithType.vb: IEntity(Of T).Id
+  fullName.vb: Shared.DDD.IEntity(Of T).Id
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

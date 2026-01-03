@@ -1,0 +1,488 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Pagination.PaginationRequest
+  commentId: T:Shared.Pagination.PaginationRequest
+  id: PaginationRequest
+  parent: Shared.Pagination
+  children:
+  - Shared.Pagination.PaginationRequest.#ctor(System.Int32,System.Int32)
+  - Shared.Pagination.PaginationRequest.PageIndex
+  - Shared.Pagination.PaginationRequest.PageSize
+  langs:
+  - csharp
+  - vb
+  name: PaginationRequest
+  nameWithType: PaginationRequest
+  fullName: Shared.Pagination.PaginationRequest
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginationRequest.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: PaginationRequest
+    path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
+    startLine: 1
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: 'public record PaginationRequest : IEquatable<PaginationRequest>'
+    content.vb: Public Class PaginationRequest Implements IEquatable(Of PaginationRequest)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Shared.Pagination.PaginationRequest}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Shared.Pagination.PaginationRequest.#ctor(System.Int32,System.Int32)
+  commentId: M:Shared.Pagination.PaginationRequest.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Shared.Pagination.PaginationRequest
+  langs:
+  - csharp
+  - vb
+  name: PaginationRequest(int, int)
+  nameWithType: PaginationRequest.PaginationRequest(int, int)
+  fullName: Shared.Pagination.PaginationRequest.PaginationRequest(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginationRequest.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: .ctor
+    path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
+    startLine: 1
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public PaginationRequest(int PageIndex = 0, int PageSize = 10)
+    parameters:
+    - id: PageIndex
+      type: System.Int32
+    - id: PageSize
+      type: System.Int32
+    content.vb: Public Sub New(PageIndex As Integer = 0, PageSize As Integer = 10)
+  overload: Shared.Pagination.PaginationRequest.#ctor*
+  nameWithType.vb: PaginationRequest.New(Integer, Integer)
+  fullName.vb: Shared.Pagination.PaginationRequest.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+- uid: Shared.Pagination.PaginationRequest.PageIndex
+  commentId: P:Shared.Pagination.PaginationRequest.PageIndex
+  id: PageIndex
+  parent: Shared.Pagination.PaginationRequest
+  langs:
+  - csharp
+  - vb
+  name: PageIndex
+  nameWithType: PaginationRequest.PageIndex
+  fullName: Shared.Pagination.PaginationRequest.PageIndex
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginationRequest.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: PageIndex
+    path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
+    startLine: 1
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public int PageIndex { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PageIndex As Integer
+  overload: Shared.Pagination.PaginationRequest.PageIndex*
+- uid: Shared.Pagination.PaginationRequest.PageSize
+  commentId: P:Shared.Pagination.PaginationRequest.PageSize
+  id: PageSize
+  parent: Shared.Pagination.PaginationRequest
+  langs:
+  - csharp
+  - vb
+  name: PageSize
+  nameWithType: PaginationRequest.PageSize
+  fullName: Shared.Pagination.PaginationRequest.PageSize
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginationRequest.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: PageSize
+    path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
+    startLine: 1
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public int PageSize { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PageSize As Integer
+  overload: Shared.Pagination.PaginationRequest.PageSize*
+references:
+- uid: Shared.Pagination
+  commentId: N:Shared.Pagination
+  href: Shared.html
+  name: Shared.Pagination
+  nameWithType: Shared.Pagination
+  fullName: Shared.Pagination
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Pagination
+    name: Pagination
+    href: Shared.Pagination.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Pagination
+    name: Pagination
+    href: Shared.Pagination.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Shared.Pagination.PaginationRequest}
+  commentId: T:System.IEquatable{Shared.Pagination.PaginationRequest}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<PaginationRequest>
+  nameWithType: IEquatable<PaginationRequest>
+  fullName: System.IEquatable<Shared.Pagination.PaginationRequest>
+  nameWithType.vb: IEquatable(Of PaginationRequest)
+  fullName.vb: System.IEquatable(Of Shared.Pagination.PaginationRequest)
+  name.vb: IEquatable(Of PaginationRequest)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Shared.Pagination.PaginationRequest
+    name: PaginationRequest
+    href: Shared.Pagination.PaginationRequest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Shared.Pagination.PaginationRequest
+    name: PaginationRequest
+    href: Shared.Pagination.PaginationRequest.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.Pagination.PaginationRequest.#ctor*
+  commentId: Overload:Shared.Pagination.PaginationRequest.#ctor
+  href: Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest__ctor_System_Int32_System_Int32_
+  name: PaginationRequest
+  nameWithType: PaginationRequest.PaginationRequest
+  fullName: Shared.Pagination.PaginationRequest.PaginationRequest
+  nameWithType.vb: PaginationRequest.New
+  fullName.vb: Shared.Pagination.PaginationRequest.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Shared.Pagination.PaginationRequest.PageIndex*
+  commentId: Overload:Shared.Pagination.PaginationRequest.PageIndex
+  href: Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest_PageIndex
+  name: PageIndex
+  nameWithType: PaginationRequest.PageIndex
+  fullName: Shared.Pagination.PaginationRequest.PageIndex
+- uid: Shared.Pagination.PaginationRequest.PageSize*
+  commentId: Overload:Shared.Pagination.PaginationRequest.PageSize
+  href: Shared.Pagination.PaginationRequest.html#Shared_Pagination_PaginationRequest_PageSize
+  name: PageSize
+  nameWithType: PaginationRequest.PageSize
+  fullName: Shared.Pagination.PaginationRequest.PageSize

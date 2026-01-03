@@ -1,0 +1,108 @@
+### YamlMime:TableOfContent
+items:
+- uid: Shared.Behaviors
+  name: Shared.Behaviors
+  type: Namespace
+  items:
+  - uid: Shared.Behaviors.LoggingBehavior`2
+    name: LoggingBehavior<TRequest, TResponse>
+    type: Class
+  - uid: Shared.Behaviors.ValidationBehavior`2
+    name: ValidationBehavior<TRequest, TResponse>
+    type: Class
+- uid: Shared.DDD
+  name: Shared.DDD
+  type: Namespace
+  items:
+  - uid: Shared.DDD.Aggregate`1
+    name: Aggregate<TId>
+    type: Class
+  - uid: Shared.DDD.Entity`1
+    name: Entity<T>
+    type: Class
+  - uid: Shared.DDD.IAggregate
+    name: IAggregate
+    type: Interface
+  - uid: Shared.DDD.IAggregate`1
+    name: IAggregate<T>
+    type: Interface
+  - uid: Shared.DDD.IDomainEvent
+    name: IDomainEvent
+    type: Interface
+  - uid: Shared.DDD.IEntity
+    name: IEntity
+    type: Interface
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity<T>
+    type: Interface
+- uid: Shared.Data
+  name: Shared.Data
+  type: Namespace
+  items:
+  - uid: Shared.Data.Extentions
+    name: Extentions
+    type: Class
+- uid: Shared.Data.Interceptors
+  name: Shared.Data.Interceptors
+  type: Namespace
+  items:
+  - uid: Shared.Data.Interceptors.AuditableEntityInterceptor
+    name: AuditableEntityInterceptor
+    type: Class
+  - uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+    name: DispatchDomainEventsInterceptor
+    type: Class
+  - uid: Shared.Data.Interceptors.Extensions
+    name: Extensions
+    type: Class
+- uid: Shared.Data.Seed
+  name: Shared.Data.Seed
+  type: Namespace
+  items:
+  - uid: Shared.Data.Seed.IDataSeeder
+    name: IDataSeeder
+    type: Interface
+- uid: Shared.Exceptions
+  name: Shared.Exceptions
+  type: Namespace
+  items:
+  - uid: Shared.Exceptions.BadRequestException
+    name: BadRequestException
+    type: Class
+  - uid: Shared.Exceptions.InternalServerException
+    name: InternalServerException
+    type: Class
+  - uid: Shared.Exceptions.NotFoundException
+    name: NotFoundException
+    type: Class
+- uid: Shared.Exceptions.Handler
+  name: Shared.Exceptions.Handler
+  type: Namespace
+  items:
+  - uid: Shared.Exceptions.Handler.CustomExceptionHandler
+    name: CustomExceptionHandler
+    type: Class
+- uid: Shared.Extensions
+  name: Shared.Extensions
+  type: Namespace
+  items:
+  - uid: Shared.Extensions.CarterExtensions
+    name: CarterExtensions
+    type: Class
+  - uid: Shared.Extensions.MediatRExtension
+    name: MediatRExtension
+    type: Class
+  - uid: Shared.Extensions.StringExtension
+    name: StringExtension
+    type: Class
+- uid: Shared.Pagination
+  name: Shared.Pagination
+  type: Namespace
+  items:
+  - uid: Shared.Pagination.PaginatedResult`1
+    name: PaginatedResult<TEntity>
+    type: Class
+  - uid: Shared.Pagination.PaginationRequest
+    name: PaginationRequest
+    type: Class
+memberLayout: SamePage

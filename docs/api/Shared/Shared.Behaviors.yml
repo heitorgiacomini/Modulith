@@ -1,0 +1,80 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Behaviors
+  commentId: N:Shared.Behaviors
+  id: Shared.Behaviors
+  children:
+  - Shared.Behaviors.LoggingBehavior`2
+  - Shared.Behaviors.ValidationBehavior`2
+  langs:
+  - csharp
+  - vb
+  name: Shared.Behaviors
+  nameWithType: Shared.Behaviors
+  fullName: Shared.Behaviors
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Behaviors.LoggingBehavior`2
+  commentId: T:Shared.Behaviors.LoggingBehavior`2
+  href: Shared.Behaviors.LoggingBehavior-2.html
+  name: LoggingBehavior<TRequest, TResponse>
+  nameWithType: LoggingBehavior<TRequest, TResponse>
+  fullName: Shared.Behaviors.LoggingBehavior<TRequest, TResponse>
+  nameWithType.vb: LoggingBehavior(Of TRequest, TResponse)
+  fullName.vb: Shared.Behaviors.LoggingBehavior(Of TRequest, TResponse)
+  name.vb: LoggingBehavior(Of TRequest, TResponse)
+  spec.csharp:
+  - uid: Shared.Behaviors.LoggingBehavior`2
+    name: LoggingBehavior
+    href: Shared.Behaviors.LoggingBehavior-2.html
+  - name: <
+  - name: TRequest
+  - name: ','
+  - name: " "
+  - name: TResponse
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Behaviors.LoggingBehavior`2
+    name: LoggingBehavior
+    href: Shared.Behaviors.LoggingBehavior-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TRequest
+  - name: ','
+  - name: " "
+  - name: TResponse
+  - name: )
+- uid: Shared.Behaviors.ValidationBehavior`2
+  commentId: T:Shared.Behaviors.ValidationBehavior`2
+  href: Shared.Behaviors.ValidationBehavior-2.html
+  name: ValidationBehavior<TRequest, TResponse>
+  nameWithType: ValidationBehavior<TRequest, TResponse>
+  fullName: Shared.Behaviors.ValidationBehavior<TRequest, TResponse>
+  nameWithType.vb: ValidationBehavior(Of TRequest, TResponse)
+  fullName.vb: Shared.Behaviors.ValidationBehavior(Of TRequest, TResponse)
+  name.vb: ValidationBehavior(Of TRequest, TResponse)
+  spec.csharp:
+  - uid: Shared.Behaviors.ValidationBehavior`2
+    name: ValidationBehavior
+    href: Shared.Behaviors.ValidationBehavior-2.html
+  - name: <
+  - name: TRequest
+  - name: ','
+  - name: " "
+  - name: TResponse
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Behaviors.ValidationBehavior`2
+    name: ValidationBehavior
+    href: Shared.Behaviors.ValidationBehavior-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TRequest
+  - name: ','
+  - name: " "
+  - name: TResponse
+  - name: )

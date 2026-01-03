@@ -1,0 +1,627 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Pagination.PaginatedResult`1
+  commentId: T:Shared.Pagination.PaginatedResult`1
+  id: PaginatedResult`1
+  parent: Shared.Pagination
+  children:
+  - Shared.Pagination.PaginatedResult`1.#ctor(System.Int32,System.Int32,System.Int64,System.Collections.Generic.IEnumerable{`0})
+  - Shared.Pagination.PaginatedResult`1.Count
+  - Shared.Pagination.PaginatedResult`1.Data
+  - Shared.Pagination.PaginatedResult`1.PageIndex
+  - Shared.Pagination.PaginatedResult`1.PageSize
+  langs:
+  - csharp
+  - vb
+  name: PaginatedResult<TEntity>
+  nameWithType: PaginatedResult<TEntity>
+  fullName: Shared.Pagination.PaginatedResult<TEntity>
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginatedResult.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: PaginatedResult
+    path: ../src/Shared/Shared/Pagination/PaginatedResult.cs
+    startLine: 1
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: 'public class PaginatedResult<TEntity> where TEntity : class'
+    typeParameters:
+    - id: TEntity
+    content.vb: Public Class PaginatedResult(Of TEntity As Class)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: PaginatedResult(Of TEntity)
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity)
+  name.vb: PaginatedResult(Of TEntity)
+- uid: Shared.Pagination.PaginatedResult`1.#ctor(System.Int32,System.Int32,System.Int64,System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Shared.Pagination.PaginatedResult`1.#ctor(System.Int32,System.Int32,System.Int64,System.Collections.Generic.IEnumerable{`0})
+  id: '#ctor(System.Int32,System.Int32,System.Int64,System.Collections.Generic.IEnumerable{`0})'
+  parent: Shared.Pagination.PaginatedResult`1
+  langs:
+  - csharp
+  - vb
+  name: PaginatedResult(int, int, long, IEnumerable<TEntity>)
+  nameWithType: PaginatedResult<TEntity>.PaginatedResult(int, int, long, IEnumerable<TEntity>)
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PaginatedResult(int, int, long, System.Collections.Generic.IEnumerable<TEntity>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginatedResult.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: .ctor
+    path: ../src/Shared/Shared/Pagination/PaginatedResult.cs
+    startLine: 1
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public PaginatedResult(int pageIndex, int pageSize, long count, IEnumerable<TEntity> data)
+    parameters:
+    - id: pageIndex
+      type: System.Int32
+    - id: pageSize
+      type: System.Int32
+    - id: count
+      type: System.Int64
+    - id: data
+      type: System.Collections.Generic.IEnumerable{{TEntity}}
+    content.vb: Public Sub New(pageIndex As Integer, pageSize As Integer, count As Long, data As IEnumerable(Of TEntity))
+  overload: Shared.Pagination.PaginatedResult`1.#ctor*
+  nameWithType.vb: PaginatedResult(Of TEntity).New(Integer, Integer, Long, IEnumerable(Of TEntity))
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).New(Integer, Integer, Long, System.Collections.Generic.IEnumerable(Of TEntity))
+  name.vb: New(Integer, Integer, Long, IEnumerable(Of TEntity))
+- uid: Shared.Pagination.PaginatedResult`1.PageIndex
+  commentId: P:Shared.Pagination.PaginatedResult`1.PageIndex
+  id: PageIndex
+  parent: Shared.Pagination.PaginatedResult`1
+  langs:
+  - csharp
+  - vb
+  name: PageIndex
+  nameWithType: PaginatedResult<TEntity>.PageIndex
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageIndex
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginatedResult.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: PageIndex
+    path: ../src/Shared/Shared/Pagination/PaginatedResult.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public int PageIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PageIndex As Integer
+  overload: Shared.Pagination.PaginatedResult`1.PageIndex*
+  nameWithType.vb: PaginatedResult(Of TEntity).PageIndex
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageIndex
+- uid: Shared.Pagination.PaginatedResult`1.PageSize
+  commentId: P:Shared.Pagination.PaginatedResult`1.PageSize
+  id: PageSize
+  parent: Shared.Pagination.PaginatedResult`1
+  langs:
+  - csharp
+  - vb
+  name: PageSize
+  nameWithType: PaginatedResult<TEntity>.PageSize
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageSize
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginatedResult.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: PageSize
+    path: ../src/Shared/Shared/Pagination/PaginatedResult.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public int PageSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property PageSize As Integer
+  overload: Shared.Pagination.PaginatedResult`1.PageSize*
+  nameWithType.vb: PaginatedResult(Of TEntity).PageSize
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageSize
+- uid: Shared.Pagination.PaginatedResult`1.Count
+  commentId: P:Shared.Pagination.PaginatedResult`1.Count
+  id: Count
+  parent: Shared.Pagination.PaginatedResult`1
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: PaginatedResult<TEntity>.Count
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Count
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginatedResult.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: Count
+    path: ../src/Shared/Shared/Pagination/PaginatedResult.cs
+    startLine: 7
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public long Count { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property Count As Long
+  overload: Shared.Pagination.PaginatedResult`1.Count*
+  nameWithType.vb: PaginatedResult(Of TEntity).Count
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Count
+- uid: Shared.Pagination.PaginatedResult`1.Data
+  commentId: P:Shared.Pagination.PaginatedResult`1.Data
+  id: Data
+  parent: Shared.Pagination.PaginatedResult`1
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: PaginatedResult<TEntity>.Data
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Data
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Pagination/PaginatedResult.cs
+      branch: main
+      repo: https://github.com/heitorgiacomini/Modulith.git
+    id: Data
+    path: ../src/Shared/Shared/Pagination/PaginatedResult.cs
+    startLine: 8
+  assemblies:
+  - Shared
+  namespace: Shared.Pagination
+  syntax:
+    content: public IEnumerable<TEntity> Data { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{{TEntity}}
+    content.vb: Public ReadOnly Property Data As IEnumerable(Of TEntity)
+  overload: Shared.Pagination.PaginatedResult`1.Data*
+  nameWithType.vb: PaginatedResult(Of TEntity).Data
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Data
+references:
+- uid: Shared.Pagination
+  commentId: N:Shared.Pagination
+  href: Shared.html
+  name: Shared.Pagination
+  nameWithType: Shared.Pagination
+  fullName: Shared.Pagination
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Pagination
+    name: Pagination
+    href: Shared.Pagination.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Pagination
+    name: Pagination
+    href: Shared.Pagination.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Pagination.PaginatedResult`1.#ctor*
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.#ctor
+  href: Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1__ctor_System_Int32_System_Int32_System_Int64_System_Collections_Generic_IEnumerable__0__
+  name: PaginatedResult
+  nameWithType: PaginatedResult<TEntity>.PaginatedResult
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PaginatedResult
+  nameWithType.vb: PaginatedResult(Of TEntity).New
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Collections.Generic.IEnumerable{{TEntity}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TEntity>
+  nameWithType: IEnumerable<TEntity>
+  fullName: System.Collections.Generic.IEnumerable<TEntity>
+  nameWithType.vb: IEnumerable(Of TEntity)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TEntity)
+  name.vb: IEnumerable(Of TEntity)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Shared.Pagination.PaginatedResult`1.PageIndex*
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.PageIndex
+  href: Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_PageIndex
+  name: PageIndex
+  nameWithType: PaginatedResult<TEntity>.PageIndex
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageIndex
+  nameWithType.vb: PaginatedResult(Of TEntity).PageIndex
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageIndex
+- uid: Shared.Pagination.PaginatedResult`1.PageSize*
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.PageSize
+  href: Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_PageSize
+  name: PageSize
+  nameWithType: PaginatedResult<TEntity>.PageSize
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.PageSize
+  nameWithType.vb: PaginatedResult(Of TEntity).PageSize
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).PageSize
+- uid: Shared.Pagination.PaginatedResult`1.Count*
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.Count
+  href: Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_Count
+  name: Count
+  nameWithType: PaginatedResult<TEntity>.Count
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Count
+  nameWithType.vb: PaginatedResult(Of TEntity).Count
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Count
+- uid: Shared.Pagination.PaginatedResult`1.Data*
+  commentId: Overload:Shared.Pagination.PaginatedResult`1.Data
+  href: Shared.Pagination.PaginatedResult-1.html#Shared_Pagination_PaginatedResult_1_Data
+  name: Data
+  nameWithType: PaginatedResult<TEntity>.Data
+  fullName: Shared.Pagination.PaginatedResult<TEntity>.Data
+  nameWithType.vb: PaginatedResult(Of TEntity).Data
+  fullName.vb: Shared.Pagination.PaginatedResult(Of TEntity).Data

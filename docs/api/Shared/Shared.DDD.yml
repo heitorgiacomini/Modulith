@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  id: Shared.DDD
+  children:
+  - Shared.DDD.Aggregate`1
+  - Shared.DDD.Entity`1
+  - Shared.DDD.IAggregate
+  - Shared.DDD.IAggregate`1
+  - Shared.DDD.IDomainEvent
+  - Shared.DDD.IEntity
+  - Shared.DDD.IEntity`1
+  langs:
+  - csharp
+  - vb
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.DDD.Aggregate`1
+  commentId: T:Shared.DDD.Aggregate`1
+  href: Shared.DDD.Aggregate-1.html
+  name: Aggregate<TId>
+  nameWithType: Aggregate<TId>
+  fullName: Shared.DDD.Aggregate<TId>
+  nameWithType.vb: Aggregate(Of TId)
+  fullName.vb: Shared.DDD.Aggregate(Of TId)
+  name.vb: Aggregate(Of TId)
+  spec.csharp:
+  - uid: Shared.DDD.Aggregate`1
+    name: Aggregate
+    href: Shared.DDD.Aggregate-1.html
+  - name: <
+  - name: TId
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.Aggregate`1
+    name: Aggregate
+    href: Shared.DDD.Aggregate-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TId
+  - name: )
+- uid: Shared.DDD.Entity`1
+  commentId: T:Shared.DDD.Entity`1
+  href: Shared.DDD.Entity-1.html
+  name: Entity<T>
+  nameWithType: Entity<T>
+  fullName: Shared.DDD.Entity<T>
+  nameWithType.vb: Entity(Of T)
+  fullName.vb: Shared.DDD.Entity(Of T)
+  name.vb: Entity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.Entity`1
+    name: Entity
+    href: Shared.DDD.Entity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.Entity`1
+    name: Entity
+    href: Shared.DDD.Entity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IAggregate`1
+  commentId: T:Shared.DDD.IAggregate`1
+  href: Shared.DDD.IAggregate-1.html
+  name: IAggregate<T>
+  nameWithType: IAggregate<T>
+  fullName: Shared.DDD.IAggregate<T>
+  nameWithType.vb: IAggregate(Of T)
+  fullName.vb: Shared.DDD.IAggregate(Of T)
+  name.vb: IAggregate(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.IAggregate`1
+    name: IAggregate
+    href: Shared.DDD.IAggregate-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.IAggregate`1
+    name: IAggregate
+    href: Shared.DDD.IAggregate-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IAggregate
+  commentId: T:Shared.DDD.IAggregate
+  parent: Shared.DDD
+  href: Shared.DDD.IAggregate.html
+  name: IAggregate
+  nameWithType: IAggregate
+  fullName: Shared.DDD.IAggregate
+- uid: Shared.DDD.IDomainEvent
+  commentId: T:Shared.DDD.IDomainEvent
+  parent: Shared.DDD
+  href: Shared.DDD.IDomainEvent.html
+  name: IDomainEvent
+  nameWithType: IDomainEvent
+  fullName: Shared.DDD.IDomainEvent
+- uid: Shared.DDD.IEntity`1
+  commentId: T:Shared.DDD.IEntity`1
+  href: Shared.DDD.IEntity-1.html
+  name: IEntity<T>
+  nameWithType: IEntity<T>
+  fullName: Shared.DDD.IEntity<T>
+  nameWithType.vb: IEntity(Of T)
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  name.vb: IEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IEntity
+  commentId: T:Shared.DDD.IEntity
+  parent: Shared.DDD
+  href: Shared.DDD.IEntity.html
+  name: IEntity
+  nameWithType: IEntity
+  fullName: Shared.DDD.IEntity
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data
+  commentId: N:Shared.Data
+  id: Shared.Data
+  children:
+  - Shared.Data.Extentions
+  langs:
+  - csharp
+  - vb
+  name: Shared.Data
+  nameWithType: Shared.Data
+  fullName: Shared.Data
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Data.Extentions
+  commentId: T:Shared.Data.Extentions
+  href: Shared.Data.Extentions.html
+  name: Extentions
+  nameWithType: Extentions
+  fullName: Shared.Data.Extentions

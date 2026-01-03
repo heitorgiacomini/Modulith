@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Seed
+  commentId: N:Shared.Data.Seed
+  id: Shared.Data.Seed
+  children:
+  - Shared.Data.Seed.IDataSeeder
+  langs:
+  - csharp
+  - vb
+  name: Shared.Data.Seed
+  nameWithType: Shared.Data.Seed
+  fullName: Shared.Data.Seed
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Data.Seed.IDataSeeder
+  commentId: T:Shared.Data.Seed.IDataSeeder
+  href: Shared.Data.Seed.IDataSeeder.html
+  name: IDataSeeder
+  nameWithType: IDataSeeder
+  fullName: Shared.Data.Seed.IDataSeeder

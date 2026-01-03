@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Interceptors
+  commentId: N:Shared.Data.Interceptors
+  id: Shared.Data.Interceptors
+  children:
+  - Shared.Data.Interceptors.AuditableEntityInterceptor
+  - Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+  - Shared.Data.Interceptors.Extensions
+  langs:
+  - csharp
+  - vb
+  name: Shared.Data.Interceptors
+  nameWithType: Shared.Data.Interceptors
+  fullName: Shared.Data.Interceptors
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor
+  commentId: T:Shared.Data.Interceptors.AuditableEntityInterceptor
+  href: Shared.Data.Interceptors.AuditableEntityInterceptor.html
+  name: AuditableEntityInterceptor
+  nameWithType: AuditableEntityInterceptor
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor
+- uid: Shared.Data.Interceptors.Extensions
+  commentId: T:Shared.Data.Interceptors.Extensions
+  href: Shared.Data.Interceptors.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Shared.Data.Interceptors.Extensions
+- uid: Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+  commentId: T:Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+  href: Shared.Data.Interceptors.DispatchDomainEventsInterceptor.html
+  name: DispatchDomainEventsInterceptor
+  nameWithType: DispatchDomainEventsInterceptor
+  fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor

@@ -81,6 +81,9 @@
       "_appFaviconPath": "images/sinter-logo.png",
       "_appLogoPath": "images/sinter-logo.png",
       "_enableSearch": true
-    }
+    },
+    "styles": [
+      "styles/override.css"
+    ]
   }
 }

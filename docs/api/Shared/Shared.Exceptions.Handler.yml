@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Exceptions.Handler
+  commentId: N:Shared.Exceptions.Handler
+  id: Shared.Exceptions.Handler
+  children:
+  - Shared.Exceptions.Handler.CustomExceptionHandler
+  langs:
+  - csharp
+  - vb
+  name: Shared.Exceptions.Handler
+  nameWithType: Shared.Exceptions.Handler
+  fullName: Shared.Exceptions.Handler
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Exceptions.Handler.CustomExceptionHandler
+  commentId: T:Shared.Exceptions.Handler.CustomExceptionHandler
+  href: Shared.Exceptions.Handler.CustomExceptionHandler.html
+  name: CustomExceptionHandler
+  nameWithType: CustomExceptionHandler
+  fullName: Shared.Exceptions.Handler.CustomExceptionHandler
