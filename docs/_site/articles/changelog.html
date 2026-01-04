@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | SINTER </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | SINTER ">
+      
+      
+      <link rel="icon" href="../images/sinter-logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/blob/main/docs/articles/changelog.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/sinter-logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<h2 id="unreleased">[unreleased]</h2>
+<h3 id="2026-01-04">2026-01-04</h3>
+<h4 id="-miscellaneous-tasks">⚙️ Miscellaneous Tasks</h4>
+<ul>
+<li>Add initial changelog and git-cliff configuration (Heitor Giacomini) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/beca2c49c652d07f194804e737362ed66c63770a">beca2c4</a>)</li>
+</ul>
+<h3 id="2026-01-03">2026-01-03</h3>
+<h4 id="-bug-fixes">🐛 Bug Fixes</h4>
+<ul>
+<li>Fix path for artifact upload in GitHub Actions (Heitor Giacomini) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/7afe23a0ed3b1f76798e0ca109044cc23e751add">7afe23a</a>)</li>
+</ul>
+<h4 id="-other">🧱 Other</h4>
+<ul>
+<li><p>Change artifact upload path for GitHub Pages (Heitor Giacomini) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/31319bda886712dd74ed74e79170ec6ec6557ba4">31319bd</a>)</p>
+</li>
+<li><p>Add PaginationRequest class and related documentation</p>
+</li>
+<li><p>Introduced the PaginationRequest class in the Shared.Pagination namespace, implementing IEquatable for equality comparison.</p>
+</li>
+<li><p>Added properties PageIndex and PageSize with appropriate accessors.</p>
+</li>
+<li><p>Created YAML documentation for PaginationRequest, including constructor and property details.</p>
+</li>
+<li><p>Updated Shared.Pagination namespace documentation to include the new PaginationRequest class.</p>
+</li>
+<li><p>Modified table of contents to reflect the addition of PaginationRequest and its related items. (Heitor Giacomini) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/b64a2f799d45dbb39958779ee581eb35a1d17e42">b64a2f7</a>)</p>
+</li>
+</ul>
+<h3 id="2026-01-02">2026-01-02</h3>
+<h4 id="--features">⛰️  Features</h4>
+<ul>
+<li>Implement CQRS pattern with MediatR and add domain event handling (Heitor Giacomini) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/a6f33f868923ad04b22754030a3d9b477b7bec65">a6f33f8</a>)</li>
+</ul>
+<h3 id="2025-12-25">2025-12-25</h3>
+<h4 id="-refactor">🚜 Refactor</h4>
+<ul>
+<li><p>Refactor Docker, messaging, and compose for modularity</p>
+</li>
+<li><p>Switch Docker images from Alpine to standard .NET, update build to include new modular project references.</p>
+</li>
+<li><p>Add Dockerfile.original with multi-stage build and publish.</p>
+</li>
+<li><p>Register OutboxProcessor and add messaging references in Ordering.</p>
+</li>
+<li><p>Add BasketCheckoutIntegrationEventHandler for event-driven order creation.</p>
+</li>
+<li><p>Overhaul docker-compose files: new api service, environment config, ports, and volumes for secrets/certs.</p>
+</li>
+<li><p>Improve type safety in CreateBasketEndpoint.</p>
+</li>
+<li><p>Overall, enhance modularity, messaging, and production readiness. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/03d033521e8a1e9a73d183286fb9ebda0cf20c79">03d0335</a>)</p>
+</li>
+</ul>
+<h3 id="2025-12-24">2025-12-24</h3>
+<h4 id="-other-1">🧱 Other</h4>
+<ul>
+<li>Implement transactional outbox pattern in Basket service</li>
+</ul>
+<p>Introduce OutboxMessage entity and OutboxMessages table with new migration. Add OutboxProcessor background service to publish events reliably via MassTransit. Refactor checkout basket flow to write integration events to the outbox within a transaction. Add new endpoint and handler for basket checkout. Remove old migrations and update DbContext/model snapshot. Add BasketCheckoutIntegrationEvent and update project structure. Enables reliable, eventual-consistent event publishing. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/58fa2dcd32ce4bbb9b4af3fa3723ac1c3c123bdf">58fa2dc</a>)</p>
+<ul>
+<li>Add Ordering module with full CRUD and CQRS support</li>
+</ul>
+<p>Introduces a new modular Ordering system with domain models, value objects, and event handling. Implements EF Core data layer, migrations, and DTOs. Adds Carter endpoints and MediatR handlers for create, read (by id and paginated), and delete operations. Integrates with app infrastructure and follows DDD, CQRS, and clean architecture principles. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/d1ba8909042bd387937c6f499b567318db7a367c">d1ba890</a>)</p>
+<h3 id="2025-12-23">2025-12-23</h3>
+<h4 id="-other-2">🧱 Other</h4>
+<ul>
+<li>Require auth for all basket endpoints; refactor handlers</li>
+</ul>
+<p>Added .RequireAuthorization() to all basket API endpoints to enforce authentication. In CreateBasketEndpoint, now set UserName from the authenticated user. Refactored route handler signatures, improved code style, and clarified variable types for consistency. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/c4cb5479d6ea9b54c1a7b4d832f78e0977f1c031">c4cb547</a>)</p>
+<ul>
+<li><p>Add Keycloak auth, RabbitMQ config, and Docker services</p>
+</li>
+<li><p>Integrated Keycloak authentication and authorization, including config and middleware setup.</p>
+</li>
+<li><p>Switched MassTransit to use RabbitMQ with externalized config in appsettings.json.</p>
+</li>
+<li><p>Updated Docker Compose to include postgres, redis, seq, rabbitmq, and keycloak services with appropriate environment variables and ports.</p>
+</li>
+<li><p>Changed webApp.Run() to RunAsync() and performed minor code cleanup. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/b968bd5029fbc17c031be590338dffa9743390f4">b968bd5</a>)</p>
+</li>
+</ul>
+<h3 id="2025-12-22">2025-12-22</h3>
+<h4 id="-other-3">🧱 Other</h4>
+<ul>
+<li>Handle product price updates across Catalog and Basket</li>
+</ul>
+<p>Implement integration event flow for product price changes:</p>
+<ul>
+<li>Catalog now publishes ProductPriceChangedIntegrationEvent via MassTransit when a product's price is updated.</li>
+<li>Basket service consumes this event and updates relevant basket item prices using a new command and handler.</li>
+<li>Added validation for update commands.</li>
+<li>Ensures basket prices stay in sync with catalog changes. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/d6bb8fd42937568735d78ea94911e97d2dddd234">d6bb8fd</a>)</li>
+</ul>
+<h4 id="-refactor-1">🚜 Refactor</h4>
+<ul>
+<li><p>Extract CQRS contracts &amp; add messaging support (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/e6709cfe9e8e9413068d08184d46f46f1117559b">e6709cf</a>)</p>
+</li>
+<li><p>Introduce Shared.Contracts &amp; split Catalog module (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/2bfd5d2ebf766ba2dd2ad6689ca722caeec46618">2bfd5d2</a>)</p>
+</li>
+</ul>
+<h3 id="2025-12-21">2025-12-21</h3>
+<h4 id="-other-4">🧱 Other</h4>
+<ul>
+<li>Add Redis distributed cache for shopping cart data</li>
+</ul>
+<p>Introduces Redis as a distributed cache by adding a Redis service to docker-compose, configuring StackExchangeRedisCache in the API, and updating appsettings.json with a Redis connection string. Implements custom JSON converters for ShoppingCart and ShoppingCartItem to ensure correct (de)serialization when caching. Refactors CachedBasketRepository to use these converters. Cleans up unused code and updates package references. This improves performance and scalability for basket operations. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/e468a1332f812e306a0d959fbfd781788277ac4d">e468a13</a>)</p>
+<ul>
+<li>Add distributed cache for basket data with decorator</li>
+</ul>
+<p>Introduced CachedBasketRepository to cache basket data per user using IDistributedCache. Updated IBasketRepository and implementations to support cache invalidation via userName parameter in SaveChangesAsync. Refactored DI registration to use Scrutor's Decorate for repository wrapping. Added HasContent string extension for null/empty checks. Updated package versions and command handlers for cache consistency. Improves basket performance and cache management. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/cc463155edf0cc521186795089b1c14373ea4fb2">cc46315</a>)</p>
+<h3 id="2025-12-20">2025-12-20</h3>
+<h4 id="-refactor-2">🚜 Refactor</h4>
+<ul>
+<li>Refactor basket handlers to use repository abstraction</li>
+</ul>
+<p>Replaced direct DbContext access in basket feature handlers with a new IBasketRepository interface and BasketRepository implementation. Updated DI registration, adjusted validation style, and standardized type usage. This improves separation of concerns, testability, and encapsulates basket data access logic. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/8b5763cd497f70828ba375cc59f9ce452f7706ff">8b5763c</a>)</p>
+<h3 id="2025-12-19">2025-12-19</h3>
+<h4 id="-other-5">🧱 Other</h4>
+<ul>
+<li>Implement Basket CRUD API with CQRS, Carter, and Validation</li>
+</ul>
+<p>Add full CRUD endpoints and CQRS handlers for Basket using MediatR, Carter, and FluentValidation. Introduce DTOs, custom exceptions, and validators. Refactor Program.cs for modular registration of endpoints and behaviors. Add MediatRExtension for streamlined setup. Update namespaces, global usings, and configuration files for consistency and maintainability. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/5ae787378516291f40980142722e849b3ab718f9">5ae7873</a>)</p>
+<h3 id="2025-12-17">2025-12-17</h3>
+<h4 id="-other-6">🧱 Other</h4>
+<ul>
+<li>Initial Basket data layer with EF Core and migrations</li>
+</ul>
+<p>Added BasketDbContext, ShoppingCart models, entity configurations, and initial EF Core migrations. Registered DbContext and interceptors in BasketModule. Updated .gitignore and solution items. Added EF CLI script for migrations. Lays groundwork for basket persistence and integration. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/8339fb967662f65fc61a7a7d68e65736027f8add">8339fb9</a>)</p>
+<h3 id="2025-12-16">2025-12-16</h3>
+<h4 id="-other-7">🧱 Other</h4>
+<ul>
+<li><p>Integrate Serilog and Seq for structured logging</p>
+</li>
+<li><p>Replace default logging with Serilog, reading config from appsettings.json</p>
+</li>
+<li><p>Add Serilog.AspNetCore and Serilog.Sinks.Seq packages</p>
+</li>
+<li><p>Configure console and Seq sinks; add enrichment and log level overrides</p>
+</li>
+<li><p>Add Seq service to docker-compose for centralized log collection</p>
+</li>
+<li><p>Enable Serilog request logging middleware in Program.cs</p>
+</li>
+<li><p>Switch to CustomExceptionHandler for global error handling</p>
+</li>
+<li><p>Add MediatR LoggingBehavior for request/response logging and performance warnings</p>
+</li>
+<li><p>Remove ILogger from CreateProductHandler; rely on pipeline logging</p>
+</li>
+<li><p>Remove color customizations from settings.json (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/c8bee702713d87d905d7f11f4f47aea6ba9e10ac">c8bee70</a>)</p>
+</li>
+</ul>
+<h3 id="2025-12-13">2025-12-13</h3>
+<h4 id="-other-8">🧱 Other</h4>
+<ul>
+<li>Add centralized exception handling and custom exceptions</li>
+</ul>
+<p>Introduced custom exception classes (NotFoundException, BadRequestException, InternalServerException, ProductNotFoundException) for more descriptive error management. Updated product handlers to throw ProductNotFoundException when a product is not found. Added CustomExceptionHandler to log errors and return standardized ProblemDetails responses with appropriate HTTP status codes. Registered new exceptions and handler in global usings. Also included minor code cleanups and parameter corrections. These changes improve error reporting, ensure consistent API error responses, and centralize exception handling logic. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/fcd009936ecc9242e03309930216e46e013ccbc4">fcd0099</a>)</p>
+<ul>
+<li>ValidationBehavior (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/7bb17a19886ca95608afd36a40b0f99b31be2f3e">7bb17a1</a>)</li>
+</ul>
+<h3 id="2025-12-12">2025-12-12</h3>
+<h4 id="-other-9">🧱 Other</h4>
+<ul>
+<li>Endpoints (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/f0a40d3a10a39d7be90b6e841c8b325f5a9399f9">f0a40d3</a>)</li>
+</ul>
+<h3 id="2025-12-11">2025-12-11</h3>
+<h4 id="-other-10">🧱 Other</h4>
+<ul>
+<li>Handlers (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/3cf001ae37916a7bff2bbb1ed35b970b9e9cf2a6">3cf001a</a>)</li>
+</ul>
+<h3 id="2025-12-10">2025-12-10</h3>
+<h4 id="-other-11">🧱 Other</h4>
+<ul>
+<li>Adding handlers (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/726e1e6d1725a50a42b58e957cbd354a9bb233bf">726e1e6</a>)</li>
+</ul>
+<h3 id="2025-12-09">2025-12-09</h3>
+<h4 id="-other-12">🧱 Other</h4>
+<ul>
+<li>Add CQRS abstractions and restructure Catalog module</li>
+</ul>
+<p>Introduced CQRS interfaces (ICommand, IQuery, etc.) in Shared.CQRS to support MediatR-based command/query handling. Added skeletons for product features (CreateProduct, GetProductById) and a ProductDto record. Updated Catalog.csproj to organize feature folders. Reformatted migration, event, seeder, and module files for consistency and clarity. These changes lay the foundation for a CQRS architecture and improve code organization. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/07b92d34bcb1db361d57f4b5907aa519da191eb5">07b92d3</a>)</p>
+<h3 id="2025-12-08">2025-12-08</h3>
+<h4 id="-other-13">🧱 Other</h4>
+<ul>
+<li>Add MediatR and EF Core interceptors to CatalogModule</li>
+</ul>
+<p>Refactor <code>AddCatalogModule</code> to register MediatR for domain event handling and use dependency injection for EF Core interceptors.</p>
+<p>Introduce <code>DispatchDomainEventsInterceptor</code> to automatically dispatch domain events during <code>SaveChanges</code>. Register <code>AuditableEntityInterceptor</code> and <code>DispatchDomainEventsInterceptor</code> as scoped services.</p>
+<p>Add <code>IDataSeeder</code> registration for data seeding. Improve modularity and support for domain-driven design patterns. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/b947763e3cd31ecab3db9c06f205b2ca2d8190e9">b947763</a>)</p>
+<ul>
+<li>Add AuditableEntityInterceptor for entity auditing</li>
+</ul>
+<p>Introduced <code>AuditableEntityInterceptor</code> to handle automatic
+auditing of entities during database operations. Updated the
+<code>CatalogModule</code> to register the interceptor in the <code>AddDbContext</code>
+configuration.</p>
+<p>Refactored the <code>IEntity</code> interface to include a placeholder
+for future auditing functionality. Removed the unused and
+empty <code>Interceptors</code> class to improve code clarity.</p>
+<p>Added logic to populate auditing fields (<code>CreatedBy</code>,
+<code>CreatedAt</code>, <code>LastModifiedBy</code>, <code>LastModified</code>) in the
+<code>AuditableEntityInterceptor</code>. Included an extension method
+to detect changes in owned entities.</p>
+<p>These changes centralize auditing logic, improve maintainability,
+and prepare the codebase for future enhancements. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/0092223daad6ed30394a77107a7a664f5c832a35">0092223</a>)</p>
+<ul>
+<li>Readme (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/27d3ef17905615ab9a5161a57ef06b1f1dc2da85">27d3ef1</a>)</li>
+</ul>
+<h3 id="2025-12-07">2025-12-07</h3>
+<h4 id="-other-14">🧱 Other</h4>
+<ul>
+<li><p>Update README title for clarity (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/f352ae9c6e610e44b959ead4d07c3e8156cd3f35">f352ae9</a>)</p>
+</li>
+<li><p>Add Docker support and PostgreSQL integration</p>
+</li>
+</ul>
+<p>Introduced Docker support with <code>Dockerfile</code>, <code>.dockerignore</code>, and Docker Compose configurations for containerized deployment. Integrated PostgreSQL as the database for the Catalog module, including <code>CatalogDbContext</code>, migrations, and seeding.</p>
+<p>Refactored <code>Program.cs</code> for clarity and updated <code>CatalogModule</code> to handle database setup. Enhanced domain models to enforce value-type IDs and added domain events for <code>Product</code>.</p>
+<p>Improved solution structure with <code>GlobalUsings.cs</code>, updated project references, and added initial data seeding. These changes enhance scalability, maintainability, and deployment flexibility. (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/f9e0949654603e8be2163e161284a0fd45e9597c">f9e0949</a>)</p>
+<h3 id="2025-12-06">2025-12-06</h3>
+<h4 id="-other-15">🧱 Other</h4>
+<ul>
+<li><p>Cho satanas (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/2b2a4580015a7d372fab3e099440cd5e8d220222">2b2a458</a>)</p>
+</li>
+<li><p>Pra ficar legal, pagode na cohab no maior astral (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/6fba1efcfa6dde316d369bd40b7c26c659e64f2e">6fba1ef</a>)</p>
+</li>
+</ul>
+<h3 id="2025-12-03">2025-12-03</h3>
+<h4 id="-other-16">🧱 Other</h4>
+<ul>
+<li><p>Modules (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/b337bc7ccf62e0844b1b803fe23c1d242ef65ea5">b337bc7</a>)</p>
+</li>
+<li><p>First (web admin) - (<a href="https://github.com/heitorgiacomini/Modulith/commit/bbe093ee2164d68b10c0b812f5fe011d9b17bb77">bbe093e</a>)</p>
+</li>
+</ul>
+<!-- generated by git-cliff -->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/heitorgiacomini/Modulith/blob/main/docs/articles/changelog.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2026 Sinter. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

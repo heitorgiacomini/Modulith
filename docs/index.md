@@ -1,11 +1,7 @@
+---
+redirect_url: articles/introduction.html
+---
 
-# Sinter Project Documentation
+Redirecting to the Introduction page…
 
-Welcome to the Sinter project documentation.
-
-## Quick Links
-
-- [Introduction](articles/introduction.md)
-- [Getting Started](articles/getting-started.md)
-- [Contributing](articles/CONTRIBUTING.md)
-- [Code of Conduct](articles/CODE_OF_CONDUCT.md)
+If you are not redirected automatically, open [Introduction](articles/introduction.md).

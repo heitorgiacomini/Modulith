@@ -69,7 +69,8 @@
       {
         "files": [
           "styles/**",
-          "images/**"
+          "images/**",
+          "index.html"
         ]
       }
     ],
