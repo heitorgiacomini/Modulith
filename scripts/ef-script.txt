@@ -1,3 +1,8 @@
 Add-Migration InitialCreate -OutputDir Data/Migrations -Project Basket -StartupProject Api -Context BasketDbContext
 
 Update-Database -Context BasketDbContext
+
+# generate docs
+  docfx
+# generate logs
+ git-cliff --config cliff.toml -o articles\changelog.md  
