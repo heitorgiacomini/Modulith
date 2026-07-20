@@ -55,9 +55,14 @@ public partial class Program
 
     _ = webAppBuilder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
+    _ = webAppBuilder.Services
+      .AddGraphQLServer()
+      .AddQueryType<Api.GraphQL.CatalogQueries>();
+
     WebApplication webApp = webAppBuilder.Build();
 
     _ = webApp.MapCarter();
+    _ = webApp.MapGraphQL();
 
     _ = webApp.UseSerilogRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
