@@ -1,3 +1,3 @@
 export const environment = {
-  graphqlUrl: 'http://localhost:5000/graphql'
+  graphqlUrl: 'http://127.0.0.1:5001/graphql'
 };

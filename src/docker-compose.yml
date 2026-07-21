@@ -16,6 +16,7 @@ services:
 
   api:
     image: ${DOCKER_REGISTRY-}api
+    pull_policy: never
     build:
       context: .
       dockerfile: Bootstrapper/Api/Dockerfile
@@ -24,6 +25,7 @@ services:
 
   web-client:
     image: ${DOCKER_REGISTRY-}web-client
+    pull_policy: never
     build:
       context: ./web-client
       dockerfile: Dockerfile

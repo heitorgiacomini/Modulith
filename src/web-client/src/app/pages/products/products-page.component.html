@@ -4,21 +4,21 @@
     <ng-template pTemplate="subtitle">Products are loaded from the ASP.NET Core GraphQL endpoint.</ng-template>
 
     <div class="hero-meta">
-      <span class="meta-pill">{{ totalRecords }} products</span>
+      <span class="meta-pill">{{ totalRecords() }} products</span>
       <button
         pButton
         type="button"
         label="Refresh"
         icon="pi pi-refresh"
-        (click)="loadProducts(pageIndex)"
-        [loading]="loading"></button>
+        (click)="loadProducts(pageIndex())"
+        [loading]="loading()"></button>
     </div>
 
-    @if (errorMessage) {
-      <p-message severity="error" [text]="errorMessage"></p-message>
+    @if (errorMessage()) {
+      <p-message severity="error" [text]="errorMessage()"></p-message>
     }
 
-    @if (loading) {
+    @if (loading()) {
       <div class="loading-state">
         <p-progressSpinner ariaLabel="Loading catalog"></p-progressSpinner>
       </div>
@@ -26,9 +26,9 @@
 
     <div class="product-grid">
       <p-card
-        *ngFor="let product of products; trackBy: trackByProduct"
+        *ngFor="let product of products(); trackBy: trackByProduct"
         class="product-card"
-        [class.product-card-selected]="selectedProduct?.id === product.id">
+        [class.product-card-selected]="selectedProduct()?.id === product.id">
         <ng-template pTemplate="header">
           <img class="product-image" [src]="imageUrl(product)" [alt]="product.name" />
         </ng-template>
@@ -55,15 +55,15 @@
 
     <p-paginator
       [rows]="pageSize"
-      [first]="pageIndex * pageSize"
-      [totalRecords]="totalRecords"
+      [first]="pageIndex() * pageSize"
+      [totalRecords]="totalRecords()"
       (onPageChange)="onPageChange($event)"></p-paginator>
   </p-card>
 
   <p-card styleClass="details-panel">
     <ng-template pTemplate="title">Selected product</ng-template>
 
-    <ng-container *ngIf="selectedProduct as product; else noSelection">
+    <ng-container *ngIf="selectedProduct() as product; else noSelection">
       <img class="detail-image" [src]="imageUrl(product)" [alt]="product.name" />
       <div class="detail-header">
         <h2>{{ product.name }}</h2>

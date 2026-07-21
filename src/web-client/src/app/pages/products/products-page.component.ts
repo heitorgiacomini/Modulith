@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { MessageModule } from 'primeng/message';
@@ -27,37 +27,37 @@ export class ProductsPageComponent implements OnInit {
   private readonly catalogService = inject(CatalogService);
 
   readonly pageSize = 6;
-  pageIndex = 0;
-  loading = false;
-  errorMessage = '';
-  totalRecords = 0;
-  products: ProductDto[] = [];
-  selectedProduct: ProductDto | null = null;
+  readonly pageIndex = signal(0);
+  readonly loading = signal(false);
+  readonly errorMessage = signal('');
+  readonly totalRecords = signal(0);
+  readonly products = signal<ProductDto[]>([]);
+  readonly selectedProduct = signal<ProductDto | null>(null);
 
   ngOnInit(): void {
-    queueMicrotask(() => this.loadProducts());
+    this.loadProducts();
   }
 
   loadProducts(pageIndex = 0): void {
-    this.loading = true;
-    this.errorMessage = '';
+    this.loading.set(true);
+    this.errorMessage.set('');
 
     this.catalogService.getProducts(pageIndex, this.pageSize).subscribe({
       next: page => {
-        this.pageIndex = page.pageIndex;
-        this.totalRecords = page.count;
-        this.products = page.data;
-        this.loading = false;
+        this.pageIndex.set(page.pageIndex);
+        this.totalRecords.set(page.count);
+        this.products.set(page.data);
+        this.loading.set(false);
 
-        if (this.products.length > 0) {
-          this.selectProduct(this.products[0]);
+        if (page.data.length > 0) {
+          this.selectProduct(page.data[0]);
         } else {
-          this.selectedProduct = null;
+          this.selectedProduct.set(null);
         }
       },
       error: error => {
-        this.loading = false;
-        this.errorMessage = this.toMessage(error);
+        this.loading.set(false);
+        this.errorMessage.set(this.toMessage(error));
       }
     });
   }
@@ -69,10 +69,10 @@ export class ProductsPageComponent implements OnInit {
   selectProduct(product: ProductDto): void {
     this.catalogService.getProduct(product.id).subscribe({
       next: item => {
-        this.selectedProduct = item;
+        this.selectedProduct.set(item);
       },
       error: error => {
-        this.errorMessage = this.toMessage(error);
+        this.errorMessage.set(this.toMessage(error));
       }
     });
   }
