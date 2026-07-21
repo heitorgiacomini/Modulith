@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { ToolbarModule } from 'primeng/toolbar';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterLink, RouterOutlet, ButtonModule, ToolbarModule],
+  templateUrl: './app-shell.html',
+  styleUrl: './app.scss'
+})
+export class App {}

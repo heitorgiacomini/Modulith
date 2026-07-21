@@ -1,0 +1,21 @@
+<p-toolbar styleClass="app-toolbar">
+  <ng-template pTemplate="start">
+    <div class="brand">
+      <span class="brand-badge">M</span>
+      <div>
+        <div class="brand-title">MehmedCourse</div>
+        <div class="brand-subtitle">GraphQL API + Angular PrimeNG client</div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="toolbar-actions">
+      <a pButton routerLink="/products" label="Catalog" icon="pi pi-shopping-bag"></a>
+    </div>
+  </ng-template>
+</p-toolbar>
+
+<main class="app-shell">
+  <router-outlet></router-outlet>
+</main>

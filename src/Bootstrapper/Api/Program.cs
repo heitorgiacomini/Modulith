@@ -5,6 +5,8 @@ namespace Api;
 
 public partial class Program
 {
+  private const string FrontendCorsPolicy = "FrontendCors";
+
   private static async Task Main(String[] args)
   {
     WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
@@ -47,6 +49,15 @@ public partial class Program
     _ = webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
     _ = webAppBuilder.Services.AddAuthorization();
 
+    _ = webAppBuilder.Services.AddCors(options =>
+    {
+      options.AddPolicy(FrontendCorsPolicy, policy =>
+        policy
+          .WithOrigins("http://localhost:4200")
+          .AllowAnyHeader()
+          .AllowAnyMethod());
+    });
+
     //module services: catalog, basket, ordering
     _ = webAppBuilder.Services
       .AddCatalogModule(webAppBuilder.Configuration)
@@ -66,6 +77,7 @@ public partial class Program
 
     _ = webApp.UseSerilogRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
+    _ = webApp.UseCors(FrontendCorsPolicy);
 
     _ = webApp.UseAuthentication();
     _ = webApp.UseAuthorization();
@@ -92,7 +104,7 @@ public partial class Program
     //app.UseEndpoints(endpoints =>
     //{
     //	endpoints.MapControllers();
-    //});	
+    //});
 
     //webApp.Run();
     await webApp.RunAsync();

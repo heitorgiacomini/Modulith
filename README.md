@@ -38,3 +38,8 @@ We have implemented below **architectural patterns in this repository**.
 #### Ordering module which includes; 
 * Implementing DDD, CQRS, and Clean Architecture with using Best Practices
 * Implement Outbox Pattern For Reliable Messaging w/ BasketCheckout Use Case
+
+#### GraphQL + Angular client
+* The API host exposes a GraphQL endpoint at `/graphql` via Hot Chocolate.
+* The Angular client lives in `src/web-client` and uses PrimeNG UI components.
+* Run the client with `npm start` from `src/web-client` and the API with `dotnet run --project src/Bootstrapper/Api/Api.csproj`.

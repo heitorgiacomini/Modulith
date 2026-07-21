@@ -1,0 +1,85 @@
+<div class="page-shell">
+  <p-card styleClass="page-hero">
+    <ng-template pTemplate="title">Catalog browser</ng-template>
+    <ng-template pTemplate="subtitle">Products are loaded from the ASP.NET Core GraphQL endpoint.</ng-template>
+
+    <div class="hero-meta">
+      <span class="meta-pill">{{ totalRecords }} products</span>
+      <button
+        pButton
+        type="button"
+        label="Refresh"
+        icon="pi pi-refresh"
+        (click)="loadProducts(pageIndex)"
+        [loading]="loading"></button>
+    </div>
+
+    @if (errorMessage) {
+      <p-message severity="error" [text]="errorMessage"></p-message>
+    }
+
+    @if (loading) {
+      <div class="loading-state">
+        <p-progressSpinner ariaLabel="Loading catalog"></p-progressSpinner>
+      </div>
+    }
+
+    <div class="product-grid">
+      <p-card
+        *ngFor="let product of products; trackBy: trackByProduct"
+        class="product-card"
+        [class.product-card-selected]="selectedProduct?.id === product.id">
+        <ng-template pTemplate="header">
+          <img class="product-image" [src]="imageUrl(product)" [alt]="product.name" />
+        </ng-template>
+
+        <ng-template pTemplate="title">{{ product.name }}</ng-template>
+        <ng-template pTemplate="subtitle">{{ product.price | currency }}</ng-template>
+
+        <div class="category-list">
+          <p-tag *ngFor="let category of product.category" [value]="category" severity="info"></p-tag>
+        </div>
+
+        <p class="product-description">{{ product.description }}</p>
+
+        <ng-template pTemplate="footer">
+          <button
+            pButton
+            type="button"
+            label="View details"
+            icon="pi pi-search"
+            (click)="selectProduct(product)"></button>
+        </ng-template>
+      </p-card>
+    </div>
+
+    <p-paginator
+      [rows]="pageSize"
+      [first]="pageIndex * pageSize"
+      [totalRecords]="totalRecords"
+      (onPageChange)="onPageChange($event)"></p-paginator>
+  </p-card>
+
+  <p-card styleClass="details-panel">
+    <ng-template pTemplate="title">Selected product</ng-template>
+
+    <ng-container *ngIf="selectedProduct as product; else noSelection">
+      <img class="detail-image" [src]="imageUrl(product)" [alt]="product.name" />
+      <div class="detail-header">
+        <h2>{{ product.name }}</h2>
+        <strong>{{ product.price | currency }}</strong>
+      </div>
+
+      <div class="category-list">
+        <p-tag *ngFor="let category of product.category" [value]="category" severity="success"></p-tag>
+      </div>
+
+      <p class="detail-description">{{ product.description }}</p>
+      <code class="detail-id">{{ product.id }}</code>
+    </ng-container>
+
+    <ng-template #noSelection>
+      <div class="empty-state">Select a product to load its GraphQL details.</div>
+    </ng-template>
+  </p-card>
+</div>
