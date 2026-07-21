@@ -4,6 +4,8 @@ services:
       - POSTGRES_USER=eshopdb
       - POSTGRES_PASSWORD=eshopdb
       - POSTGRES_DB=eshopdb
+    ports:
+      - "5434:5432"
     restart: always
     volumes:
       - postgres_eshopdb:/var/lib/postgresql
