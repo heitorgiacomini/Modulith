@@ -7,9 +7,40 @@ services:
       - POSTGRES_DB=eshopdb
     restart: always
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
-      - postgres_eshopdb:/var/lib/postgresql/
+      - postgres_eshopdb:/var/lib/postgresql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eshopdb -d eshopdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # make postgres create schema before using keycloak
+  keycloak:
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=eshopdb
+      - KEYCLOAK_ADMIN_PASSWORD=eshopdb
+      - KC_DB=postgres
+      #- KC_DB_URL=jdbc:postgresql://postgres:5432/eshopdb?currentSchema=keycloak
+      - KC_DB_SCHEMA=keycloak
+      - KC_DB_USERNAME=eshopdb
+      - KC_DB_PASSWORD=eshopdb
+      - KC_HTTP_PORT=9090
+      - KC_HOSTNAME=localhost
+      - KC_DB_URL_HOST=postgres
+      - KC_DB_URL_PORT=5432
+      - KC_DB_URL_DATABASE=eshopdb
+    restart: always
+    ports:
+      - "9090:9090"
+    command:
+      - start-dev
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   redis:
     container_name: redis
@@ -37,32 +68,14 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-  # make postgres create schema before using keycloak
-  keycloak:
-    container_name: keycloak
-    environment:
-      - KEYCLOAK_ADMIN=eshopdb
-      - KEYCLOAK_ADMIN_PASSWORD=eshopdb
-      - KC_DB=postgres
-      - KC_DB_URL=jdbc:postgresql://postgres:5432/eshopdb?currentSchema=keycloak
-      - KC_DB_USERNAME=eshopdb
-      - KC_DB_PASSWORD=eshopdb
-      - KC_HTTP_PORT=9090
-      - KC_HOSTNAME=localhost
-    restart: always
-    ports:
-      - "9090:9090"
-    command:
-      - start-dev
-    depends_on:
-      - postgres
+
 
   api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__Database=Server=eshopdb;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
+      - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
       - ConnectionStrings__Redis=redis:6379
       - MessageBroker__Host=amqp://rabbitmq:5672
       - MessageBroker__UserName=guest
