@@ -27,11 +27,15 @@ services:
       - KC_DB_USERNAME=eshopdb
       - KC_DB_PASSWORD=eshopdb
       - KC_HTTP_PORT=9090
-      - KC_HOSTNAME=localhost
+      #- KC_HOSTNAME=127.0.0.1
+      - KC_PROXY_HEADERS=xforwarded
+      - KC_PROXY=edge
       - KC_DB_URL_HOST=postgres
       - KC_DB_URL_PORT=5432
       - KC_DB_URL_DATABASE=eshopdb
     restart: always
+    ports:
+      - "127.0.0.1:9090:9090"
     command:
       - start-dev
     depends_on:
@@ -40,19 +44,30 @@ services:
 
   redis:
     restart: always
+    ports:
+      - "127.0.0.1:6379:6379"
 
   seq:
     environment:
       ACCEPT_EULA: "Y"
       SEQ_FIRSTRUN_NOAUTHENTICATION: true
     restart: always
+    ports:
+      - "127.0.0.1:5341:5341"
+      - "127.0.0.1:9091:80"
 
   rabbitmq:
+    container_name: rabbitmq
     hostname: ecommerce-mq
     environment:
       - RABBITMQ_DEFAULT_USER=eshopdb
       - RABBITMQ_DEFAULT_PASS=eshopdb
     restart: always
+    ports:
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
+
+
   api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -61,8 +76,8 @@ services:
       - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
       - ConnectionStrings__Redis=redis:6379
       - MessageBroker__Host=amqp://rabbitmq:5672
-      - MessageBroker__UserName=guest
-      - MessageBroker__Password=guest
+      - MessageBroker__UserName=eshopdb
+      - MessageBroker__Password=eshopdb
       - Keycloak__AuthServerUrl=http://keycloak:9090/
       - Serilog__Using__0=Serilog.Sinks.Console
       - Serilog__Using__1=Serilog.Sinks.Seq
