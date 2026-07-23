@@ -1,24 +1,22 @@
+using Catalog.Data;
 using MediatR;
 using Catalog.Contracts.Products.Dtos;
 using Catalog.Contracts.Products.Features.GetProductById;
-using Catalog.Products.Features.GetProducts;
-using Shared.Pagination;
+using Catalog.Products.Models;
+using HotChocolate.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.GraphQL;
 
 public sealed class CatalogQueries
 {
-  public async Task<PaginatedResult<ProductDto>> Products(
-    [Service] ISender sender,
-    CancellationToken cancellationToken,
-    int pageIndex = 0,
-    int pageSize = 10)
+  [UseOffsetPaging(IncludeTotalCount = true, MaxPageSize = 20)]
+  [UseFiltering]
+  [UseSorting]
+  public IQueryable<Product> Products([Service] CatalogDbContext catalogDbContext)
   {
-    GetProductsResult result = await sender.Send(
-      new GetProductsQuery(new PaginationRequest(pageIndex, pageSize)),
-      cancellationToken);
-
-    return result.Products;
+    return catalogDbContext.Products
+      .AsNoTracking();
   }
 
   public async Task<ProductDto?> Product(

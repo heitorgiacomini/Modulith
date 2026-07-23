@@ -14,6 +14,46 @@
         [loading]="loading()"></button>
     </div>
 
+    <form class="catalog-controls" (ngSubmit)="applyFilters()">
+      <div class="filter-field">
+        <label for="product-search">Filter by name</label>
+        <input
+          id="product-search"
+          pInputText
+          name="productSearch"
+          [ngModel]="searchTerm"
+          (ngModelChange)="searchTerm = $event"
+          placeholder="Search products" />
+      </div>
+
+      <div class="filter-field">
+        <label for="product-sort">Sort by</label>
+        <p-select
+          inputId="product-sort"
+          name="productSort"
+          [options]="sortOptions"
+          optionLabel="label"
+          optionValue="value"
+          [ngModel]="sortOrder"
+          (ngModelChange)="onSortChange($event)"></p-select>
+      </div>
+
+      <button
+        pButton
+        type="submit"
+        label="Search"
+        icon="pi pi-search"
+        [disabled]="loading()"></button>
+      <button
+        pButton
+        type="button"
+        label="Clear"
+        icon="pi pi-filter-slash"
+        severity="secondary"
+        [disabled]="!hasActiveFilters() || loading()"
+        (click)="clearFilters()"></button>
+    </form>
+
     @if (errorMessage()) {
       <p-message severity="error" [text]="errorMessage()"></p-message>
     }

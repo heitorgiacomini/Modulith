@@ -4,8 +4,18 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { GraphqlResponse, PaginatedResult, ProductDto } from './catalog.models';
 
+export type ProductSort = 'NAME_ASC' | 'NAME_DESC' | 'PRICE_ASC' | 'PRICE_DESC';
+
+export interface ProductQueryOptions {
+  search?: string;
+  sort?: ProductSort;
+}
+
 interface ProductsQueryResult {
-  products: PaginatedResult<ProductDto>;
+  products: {
+    items: ProductDto[];
+    totalCount: number;
+  };
 }
 
 interface ProductQueryResult {
@@ -13,12 +23,15 @@ interface ProductQueryResult {
 }
 
 const PRODUCTS_QUERY = `
-  query Products($pageIndex: Int!, $pageSize: Int!) {
-    products(pageIndex: $pageIndex, pageSize: $pageSize) {
-      pageIndex
-      pageSize
-      count
-      data {
+  query Products(
+    $skip: Int
+    $take: Int
+    $where: ProductFilterInput
+    $order: [ProductSortInput!]
+  ) {
+    products(skip: $skip, take: $take, where: $where, order: $order) {
+      totalCount
+      items {
         id
         name
         category
@@ -49,10 +62,40 @@ const PRODUCT_QUERY = `
 export class CatalogService {
   private readonly httpClient = inject(HttpClient);
 
-  getProducts(pageIndex = 0, pageSize = 6): Observable<PaginatedResult<ProductDto>> {
-    return this.graphql<ProductsQueryResult>(PRODUCTS_QUERY, { pageIndex, pageSize }).pipe(
-      map(response => response.products)
+  getProducts(
+    pageIndex = 0,
+    pageSize = 6,
+    options: ProductQueryOptions = {}
+  ): Observable<PaginatedResult<ProductDto>> {
+    const search = options.search?.trim();
+
+    return this.graphql<ProductsQueryResult>(PRODUCTS_QUERY, {
+      skip: pageIndex * pageSize,
+      take: pageSize,
+      where: search ? { name: { contains: search } } : null,
+      order: [this.createSortOrder(options.sort)]
+    }).pipe(
+      map(response => ({
+        pageIndex,
+        pageSize,
+        count: response.products.totalCount,
+        data: response.products.items
+      }))
     );
+  }
+
+  private createSortOrder(sort: ProductSort | undefined): Record<string, string> {
+    switch (sort) {
+      case 'NAME_DESC':
+        return { name: 'DESC' };
+      case 'PRICE_ASC':
+        return { price: 'ASC' };
+      case 'PRICE_DESC':
+        return { price: 'DESC' };
+      case 'NAME_ASC':
+      default:
+        return { name: 'ASC' };
+    }
   }
 
   getProduct(id: string): Observable<ProductDto> {
