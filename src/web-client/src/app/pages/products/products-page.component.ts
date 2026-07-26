@@ -1,24 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { TagModule } from 'primeng/tag';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { CatalogService } from '../../catalog/catalog.service';
-import { ProductDto } from '../../catalog/catalog.models';
+import { CreateProductRequest, ProductDto } from '../../catalog/catalog.models';
 import { GraphqlLazyLoadEvent } from '../../shared/graphql/graphql-query-builder.service';
 
 @Component({
   selector: 'app-products-page',
-  imports: [
-    CommonModule,
-    ButtonModule,
-    CardModule,
-    MessageModule,
-    TagModule,
-    TableModule
-  ],
+  imports: [CommonModule, FormsModule, ButtonModule, CardModule, DialogModule, InputNumberModule, InputTextModule, MessageModule, TagModule, TableModule],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })
@@ -29,16 +26,17 @@ export class ProductsPageComponent implements OnInit {
   readonly maxFilterRules = Number.MAX_SAFE_INTEGER;
   readonly tableFirst = signal(0);
   readonly loading = signal(false);
+  readonly saving = signal(false);
+  readonly createDialogVisible = signal(false);
   readonly errorMessage = signal('');
   readonly totalRecords = signal(0);
   readonly products = signal<ProductDto[]>([]);
   readonly selectedProduct = signal<ProductDto | null>(null);
+  newProduct = this.emptyProduct();
 
   private lastLazyLoadEvent: GraphqlLazyLoadEvent = this.createDefaultLazyLoadEvent();
 
-  ngOnInit(): void {
-    this.loadProducts(this.lastLazyLoadEvent);
-  }
+  ngOnInit(): void { this.loadProducts(this.lastLazyLoadEvent); }
 
   onLazyLoad(event: TableLazyLoadEvent): void {
     const lazyLoadEvent = this.normalizeLazyLoadEvent(event);
@@ -46,82 +44,56 @@ export class ProductsPageComponent implements OnInit {
     this.loadProducts(lazyLoadEvent);
   }
 
-  refresh(): void {
-    this.loadProducts(this.lastLazyLoadEvent);
+  refresh(): void { this.loadProducts(this.lastLazyLoadEvent); }
+  clearFilters(table: Table): void { table.clear(); }
+
+  openCreateDialog(): void {
+    this.newProduct = this.emptyProduct();
+    this.createDialogVisible.set(true);
   }
 
-  clearFilters(table: Table): void {
-    table.clear();
+  createProduct(): void {
+    const categories = this.newProduct.categories.split(',').map(category => category.trim()).filter(Boolean);
+    if (!this.newProduct.name.trim() || categories.length === 0 || !this.newProduct.imageFile.trim() || this.newProduct.price <= 0) {
+      this.errorMessage.set('Name, at least one category, image URL, and a positive price are required.');
+      return;
+    }
+
+    const request: CreateProductRequest = {
+      product: {
+        name: this.newProduct.name.trim(),
+        category: categories,
+        description: this.newProduct.description.trim(),
+        imageFile: this.newProduct.imageFile.trim(),
+        price: this.newProduct.price
+      }
+    };
+    this.saving.set(true);
+    this.errorMessage.set('');
+    this.catalogService.createProduct(request).subscribe({
+      next: () => { this.saving.set(false); this.createDialogVisible.set(false); this.refresh(); },
+      error: error => { this.saving.set(false); this.errorMessage.set(this.toMessage(error)); }
+    });
   }
 
   loadProducts(event: GraphqlLazyLoadEvent): void {
-    this.loading.set(true);
-    this.errorMessage.set('');
-
+    this.loading.set(true); this.errorMessage.set('');
     this.catalogService.getProducts(event).subscribe({
       next: page => {
-        this.tableFirst.set(page.pageIndex * page.pageSize);
-        this.totalRecords.set(page.count);
-        this.products.set(page.data);
-        this.loading.set(false);
-
-        if (page.data.length > 0) {
-          this.selectProduct(page.data[0]);
-        } else {
-          this.selectedProduct.set(null);
-        }
+        this.tableFirst.set(page.pageIndex * page.pageSize); this.totalRecords.set(page.count); this.products.set(page.data); this.loading.set(false);
+        if (page.data.length > 0) { this.selectProduct(page.data[0]); } else { this.selectedProduct.set(null); }
       },
-      error: error => {
-        this.loading.set(false);
-        this.errorMessage.set(this.toMessage(error));
-      }
+      error: error => { this.loading.set(false); this.errorMessage.set(this.toMessage(error)); }
     });
   }
 
   selectProduct(product: ProductDto): void {
-    this.catalogService.getProduct(product.id).subscribe({
-      next: item => {
-        this.selectedProduct.set(item);
-      },
-      error: error => {
-        this.errorMessage.set(this.toMessage(error));
-      }
-    });
+    this.catalogService.getProduct(product.id).subscribe({ next: item => this.selectedProduct.set(item), error: error => this.errorMessage.set(this.toMessage(error)) });
   }
 
-  imageUrl(product: ProductDto): string {
-    return product.imageFile.startsWith('http')
-      ? product.imageFile
-      : `https://placehold.co/900x600/2563eb/ffffff?text=${encodeURIComponent(product.name)}`;
-  }
-
-  private createDefaultLazyLoadEvent(): GraphqlLazyLoadEvent {
-    return {
-      first: 0,
-      rows: this.pageSize,
-      sortField: 'name',
-      sortOrder: 1,
-      filters: {}
-    };
-  }
-
-  private normalizeLazyLoadEvent(event: TableLazyLoadEvent): GraphqlLazyLoadEvent {
-    const sortField = Array.isArray(event.sortField) ? event.sortField[0] : event.sortField;
-
-    return {
-      first: typeof event.first === 'number' && event.first >= 0 ? event.first : 0,
-      rows: typeof event.rows === 'number' && event.rows > 0 ? event.rows : this.pageSize,
-      sortField: sortField ?? 'name',
-      sortOrder: event.sortOrder ?? 1,
-      filters: event.filters ?? {}
-    };
-  }
-
-  private toMessage(error: unknown): string {
-    if (error instanceof Error) {
-      return error.message;
-    }
-
-    return 'Unable to load catalog data.';
-  }
+  imageUrl(product: ProductDto): string { return product.imageFile.startsWith('http') ? product.imageFile : `https://placehold.co/900x600/2563eb/ffffff?text=${encodeURIComponent(product.name)}`; }
+  private emptyProduct() { return { name: '', categories: '', description: '', imageFile: '', price: 0 }; }
+  private createDefaultLazyLoadEvent(): GraphqlLazyLoadEvent { return { first: 0, rows: this.pageSize, sortField: 'name', sortOrder: 1, filters: {} }; }
+  private normalizeLazyLoadEvent(event: TableLazyLoadEvent): GraphqlLazyLoadEvent { const sortField = Array.isArray(event.sortField) ? event.sortField[0] : event.sortField; return { first: typeof event.first === 'number' && event.first >= 0 ? event.first : 0, rows: typeof event.rows === 'number' && event.rows > 0 ? event.rows : this.pageSize, sortField: sortField ?? 'name', sortOrder: event.sortOrder ?? 1, filters: event.filters ?? {} }; }
+  private toMessage(error: unknown): string { return error instanceof Error ? error.message : 'Unable to load catalog data.'; }
 }

@@ -1,3 +1,4 @@
+using Basket.Basket.GraphQL;
 using Basket.Data.Processors;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,12 @@ public static class BasketModule
     //_ = services.AddScoped<IDataSeeder, BasketDataSeeder>();
     _ = services.AddHostedService<OutboxProcessor>();
 
+    _ = services
+      .AddGraphQLServer()
+      .AddBasketGraphQL()
+      .AddFiltering()
+      .AddSorting();
+
     return services;
   }
 
@@ -47,3 +54,5 @@ public static class BasketModule
   }
 
 }
+
+

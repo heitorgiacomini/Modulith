@@ -66,14 +66,6 @@ public partial class Program
 
     _ = webAppBuilder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
-    _ = webAppBuilder.Services
-      .AddGraphQLServer()
-      .AddQueryType<Api.GraphQL.CatalogQueries>()
-      .AddType<Api.GraphQL.ProductType>()
-      .AddFiltering()
-      .AddSorting()
-      .ModifyCostOptions(options => options.MaxFieldCost = 5_000);
-
     WebApplication webApp = webAppBuilder.Build();
 
     _ = webApp.MapCarter();

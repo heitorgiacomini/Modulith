@@ -8,7 +8,7 @@ import {
   GraphqlQueryBuilderService,
   GraphqlSelectionNode
 } from '../shared/graphql/graphql-query-builder.service';
-import { GraphqlResponse, PaginatedResult, ProductDto } from './catalog.models';
+import { CreateProductRequest, GraphqlResponse, PaginatedResult, ProductDto } from './catalog.models';
 
 interface ProductsQueryResult {
   products: {
@@ -41,8 +41,8 @@ export class CatalogService {
     variableDefinitions: {
       skip: 'Int',
       take: 'Int',
-      where: 'ProductFilterInput',
-      order: '[ProductSortInput!]'
+      where: 'ProductListItemFilterInput',
+      order: '[ProductListItemSortInput!]'
     },
     rootField: 'products',
     rootArguments: {
@@ -83,6 +83,10 @@ export class CatalogService {
     );
   }
 
+  createProduct(request: CreateProductRequest): Observable<void> {
+    return this.httpClient.post<void>(`${environment.apiUrl}/products`, request);
+  }
+
   getProduct(id: string): Observable<ProductDto> {
     return this.graphql<ProductQueryResult>(this.productQuery, { id }).pipe(
       map(response => {
@@ -116,3 +120,7 @@ export class CatalogService {
     return response.data;
   }
 }
+
+
+
+

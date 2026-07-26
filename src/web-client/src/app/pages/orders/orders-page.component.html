@@ -1,0 +1,73 @@
+<div class="page-shell">
+  <p-card styleClass="page-card">
+    <ng-template pTemplate="title">Orders</ng-template>
+    <ng-template pTemplate="subtitle">Order summaries from the Ordering module.</ng-template>
+
+    <div class="hero-meta">
+      <span class="meta-pill">{{ totalRecords() }} orders</span>
+      <button pButton type="button" label="Refresh" icon="pi pi-refresh" (click)="refresh()" [loading]="loading()"></button>
+    </div>
+
+    @if (errorMessage()) {
+      <p-message severity="error" [text]="errorMessage()"></p-message>
+    }
+
+    <p-table
+      #ordersTable
+      [value]="orders()"
+      dataKey="id"
+      [lazy]="true"
+      [paginator]="true"
+      [rows]="pageSize"
+      [first]="tableFirst()"
+      [totalRecords]="totalRecords()"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [loading]="loading()"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+      [tableStyle]="{ 'min-width': '60rem' }"
+      (onLazyLoad)="onLazyLoad($event)">
+      <ng-template pTemplate="caption">
+        <div class="table-caption">
+          <span class="caption-title">Order summaries</span><button pButton type="button" label="New Order" icon="pi pi-plus" (click)="openCreateDialog()"></button>
+          <button pButton type="button" label="Clear filters" icon="pi pi-filter-slash" severity="secondary" (click)="clearFilters(ordersTable)"></button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="orderName">Order <p-sortIcon field="orderName"></p-sortIcon><p-columnFilter type="text" field="orderName" display="menu" matchMode="startsWith" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
+          <th pSortableColumn="customerId">Customer ID <p-sortIcon field="customerId"></p-sortIcon><p-columnFilter type="text" field="customerId" display="menu" matchMode="equals" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
+          <th pSortableColumn="itemCount">Items <p-sortIcon field="itemCount"></p-sortIcon><p-columnFilter type="numeric" field="itemCount" display="menu" matchMode="equals" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
+          <th pSortableColumn="totalPrice">Total <p-sortIcon field="totalPrice"></p-sortIcon><p-columnFilter type="numeric" field="totalPrice" display="menu" matchMode="equals" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-order>
+        <tr><td>{{ order.orderName }}</td><td>{{ order.customerId }}</td><td>{{ order.itemCount }}</td><td>{{ order.totalPrice | currency }}</td></tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage"><tr><td colspan="4">No orders found.</td></tr></ng-template>
+    </p-table>
+  </p-card>
+</div>
+
+<p-dialog header="New Order" [modal]="true" [visible]="createDialogVisible()" [style]="{ width: '42rem' }" (visibleChange)="createDialogVisible.set($event)">
+  <div class="dialog-form dialog-form-grid">
+    <label for="order-customer">Customer ID</label><input id="order-customer" pInputText [(ngModel)]="newOrder.customerId" />
+    <label for="order-name">Order name</label><input id="order-name" pInputText [(ngModel)]="newOrder.orderName" />
+    <label for="order-product">Product ID</label><input id="order-product" pInputText [(ngModel)]="newOrder.productId" />
+    <label for="order-quantity">Quantity</label><p-inputnumber inputId="order-quantity" [(ngModel)]="newOrder.quantity" [min]="1"></p-inputnumber>
+    <label for="order-price">Item price</label><p-inputnumber inputId="order-price" [(ngModel)]="newOrder.price" mode="currency" currency="USD" [min]="0.01"></p-inputnumber>
+    <label for="order-first-name">First name</label><input id="order-first-name" pInputText [(ngModel)]="newOrder.firstName" />
+    <label for="order-last-name">Last name</label><input id="order-last-name" pInputText [(ngModel)]="newOrder.lastName" />
+    <label for="order-email">Email</label><input id="order-email" pInputText [(ngModel)]="newOrder.email" />
+    <label for="order-address">Address</label><input id="order-address" pInputText [(ngModel)]="newOrder.addressLine" />
+    <label for="order-country">Country</label><input id="order-country" pInputText [(ngModel)]="newOrder.country" />
+    <label for="order-state">State</label><input id="order-state" pInputText [(ngModel)]="newOrder.state" />
+    <label for="order-zip">ZIP code</label><input id="order-zip" pInputText [(ngModel)]="newOrder.zipCode" />
+    <label for="order-card-name">Card name</label><input id="order-card-name" pInputText [(ngModel)]="newOrder.cardName" />
+    <label for="order-card-number">Card number</label><input id="order-card-number" pInputText [(ngModel)]="newOrder.cardNumber" />
+    <label for="order-expiration">Expiration</label><input id="order-expiration" pInputText [(ngModel)]="newOrder.expiration" placeholder="MM/YY" />
+    <label for="order-cvv">CVV</label><input id="order-cvv" pInputText [(ngModel)]="newOrder.cvv" />
+  </div>
+  <ng-template pTemplate="footer"><button pButton type="button" label="Cancel" severity="secondary" (click)="createDialogVisible.set(false)"></button><button pButton type="button" label="Create" icon="pi pi-check" [loading]="saving()" (click)="createOrder()"></button></ng-template>
+</p-dialog>
+

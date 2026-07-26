@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Catalog.GraphQL;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Data.Interceptors;
@@ -34,6 +35,14 @@ public static class CatalogModule
 
 
         _ = services.AddScoped<IDataSeeder, CatalogDataSeeder>();
+
+        _ = services
+            .AddGraphQLServer()
+            .AddCatalogGraphQL()
+            .AddFiltering()
+            .AddSorting()
+            .ModifyCostOptions(options => options.MaxFieldCost = 5_000);
+
         return services;
     }
 

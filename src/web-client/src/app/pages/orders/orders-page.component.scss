@@ -1,0 +1,27 @@
+.page-shell { display: grid; }
+.page-card { border-radius: 1rem; }
+.hero-meta, .table-caption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1rem 0; }
+.meta-pill { padding: 0.45rem 0.8rem; border-radius: 999px; background: #e0e7ff; color: #3730a3; font-weight: 600; }
+.caption-title { color: #334155; font-weight: 700; }
+@media (max-width: 48rem) { .hero-meta, .table-caption { align-items: stretch; flex-direction: column; } }
+
+:host ::ng-deep .p-dialog .dialog-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+:host ::ng-deep .p-dialog .dialog-form label {
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+:host ::ng-deep .p-dialog .dialog-form input,
+:host ::ng-deep .p-dialog .dialog-form p-inputnumber {
+  width: 100%;
+}
+
+:host ::ng-deep .p-dialog .dialog-note {
+  color: #64748b;
+  margin-top: 0;
+}

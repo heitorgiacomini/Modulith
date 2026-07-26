@@ -7,6 +7,10 @@ export interface ProductDto {
   price: number;
 }
 
+export interface CreateProductRequest {
+  product: Omit<ProductDto, 'id'>;
+}
+
 export interface PaginatedResult<T> {
   pageIndex: number;
   pageSize: number;

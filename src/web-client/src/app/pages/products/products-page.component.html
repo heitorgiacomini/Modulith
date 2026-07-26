@@ -44,7 +44,7 @@
               icon="pi pi-filter-slash"
               severity="secondary"
               (click)="clearFilters(productsTable)"></button>
-            <button pButton type="button" label="New Product" icon="pi pi-plus"></button>
+            <button pButton type="button" label="New Product" icon="pi pi-plus" (click)="openCreateDialog()"></button>
           </div>
         </div>
       </ng-template>
@@ -141,3 +141,15 @@
     </ng-template>
   </p-card>
 </div>
+
+<p-dialog header="New Product" [modal]="true" [visible]="createDialogVisible()" [style]="{ width: '32rem' }" (visibleChange)="createDialogVisible.set($event)">
+  <div class="dialog-form">
+    <label for="product-name">Name</label><input id="product-name" pInputText [(ngModel)]="newProduct.name" />
+    <label for="product-categories">Categories</label><input id="product-categories" pInputText [(ngModel)]="newProduct.categories" placeholder="Comma separated" />
+    <label for="product-description">Description</label><input id="product-description" pInputText [(ngModel)]="newProduct.description" />
+    <label for="product-image">Image URL</label><input id="product-image" pInputText [(ngModel)]="newProduct.imageFile" />
+    <label for="product-price">Price</label><p-inputnumber inputId="product-price" [(ngModel)]="newProduct.price" mode="currency" currency="USD" [min]="0.01"></p-inputnumber>
+  </div>
+  <ng-template pTemplate="footer"><button pButton type="button" label="Cancel" severity="secondary" (click)="createDialogVisible.set(false)"></button><button pButton type="button" label="Create" icon="pi pi-check" [loading]="saving()" (click)="createProduct()"></button></ng-template>
+</p-dialog>
+

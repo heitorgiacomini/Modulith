@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Data;
+using Ordering.Orders.GraphQL;
 using Shared.Data;
 using Shared.Data.Interceptors;
 
@@ -29,6 +30,12 @@ public static class OrderingModule
             options.UseNpgsql(connectionString);
         });
 
+        _ = services
+            .AddGraphQLServer()
+            .AddOrderingGraphQL()
+            .AddFiltering()
+            .AddSorting();
+
         return services;
     }
 
@@ -45,3 +52,4 @@ public static class OrderingModule
         return app;
     }
 }
+

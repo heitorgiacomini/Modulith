@@ -125,3 +125,24 @@
     align-items: start;
   }
 }
+
+:host ::ng-deep .p-dialog .dialog-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+:host ::ng-deep .p-dialog .dialog-form label {
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+:host ::ng-deep .p-dialog .dialog-form input,
+:host ::ng-deep .p-dialog .dialog-form p-inputnumber {
+  width: 100%;
+}
+
+:host ::ng-deep .p-dialog .dialog-note {
+  color: #64748b;
+  margin-top: 0;
+}
