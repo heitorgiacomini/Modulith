@@ -1,30 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
-import { PaginatorModule } from 'primeng/paginator';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { SelectModule } from 'primeng/select';
 import { TagModule } from 'primeng/tag';
-import { CatalogService, ProductSort } from '../../catalog/catalog.service';
+import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { CatalogService } from '../../catalog/catalog.service';
 import { ProductDto } from '../../catalog/catalog.models';
+import { GraphqlLazyLoadEvent } from '../../shared/graphql/graphql-query-builder.service';
 
 @Component({
   selector: 'app-products-page',
   imports: [
     CommonModule,
-    FormsModule,
     ButtonModule,
     CardModule,
-    InputTextModule,
     MessageModule,
-    PaginatorModule,
-    ProgressSpinnerModule,
-    SelectModule,
-    TagModule
+    TagModule,
+    TableModule
   ],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
@@ -32,37 +25,42 @@ import { ProductDto } from '../../catalog/catalog.models';
 export class ProductsPageComponent implements OnInit {
   private readonly catalogService = inject(CatalogService);
 
-  readonly pageSize = 6;
-  readonly pageIndex = signal(0);
+  readonly pageSize = 10;
+  readonly maxFilterRules = Number.MAX_SAFE_INTEGER;
+  readonly tableFirst = signal(0);
   readonly loading = signal(false);
   readonly errorMessage = signal('');
   readonly totalRecords = signal(0);
   readonly products = signal<ProductDto[]>([]);
   readonly selectedProduct = signal<ProductDto | null>(null);
-  readonly sortOptions: Array<{ label: string; value: ProductSort }> = [
-    { label: 'Name: A to Z', value: 'NAME_ASC' },
-    { label: 'Name: Z to A', value: 'NAME_DESC' },
-    { label: 'Price: low to high', value: 'PRICE_ASC' },
-    { label: 'Price: high to low', value: 'PRICE_DESC' }
-  ];
 
-  searchTerm = '';
-  sortOrder: ProductSort = 'NAME_ASC';
+  private lastLazyLoadEvent: GraphqlLazyLoadEvent = this.createDefaultLazyLoadEvent();
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.loadProducts(this.lastLazyLoadEvent);
   }
 
-  loadProducts(pageIndex = 0): void {
+  onLazyLoad(event: TableLazyLoadEvent): void {
+    const lazyLoadEvent = this.normalizeLazyLoadEvent(event);
+    this.lastLazyLoadEvent = lazyLoadEvent;
+    this.loadProducts(lazyLoadEvent);
+  }
+
+  refresh(): void {
+    this.loadProducts(this.lastLazyLoadEvent);
+  }
+
+  clearFilters(table: Table): void {
+    table.clear();
+  }
+
+  loadProducts(event: GraphqlLazyLoadEvent): void {
     this.loading.set(true);
     this.errorMessage.set('');
 
-    this.catalogService.getProducts(pageIndex, this.pageSize, {
-      search: this.searchTerm,
-      sort: this.sortOrder
-    }).subscribe({
+    this.catalogService.getProducts(event).subscribe({
       next: page => {
-        this.pageIndex.set(page.pageIndex);
+        this.tableFirst.set(page.pageIndex * page.pageSize);
         this.totalRecords.set(page.count);
         this.products.set(page.data);
         this.loading.set(false);
@@ -78,29 +76,6 @@ export class ProductsPageComponent implements OnInit {
         this.errorMessage.set(this.toMessage(error));
       }
     });
-  }
-
-  onPageChange(event: { page?: number }): void {
-    this.loadProducts(event.page ?? 0);
-  }
-
-  applyFilters(): void {
-    this.loadProducts();
-  }
-
-  onSortChange(sort: ProductSort): void {
-    this.sortOrder = sort;
-    this.applyFilters();
-  }
-
-  clearFilters(): void {
-    this.searchTerm = '';
-    this.sortOrder = 'NAME_ASC';
-    this.applyFilters();
-  }
-
-  hasActiveFilters(): boolean {
-    return this.searchTerm.trim().length > 0 || this.sortOrder !== 'NAME_ASC';
   }
 
   selectProduct(product: ProductDto): void {
@@ -120,8 +95,26 @@ export class ProductsPageComponent implements OnInit {
       : `https://placehold.co/900x600/2563eb/ffffff?text=${encodeURIComponent(product.name)}`;
   }
 
-  trackByProduct(_: number, product: ProductDto): string {
-    return product.id;
+  private createDefaultLazyLoadEvent(): GraphqlLazyLoadEvent {
+    return {
+      first: 0,
+      rows: this.pageSize,
+      sortField: 'name',
+      sortOrder: 1,
+      filters: {}
+    };
+  }
+
+  private normalizeLazyLoadEvent(event: TableLazyLoadEvent): GraphqlLazyLoadEvent {
+    const sortField = Array.isArray(event.sortField) ? event.sortField[0] : event.sortField;
+
+    return {
+      first: typeof event.first === 'number' && event.first >= 0 ? event.first : 0,
+      rows: typeof event.rows === 'number' && event.rows > 0 ? event.rows : this.pageSize,
+      sortField: sortField ?? 'name',
+      sortOrder: event.sortOrder ?? 1,
+      filters: event.filters ?? {}
+    };
   }
 
   private toMessage(error: unknown): string {

@@ -1,4 +1,4 @@
-﻿global using Shared.DDD;
+global using Shared.DDD;
 global using Shared.Contracts.CQRS;
 global using Shared.Pagination;
 global using Ordering.Orders.Models;

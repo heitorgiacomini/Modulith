@@ -2,14 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import {
+  GraphqlCollectionVariables,
+  GraphqlLazyLoadEvent,
+  GraphqlQueryBuilderService,
+  GraphqlSelectionNode
+} from '../shared/graphql/graphql-query-builder.service';
 import { GraphqlResponse, PaginatedResult, ProductDto } from './catalog.models';
-
-export type ProductSort = 'NAME_ASC' | 'NAME_DESC' | 'PRICE_ASC' | 'PRICE_DESC';
-
-export interface ProductQueryOptions {
-  search?: string;
-  sort?: ProductSort;
-}
 
 interface ProductsQueryResult {
   products: {
@@ -22,61 +21,61 @@ interface ProductQueryResult {
   product: ProductDto | null;
 }
 
-const PRODUCTS_QUERY = `
-  query Products(
-    $skip: Int
-    $take: Int
-    $where: ProductFilterInput
-    $order: [ProductSortInput!]
-  ) {
-    products(skip: $skip, take: $take, where: $where, order: $order) {
-      totalCount
-      items {
-        id
-        name
-        category
-        description
-        imageFile
-        price
-      }
-    }
-  }
-`;
-
-const PRODUCT_QUERY = `
-  query Product($id: UUID!) {
-    product(id: $id) {
-      id
-      name
-      category
-      description
-      imageFile
-      price
-    }
-  }
-`;
+const PRODUCT_FIELDS: Array<string | GraphqlSelectionNode> = [
+  'id',
+  'name',
+  'category',
+  'description',
+  'imageFile',
+  'price'
+];
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogService {
   private readonly httpClient = inject(HttpClient);
+  private readonly graphqlQueryBuilder = inject(GraphqlQueryBuilderService);
+  private readonly productsQuery = this.graphqlQueryBuilder.buildQuery({
+    operationName: 'Products',
+    variableDefinitions: {
+      skip: 'Int',
+      take: 'Int',
+      where: 'ProductFilterInput',
+      order: '[ProductSortInput!]'
+    },
+    rootField: 'products',
+    rootArguments: {
+      skip: '$skip',
+      take: '$take',
+      where: '$where',
+      order: '$order'
+    },
+    selection: ['totalCount', { name: 'items', fields: PRODUCT_FIELDS }]
+  });
+  private readonly productQuery = this.graphqlQueryBuilder.buildQuery({
+    operationName: 'Product',
+    variableDefinitions: {
+      id: 'UUID!'
+    },
+    rootField: 'product',
+    rootArguments: {
+      id: '$id'
+    },
+    selection: PRODUCT_FIELDS
+  });
 
-  getProducts(
-    pageIndex = 0,
-    pageSize = 6,
-    options: ProductQueryOptions = {}
-  ): Observable<PaginatedResult<ProductDto>> {
-    const search = options.search?.trim();
+  getProducts(event: GraphqlLazyLoadEvent): Observable<PaginatedResult<ProductDto>> {
+    const queryVariables = this.graphqlQueryBuilder.buildCollectionVariables(event, 6);
+    const pageSize = typeof queryVariables.take === 'number' ? queryVariables.take : 6;
+    const first = typeof queryVariables.skip === 'number' ? queryVariables.skip : 0;
 
-    return this.graphql<ProductsQueryResult>(PRODUCTS_QUERY, {
-      skip: pageIndex * pageSize,
-      take: pageSize,
-      where: search ? { name: { contains: search } } : null,
-      order: [this.createSortOrder(options.sort)]
-    }).pipe(
+    return this.graphql<ProductsQueryResult, GraphqlCollectionVariables>(
+      this.productsQuery,
+      queryVariables
+    ).pipe(
       map(response => ({
-        pageIndex,
+        pageIndex: Math.floor(first / pageSize),
         pageSize,
         count: response.products.totalCount,
         data: response.products.items
@@ -84,22 +83,8 @@ export class CatalogService {
     );
   }
 
-  private createSortOrder(sort: ProductSort | undefined): Record<string, string> {
-    switch (sort) {
-      case 'NAME_DESC':
-        return { name: 'DESC' };
-      case 'PRICE_ASC':
-        return { price: 'ASC' };
-      case 'PRICE_DESC':
-        return { price: 'DESC' };
-      case 'NAME_ASC':
-      default:
-        return { name: 'ASC' };
-    }
-  }
-
   getProduct(id: string): Observable<ProductDto> {
-    return this.graphql<ProductQueryResult>(PRODUCT_QUERY, { id }).pipe(
+    return this.graphql<ProductQueryResult>(this.productQuery, { id }).pipe(
       map(response => {
         if (!response.product) {
           throw new Error('Product not found.');
@@ -110,7 +95,10 @@ export class CatalogService {
     );
   }
 
-  private graphql<T>(query: string, variables: Record<string, unknown>): Observable<T> {
+  private graphql<T, TVariables extends object = Record<string, unknown>>(
+    query: string,
+    variables: TVariables
+  ): Observable<T> {
     return this.httpClient
       .post<GraphqlResponse<T>>(environment.graphqlUrl, { query, variables })
       .pipe(map(response => this.unwrapResponse(response)));
