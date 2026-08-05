@@ -1,62 +1,66 @@
 <div class="page-shell">
-  <p-card styleClass="page-card">
-    <ng-template pTemplate="title">Baskets</ng-template>
-    <ng-template pTemplate="subtitle">Active shopping baskets from the Basket module.</ng-template>
-
-    <div class="hero-meta">
-      <span class="meta-pill">{{ totalRecords() }} baskets</span>
-      <button pButton type="button" label="Refresh" icon="pi pi-refresh" (click)="refresh()" [loading]="loading()"></button>
-    </div>
-
-    @if (errorMessage()) {
-      <p-message severity="error" [text]="errorMessage()"></p-message>
-    }
-
-    <p-table
-      #basketsTable
-      [value]="baskets()"
-      dataKey="id"
-      [lazy]="true"
-      [paginator]="true"
-      [rows]="pageSize"
-      [first]="tableFirst()"
-      [totalRecords]="totalRecords()"
-      [rowsPerPageOptions]="[5, 10, 20]"
-      [loading]="loading()"
-      [showCurrentPageReport]="true"
+  <app-data-page-card title="Your shopping cart" subtitle="Cart writes require a signed-in Keycloak user."
+    [count]="totalRecords()" countLabel="carts" [loading]="loading()" [error]="errorMessage()" (refresh)="refresh()">
+    <p-table #basketsTable [value]="baskets()" dataKey="id" [lazy]="true" [paginator]="true"
+      [rows]="pageSize" [first]="tableFirst()" [totalRecords]="totalRecords()"
+      [rowsPerPageOptions]="[5, 10, 20]" [loading]="loading()" [showCurrentPageReport]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
-      [tableStyle]="{ 'min-width': '48rem' }"
-      (onLazyLoad)="onLazyLoad($event)">
-      <ng-template pTemplate="caption">
-        <div class="table-caption">
-          <span class="caption-title">Shopping baskets</span><button pButton type="button" label="New Basket" icon="pi pi-plus" (click)="openCreateDialog()"></button>
-          <button pButton type="button" label="Clear filters" icon="pi pi-filter-slash" severity="secondary" (click)="clearFilters(basketsTable)"></button>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th pSortableColumn="userName">Customer <p-sortIcon field="userName"></p-sortIcon><p-columnFilter type="text" field="userName" display="menu" matchMode="startsWith" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
-          <th pSortableColumn="itemCount">Items <p-sortIcon field="itemCount"></p-sortIcon><p-columnFilter type="numeric" field="itemCount" display="menu" matchMode="equals" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
-          <th pSortableColumn="totalPrice">Total <p-sortIcon field="totalPrice"></p-sortIcon><p-columnFilter type="numeric" field="totalPrice" display="menu" matchMode="equals" [showOperator]="true" [showMatchModes]="true" [showAddButton]="true" [maxConstraints]="maxFilterRules"></p-columnFilter></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-basket>
-        <tr><td>{{ basket.userName }}</td><td>{{ basket.itemCount }}</td><td>{{ basket.totalPrice | currency }}</td></tr>
-      </ng-template>
-      <ng-template pTemplate="emptymessage"><tr><td colspan="3">No baskets found.</td></tr></ng-template>
+      [tableStyle]="{ 'min-width': '52rem' }" (onLazyLoad)="onLazyLoad($event)">
+        <ng-template pTemplate="caption">
+          <app-table-caption title="Cart" subtitle="Products selected from Catalog" (clear)="clearFilters(basketsTable)">
+            <button actions pButton type="button" label="Checkout" icon="pi pi-credit-card"
+              [disabled]="baskets().length === 0" (click)="openCheckout()"></button>
+          </app-table-caption>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr><th class="expander-column"></th><th>Customer</th><th>Items</th><th>Cart total</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cart let-expanded="expanded">
+          <tr>
+            <td><button pButton type="button" [pRowToggler]="cart" [text]="true" [rounded]="true"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button></td>
+            <td><strong>{{ cart.userName }}</strong></td><td>{{ cart.itemCount }}</td>
+            <td><strong>{{ cart.totalPrice | currency }}</strong></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="expandedrow" let-cart>
+          <tr><td colspan="4" class="expanded-cell"><div class="items-panel">
+            <h3>Cart items</h3>
+            <p-table [value]="cart.items">
+              <ng-template pTemplate="header"><tr><th>Product</th><th>Color</th><th>Quantity</th><th>Unit price</th><th>Total</th><th></th></tr></ng-template>
+              <ng-template pTemplate="body" let-item><tr>
+                <td><strong>{{ item.productName }}</strong></td><td>{{ item.color || '—' }}</td>
+                <td>{{ item.quantity }}</td><td>{{ item.price | currency }}</td><td>{{ lineTotal(item) | currency }}</td>
+                <td><button pButton type="button" icon="pi pi-trash" severity="danger" [text]="true"
+                  ariaLabel="Remove item" [loading]="saving()" (click)="removeItem(item.productId)"></button></td>
+              </tr></ng-template>
+            </p-table>
+          </div></td></tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage"><tr><td colspan="4">Your cart is empty. Add a product from Catalog.</td></tr></ng-template>
     </p-table>
-  </p-card>
+  </app-data-page-card>
 </div>
 
-<p-dialog header="New Basket" [modal]="true" [visible]="createDialogVisible()" [style]="{ width: '32rem' }" (visibleChange)="createDialogVisible.set($event)">
-  <p class="dialog-note">Basket creation requires an authenticated Keycloak user.</p>
-  <div class="dialog-form">
-    <label for="basket-product-id">Product ID</label><input id="basket-product-id" pInputText [(ngModel)]="newBasketItem.productId" />
-    <label for="basket-product-name">Product name</label><input id="basket-product-name" pInputText [(ngModel)]="newBasketItem.productName" />
-    <label for="basket-color">Color</label><input id="basket-color" pInputText [(ngModel)]="newBasketItem.color" />
-    <label for="basket-quantity">Quantity</label><p-inputnumber inputId="basket-quantity" [(ngModel)]="newBasketItem.quantity" [min]="1"></p-inputnumber>
-    <label for="basket-price">Price</label><p-inputnumber inputId="basket-price" [(ngModel)]="newBasketItem.price" mode="currency" currency="USD" [min]="0.01"></p-inputnumber>
-  </div>
-  <ng-template pTemplate="footer"><button pButton type="button" label="Cancel" severity="secondary" (click)="createDialogVisible.set(false)"></button><button pButton type="button" label="Create" icon="pi pi-check" [loading]="saving()" (click)="createBasket()"></button></ng-template>
+<p-dialog header="Checkout" [modal]="true" [visible]="checkoutDialogVisible()" [style]="{ width: '52rem' }"
+  (visibleChange)="checkoutDialogVisible.set($event)">
+  <div class="dialog-section"><h3>Shipping and billing address</h3><div class="dialog-form two-column-form">
+    <div><label for="first-name">First name</label><input id="first-name" pInputText [(ngModel)]="checkout.firstName" /></div>
+    <div><label for="last-name">Last name</label><input id="last-name" pInputText [(ngModel)]="checkout.lastName" /></div>
+    <div><label for="email">Email</label><input id="email" pInputText [(ngModel)]="checkout.emailAddress" /></div>
+    <div><label for="address">Address</label><input id="address" pInputText [(ngModel)]="checkout.addressLine" /></div>
+    <div><label for="country">Country</label><input id="country" pInputText [(ngModel)]="checkout.country" /></div>
+    <div><label for="state">State</label><input id="state" pInputText [(ngModel)]="checkout.state" /></div>
+    <div><label for="zip">Postal code</label><input id="zip" pInputText [(ngModel)]="checkout.zipCode" maxlength="20" /></div>
+  </div></div>
+  <div class="dialog-section"><h3>Payment</h3><div class="dialog-form two-column-form">
+    <div><label for="card-name">Card name</label><input id="card-name" pInputText [(ngModel)]="checkout.cardName" /></div>
+    <div><label for="card-number">Card number</label><input id="card-number" pInputText [(ngModel)]="checkout.cardNumber" maxlength="24" /></div>
+    <div><label for="expiration">Expiration</label><input id="expiration" pInputText [(ngModel)]="checkout.expiration" placeholder="MM/YY" maxlength="10" /></div>
+    <div><label for="cvv">CVV</label><input id="cvv" pInputText [(ngModel)]="checkout.cvv" maxlength="3" /></div>
+  </div></div>
+  <ng-template pTemplate="footer">
+    <button pButton type="button" label="Cancel" severity="secondary" (click)="checkoutDialogVisible.set(false)"></button>
+    <button pButton type="button" label="Place order" icon="pi pi-check" [loading]="saving()" (click)="submitCheckout()"></button>
+  </ng-template>
 </p-dialog>
-

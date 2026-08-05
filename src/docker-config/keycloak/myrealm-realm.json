@@ -1,0 +1,48 @@
+{
+  "realm": "myrealm",
+  "enabled": true,
+  "displayName": "MehmedCourse EShop",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": true,
+  "loginWithEmailAllowed": true,
+  "clients": [
+    {
+      "clientId": "myclient",
+      "name": "MehmedCourse Angular Client",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:4200/*",
+        "http://127.0.0.1:4200/*"
+      ],
+      "webOrigins": [
+        "http://localhost:4200",
+        "http://127.0.0.1:4200"
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:4200/*##http://127.0.0.1:4200/*",
+        "pkce.code.challenge.method": "S256"
+      },
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "shopper",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Local",
+      "lastName": "Shopper",
+      "email": "shopper@example.test",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "shopper",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

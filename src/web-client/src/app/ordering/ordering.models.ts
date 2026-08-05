@@ -1,9 +1,16 @@
-export interface OrderListItem {
+﻿export interface OrderListItem {
   id: string;
   customerId: string;
   orderName: string;
   itemCount: number;
   totalPrice: number;
+  items: OrderItemListItem[];
+}
+
+export interface OrderItemListItem {
+  productId: string;
+  quantity: number;
+  price: number;
 }
 
 export interface CreateOrderRequest {

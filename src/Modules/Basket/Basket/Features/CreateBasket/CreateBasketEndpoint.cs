@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Basket.Basket.Security;
 
 namespace Basket.Basket.Features.CreateBasket;
 
@@ -11,7 +12,12 @@ public class CreateBasketEndpoint : ICarterModule
   {
     _ = app.MapPost("/basket", async (CreateBasketRequest request, ISender sender, ClaimsPrincipal user) =>
     {
-      String? userName = user.Identity?.Name;
+      string? userName = BasketIdentity.GetUserName(user);
+      if (string.IsNullOrWhiteSpace(userName))
+      {
+        return Results.Unauthorized();
+      }
+
       ShoppingCartDto updatedShoppingCart = request.ShoppingCart with { UserName = userName };
 
       CreateBasketCommand command = new CreateBasketCommand(updatedShoppingCart);

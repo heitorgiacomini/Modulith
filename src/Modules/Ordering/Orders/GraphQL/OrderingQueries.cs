@@ -1,4 +1,4 @@
-using HotChocolate;
+﻿using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Types;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +16,21 @@ public sealed class OrderingQueries
   {
     return orderingDbContext.Orders
       .AsNoTracking()
-      .Select(order => new OrderListItem(
-        order.Id,
-        order.CustomerId,
-        order.OrderName,
-        order.Items.Count,
-        order.Items.Sum(item => item.Price * item.Quantity)));
+      .Select(order => new OrderListItem
+      {
+        Id = order.Id,
+        CustomerId = order.CustomerId,
+        OrderName = order.OrderName,
+        ItemCount = order.Items.Count,
+        TotalPrice = order.Items.Sum(item => item.Price * item.Quantity),
+        Items = order.Items
+          .Select(item => new OrderItemListItem
+          {
+            ProductId = item.ProductId,
+            Quantity = item.Quantity,
+            Price = item.Price
+          })
+          .ToList()
+      });
   }
 }

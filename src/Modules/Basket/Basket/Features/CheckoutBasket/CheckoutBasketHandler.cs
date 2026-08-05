@@ -43,6 +43,9 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext)
             // Set total price on basket checkout event message
             var eventMessage = command.BasketCheckout.Adapt<BasketCheckoutIntegrationEvent>();
             eventMessage.TotalPrice = basket.TotalPrice;
+            eventMessage.Items = basket.Items
+                .Select(item => new BasketCheckoutItem(item.ProductId, item.Quantity, item.Price))
+                .ToList();
 
             // Write a message to the outbox
             var outboxMessage = new OutboxMessage

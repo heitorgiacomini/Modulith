@@ -12,15 +12,21 @@ import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { CatalogService } from '../../catalog/catalog.service';
 import { CreateProductRequest, ProductDto } from '../../catalog/catalog.models';
 import { GraphqlLazyLoadEvent } from '../../shared/graphql/graphql-query-builder.service';
+import { AuthService } from '../../auth/auth.service';
+import { BasketService } from '../../basket/basket.service';
+import { DataPageCardComponent } from '../../shared/ui/data-page-card.component';
+import { TableCaptionComponent } from '../../shared/ui/table-caption.component';
 
 @Component({
   selector: 'app-products-page',
-  imports: [CommonModule, FormsModule, ButtonModule, CardModule, DialogModule, InputNumberModule, InputTextModule, MessageModule, TagModule, TableModule],
+  imports: [CommonModule, FormsModule, ButtonModule, CardModule, DataPageCardComponent, DialogModule, InputNumberModule, InputTextModule, MessageModule, TableCaptionComponent, TagModule, TableModule],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })
 export class ProductsPageComponent implements OnInit {
   private readonly catalogService = inject(CatalogService);
+  private readonly basketService = inject(BasketService);
+  readonly auth = inject(AuthService);
 
   readonly pageSize = 10;
   readonly maxFilterRules = Number.MAX_SAFE_INTEGER;
@@ -28,11 +34,13 @@ export class ProductsPageComponent implements OnInit {
   readonly loading = signal(false);
   readonly saving = signal(false);
   readonly createDialogVisible = signal(false);
+  readonly addToCartDialogVisible = signal(false);
   readonly errorMessage = signal('');
   readonly totalRecords = signal(0);
   readonly products = signal<ProductDto[]>([]);
   readonly selectedProduct = signal<ProductDto | null>(null);
   newProduct = this.emptyProduct();
+  cartItem = { quantity: 1, color: '' };
 
   private lastLazyLoadEvent: GraphqlLazyLoadEvent = this.createDefaultLazyLoadEvent();
 
@@ -89,6 +97,36 @@ export class ProductsPageComponent implements OnInit {
 
   selectProduct(product: ProductDto): void {
     this.catalogService.getProduct(product.id).subscribe({ next: item => this.selectedProduct.set(item), error: error => this.errorMessage.set(this.toMessage(error)) });
+  }
+
+  openAddToCartDialog(): void {
+    if (!this.auth.authenticated()) {
+      void this.auth.login();
+      return;
+    }
+    this.cartItem = { quantity: 1, color: '' };
+    this.addToCartDialogVisible.set(true);
+  }
+
+  addToCart(): void {
+    const product = this.selectedProduct();
+    const userName = this.auth.userName();
+    if (!product || !userName || this.cartItem.quantity < 1) {
+      this.errorMessage.set('Sign in and select a valid quantity before adding to the cart.');
+      return;
+    }
+
+    this.saving.set(true);
+    this.basketService.addItem(userName, product.id, this.cartItem.quantity, this.cartItem.color.trim()).subscribe({
+      next: () => {
+        this.saving.set(false);
+        this.addToCartDialogVisible.set(false);
+      },
+      error: error => {
+        this.saving.set(false);
+        this.errorMessage.set(this.toMessage(error));
+      }
+    });
   }
 
   imageUrl(product: ProductDto): string { return product.imageFile.startsWith('http') ? product.imageFile : `https://placehold.co/900x600/2563eb/ffffff?text=${encodeURIComponent(product.name)}`; }

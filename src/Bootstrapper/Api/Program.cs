@@ -1,4 +1,5 @@
 using Keycloak.AuthServices.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
 
 namespace Api;
@@ -47,6 +48,11 @@ public partial class Program
     );
 
     _ = webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
+    string publicIssuer = webAppBuilder.Configuration["Keycloak:public-issuer"]
+      ?? throw new InvalidOperationException("Keycloak:public-issuer is required.");
+    webAppBuilder.Services.PostConfigure<JwtBearerOptions>(
+      JwtBearerDefaults.AuthenticationScheme,
+      options => options.TokenValidationParameters.ValidIssuer = publicIssuer);
     _ = webAppBuilder.Services.AddAuthorization();
 
     _ = webAppBuilder.Services.AddCors(options =>

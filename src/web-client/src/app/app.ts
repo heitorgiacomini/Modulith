@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,6 @@ import { ToolbarModule } from 'primeng/toolbar';
   templateUrl: './app-shell.html',
   styleUrl: './app.scss'
 })
-export class App {}
+export class App {
+  readonly auth = inject(AuthService);
+}

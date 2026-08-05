@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -7,7 +7,15 @@ import {
   GraphqlLazyLoadEvent,
   GraphqlQueryBuilderService
 } from '../shared/graphql/graphql-query-builder.service';
-import { BasketListItem, CreateBasketRequest, GraphqlResponse, PaginatedResult } from './basket.models';
+import {
+  AddBasketItemRequest,
+  BasketCommandResponse,
+  BasketListItem,
+  CheckoutBasketRequest,
+  CreateBasketRequest,
+  GraphqlResponse,
+  PaginatedResult
+} from './basket.models';
 
 interface BasketsQueryResult {
   baskets: {
@@ -37,7 +45,19 @@ export class BasketService {
       where: '$where',
       order: '$order'
     },
-    selection: ['totalCount', { name: 'items', fields: ['id', 'userName', 'itemCount', 'totalPrice'] }]
+    selection: [
+      'totalCount',
+      {
+        name: 'items',
+        fields: [
+          'id',
+          'userName',
+          'itemCount',
+          'totalPrice',
+          { name: 'items', fields: ['productId', 'productName', 'color', 'quantity', 'price'] }
+        ]
+      }
+    ]
   });
 
   getBaskets(event: GraphqlLazyLoadEvent): Observable<PaginatedResult<BasketListItem>> {
@@ -55,6 +75,35 @@ export class BasketService {
 
   createBasket(request: CreateBasketRequest): Observable<void> {
     return this.httpClient.post<void>(`${environment.apiUrl}/basket`, request);
+  }
+
+  addItem(userName: string, productId: string, quantity: number, color: string): Observable<BasketCommandResponse> {
+    const request: AddBasketItemRequest = {
+      userName,
+      shoppingCartItem: {
+        id: crypto.randomUUID(),
+        shoppingCartId: crypto.randomUUID(),
+        productId,
+        quantity,
+        color,
+        price: 0,
+        productName: ''
+      }
+    };
+    return this.httpClient.post<BasketCommandResponse>(
+      `${environment.apiUrl}/basket/${encodeURIComponent(userName)}/items`,
+      request
+    );
+  }
+
+  removeItem(userName: string, productId: string): Observable<BasketCommandResponse> {
+    return this.httpClient.delete<BasketCommandResponse>(
+      `${environment.apiUrl}/basket/${encodeURIComponent(userName)}/items/${productId}`
+    );
+  }
+
+  checkout(request: CheckoutBasketRequest): Observable<BasketCommandResponse> {
+    return this.httpClient.post<BasketCommandResponse>(`${environment.apiUrl}/basket/checkout`, request);
   }
 
   private graphql<T, TVariables extends object>(query: string, variables: TVariables): Observable<T> {
@@ -75,5 +124,4 @@ export class BasketService {
     return response.data;
   }
 }
-
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -37,7 +37,20 @@ export class OrderingService {
       where: '$where',
       order: '$order'
     },
-    selection: ['totalCount', { name: 'items', fields: ['id', 'customerId', 'orderName', 'itemCount', 'totalPrice'] }]
+    selection: [
+      'totalCount',
+      {
+        name: 'items',
+        fields: [
+          'id',
+          'customerId',
+          'orderName',
+          'itemCount',
+          'totalPrice',
+          { name: 'items', fields: ['productId', 'quantity', 'price'] }
+        ]
+      }
+    ]
   });
 
   getOrders(event: GraphqlLazyLoadEvent): Observable<PaginatedResult<OrderListItem>> {

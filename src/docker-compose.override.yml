@@ -9,7 +9,7 @@ services:
     restart: always
     volumes:
       - postgres_eshopdb:/var/lib/postgresql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker-config/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U eshopdb -d eshopdb"]
       interval: 10s
@@ -37,8 +37,11 @@ services:
     restart: always
     ports:
       - "127.0.0.1:9090:9090"
+    volumes:
+      - ./docker-config/keycloak:/opt/keycloak/data/import:ro
     command:
       - start-dev
+      - --import-realm
     depends_on:
       postgres:
         condition: service_healthy
@@ -80,6 +83,7 @@ services:
       - MessageBroker__UserName=eshopdb
       - MessageBroker__Password=eshopdb
       - Keycloak__AuthServerUrl=http://keycloak:9090/
+      - Keycloak__PublicIssuer=http://localhost:9090/realms/myrealm
       - Serilog__Using__0=Serilog.Sinks.Console
       - Serilog__Using__1=Serilog.Sinks.Seq
       - Serilog__MinimumLevel__Default=Information
@@ -119,4 +123,4 @@ services:
     volumes:
       - ./web-client:/app
       - angular_node_modules:/app/node_modules
-    command: npm start -- --host 0.0.0.0 --port 4200 --poll 1000
+    command: sh -c "npm install && npm start -- --host 0.0.0.0 --port 4200 --poll 1000"

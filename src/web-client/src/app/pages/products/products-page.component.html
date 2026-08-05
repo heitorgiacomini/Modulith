@@ -1,22 +1,6 @@
 <div class="page-shell">
-  <p-card styleClass="page-hero">
-    <ng-template pTemplate="title">Catalog browser</ng-template>
-    <ng-template pTemplate="subtitle">Products are loaded from the ASP.NET Core GraphQL endpoint.</ng-template>
-
-    <div class="hero-meta">
-      <span class="meta-pill">{{ totalRecords() }} products</span>
-      <button
-        pButton
-        type="button"
-        label="Refresh"
-        icon="pi pi-refresh"
-        (click)="refresh()"
-        [loading]="loading()"></button>
-    </div>
-
-    @if (errorMessage()) {
-      <p-message severity="error" [text]="errorMessage()"></p-message>
-    }
+  <app-data-page-card title="Catalog browser" subtitle="Select a product and add it to your authenticated cart."
+    [count]="totalRecords()" countLabel="products" [loading]="loading()" [error]="errorMessage()" (refresh)="refresh()">
 
     <p-table
       #productsTable
@@ -34,19 +18,9 @@
       [tableStyle]="{ 'min-width': '62rem' }"
       (onLazyLoad)="onLazyLoad($event)">
       <ng-template pTemplate="caption">
-        <div class="table-caption">
-          <span class="caption-title">Products</span>
-          <div class="caption-actions">
-            <button
-              pButton
-              type="button"
-              label="Clear filters"
-              icon="pi pi-filter-slash"
-              severity="secondary"
-              (click)="clearFilters(productsTable)"></button>
-            <button pButton type="button" label="New Product" icon="pi pi-plus" (click)="openCreateDialog()"></button>
-          </div>
-        </div>
+        <app-table-caption title="Products" (clear)="clearFilters(productsTable)">
+          <button actions pButton type="button" label="New Product" icon="pi pi-plus" (click)="openCreateDialog()"></button>
+        </app-table-caption>
       </ng-template>
 
       <ng-template pTemplate="header">
@@ -116,7 +90,7 @@
         </tr>
       </ng-template>
     </p-table>
-  </p-card>
+  </app-data-page-card>
 
   <p-card styleClass="details-panel">
     <ng-template pTemplate="title">Selected product</ng-template>
@@ -133,6 +107,8 @@
       </div>
 
       <p class="detail-description">{{ product.description }}</p>
+      <button pButton type="button" label="Add to cart" icon="pi pi-cart-plus"
+        (click)="openAddToCartDialog()"></button>
       <code class="detail-id">{{ product.id }}</code>
     </ng-container>
 
@@ -153,3 +129,16 @@
   <ng-template pTemplate="footer"><button pButton type="button" label="Cancel" severity="secondary" (click)="createDialogVisible.set(false)"></button><button pButton type="button" label="Create" icon="pi pi-check" [loading]="saving()" (click)="createProduct()"></button></ng-template>
 </p-dialog>
 
+<p-dialog header="Add to cart" [modal]="true" [visible]="addToCartDialogVisible()"
+  [style]="{ width: '28rem' }" (visibleChange)="addToCartDialogVisible.set($event)">
+  <div class="dialog-form">
+    <label for="cart-color">Color</label>
+    <input id="cart-color" pInputText [(ngModel)]="cartItem.color" />
+    <label for="cart-quantity">Quantity</label>
+    <p-inputnumber inputId="cart-quantity" [(ngModel)]="cartItem.quantity" [min]="1"></p-inputnumber>
+  </div>
+  <ng-template pTemplate="footer">
+    <button pButton type="button" label="Cancel" severity="secondary" (click)="addToCartDialogVisible.set(false)"></button>
+    <button pButton type="button" label="Add" icon="pi pi-cart-plus" [loading]="saving()" (click)="addToCart()"></button>
+  </ng-template>
+</p-dialog>

@@ -1,4 +1,4 @@
-using Basket.Data;
+﻿using Basket.Data;
 using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Types;
@@ -16,10 +16,22 @@ public sealed class BasketQueries
   {
     return basketDbContext.ShoppingCarts
       .AsNoTracking()
-      .Select(cart => new BasketListItem(
-        cart.Id,
-        cart.UserName,
-        cart.Items.Count,
-        cart.Items.Sum(item => item.Price * item.Quantity)));
+      .Select(cart => new BasketListItem
+      {
+        Id = cart.Id,
+        UserName = cart.UserName,
+        ItemCount = cart.Items.Count,
+        TotalPrice = cart.Items.Sum(item => item.Price * item.Quantity),
+        Items = cart.Items
+          .Select(item => new BasketItemListItem
+          {
+            ProductId = item.ProductId,
+            ProductName = item.ProductName,
+            Color = item.Color,
+            Quantity = item.Quantity,
+            Price = item.Price
+          })
+          .ToList()
+      });
   }
 }
