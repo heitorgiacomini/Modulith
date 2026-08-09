@@ -105,13 +105,49 @@ services:
       - rabbitmq
       - keycloak
     ports:
-      - "5001:8080"
+      - "5000:8080"
       - "6060:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  catalog-subgraph:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
+    depends_on:
+      - postgres
+
+  basket-subgraph:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
+    depends_on:
+      - postgres
+
+  ordering-subgraph:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
+    depends_on:
+      - postgres
+
+  graphql-gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - Fusion__SchemaPath=/app/gateway.fgx
+    volumes:
+      - ./Bootstrapper/Gateway/gateway.fgx:/app/gateway.fgx:ro
+    depends_on:
+      - catalog-subgraph
+      - basket-subgraph
+      - ordering-subgraph
 
   web-client:
     environment:

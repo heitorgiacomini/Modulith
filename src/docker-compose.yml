@@ -23,6 +23,36 @@ services:
     ports:
       - "5000:8080"
 
+  catalog-subgraph:
+    image: ${DOCKER_REGISTRY-}catalog-subgraph
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Bootstrapper/CatalogSubgraph/Dockerfile
+
+  basket-subgraph:
+    image: ${DOCKER_REGISTRY-}basket-subgraph
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Bootstrapper/BasketSubgraph/Dockerfile
+
+  ordering-subgraph:
+    image: ${DOCKER_REGISTRY-}ordering-subgraph
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Bootstrapper/OrderingSubgraph/Dockerfile
+
+  graphql-gateway:
+    image: ${DOCKER_REGISTRY-}graphql-gateway
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Bootstrapper/Gateway/Dockerfile
+    ports:
+      - "5001:8080"
+
   web-client:
     image: ${DOCKER_REGISTRY-}web-client
     pull_policy: never
