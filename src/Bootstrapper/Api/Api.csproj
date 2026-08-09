@@ -73,7 +73,7 @@
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
   </ItemGroup>
 
-  
+
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Basket\Basket.csproj" />
