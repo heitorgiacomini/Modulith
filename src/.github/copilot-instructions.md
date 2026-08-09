@@ -1,3 +1,4 @@
+- use small output mode in chat
 # Repository Instructions
 
 ## Project Overview

@@ -1,0 +1,8 @@
+{
+  "name": "basket",
+  "transports": {
+    "http": {
+      "url": "http://api:8080/graphql/basket"
+    }
+  }
+}

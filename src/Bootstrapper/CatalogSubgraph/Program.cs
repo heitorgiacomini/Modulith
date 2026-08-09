@@ -5,12 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shared.Data.Interceptors;
 using Shared.Extensions;
+using Shared.Messaging.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // MediatR satisfies both DispatchDomainEventsInterceptor and ISender used in CatalogQueries.Product
 builder.Services
     .AddMediatRWithAssemblies(typeof(CatalogModule).Assembly)
+    .AddMassTransitWithAssemblies(builder.Configuration, typeof(CatalogModule).Assembly)
     .AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>()
     .AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>()
     .AddDbContext<CatalogDbContext>((sp, o) =>

@@ -10,6 +10,8 @@ namespace Basket;
 
 public static class BasketModule
 {
+  public const string GraphQLSchemaName = "basket";
+
   public static IServiceCollection AddBasketModule(this IServiceCollection services, IConfiguration configuration)
   {
 
@@ -38,7 +40,7 @@ public static class BasketModule
     _ = services.AddHostedService<OutboxProcessor>();
 
     _ = services
-      .AddGraphQLServer()
+      .AddGraphQLServer(GraphQLSchemaName)
       .AddBasketGraphQL()
       .AddFiltering()
       .AddSorting();

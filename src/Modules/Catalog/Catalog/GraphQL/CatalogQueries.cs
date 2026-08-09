@@ -1,3 +1,5 @@
+using HotChocolate.Types.Composite;
+
 namespace Catalog.GraphQL;
 
 [ExtendObjectType(OperationTypeNames.Query)]
@@ -28,5 +30,27 @@ public sealed class CatalogQueries
   {
     GetProductByIdResult result = await sender.Send(new GetProductByIdQuery(id), cancellationToken);
     return result.Product;
+  }
+
+  [Lookup]
+  [Internal]
+  public async Task<ProductListItem?> ProductListItemById(
+    [Is("id")] Guid id,
+    [Service] CatalogDbContext catalogDbContext,
+    CancellationToken cancellationToken)
+  {
+    return await catalogDbContext.Products
+      .AsNoTracking()
+      .Where(product => product.Id == id)
+      .Select(product => new ProductListItem
+      {
+        Id = product.Id,
+        Name = product.Name,
+        Category = product.Category,
+        Description = product.Description,
+        ImageFile = product.ImageFile,
+        Price = product.Price
+      })
+      .FirstOrDefaultAsync(cancellationToken);
   }
 }

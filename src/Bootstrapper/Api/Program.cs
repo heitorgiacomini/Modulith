@@ -75,6 +75,12 @@ public partial class Program
     WebApplication webApp = webAppBuilder.Build();
 
     _ = webApp.MapCarter();
+    _ = webApp.MapGraphQL("/graphql/catalog", CatalogModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQL("/graphql/basket", BasketModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQL("/graphql/ordering", OrderingModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/catalog/schema.graphqls", CatalogModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/basket/schema.graphqls", BasketModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/ordering/schema.graphqls", OrderingModule.GraphQLSchemaName);
 
     _ = webApp.UseSerilogRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
@@ -83,10 +89,13 @@ public partial class Program
     _ = webApp.UseAuthentication();
     _ = webApp.UseAuthorization();
 
-    _ = webApp
-      .UseCatalogModule()
-      .UseOrderingModule()
-      .UseBasketModule();
+    if (webAppBuilder.Configuration.GetValue("Database:RunMigrations", true))
+    {
+      _ = webApp
+        .UseCatalogModule()
+        .UseOrderingModule()
+        .UseBasketModule();
+    }
 
 
 

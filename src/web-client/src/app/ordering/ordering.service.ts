@@ -47,7 +47,10 @@ export class OrderingService {
           'orderName',
           'itemCount',
           'totalPrice',
-          { name: 'items', fields: ['productId', 'quantity', 'price'] }
+          {
+            name: 'items',
+            fields: ['productId', { name: 'product', fields: ['name'] }, 'quantity', 'price']
+          }
         ]
       }
     ]

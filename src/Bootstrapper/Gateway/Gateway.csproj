@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.Fusion" Version="15.0.0" />
+    <PackageReference Include="HotChocolate.Fusion.AspNetCore" Version="16.6.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="gateway.fgx">
+    <None Update="gateway.far">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

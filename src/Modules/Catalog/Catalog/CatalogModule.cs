@@ -8,6 +8,8 @@ namespace Catalog;
 
 public static class CatalogModule
 {
+    public const string GraphQLSchemaName = "catalog";
+
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration configuration)
     {
         // Add services to the container.
@@ -37,7 +39,7 @@ public static class CatalogModule
         _ = services.AddScoped<IDataSeeder, CatalogDataSeeder>();
 
         _ = services
-            .AddGraphQLServer()
+            .AddGraphQLServer(GraphQLSchemaName)
             .AddCatalogGraphQL()
             .AddFiltering()
             .AddSorting()

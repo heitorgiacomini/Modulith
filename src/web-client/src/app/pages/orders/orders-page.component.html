@@ -36,7 +36,7 @@
               <h3>Order items</h3><p-table [value]="order.items">
                 <ng-template pTemplate="header">
         <tr>
-          <th>Product ID</th>
+          <th>Product</th>
           <th>Quantity</th>
           <th>Unit price</th>
           <th>Total</th>
@@ -44,7 +44,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-item>
         <tr>
-          <td>{{ item.productId }}</td>
+          <td>{{ item.product.name }}</td>
           <td>{{ item.quantity }}</td>
           <td>{{ item.price | currency }}</td>
           <td>{{ lineTotal(item) | currency }}</td>
