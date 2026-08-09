@@ -70,6 +70,8 @@ public partial class Program
       .AddOrderingModule(webAppBuilder.Configuration)
       .AddBasketModule(webAppBuilder.Configuration);
 
+    _ = webAppBuilder.Services.AddGraphQLServer().AddApolloFederation();
+
     _ = webAppBuilder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
     WebApplication webApp = webAppBuilder.Build();

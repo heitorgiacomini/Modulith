@@ -18,6 +18,9 @@
     <Project Path="Shared/Shared.Messaging/Shared.Messaging.csproj" Id="b16fbefa-662b-4809-9256-f777a3df346e" />
     <Project Path="Shared/Shared/Shared.csproj" />
   </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/ArchitectureTests/ArchitectureTests.csproj" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
