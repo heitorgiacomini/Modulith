@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using Catalog.GraphQL;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Data.Interceptors;
@@ -7,6 +8,8 @@ namespace Catalog;
 
 public static class CatalogModule
 {
+    public const string GraphQLSchemaName = "catalog";
+
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration configuration)
     {
         // Add services to the container.
@@ -34,6 +37,14 @@ public static class CatalogModule
 
 
         _ = services.AddScoped<IDataSeeder, CatalogDataSeeder>();
+
+        _ = services
+            .AddGraphQLServer(GraphQLSchemaName)
+            .AddCatalogGraphQL()
+            .AddFiltering()
+            .AddSorting()
+            .ModifyCostOptions(options => options.MaxFieldCost = 5_000);
+
         return services;
     }
 

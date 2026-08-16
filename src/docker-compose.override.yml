@@ -1,73 +1,88 @@
 services:
   postgres:
-    container_name: postgres
     environment:
       - POSTGRES_USER=eshopdb
       - POSTGRES_PASSWORD=eshopdb
       - POSTGRES_DB=eshopdb
+    ports:
+      - "5434:5432"
+    restart: always
+    volumes:
+      - postgres_eshopdb:/var/lib/postgresql
+      - ./docker-config/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eshopdb -d eshopdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # make postgres create schema before using keycloak
+  keycloak:
+    environment:
+      - KEYCLOAK_ADMIN=eshopdb
+      - KEYCLOAK_ADMIN_PASSWORD=eshopdb
+      - KC_DB=postgres
+      #- KC_DB_URL=jdbc:postgresql://postgres:5432/eshopdb?currentSchema=keycloak
+      - KC_DB_SCHEMA=keycloak
+      - KC_DB_USERNAME=eshopdb
+      - KC_DB_PASSWORD=eshopdb
+      - KC_HTTP_PORT=9090
+      #- KC_HOSTNAME=127.0.0.1
+      #- KC_HOSTNAME=http://identity:9090/
+      - KC_PROXY_HEADERS=xforwarded
+      - KC_PROXY=edge
+      - KC_DB_URL_HOST=postgres
+      - KC_DB_URL_PORT=5432
+      - KC_DB_URL_DATABASE=eshopdb
     restart: always
     ports:
-      - "5432:5432"
+      - "127.0.0.1:9090:9090"
     volumes:
-      - postgres_eshopdb:/var/lib/postgresql/
+      - ./docker-config/keycloak:/opt/keycloak/data/import:ro
+    command:
+      - start-dev
+      - --import-realm
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   redis:
-    container_name: redis
     restart: always
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 
   seq:
-    container_name: seq
     environment:
       ACCEPT_EULA: "Y"
       SEQ_FIRSTRUN_NOAUTHENTICATION: true
     restart: always
     ports:
-      - "5341:5341"
-      - "9091:80"
+      - "127.0.0.1:5341:5341"
+      - "127.0.0.1:9091:80"
 
   rabbitmq:
-    container_name: rabbitmq
     hostname: ecommerce-mq
     environment:
       - RABBITMQ_DEFAULT_USER=eshopdb
       - RABBITMQ_DEFAULT_PASS=eshopdb
     restart: always
     ports:
-      - "5672:5672"
-      - "15672:15672"
-  # make postgres create schema before using keycloak
-  keycloak:
-    container_name: keycloak
-    environment:
-      - KEYCLOAK_ADMIN=eshopdb
-      - KEYCLOAK_ADMIN_PASSWORD=eshopdb
-      - KC_DB=postgres
-      - KC_DB_URL=jdbc:postgresql://postgres:5432/eshopdb?currentSchema=keycloak
-      - KC_DB_USERNAME=eshopdb
-      - KC_DB_PASSWORD=eshopdb
-      - KC_HTTP_PORT=9090
-      - KC_HOSTNAME=localhost
-    restart: always
-    ports:
-      - "9090:9090"
-    command:
-      - start-dev
-    depends_on:
-      - postgres
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
+
 
   api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__Database=Server=eshopdb;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
+      - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
       - ConnectionStrings__Redis=redis:6379
       - MessageBroker__Host=amqp://rabbitmq:5672
-      - MessageBroker__UserName=guest
-      - MessageBroker__Password=guest
+      - MessageBroker__UserName=eshopdb
+      - MessageBroker__Password=eshopdb
       - Keycloak__AuthServerUrl=http://keycloak:9090/
+      - Keycloak__PublicIssuer=http://localhost:9090/realms/myrealm
       - Serilog__Using__0=Serilog.Sinks.Console
       - Serilog__Using__1=Serilog.Sinks.Seq
       - Serilog__MinimumLevel__Default=Information
@@ -89,10 +104,55 @@ services:
       - rabbitmq
       - keycloak
     ports:
-      - "6000:8080"
+      - "5004:8080"
       - "6060:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://localhost:8080/graphql/catalog/schema.graphqls"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  fusion-composer:
+    working_dir: /workspace
+    environment:
+      - API_URL=http://api:8080
+      - SCHEMA_ROOT=/tmp/fusion
+      - ARCHIVE_DIRECTORY=/fusion-output
+    volumes:
+      - ./:/workspace:ro
+      - fusion_gateway:/fusion-output
+    command: bash /workspace/docker-config/fusion/compose-gateway.sh
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: "no"
+
+  graphql-gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - Fusion__SchemaPath=/app/fusion/gateway.far
+    volumes:
+      - fusion_gateway:/app/fusion:ro
+    depends_on:
+      fusion-composer:
+        condition: service_completed_successfully
+
+  web-client:
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      graphql-gateway:
+        condition: service_started
+    ports:
+      - "127.0.0.1:4200:4200"
+    volumes:
+      - ./web-client:/app
+      - angular_node_modules:/app/node_modules
+    command: sh -c "npm install && npm start -- --host 0.0.0.0 --port 4200 --poll 1000"

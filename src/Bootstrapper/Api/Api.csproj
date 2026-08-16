@@ -60,8 +60,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="HotChocolate.AspNetCore" Version="16.6.0" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="16.6.0" />
     <PackageReference Include="Keycloak.AuthServices.Authentication" Version="2.7.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -70,7 +72,7 @@
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
   </ItemGroup>
 
-  
+
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Basket\Basket.csproj" />

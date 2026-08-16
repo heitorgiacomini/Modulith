@@ -1,10 +1,13 @@
 using Keycloak.AuthServices.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
 
 namespace Api;
 
 public partial class Program
 {
+  private const string FrontendCorsPolicy = "FrontendCors";
+
   private static async Task Main(String[] args)
   {
     WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
@@ -45,7 +48,21 @@ public partial class Program
     );
 
     _ = webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
+    string publicIssuer = webAppBuilder.Configuration["Keycloak:public-issuer"]
+      ?? throw new InvalidOperationException("Keycloak:public-issuer is required.");
+    webAppBuilder.Services.PostConfigure<JwtBearerOptions>(
+      JwtBearerDefaults.AuthenticationScheme,
+      options => options.TokenValidationParameters.ValidIssuer = publicIssuer);
     _ = webAppBuilder.Services.AddAuthorization();
+
+    _ = webAppBuilder.Services.AddCors(options =>
+    {
+      options.AddPolicy(FrontendCorsPolicy, policy =>
+        policy
+          .WithOrigins("http://localhost:4200", "http://127.0.0.1:4200")
+          .AllowAnyHeader()
+          .AllowAnyMethod());
+    });
 
     //module services: catalog, basket, ordering
     _ = webAppBuilder.Services
@@ -58,17 +75,27 @@ public partial class Program
     WebApplication webApp = webAppBuilder.Build();
 
     _ = webApp.MapCarter();
+    _ = webApp.MapGraphQL("/graphql/catalog", CatalogModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQL("/graphql/basket", BasketModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQL("/graphql/ordering", OrderingModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/catalog/schema.graphqls", CatalogModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/basket/schema.graphqls", BasketModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/ordering/schema.graphqls", OrderingModule.GraphQLSchemaName);
 
     _ = webApp.UseSerilogRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
+    _ = webApp.UseCors(FrontendCorsPolicy);
 
     _ = webApp.UseAuthentication();
     _ = webApp.UseAuthorization();
 
-    _ = webApp
-      .UseCatalogModule()
-      .UseOrderingModule()
-      .UseBasketModule();
+    if (webAppBuilder.Configuration.GetValue("Database:RunMigrations", true))
+    {
+      _ = webApp
+        .UseCatalogModule()
+        .UseOrderingModule()
+        .UseBasketModule();
+    }
 
 
 
@@ -87,7 +114,7 @@ public partial class Program
     //app.UseEndpoints(endpoints =>
     //{
     //	endpoints.MapControllers();
-    //});	
+    //});
 
     //webApp.Run();
     await webApp.RunAsync();

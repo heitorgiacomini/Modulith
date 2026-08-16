@@ -19,7 +19,7 @@ namespace Ordering.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("ordering")
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -50,7 +50,7 @@ namespace Ordering.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.ComplexProperty<Dictionary<string, object>>("BillingAddress", "Ordering.Orders.Models.Order.BillingAddress#Address", b1 =>
+                    b.ComplexProperty(typeof(Dictionary<string, object>), "BillingAddress", "Ordering.Orders.Models.Order.BillingAddress#Address", b1 =>
                         {
                             b1.IsRequired();
 
@@ -85,11 +85,11 @@ namespace Ordering.Data.Migrations
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()
-                                .HasMaxLength(5)
-                                .HasColumnType("character varying(5)");
+                                .HasMaxLength(20)
+                                .HasColumnType("character varying(20)");
                         });
 
-                    b.ComplexProperty<Dictionary<string, object>>("Payment", "Ordering.Orders.Models.Order.Payment#Payment", b1 =>
+                    b.ComplexProperty(typeof(Dictionary<string, object>), "Payment", "Ordering.Orders.Models.Order.Payment#Payment", b1 =>
                         {
                             b1.IsRequired();
 
@@ -116,7 +116,7 @@ namespace Ordering.Data.Migrations
                                 .HasColumnType("integer");
                         });
 
-                    b.ComplexProperty<Dictionary<string, object>>("ShippingAddress", "Ordering.Orders.Models.Order.ShippingAddress#Address", b1 =>
+                    b.ComplexProperty(typeof(Dictionary<string, object>), "ShippingAddress", "Ordering.Orders.Models.Order.ShippingAddress#Address", b1 =>
                         {
                             b1.IsRequired();
 
@@ -151,8 +151,8 @@ namespace Ordering.Data.Migrations
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()
-                                .HasMaxLength(5)
-                                .HasColumnType("character varying(5)");
+                                .HasMaxLength(20)
+                                .HasColumnType("character varying(20)");
                         });
 
                     b.HasKey("Id");

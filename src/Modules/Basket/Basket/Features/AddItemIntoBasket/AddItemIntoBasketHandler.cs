@@ -18,10 +18,25 @@ internal class AddItemIntoBasketHandler(IBasketRepository repository, ISender se
 {
   public async Task<AddItemIntoBasketResult> Handle(AddItemIntoBasketCommand command, CancellationToken cancellationToken)
   {
-    ShoppingCart shoppingCart = await repository.GetBasketAsync(command.UserName, false, cancellationToken);
-    // Add shopping cart item into shopping cart
     GetProductByIdResult result = await sender.Send(new GetProductByIdQuery(command.ShoppingCartItem.ProductId), cancellationToken);
 
+    ShoppingCart shoppingCart;
+    try
+    {
+      shoppingCart = await repository.GetBasketAsync(command.UserName, false, cancellationToken);
+    }
+    catch (BasketNotFoundException)
+    {
+      shoppingCart = ShoppingCart.Create(Guid.NewGuid(), command.UserName);
+      shoppingCart.AddItem(
+        command.ShoppingCartItem.ProductId,
+        command.ShoppingCartItem.Quantity,
+        command.ShoppingCartItem.Color,
+        result.Product.Price,
+        result.Product.Name);
+      await repository.CreateBasketAsync(shoppingCart, cancellationToken);
+      return new AddItemIntoBasketResult(shoppingCart.Id);
+    }
 
     shoppingCart.AddItem(
       command.ShoppingCartItem.ProductId,
@@ -30,9 +45,6 @@ internal class AddItemIntoBasketHandler(IBasketRepository repository, ISender se
       result.Product.Price,
       result.Product.Name
     );
-    //command.ShoppingCartItem.Price,
-    //        command.ShoppingCartItem.ProductName);
-
     _ = await repository.SaveChangesAsync(command.UserName, cancellationToken);
 
     return new AddItemIntoBasketResult(shoppingCart.Id);

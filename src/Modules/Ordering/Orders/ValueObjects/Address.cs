@@ -27,6 +27,8 @@ public record Address
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(emailAddress);
         ArgumentException.ThrowIfNullOrWhiteSpace(addressLine);
+        ArgumentException.ThrowIfNullOrWhiteSpace(zipCode);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(zipCode.Length, 20);
 
         return new Address(firstName, lastName, emailAddress, addressLine, country, state, zipCode);
     }

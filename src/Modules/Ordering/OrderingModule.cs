@@ -1,21 +1,24 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Data;
+using Ordering.Orders.GraphQL;
 using Shared.Data;
 using Shared.Data.Interceptors;
 
 namespace Ordering;
 public static class OrderingModule
 {
-    public static IServiceCollection AddOrderingModule(this IServiceCollection services, 
+    public const string GraphQLSchemaName = "ordering";
+
+    public static IServiceCollection AddOrderingModule(this IServiceCollection services,
         IConfiguration configuration)
     {
         // Add services to the container.
         // 1. Api Endpoint services
 
-        // 2. Application Use Case services        
+        // 2. Application Use Case services
 
         // 3. Data - Infrastructure services
         var connectionString = configuration.GetConnectionString("Database");
@@ -28,6 +31,13 @@ public static class OrderingModule
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
             options.UseNpgsql(connectionString);
         });
+
+        _ = services
+            .AddGraphQLServer(GraphQLSchemaName)
+            .AddOrderingGraphQL()
+            .AddFiltering()
+            .AddSorting()
+            .ModifyCostOptions(options => options.MaxFieldCost = 5_000);
 
         return services;
     }
@@ -45,3 +55,4 @@ public static class OrderingModule
         return app;
     }
 }
+

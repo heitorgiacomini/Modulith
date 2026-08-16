@@ -1,5 +1,8 @@
 namespace Basket.Basket.Features.AddItemIntoBasket;
 
+using global::Basket.Basket.Security;
+using System.Security.Claims;
+
 public record AddItemIntoBasketRequest(String UserName, ShoppingCartItemDto ShoppingCartItem);
 public record AddItemIntoBasketResponse(Guid Id);
 
@@ -10,9 +13,17 @@ public class AddItemIntoBasketEndpoint : ICarterModule
     _ = app.MapPost("/basket/{userName}/items",
         async ([FromRoute] String userName,
                [FromBody] AddItemIntoBasketRequest request,
-               ISender sender) =>
+               ISender sender,
+               ClaimsPrincipal user) =>
         {
-          AddItemIntoBasketCommand command = new AddItemIntoBasketCommand(userName, request.ShoppingCartItem);
+          string? authenticatedUserName = BasketIdentity.GetUserName(user);
+          if (string.IsNullOrWhiteSpace(authenticatedUserName) ||
+              !string.Equals(userName, authenticatedUserName, StringComparison.OrdinalIgnoreCase))
+          {
+            return Results.Forbid();
+          }
+
+          AddItemIntoBasketCommand command = new AddItemIntoBasketCommand(authenticatedUserName, request.ShoppingCartItem);
 
           var result = await sender.Send(command);
 

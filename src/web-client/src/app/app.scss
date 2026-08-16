@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #eef2ff 0%, #f8fafc 45%, #ffffff 100%);
+  color: #0f172a;
+}
+
+.app-toolbar {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 8px 30px rgb(15 23 42 / 10%);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-badge {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  font-weight: 700;
+}
+
+.brand-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.brand-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.signed-in-user {
+  color: #475569;
+  font-weight: 600;
+}
+
+.app-shell {
+  padding: 1.5rem;
+}

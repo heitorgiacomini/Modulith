@@ -1,3 +1,4 @@
+using Basket.Basket.GraphQL;
 using Basket.Data.Processors;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,8 @@ namespace Basket;
 
 public static class BasketModule
 {
+  public const string GraphQLSchemaName = "basket";
+
   public static IServiceCollection AddBasketModule(this IServiceCollection services, IConfiguration configuration)
   {
 
@@ -36,6 +39,13 @@ public static class BasketModule
     //_ = services.AddScoped<IDataSeeder, BasketDataSeeder>();
     _ = services.AddHostedService<OutboxProcessor>();
 
+    _ = services
+      .AddGraphQLServer(GraphQLSchemaName)
+      .AddBasketGraphQL()
+      .AddFiltering()
+      .AddSorting()
+      .ModifyCostOptions(options => options.MaxFieldCost = 5_000);
+
     return services;
   }
 
@@ -47,3 +57,5 @@ public static class BasketModule
   }
 
 }
+
+
