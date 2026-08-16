@@ -33,6 +33,8 @@ bld/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
+dist/
+.angular/
 .vs
 .vs/
 .vscode
