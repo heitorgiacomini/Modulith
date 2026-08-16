@@ -3,6 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
+    <DockerDevelopmentMode>Regular</DockerDevelopmentMode>
     <ProjectGuid>81dded9d-158b-e303-5f62-77a2896d2a5a</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
@@ -13,6 +14,7 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
     <None Include="docs\docfx.json" />
+    <None Include="init.sql" />
     <None Include="path\to\YourProject.csproj" />
   </ItemGroup>
 </Project>

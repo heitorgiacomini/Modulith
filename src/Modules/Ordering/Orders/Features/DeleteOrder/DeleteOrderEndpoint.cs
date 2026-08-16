@@ -20,6 +20,7 @@ public class DeleteOrderEndpoints : ICarterModule
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .WithSummary("Delete Order")
-        .WithDescription("Delete Order");
+        .WithDescription("Delete Order")
+        .RequireAuthorization();
     }
 }

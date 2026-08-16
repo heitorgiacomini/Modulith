@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -6,6 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HotChocolate.AspNetCore" Version="16.6.0" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="16.6.0" />
+    <PackageReference Include="HotChocolate.Types.OffsetPagination" Version="16.6.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Shared.Messaging\Shared.Messaging.csproj" />
     <ProjectReference Include="..\..\Shared\Shared\Shared.csproj" />

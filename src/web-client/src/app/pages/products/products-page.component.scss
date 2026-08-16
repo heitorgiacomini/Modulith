@@ -1,0 +1,148 @@
+.page-shell {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.page-hero,
+.details-panel {
+  border-radius: 1rem;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-weight: 600;
+}
+
+.table-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.caption-title {
+  font-weight: 700;
+  color: #334155;
+}
+
+.caption-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.options-column {
+  width: 9rem;
+}
+
+.description-column {
+  max-width: 26rem;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.detail-image {
+  height: 16rem;
+  margin-bottom: 1rem;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.product-description,
+.detail-description {
+  color: #475569;
+  line-height: 1.5;
+}
+
+.detail-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.detail-id {
+  display: block;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  color: #334155;
+  overflow-x: auto;
+}
+
+.empty-state {
+  padding: 1rem 0;
+  color: #64748b;
+}
+
+@media (max-width: 48rem) {
+  .table-caption {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .caption-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 32rem) {
+  .caption-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 64rem) {
+  .page-shell {
+    grid-template-columns: minmax(0, 2fr) minmax(20rem, 1fr);
+    align-items: start;
+  }
+}
+
+:host ::ng-deep .p-dialog .dialog-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+:host ::ng-deep .p-dialog .dialog-form label {
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+:host ::ng-deep .p-dialog .dialog-form input,
+:host ::ng-deep .p-dialog .dialog-form p-inputnumber {
+  width: 100%;
+}
+
+:host ::ng-deep .p-dialog .dialog-note {
+  color: #64748b;
+  margin-top: 0;
+}

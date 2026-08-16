@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Bootstrapper/">
     <Project Path="Bootstrapper/Api/Api.csproj" Id="0a263a45-16fb-42f8-9891-b4b57b0aa2c4" />
+    <Project Path="Bootstrapper/Gateway/Gateway.csproj" Id="i4d5e6f7-a8b9-4ac1-d3e4-4f5a6b7c8d9e" />
   </Folder>
   <Folder Name="/Modules/" />
   <Folder Name="/Modules/Basket/">
@@ -17,6 +18,9 @@
     <Project Path="Shared/Shared.Contracts/Shared.Contracts.csproj" />
     <Project Path="Shared/Shared.Messaging/Shared.Messaging.csproj" Id="b16fbefa-662b-4809-9256-f777a3df346e" />
     <Project Path="Shared/Shared/Shared.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/ArchitectureTests/ArchitectureTests.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
