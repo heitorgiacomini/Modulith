@@ -61,7 +61,6 @@ services:
       - "127.0.0.1:9091:80"
 
   rabbitmq:
-    container_name: rabbitmq
     hostname: ecommerce-mq
     environment:
       - RABBITMQ_DEFAULT_USER=eshopdb
@@ -105,29 +104,52 @@ services:
       - rabbitmq
       - keycloak
     ports:
-      - "5000:8080"
+      - "5004:8080"
       - "6060:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://localhost:8080/graphql/catalog/schema.graphqls"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  fusion-composer:
+    working_dir: /workspace
+    environment:
+      - API_URL=http://api:8080
+      - SCHEMA_ROOT=/tmp/fusion
+      - ARCHIVE_DIRECTORY=/fusion-output
+    volumes:
+      - ./:/workspace:ro
+      - fusion_gateway:/fusion-output
+    command: bash /workspace/docker-config/fusion/compose-gateway.sh
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: "no"
 
   graphql-gateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - Fusion__SchemaPath=/app/gateway.far
+      - Fusion__SchemaPath=/app/fusion/gateway.far
     volumes:
-      - ./Bootstrapper/Gateway/gateway.far:/app/gateway.far:ro
+      - fusion_gateway:/app/fusion:ro
     depends_on:
-      - api
+      fusion-composer:
+        condition: service_completed_successfully
 
   web-client:
     environment:
       - CHOKIDAR_USEPOLLING=true
     depends_on:
-      - api
+      graphql-gateway:
+        condition: service_started
     ports:
       - "127.0.0.1:4200:4200"
     volumes:

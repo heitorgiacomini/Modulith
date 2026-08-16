@@ -21,7 +21,10 @@ services:
       context: .
       dockerfile: Bootstrapper/Api/Dockerfile
     ports:
-      - "5000:8080"
+      - "5004:8080"
+
+  fusion-composer:
+    image: mcr.microsoft.com/dotnet/sdk:10.0
 
   graphql-gateway:
     image: ${DOCKER_REGISTRY-}graphql-gateway
@@ -30,7 +33,7 @@ services:
       context: .
       dockerfile: Bootstrapper/Gateway/Dockerfile
     ports:
-      - "5001:8080"
+      - "5002:8080"
 
   web-client:
     image: ${DOCKER_REGISTRY-}web-client
@@ -42,6 +45,7 @@ services:
 volumes:
   postgres_eshopdb:
   angular_node_modules:
+  fusion_gateway:
 
 
 

@@ -1,5 +1,0 @@
-compose {
-  subgraph catalog at "http://api:8080/graphql/catalog"
-  subgraph basket at "http://api:8080/graphql/basket"
-  subgraph ordering at "http://api:8080/graphql/ordering"
-}

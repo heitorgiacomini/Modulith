@@ -1,9 +1,6 @@
 <Solution>
   <Folder Name="/Bootstrapper/">
     <Project Path="Bootstrapper/Api/Api.csproj" Id="0a263a45-16fb-42f8-9891-b4b57b0aa2c4" />
-    <Project Path="Bootstrapper/CatalogSubgraph/CatalogSubgraph.csproj" Id="f1a2b3c4-d5e6-47f8-9a0b-1c2d3e4f5a6b" />
-    <Project Path="Bootstrapper/BasketSubgraph/BasketSubgraph.csproj" Id="g2b3c4d5-e6f7-48a9-b1c2-2d3e4f5a6b7c" />
-    <Project Path="Bootstrapper/OrderingSubgraph/OrderingSubgraph.csproj" Id="h3c4d5e6-f7a8-49b0-c2d3-3e4f5a6b7c8d" />
     <Project Path="Bootstrapper/Gateway/Gateway.csproj" Id="i4d5e6f7-a8b9-4ac1-d3e4-4f5a6b7c8d9e" />
   </Folder>
   <Folder Name="/Modules/" />

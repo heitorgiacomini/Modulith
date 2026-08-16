@@ -7,7 +7,7 @@ This repository is an e-commerce modular monolith built with .NET 10 and an Angu
 
 - `Modules/Catalog`, `Modules/Basket`, and `Modules/Ordering` own their domain logic and persistence.
 - `Shared/Shared.Contracts` contains shared CQRS contracts; `Shared/Shared` contains cross-cutting infrastructure; `Shared/Shared.Messaging` contains MassTransit/RabbitMQ integration.
-- `Bootstrapper/*Subgraph` hosts the Hot Chocolate GraphQL subgraphs. `Bootstrapper/Gateway` hosts the Fusion gateway. `Bootstrapper/Api` is the combined API host.
+- `Bootstrapper/Api` hosts the combined GraphQL service with three named schemas: `catalog`, `basket`, and `ordering`. `Bootstrapper/Gateway` hosts the Fusion gateway.
 - `Tests/ArchitectureTests` enforces module independence with ArchUnitNET.
 - `web-client` is the Angular application and uses PrimeNG and Keycloak.
 
@@ -33,10 +33,10 @@ This repository is an e-commerce modular monolith built with .NET 10 and an Angu
 
 ## GraphQL And Federation
 
-- Define GraphQL schema behavior in the owning module and compose it in the corresponding subgraph host.
+- Define GraphQL schema behavior in the owning module and compose it in the combined API host via the relevant named schema.
 - Preserve entity keys and reference resolvers when changing federated types.
-- When a subgraph schema changes, verify the matching subgraph and the Fusion gateway composition.
-- Treat `Bootstrapper/Gateway/gateway.fgx` as a generated composition artifact unless the task explicitly requires updating it.
+- When a source schema changes, verify the matching module schema and the Fusion gateway composition.
+- Treat `Bootstrapper/Gateway/gateway.far` as the generated composition artifact unless the task explicitly requires updating it.
 
 ## Native Skills
 
