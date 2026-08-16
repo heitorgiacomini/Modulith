@@ -38,7 +38,7 @@ export class OrdersPageComponent {
   }
 
   refresh(): void { this.loadOrders(this.lastLazyLoadEvent); }
-  clearFilters(table: Table): void { table.clear(); this.lastLazyLoadEvent = this.defaultEvent(); this.loadOrders(this.lastLazyLoadEvent); }
+  clearFilters(table: Table): void { table.clear(); }
   lineTotal(item: { quantity: number; price: number }): number { return item.quantity * item.price; }
 
   private loadOrders(event: GraphqlLazyLoadEvent): void {

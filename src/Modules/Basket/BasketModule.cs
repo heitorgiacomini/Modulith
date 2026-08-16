@@ -43,7 +43,8 @@ public static class BasketModule
       .AddGraphQLServer(GraphQLSchemaName)
       .AddBasketGraphQL()
       .AddFiltering()
-      .AddSorting();
+      .AddSorting()
+      .ModifyCostOptions(options => options.MaxFieldCost = 5_000);
 
     return services;
   }

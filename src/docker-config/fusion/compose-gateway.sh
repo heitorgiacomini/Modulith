@@ -13,7 +13,16 @@ if [[ -n "${API_URL:-}" ]]; then
     schema_directory="$schema_root/$schema"
     schema_url="${API_URL%/}/graphql/$schema/schema.graphqls"
     mkdir -p "$schema_directory"
-    cp "/workspace/.fusion/$schema/schema-settings.json" "$schema_directory/schema-settings.json"
+    cat > "$schema_directory/schema-settings.json" <<EOF
+{
+  "name": "$schema",
+  "transports": {
+    "http": {
+      "url": "${API_URL%/}/graphql/$schema"
+    }
+  }
+}
+EOF
 
     for attempt in {1..30}; do
       if curl --fail --silent --show-error "$schema_url" \
@@ -37,9 +46,9 @@ rm -f "$archive_directory/gateway.far"
 
 dotnet tool restore
 dotnet tool run nitro -- fusion compose \
-  --source-schema-file "$schema_root/catalog" \
-  --source-schema-file "$schema_root/basket" \
-  --source-schema-file "$schema_root/ordering" \
+  --source-schema-file "$schema_root/catalog/schema.graphqls" \
+  --source-schema-file "$schema_root/basket/schema.graphqls" \
+  --source-schema-file "$schema_root/ordering/schema.graphqls" \
   --archive "$archive_directory" \
   --include-satisfiability-paths
 

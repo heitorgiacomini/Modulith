@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -23,7 +23,7 @@ import { TableCaptionComponent } from '../../shared/ui/table-caption.component';
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })
-export class ProductsPageComponent implements OnInit {
+export class ProductsPageComponent {
   private readonly catalogService = inject(CatalogService);
   private readonly basketService = inject(BasketService);
   readonly auth = inject(AuthService);
@@ -43,8 +43,6 @@ export class ProductsPageComponent implements OnInit {
   cartItem = { quantity: 1, color: '' };
 
   private lastLazyLoadEvent: GraphqlLazyLoadEvent = this.createDefaultLazyLoadEvent();
-
-  ngOnInit(): void { this.loadProducts(this.lastLazyLoadEvent); }
 
   onLazyLoad(event: TableLazyLoadEvent): void {
     const lazyLoadEvent = this.normalizeLazyLoadEvent(event);
@@ -96,7 +94,7 @@ export class ProductsPageComponent implements OnInit {
   }
 
   selectProduct(product: ProductDto): void {
-    this.catalogService.getProduct(product.id).subscribe({ next: item => this.selectedProduct.set(item), error: error => this.errorMessage.set(this.toMessage(error)) });
+    this.selectedProduct.set(product);
   }
 
   openAddToCartDialog(): void {

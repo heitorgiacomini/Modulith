@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -21,7 +21,7 @@ import { TableCaptionComponent } from '../../shared/ui/table-caption.component';
   templateUrl: './baskets-page.component.html',
   styleUrl: './baskets-page.component.scss'
 })
-export class BasketsPageComponent implements OnInit {
+export class BasketsPageComponent {
   private readonly basketService = inject(BasketService);
   readonly auth = inject(AuthService);
 
@@ -37,10 +37,6 @@ export class BasketsPageComponent implements OnInit {
   checkout = this.emptyCheckout();
   private lastLazyLoadEvent: GraphqlLazyLoadEvent = this.createDefaultLazyLoadEvent();
 
-  ngOnInit(): void {
-    this.loadBaskets(this.lastLazyLoadEvent);
-  }
-
   onLazyLoad(event: TableLazyLoadEvent): void {
     const lazyLoadEvent = this.normalizeLazyLoadEvent(event);
     this.lastLazyLoadEvent = lazyLoadEvent;
@@ -53,8 +49,6 @@ export class BasketsPageComponent implements OnInit {
 
   clearFilters(table: Table): void {
     table.clear();
-    this.lastLazyLoadEvent = this.createDefaultLazyLoadEvent();
-    this.loadBaskets(this.lastLazyLoadEvent);
   }
 
   removeItem(productId: string): void {

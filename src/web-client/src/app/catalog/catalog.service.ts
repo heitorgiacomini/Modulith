@@ -17,10 +17,6 @@ interface ProductsQueryResult {
   };
 }
 
-interface ProductQueryResult {
-  product: ProductDto | null;
-}
-
 const PRODUCT_FIELDS: Array<string | GraphqlSelectionNode> = [
   'id',
   'name',
@@ -53,18 +49,6 @@ export class CatalogService {
     },
     selection: ['totalCount', { name: 'items', fields: PRODUCT_FIELDS }]
   });
-  private readonly productQuery = this.graphqlQueryBuilder.buildQuery({
-    operationName: 'Product',
-    variableDefinitions: {
-      id: 'UUID!'
-    },
-    rootField: 'product',
-    rootArguments: {
-      id: '$id'
-    },
-    selection: PRODUCT_FIELDS
-  });
-
   getProducts(event: GraphqlLazyLoadEvent): Observable<PaginatedResult<ProductDto>> {
     const queryVariables = this.graphqlQueryBuilder.buildCollectionVariables(event, 6);
     const pageSize = typeof queryVariables.take === 'number' ? queryVariables.take : 6;
@@ -85,18 +69,6 @@ export class CatalogService {
 
   createProduct(request: CreateProductRequest): Observable<void> {
     return this.httpClient.post<void>(`${environment.apiUrl}/products`, request);
-  }
-
-  getProduct(id: string): Observable<ProductDto> {
-    return this.graphql<ProductQueryResult>(this.productQuery, { id }).pipe(
-      map(response => {
-        if (!response.product) {
-          throw new Error('Product not found.');
-        }
-
-        return response.product;
-      })
-    );
   }
 
   private graphql<T, TVariables extends object = Record<string, unknown>>(
