@@ -79,28 +79,65 @@ Architecture tests enforce that business module assemblies do not directly depen
 
 ## Prerequisites
 
-For the recommended container workflow:
+- Docker Desktop or another Docker Engine
+- Docker Compose v2 (`docker compose version`)
 
-- Docker Desktop or another Docker Engine with Docker Compose v2
-
-For running components directly:
-
-- .NET 10 SDK
-- Node.js compatible with Angular 21 and npm 11
-- PostgreSQL, Redis, RabbitMQ, and Keycloak, or their Compose containers
+The standard run and test workflows use containers. A local .NET SDK, Node.js,
+PostgreSQL, Redis, RabbitMQ, and Keycloak installation is not required.
 
 ## Run with Docker Compose
 
-Run these commands from the repository root:
+All commands in this section run from the repository root.
+
+### Start the application
 
 ```bash
-docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --build
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --build -d
 ```
 
-To stop the application while retaining named-volume data:
+The first startup can take a few minutes while Docker downloads images, builds
+the API, gateway, and web client, imports the Keycloak realm, and composes the
+Fusion gateway schema.
+
+Check container status and follow startup logs:
+
+```bash
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml ps
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml logs -f api fusion-composer graphql-gateway web-client
+```
+
+When `fusion-composer` exits with code `0`, schema composition completed
+successfully. The other application containers should remain running.
+
+### Stop or reset the application
+
+Stop the application while retaining database and dependency volumes:
 
 ```bash
 docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml down
+```
+
+To perform a clean reset, including PostgreSQL data, installed web-client
+packages, and the generated Fusion archive:
+
+```bash
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml down --volumes
+```
+
+> `down --volumes` permanently removes local development data managed by this
+> Compose project.
+
+After changing a Dockerfile or project dependency, rebuild and restart the
+affected services:
+
+```bash
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --build -d
+```
+
+After changing a GraphQL source schema, recreate the composer and gateway:
+
+```bash
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --force-recreate fusion-composer graphql-gateway
 ```
 
 ### Local service URLs
@@ -121,29 +158,41 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml down
 
 The sample Compose credentials for PostgreSQL and RabbitMQ are `eshopdb` / `eshopdb`. They are development-only values and must not be reused in production.
 
-## Run components locally
+## Test with Docker
 
-Start the backing services with Compose, then run the API from the repository root:
+Run the .NET test suite in the .NET 10 SDK container:
+
+```bash
+docker run --rm -v "${PWD}/src:/workspace" -w /workspace mcr.microsoft.com/dotnet/sdk:10.0 dotnet test eshop-modular-monilith.slnx
+```
+
+Run the Angular boundary check and production build using the Compose web-client
+service and its Node.js image:
+
+```bash
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml run --rm --no-deps web-client sh -c "npm install && npm run check:boundaries && npm run build"
+```
+
+These commands mount the working tree, so test and compiler artifacts may be
+created under `src/`.
+
+## Optional local development
+
+If you prefer to run processes outside containers, install the .NET 10 SDK and
+a Node.js version compatible with Angular 21. Start the infrastructure with
+Compose, then run the API and client from separate terminals:
 
 ```bash
 dotnet run --project src/Bootstrapper/Api/Api.csproj
-```
 
-The Fusion gateway needs a generated `gateway.far`. The complete Compose workflow generates it automatically and is the simplest way to run the gateway. When the archive is available at `src/Bootstrapper/Gateway/gateway.far`, run:
-
-```bash
-dotnet run --project src/Bootstrapper/Gateway/Gateway.csproj
-```
-
-Run the Angular client in another terminal:
-
-```bash
 cd src/web-client
-npm install
+npm ci
 npm start
 ```
 
-The client configuration in `src/web-client/src/environments/environment.ts` targets the default API, gateway, and Keycloak ports shown above.
+The full Compose workflow remains necessary to generate and run the Fusion
+gateway archive automatically. Client configuration targets the API, gateway,
+and Keycloak ports listed above.
 
 ## Authentication and authorization
 
@@ -166,21 +215,4 @@ src/
 |-- web-client/               # Angular/PrimeNG application
 |-- docker-config/            # PostgreSQL, Keycloak, and Fusion setup
 `-- docker-compose*.yml
-```
-
-## Build and test
-
-From the repository root:
-
-```bash
-dotnet build src/eshop-modular-monilith.slnx
-dotnet test src/eshop-modular-monilith.slnx --no-build
-```
-
-To verify the Angular bounded-context import rules and production build:
-
-```bash
-cd src/web-client
-npm run check:boundaries
-npm run build
 ```
