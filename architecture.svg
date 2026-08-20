@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1080" viewBox="0 0 1800 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Docker Compose runtime and internal .NET modular monolith architecture</title>
+  <desc id="desc">Two panels show the Angular and Fusion runtime topology and the four business modules inside the ASP.NET Core API host.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dy="5" stdDeviation="7" flood-color="#0f172a" flood-opacity=".12"/></filter>
+    <marker id="blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#2563eb"/></marker>
+    <marker id="violet" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#7c3aed"/></marker>
+    <marker id="orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#ea580c"/></marker>
+    <style>
+      text{font-family:Inter,"Segoe UI",Arial,sans-serif;fill:#0f172a}.title{font-size:34px;font-weight:750}.subtitle{font-size:17px;fill:#475569}.section{font-size:24px;font-weight:750}.bt{font-size:19px;font-weight:700}.body{font-size:15px;fill:#334155}.small{font-size:13px;fill:#475569}.tiny{font-size:12px;fill:#64748b}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.box{fill:#f8fafc;stroke:#94a3b8;stroke-width:2}.client{fill:#eff6ff;stroke:#3b82f6}.gateway{fill:#f5f3ff;stroke:#8b5cf6}.api{fill:#ecfeff;stroke:#0891b2}.data{fill:#f0fdf4;stroke:#22c55e}.infra{fill:#fff7ed;stroke:#f97316}.auth{fill:#fdf2f8;stroke:#ec4899}.catalog{fill:#eff6ff;stroke:#3b82f6}.basket{fill:#f0fdf4;stroke:#22c55e}.ordering{fill:#fff7ed;stroke:#f97316}.accounts{fill:#fdf2f8;stroke:#ec4899}.shared{fill:#f8fafc;stroke:#64748b}.module{stroke-width:2}.line{fill:none;stroke:#2563eb;stroke-width:3;marker-end:url(#blue)}.compose{stroke:#7c3aed;marker-end:url(#violet)}.event{fill:none;stroke:#ea580c;stroke-width:3;stroke-dasharray:9 7;marker-end:url(#orange)}.green{stroke:#16a34a}.pink{stroke:#db2777;stroke-dasharray:5 5}.label{fill:#fff;opacity:.94}.pill{font-size:12px;font-weight:700;letter-spacing:.4px}
+    </style>
+  </defs>
+  <rect width="1800" height="1080" fill="url(#bg)"/>
+  <text x="70" y="65" class="title">E-Shop Architecture</text>
+  <text x="70" y="96" class="subtitle">Docker Compose runtime and internal .NET 10 modular monolith</text>
+
+  <rect x="45" y="130" width="825" height="900" rx="24" class="panel" filter="url(#shadow)"/>
+  <text x="80" y="180" class="section">1. Docker Compose runtime</text>
+  <text x="80" y="208" class="subtitle">Containers, exposed ports, and request paths</text>
+  <rect x="90" y="250" width="230" height="95" rx="16" class="box client"/>
+  <text x="205" y="286" text-anchor="middle" class="bt">Angular 21 client</text><text x="205" y="316" text-anchor="middle" class="body">localhost:4200</text>
+  <rect x="520" y="238" width="260" height="120" rx="16" class="box auth"/>
+  <text x="650" y="278" text-anchor="middle" class="bt">Keycloak</text><text x="650" y="307" text-anchor="middle" class="body">OIDC / JWT · localhost:9090</text><text x="650" y="333" text-anchor="middle" class="small">realm: myrealm</text>
+  <rect x="90" y="430" width="300" height="120" rx="16" class="box gateway"/>
+  <text x="240" y="470" text-anchor="middle" class="bt">Fusion GraphQL Gateway</text><text x="240" y="500" text-anchor="middle" class="body">localhost:5002/graphql</text><text x="240" y="526" text-anchor="middle" class="small">routes composed operations</text>
+  <rect x="500" y="430" width="280" height="120" rx="16" class="box api"/>
+  <text x="640" y="470" text-anchor="middle" class="bt">ASP.NET Core API</text><text x="640" y="500" text-anchor="middle" class="body">localhost:5004</text><text x="640" y="526" text-anchor="middle" class="small">REST + 3 source schemas</text>
+  <path d="M205 345v80" class="line"/><rect x="218" y="372" width="90" height="25" rx="6" class="label"/><text x="263" y="390" text-anchor="middle" class="small">GraphQL</text>
+  <path d="M320 300c90 0 100 180 175 180" class="line"/><rect x="371" y="360" width="92" height="42" rx="6" class="label"/><text x="417" y="378" text-anchor="middle" class="small">REST</text><text x="417" y="394" text-anchor="middle" class="tiny">Accounts/API</text>
+  <path d="M390 490h105" class="line compose"/><rect x="408" y="454" width="68" height="25" rx="6" class="label"/><text x="442" y="472" text-anchor="middle" class="small">HTTP</text>
+  <path d="M320 274h195" class="line pink"/><path d="M650 358v67" class="line pink"/><text x="418" y="264" text-anchor="middle" class="small">sign in</text>
+  <rect x="90" y="635" width="250" height="100" rx="16" class="box gateway"/>
+  <text x="215" y="671" text-anchor="middle" class="bt">Fusion Composer</text><text x="215" y="698" text-anchor="middle" class="body">startup job</text><text x="215" y="720" text-anchor="middle" class="small">catalog + basket + ordering</text>
+  <path d="M335 660c15-35 85-90 165-130" class="line compose"/><text x="405" y="588" text-anchor="middle" class="small">downloads SDL</text>
+  <path d="M215 635c0-40 10-50 20-80" class="line compose"/><rect x="102" y="572" width="128" height="27" rx="7" class="label"/><text x="166" y="591" text-anchor="middle" class="small">writes gateway.far</text>
+  <rect x="420" y="620" width="385" height="330" rx="18" class="box"/><text x="450" y="660" class="bt">Backing services</text>
+  <rect x="450" y="690" width="150" height="88" rx="13" class="box data"/><text x="525" y="723" text-anchor="middle" class="bt">PostgreSQL 18</text><text x="525" y="751" text-anchor="middle" class="small">localhost:5434</text>
+  <rect x="625" y="690" width="150" height="88" rx="13" class="box data"/><text x="700" y="723" text-anchor="middle" class="bt">Redis</text><text x="700" y="751" text-anchor="middle" class="small">localhost:6379</text>
+  <rect x="450" y="810" width="150" height="95" rx="13" class="box infra"/><text x="525" y="843" text-anchor="middle" class="bt">RabbitMQ</text><text x="525" y="869" text-anchor="middle" class="small">AMQP 5672</text><text x="525" y="889" text-anchor="middle" class="tiny">UI 15672</text>
+  <rect x="625" y="810" width="150" height="95" rx="13" class="box infra"/><text x="700" y="843" text-anchor="middle" class="bt">Seq</text><text x="700" y="869" text-anchor="middle" class="small">UI localhost:9091</text><text x="700" y="889" text-anchor="middle" class="tiny">ingest 5341</text>
+  <path d="M640 550c0 40-50 70-80 136" class="line green"/><path d="M665 550c35 45 45 75 45 136" class="line green"/><path d="M620 550c-50 65-90 170-95 255" class="event"/><path d="M685 550c65 100 45 195 20 255" class="line green"/>
+  <rect x="92" y="968" width="14" height="14" rx="3" fill="#2563eb"/><text x="116" y="981" class="tiny">request</text><rect x="185" y="968" width="14" height="14" rx="3" fill="#7c3aed"/><text x="209" y="981" class="tiny">Fusion composition</text><rect x="350" y="968" width="14" height="14" rx="3" fill="#ea580c"/><text x="374" y="981" class="tiny">events</text><rect x="445" y="968" width="14" height="14" rx="3" fill="#16a34a"/><text x="469" y="981" class="tiny">data/cache/logs</text><rect x="584" y="968" width="14" height="14" rx="3" fill="#db2777"/><text x="608" y="981" class="tiny">authentication</text>
+
+  <rect x="900" y="130" width="855" height="900" rx="24" class="panel" filter="url(#shadow)"/>
+  <text x="935" y="180" class="section">2. Internal .NET 10 architecture</text><text x="935" y="208" class="subtitle">One ASP.NET Core process with independently owned modules</text>
+  <rect x="935" y="240" width="785" height="645" rx="20" fill="#f8fafc" stroke="#0891b2" stroke-width="3"/><text x="970" y="278" class="bt">Bootstrapper/Api · composition root</text><text x="1680" y="278" text-anchor="end" class="pill" fill="#0e7490">ONE PROCESS</text>
+  <rect x="970" y="310" width="330" height="185" rx="18" class="module catalog"/><text x="995" y="345" class="bt">Catalog</text><text x="995" y="374" class="body">REST + GraphQL source schema</text><text x="995" y="402" class="small">CatalogDbContext</text><text x="995" y="429" class="small">Product aggregate and queries</text><text x="995" y="456" class="small">Publishes price-change event</text>
+  <rect x="1355" y="310" width="330" height="185" rx="18" class="module basket"/><text x="1380" y="345" class="bt">Basket</text><text x="1380" y="374" class="body">REST + GraphQL source schema</text><text x="1380" y="402" class="small">BasketDbContext + Redis decorator</text><text x="1380" y="429" class="small">Catalog.Contracts client</text><text x="1380" y="456" class="small">Checkout outbox processor</text>
+  <rect x="970" y="555" width="330" height="185" rx="18" class="module ordering"/><text x="995" y="590" class="bt">Ordering</text><text x="995" y="619" class="body">REST + GraphQL source schema</text><text x="995" y="647" class="small">OrderingDbContext</text><text x="995" y="674" class="small">Consumes basket-checkout event</text><text x="995" y="701" class="small">Scope-based authorization</text>
+  <rect x="1355" y="555" width="330" height="185" rx="18" class="module accounts"/><text x="1380" y="590" class="bt">Accounts</text><text x="1380" y="619" class="body">Authenticated REST · /account/me</text><text x="1380" y="647" class="small">AccountsDbContext</text><text x="1380" y="674" class="small">Preferences, addresses, payments</text><text x="1380" y="701" class="small">Not part of Fusion graph</text>
+  <path d="M1355 390h-50" class="line"/><rect x="1253" y="350" width="150" height="25" rx="6" class="label"/><text x="1328" y="368" text-anchor="middle" class="tiny">sync query via contract</text>
+  <path d="M1300 460c80 50 95 45 130 40" class="event"/><rect x="1255" y="498" width="205" height="28" rx="6" class="label"/><text x="1358" y="517" text-anchor="middle" class="tiny">ProductPriceChanged → Basket</text>
+  <path d="M1450 495c-60 55-170 60-240 55" class="event"/><rect x="1245" y="532" width="205" height="28" rx="6" class="label"/><text x="1348" y="551" text-anchor="middle" class="tiny">BasketCheckout → Ordering</text>
+  <rect x="970" y="790" width="715" height="70" rx="14" class="module shared"/><text x="995" y="821" class="bt">Shared technical building blocks</text><text x="995" y="846" class="small">Shared.Contracts · Shared · Shared.Messaging · Catalog.Contracts</text>
+  <rect x="935" y="915" width="785" height="78" rx="16" class="box data"/><text x="960" y="947" class="bt">Module-owned persistence</text><text x="960" y="975" class="body">4 EF Core DbContexts → shared PostgreSQL database · Basket cache → Redis</text><path d="M1130 885v25" class="line green"/><path d="M1515 885v25" class="line green"/>
+</svg>

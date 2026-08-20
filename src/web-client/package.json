@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "check:boundaries": "node scripts/check-context-boundaries.mjs"
   },
   "private": true,
   "packageManager": "npm@11.4.2",

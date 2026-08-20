@@ -1,0 +1,29 @@
+<p-toolbar styleClass="app-toolbar">
+  <ng-template pTemplate="start">
+    <div class="brand">
+      <span class="brand-badge">M</span>
+      <div>
+        <div class="brand-title">Course</div>
+        <div class="brand-subtitle">GraphQL API + Angular PrimeNG client</div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="toolbar-actions">
+      <a pButton routerLink="/products" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" label="Catalog" icon="pi pi-shopping-bag" severity="secondary"></a>
+      <a pButton routerLink="/baskets" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" label="Baskets" icon="pi pi-shopping-cart" severity="secondary"></a>
+      <a pButton routerLink="/orders" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" label="Orders" icon="pi pi-receipt" severity="secondary"></a>
+      @if (auth.authenticated()) {
+        <a pButton routerLink="/account" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" [label]="auth.userName() || 'Account'" icon="pi pi-user" severity="secondary"></a>
+        <button pButton type="button" label="Sign out" icon="pi pi-sign-out" severity="secondary" (click)="auth.logout()"></button>
+      } @else {
+        <button pButton type="button" label="Sign in" icon="pi pi-sign-in" (click)="auth.login()"></button>
+      }
+    </div>
+  </ng-template>
+</p-toolbar>
+
+<main class="app-shell">
+  <router-outlet></router-outlet>
+</main>

@@ -5,22 +5,28 @@ public record BasketCheckoutIntegrationEvent : IntegrationEvent
     public Guid CustomerId { get; set; } = default!;
     public decimal TotalPrice { get; set; } = default!;
 
-    // Shipping and BillingAddress
-    public string FirstName { get; set; } = default!;
-    public string LastName { get; set; } = default!;
-    public string EmailAddress { get; set; } = default!;
-    public string AddressLine { get; set; } = default!;
-    public string Country { get; set; } = default!;
-    public string State { get; set; } = default!;
-    public string ZipCode { get; set; } = default!;
-
-    // Payment
-    public string CardName { get; set; } = default!;
-    public string CardNumber { get; set; } = default!;
-    public string Expiration { get; set; } = default!;
-    public string Cvv { get; set; } = default!;
-    public int PaymentMethod { get; set; } = default!;
+    public BasketCheckoutAddress Address { get; set; } = default!;
+    public BasketCheckoutPayment Payment { get; set; } = default!;
     public List<BasketCheckoutItem> Items { get; set; } = [];
 }
 
 public record BasketCheckoutItem(Guid ProductId, int Quantity, decimal Price);
+
+public record BasketCheckoutAddress(
+    string FirstName,
+    string LastName,
+    string EmailAddress,
+    string Phone,
+    string AddressLine1,
+    string? AddressLine2,
+    string City,
+    string State,
+    string PostalCode,
+    string CountryCode);
+
+public record BasketCheckoutPayment(
+    string Token,
+    string CardholderName,
+    string Brand,
+    string Last4,
+    string Expiration);

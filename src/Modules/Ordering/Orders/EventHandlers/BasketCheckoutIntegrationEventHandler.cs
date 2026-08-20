@@ -19,8 +19,13 @@ public class BasketCheckoutIntegrationEventHandler
     private CreateOrderCommand MapToCreateOrderCommand(BasketCheckoutIntegrationEvent message)
     {
         // Create full order with incoming event data
-        var addressDto = new AddressDto(message.FirstName, message.LastName, message.EmailAddress, message.AddressLine, message.Country, message.State, message.ZipCode);
-        var paymentDto = new PaymentDto(message.CardName, message.CardNumber, message.Expiration, message.Cvv, message.PaymentMethod);
+        var addressDto = new AddressDto(
+            message.Address.FirstName, message.Address.LastName, message.Address.EmailAddress,
+            message.Address.Phone, message.Address.AddressLine1, message.Address.AddressLine2,
+            message.Address.City, message.Address.State, message.Address.PostalCode, message.Address.CountryCode);
+        var paymentDto = new PaymentDto(
+            message.Payment.Token, message.Payment.CardholderName, message.Payment.Brand,
+            message.Payment.Last4, message.Payment.Expiration);
         var orderId = Guid.NewGuid();
 
         var orderDto = new OrderDto(

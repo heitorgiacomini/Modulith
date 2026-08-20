@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" Version="16.6.0" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="16.6.0" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="16.6.0" />
     <PackageReference Include="HotChocolate.Types.OffsetPagination" Version="16.6.0" />
   </ItemGroup>

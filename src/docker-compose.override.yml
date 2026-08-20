@@ -130,7 +130,7 @@ services:
     command: bash /workspace/docker-config/fusion/compose-gateway.sh
     depends_on:
       api:
-        condition: service_healthy
+        condition: service_started
     restart: "no"
 
   graphql-gateway:
@@ -138,11 +138,13 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - Fusion__SchemaPath=/app/fusion/gateway.far
+      - Keycloak__AuthServerUrl=http://keycloak:9090/
+      - Keycloak__PublicIssuer=http://localhost:9090/realms/myrealm
     volumes:
       - fusion_gateway:/app/fusion:ro
     depends_on:
       fusion-composer:
-        condition: service_completed_successfully
+        condition: service_started
 
   web-client:
     environment:

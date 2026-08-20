@@ -4,10 +4,10 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "api": "StartDebugging",
-        "fusion-composer": "DoNotStart",
-        "graphql-gateway": "DoNotStart",
-        "web-client": "DoNotStart"
+        "api": "StartWithoutDebugging",
+        "fusion-composer": "StartWithoutDebugging",
+        "graphql-gateway": "StartWithoutDebugging",
+        "web-client": "StartWithoutDebugging"
       }
     }
   }

@@ -18,18 +18,21 @@ public partial class Program
     Assembly catalogAssembly = typeof(CatalogModule).Assembly;
     Assembly basketAssembly = typeof(BasketModule).Assembly;
     Assembly orderingAssembly = typeof(OrderingModule).Assembly;
+    Assembly accountsAssembly = typeof(AccountsModule).Assembly;
     // add services to the container.
     _ = webAppBuilder.Services
       .AddCarterWithAssemblies(
         catalogAssembly,
         basketAssembly,
-        orderingAssembly
+        orderingAssembly,
+        accountsAssembly
       );
 
     _ = webAppBuilder.Services.AddMediatRWithAssemblies(
       catalogAssembly,
       basketAssembly,
-      orderingAssembly
+      orderingAssembly,
+      accountsAssembly
     );
 
     //<summary>
@@ -44,7 +47,8 @@ public partial class Program
       webAppBuilder.Configuration,
       catalogAssembly,
       basketAssembly,
-      orderingAssembly
+      orderingAssembly,
+      accountsAssembly
     );
 
     _ = webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
@@ -52,7 +56,11 @@ public partial class Program
       ?? throw new InvalidOperationException("Keycloak:public-issuer is required.");
     webAppBuilder.Services.PostConfigure<JwtBearerOptions>(
       JwtBearerDefaults.AuthenticationScheme,
-      options => options.TokenValidationParameters.ValidIssuer = publicIssuer);
+      options =>
+      {
+        options.MapInboundClaims = false;
+        options.TokenValidationParameters.ValidIssuer = publicIssuer;
+      });
     _ = webAppBuilder.Services.AddAuthorization();
 
     _ = webAppBuilder.Services.AddCors(options =>
@@ -68,7 +76,8 @@ public partial class Program
     _ = webAppBuilder.Services
       .AddCatalogModule(webAppBuilder.Configuration)
       .AddOrderingModule(webAppBuilder.Configuration)
-      .AddBasketModule(webAppBuilder.Configuration);
+      .AddBasketModule(webAppBuilder.Configuration)
+      .AddAccountsModule(webAppBuilder.Configuration);
 
     _ = webAppBuilder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
@@ -94,7 +103,8 @@ public partial class Program
       _ = webApp
         .UseCatalogModule()
         .UseOrderingModule()
-        .UseBasketModule();
+        .UseBasketModule()
+        .UseAccountsModule();
     }
 
 

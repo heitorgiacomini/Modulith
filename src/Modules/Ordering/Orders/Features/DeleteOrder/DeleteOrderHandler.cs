@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Orders.Features.DeleteOrder;
 
-public record DeleteOrderCommand(Guid OrderId)
+public record DeleteOrderCommand(Guid OrderId, Guid CustomerId, bool CanDeleteAll)
     : ICommand<DeleteOrderResult>;
 public record DeleteOrderResult(bool IsSuccess);
 public class DeleteOrderCommandValidator : AbstractValidator<DeleteOrderCommand>
@@ -16,8 +16,15 @@ internal class DeleteOrderHandler(OrderingDbContext dbContext)
 {
     public async Task<DeleteOrderResult> Handle(DeleteOrderCommand command, CancellationToken cancellationToken)
     {
-        var order = await dbContext.Orders
-           .FindAsync([command.OrderId], cancellationToken: cancellationToken);
+        IQueryable<Order> orders = dbContext.Orders;
+        if (!command.CanDeleteAll)
+        {
+            orders = orders.Where(order => order.CustomerId == command.CustomerId);
+        }
+
+        var order = await orders.SingleOrDefaultAsync(
+            order => order.Id == command.OrderId,
+            cancellationToken);
 
         if (order is null)
         {

@@ -34,19 +34,26 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
                addressBuilder.Property(a => a.EmailAddress)
                    .HasMaxLength(50);
 
-               addressBuilder.Property(a => a.AddressLine)
+               addressBuilder.Property(a => a.Phone)
+                   .HasMaxLength(30)
+                   .IsRequired();
+
+               addressBuilder.Property(a => a.AddressLine1)
                    .HasMaxLength(180)
                    .IsRequired();
 
-               addressBuilder.Property(a => a.Country)
-                   .HasMaxLength(50);
+               addressBuilder.Property(a => a.AddressLine2).HasMaxLength(180);
+
+               addressBuilder.Property(a => a.City).HasMaxLength(80).IsRequired();
 
                addressBuilder.Property(a => a.State)
                    .HasMaxLength(50);
 
-               addressBuilder.Property(a => a.ZipCode)
+               addressBuilder.Property(a => a.PostalCode)
                    .HasMaxLength(20)
                    .IsRequired();
+
+               addressBuilder.Property(a => a.CountryCode).HasMaxLength(2).IsRequired();
            });
 
         builder.ComplexProperty(
@@ -63,38 +70,42 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
               addressBuilder.Property(a => a.EmailAddress)
                   .HasMaxLength(50);
 
-              addressBuilder.Property(a => a.AddressLine)
+              addressBuilder.Property(a => a.Phone)
+                  .HasMaxLength(30)
+                  .IsRequired();
+
+              addressBuilder.Property(a => a.AddressLine1)
                   .HasMaxLength(180)
                   .IsRequired();
 
-              addressBuilder.Property(a => a.Country)
-                  .HasMaxLength(50);
+              addressBuilder.Property(a => a.AddressLine2).HasMaxLength(180);
+
+              addressBuilder.Property(a => a.City).HasMaxLength(80).IsRequired();
 
               addressBuilder.Property(a => a.State)
                   .HasMaxLength(50);
 
-              addressBuilder.Property(a => a.ZipCode)
+              addressBuilder.Property(a => a.PostalCode)
                   .HasMaxLength(20)
                   .IsRequired();
+
+              addressBuilder.Property(a => a.CountryCode).HasMaxLength(2).IsRequired();
           });
 
         builder.ComplexProperty(
                o => o.Payment, paymentBuilder =>
                {
-                   paymentBuilder.Property(p => p.CardName)
-                       .HasMaxLength(50);
+                   paymentBuilder.Property(p => p.Token).HasMaxLength(200).IsRequired();
 
-                   paymentBuilder.Property(p => p.CardNumber)
-                       .HasMaxLength(24)
+                   paymentBuilder.Property(p => p.CardholderName)
+                       .HasMaxLength(100)
                        .IsRequired();
 
-                   paymentBuilder.Property(p => p.Expiration)
-                       .HasMaxLength(10);
+                   paymentBuilder.Property(p => p.Brand).HasMaxLength(30).IsRequired();
 
-                   paymentBuilder.Property(p => p.CVV)
-                       .HasMaxLength(3);
+                   paymentBuilder.Property(p => p.Last4).HasMaxLength(4).IsRequired();
 
-                   paymentBuilder.Property(p => p.PaymentMethod);
+                   paymentBuilder.Property(p => p.Expiration).HasMaxLength(10).IsRequired();
                });
     }
 }

@@ -4,6 +4,9 @@
     <Project Path="Bootstrapper/Gateway/Gateway.csproj" Id="i4d5e6f7-a8b9-4ac1-d3e4-4f5a6b7c8d9e" />
   </Folder>
   <Folder Name="/Modules/" />
+  <Folder Name="/Modules/Accounts/">
+    <Project Path="Modules/Accounts/Accounts.csproj" />
+  </Folder>
   <Folder Name="/Modules/Basket/">
     <Project Path="Modules/Basket/Basket.csproj" Id="628ec612-f7ad-41ab-84d7-b6b68c0551ee" />
   </Folder>
@@ -20,7 +23,9 @@
     <Project Path="Shared/Shared/Shared.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/AccountsTests/AccountsTests.csproj" />
     <Project Path="Tests/ArchitectureTests/ArchitectureTests.csproj" />
+    <Project Path="Tests/OrderingTests/OrderingTests.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />

@@ -1,4 +1,4 @@
-﻿namespace Ordering.Orders.Features.CreateOrder;
+namespace Ordering.Orders.Features.CreateOrder;
 
 public record CreateOrderCommand(OrderDto Order)
     : ICommand<CreateOrderResult>;
@@ -26,8 +26,8 @@ internal class CreateOrderHandler(OrderingDbContext dbContext)
 
     private Order CreateNewOrder(OrderDto orderDto)
     {
-        var shippingAddress = Address.Of(orderDto.ShippingAddress.FirstName, orderDto.ShippingAddress.LastName, orderDto.ShippingAddress.EmailAddress, orderDto.ShippingAddress.AddressLine, orderDto.ShippingAddress.Country, orderDto.ShippingAddress.State, orderDto.ShippingAddress.ZipCode);
-        var billingAddress = Address.Of(orderDto.BillingAddress.FirstName, orderDto.BillingAddress.LastName, orderDto.BillingAddress.EmailAddress, orderDto.BillingAddress.AddressLine, orderDto.BillingAddress.Country, orderDto.BillingAddress.State, orderDto.BillingAddress.ZipCode);
+        var shippingAddress = Address.Of(orderDto.ShippingAddress.FirstName, orderDto.ShippingAddress.LastName, orderDto.ShippingAddress.EmailAddress, orderDto.ShippingAddress.Phone, orderDto.ShippingAddress.AddressLine1, orderDto.ShippingAddress.AddressLine2, orderDto.ShippingAddress.City, orderDto.ShippingAddress.State, orderDto.ShippingAddress.PostalCode, orderDto.ShippingAddress.CountryCode);
+        var billingAddress = Address.Of(orderDto.BillingAddress.FirstName, orderDto.BillingAddress.LastName, orderDto.BillingAddress.EmailAddress, orderDto.BillingAddress.Phone, orderDto.BillingAddress.AddressLine1, orderDto.BillingAddress.AddressLine2, orderDto.BillingAddress.City, orderDto.BillingAddress.State, orderDto.BillingAddress.PostalCode, orderDto.BillingAddress.CountryCode);
 
         var newOrder = Order.Create(
                 id: Guid.NewGuid(),
@@ -35,7 +35,7 @@ internal class CreateOrderHandler(OrderingDbContext dbContext)
                 orderName: $"{orderDto.OrderName}_{new Random().Next()}",
                 shippingAddress: shippingAddress,
                 billingAddress: billingAddress,
-                payment: Payment.Of(orderDto.Payment.CardName, orderDto.Payment.CardNumber, orderDto.Payment.Expiration, orderDto.Payment.Cvv, orderDto.Payment.PaymentMethod)
+                payment: Payment.Of(orderDto.Payment.Token, orderDto.Payment.CardholderName, orderDto.Payment.Brand, orderDto.Payment.Last4, orderDto.Payment.Expiration)
                 );
 
         orderDto.Items.ForEach(item =>
