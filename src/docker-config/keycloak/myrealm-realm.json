@@ -1,14 +1,24 @@
 {
   "realm": "myrealm",
   "enabled": true,
-  "displayName": "MehmedCourse EShop",
+  "displayName": "Course EShop",
   "registrationAllowed": false,
   "resetPasswordAllowed": true,
   "loginWithEmailAllowed": true,
+  "roles": {
+    "realm": [
+      {
+        "name": "customer"
+      },
+      {
+        "name": "admin"
+      }
+    ]
+  },
   "clients": [
     {
       "clientId": "myclient",
-      "name": "MehmedCourse Angular Client",
+      "name": "Course Angular Client",
       "enabled": true,
       "publicClient": true,
       "standardFlowEnabled": true,
@@ -26,6 +36,109 @@
         "pkce.code.challenge.method": "S256"
       },
       "protocol": "openid-connect"
+    },
+    {
+      "clientId": "ordering-api",
+      "name": "Ordering Resource Server",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "ordering-api-local-secret",
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "protocol": "openid-connect",
+      "authorizationSettings": {
+        "allowRemoteResourceManagement": false,
+        "policyEnforcementMode": "ENFORCING",
+        "resources": [
+          {
+            "name": "Orders",
+            "type": "urn:course:ordering:orders",
+            "ownerManagedAccess": false,
+            "attributes": {},
+            "uris": [],
+            "scopes": [
+              {
+                "name": "orders:create-own"
+              },
+              {
+                "name": "orders:read-own"
+              },
+              {
+                "name": "orders:read-all"
+              },
+              {
+                "name": "orders:delete-own"
+              },
+              {
+                "name": "orders:delete-all"
+              }
+            ]
+          }
+        ],
+        "policies": [
+          {
+            "name": "Customer",
+            "type": "role",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "roles": "[{\"id\":\"customer\",\"required\":true}]"
+            }
+          },
+          {
+            "name": "OrderingAdmin",
+            "type": "role",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "roles": "[{\"id\":\"admin\",\"required\":true}]"
+            }
+          },
+          {
+            "name": "Customer Own Orders",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "resources": "[\"Orders\"]",
+              "scopes": "[\"orders:create-own\",\"orders:read-own\",\"orders:delete-own\"]",
+              "applyPolicies": "[\"Customer\"]"
+            }
+          },
+          {
+            "name": "Admin All Orders",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "resources": "[\"Orders\"]",
+              "scopes": "[\"orders:read-all\",\"orders:delete-all\"]",
+              "applyPolicies": "[\"OrderingAdmin\"]"
+            }
+          }
+        ],
+        "scopes": [
+          {
+            "name": "orders:create-own"
+          },
+          {
+            "name": "orders:read-own"
+          },
+          {
+            "name": "orders:read-all"
+          },
+          {
+            "name": "orders:delete-own"
+          },
+          {
+            "name": "orders:delete-all"
+          }
+        ],
+        "decisionStrategy": "UNANIMOUS"
+      }
     }
   ],
   "users": [
@@ -36,6 +149,10 @@
       "firstName": "Local",
       "lastName": "Shopper",
       "email": "shopper@example.test",
+      "realmRoles": [
+        "default-roles-myrealm",
+        "customer"
+      ],
       "credentials": [
         {
           "type": "password",

@@ -24,14 +24,14 @@ if [[ -n "${API_URL:-}" ]]; then
 }
 EOF
 
-    for attempt in {1..30}; do
+    for attempt in {1..120}; do
       if curl --fail --silent --show-error "$schema_url" \
         --output "$schema_directory/schema.graphqls" \
         && [[ -s "$schema_directory/schema.graphqls" ]]; then
         break
       fi
 
-      if [[ "$attempt" -eq 30 ]]; then
+      if [[ "$attempt" -eq 120 ]]; then
         echo "Failed to download source schema '$schema' from $schema_url." >&2
         exit 1
       fi

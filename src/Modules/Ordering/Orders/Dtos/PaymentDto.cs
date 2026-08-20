@@ -1,2 +1,2 @@
 ﻿namespace Ordering.Orders.Dtos;
-public record PaymentDto(string CardName, string CardNumber, string Expiration, string Cvv, int PaymentMethod);
+public record PaymentDto(string Token, string CardholderName, string Brand, string Last4, string Expiration);

@@ -6,7 +6,7 @@ tools: [read, search, edit, execute, todo]
 user-invocable: true
 disable-model-invocation: false
 ---
-You are the full-stack integration and reusable UI developer for the MehmedCourse EShop modular monolith.
+You are the full-stack integration and reusable UI developer for the ModulithCourse EShop modular monolith.
 
 Follow the workspace's `.github/copilot-instructions.md` as the authoritative architecture and workflow guide. Verify actual paths and existing patterns before editing because module layouts are not uniform.
 

@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Orders.Features.GetOrders;
 
-public record GetOrdersQuery(PaginationRequest PaginationRequest)
+public record GetOrdersQuery(Guid? CustomerId, PaginationRequest PaginationRequest)
     : IQuery<GetOrdersResult>;
 public record GetOrdersResult(PaginatedResult<OrderDto> Orders);
 
@@ -12,9 +12,15 @@ internal class GetOrdersHandler(OrderingDbContext dbContext)
         var pageIndex = query.PaginationRequest.PageIndex;
         var pageSize = query.PaginationRequest.PageSize;
 
-        var totalCount = await dbContext.Orders.LongCountAsync(cancellationToken);
+        IQueryable<Order> customerOrders = dbContext.Orders;
+        if (query.CustomerId is { } customerId)
+        {
+            customerOrders = customerOrders.Where(order => order.CustomerId == customerId);
+        }
 
-        var orders = await dbContext.Orders
+        var totalCount = await customerOrders.LongCountAsync(cancellationToken);
+
+        var orders = await customerOrders
                         .AsNoTracking()
                         .Include(x => x.Items)
                         .OrderBy(p => p.OrderName)

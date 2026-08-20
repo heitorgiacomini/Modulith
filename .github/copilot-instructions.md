@@ -1,4 +1,4 @@
-# Copilot instructions (MehmedCourse — EShop modular monolith)
+# Copilot instructions (EShop modular monolith)
 
 - Always check the current working directory before running commands. The .NET solution root is **`src/`** (not the git repo root) — `src/eshop-modular-monilith.slnx`. `docker compose`, `dotnet run`, and `dotnet ef` all need to be run from `src/`. The Angular client lives in `src/web-client` and its own `npm` commands run from there.
 - This is the **single canonical** copilot-instructions file for this repo (a duplicate previously existed at `src/.github/copilot-instructions.md` and has been removed).

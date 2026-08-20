@@ -1,0 +1,14 @@
+global using Accounts.Accounts.Dtos;
+global using Accounts.Accounts.Models;
+global using Accounts.Data;
+global using Carter;
+global using FluentValidation;
+global using Mapster;
+global using MediatR;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Routing;
+global using Microsoft.EntityFrameworkCore;
+global using Shared.Contracts.CQRS;
+global using Shared.DDD;
+global using System.Reflection;

@@ -1,0 +1,204 @@
+<section class="account-page">
+  <header class="account-header">
+    <div>
+      <p class="eyebrow">Customer account</p>
+      <h1>{{ auth.profile()?.firstName || auth.userName() || 'Your account' }}</h1>
+      <p>Manage delivery details, preferences, orders, and account security.</p>
+    </div>
+    <div class="identity-mark" aria-hidden="true">
+      {{ (auth.profile()?.firstName || auth.userName() || 'A').charAt(0).toUpperCase() }}
+    </div>
+  </header>
+
+  <div class="account-layout">
+    <nav class="section-nav" aria-label="Account sections">
+      @for (section of sections; track section.id) {
+        <button
+          type="button"
+          [class.active]="activeSection() === section.id"
+          [attr.aria-current]="activeSection() === section.id ? 'page' : null"
+          (click)="selectSection(section.id)">
+          <i [class]="section.icon" aria-hidden="true"></i>
+          <span>{{ section.label }}</span>
+        </button>
+      }
+    </nav>
+
+    <main class="account-content">
+      @if (errorMessage()) {
+        <div class="status-message error" role="alert">{{ errorMessage() }}</div>
+      }
+
+      @if (loading()) {
+        <div class="status-message">Loading account...</div>
+      } @else {
+        @switch (activeSection()) {
+          @case ('overview') {
+            <section class="content-section">
+              <div class="section-heading">
+                <div><p class="eyebrow">At a glance</p><h2>Overview</h2></div>
+              </div>
+              <div class="summary-grid">
+                <article class="summary-card">
+                  <i class="pi pi-id-card"></i>
+                  <span>Signed in as</span>
+                  <strong>{{ auth.profile()?.email || auth.userName() }}</strong>
+                  <button type="button" class="text-action" (click)="selectSection('personal')">View profile</button>
+                </article>
+                <article class="summary-card">
+                  <i class="pi pi-map-marker"></i>
+                  <span>Saved addresses</span>
+                  <strong>{{ account()?.addresses?.length || 0 }}</strong>
+                  <button type="button" class="text-action" (click)="selectSection('addresses')">Manage addresses</button>
+                </article>
+                <article class="summary-card">
+                  <i class="pi pi-receipt"></i>
+                  <span>Recent orders</span>
+                  <strong>{{ orders().length }}</strong>
+                  <button type="button" class="text-action" (click)="selectSection('orders')">Review orders</button>
+                </article>
+              </div>
+              <div class="defaults-grid">
+                <article>
+                  <h3>Default shipping</h3>
+                  @if (defaultShipping(); as address) {
+                    <p>{{ address.addressLine1 }}<br>{{ address.city }}, {{ address.state }} {{ address.postalCode }}</p>
+                  } @else { <p>No default shipping address selected.</p> }
+                </article>
+                <article>
+                  <h3>Default billing</h3>
+                  @if (defaultBilling(); as address) {
+                    <p>{{ address.addressLine1 }}<br>{{ address.city }}, {{ address.state }} {{ address.postalCode }}</p>
+                  } @else { <p>No default billing address selected.</p> }
+                </article>
+              </div>
+            </section>
+          }
+          @case ('personal') {
+            <section class="content-section">
+              <div class="section-heading">
+                <div><p class="eyebrow">Keycloak identity</p><h2>Personal information</h2></div>
+                <button pButton type="button" label="Edit in Keycloak" icon="pi pi-external-link" (click)="auth.openAccountConsole()"></button>
+              </div>
+              <dl class="profile-grid">
+                <div><dt>First name</dt><dd>{{ auth.profile()?.firstName || 'Not provided' }}</dd></div>
+                <div><dt>Last name</dt><dd>{{ auth.profile()?.lastName || 'Not provided' }}</dd></div>
+                <div><dt>Email</dt><dd>{{ auth.profile()?.email || 'Not provided' }}</dd></div>
+                <div><dt>Username</dt><dd>{{ auth.profile()?.username || auth.userName() }}</dd></div>
+              </dl>
+              <p class="section-note"><i class="pi pi-info-circle"></i> Identity details are managed securely by Keycloak.</p>
+            </section>
+          }
+          @case ('addresses') {
+            <section class="content-section">
+              <div class="section-heading">
+                <div><p class="eyebrow">Delivery book</p><h2>Addresses</h2></div>
+                <button pButton type="button" label="Add address" icon="pi pi-plus" (click)="openAddressDialog()"></button>
+              </div>
+              @if (account()?.addresses?.length) {
+                <div class="address-grid">
+                  @for (address of account()!.addresses; track address.id) {
+                    <article class="address-card">
+                      <div class="address-card-header">
+                        <div><span class="address-label">{{ address.label }}</span><strong>{{ address.firstName }} {{ address.lastName }}</strong></div>
+                        <div class="icon-actions">
+                          <button pButton type="button" icon="pi pi-pencil" severity="secondary" pTooltip="Edit address" (click)="openAddressDialog(address)"></button>
+                          <button pButton type="button" icon="pi pi-trash" severity="danger" pTooltip="Delete address" (click)="deleteAddress(address)"></button>
+                        </div>
+                      </div>
+                      <p>{{ address.addressLine1 }}<br>@if (address.addressLine2) { {{ address.addressLine2 }}<br> }{{ address.city }}, {{ address.state }} {{ address.postalCode }}<br>{{ address.countryCode }}</p>
+                      <p class="contact-line">{{ address.email }} · {{ address.phone }}</p>
+                      <div class="address-tags">
+                        @if (address.isDefaultShipping) { <span>Default shipping</span> }
+                        @if (address.isDefaultBilling) { <span>Default billing</span> }
+                      </div>
+                    </article>
+                  }
+                </div>
+              } @else {
+                <div class="empty-state"><i class="pi pi-map"></i><h3>No saved addresses</h3><p>Add an address to make future checkouts faster.</p></div>
+              }
+            </section>
+          }
+          @case ('payments') {
+            <section class="content-section">
+              <div class="section-heading"><div><p class="eyebrow">Payment vault</p><h2>Payments</h2></div></div>
+              @if (account()?.paymentMethods?.length) {
+                <div class="order-list">
+                  @for (paymentMethod of account()?.paymentMethods; track paymentMethod.id) {
+                    <article><div><strong>{{ paymentMethod.label }}</strong><span>{{ paymentMethod.brand }} · •••• {{ paymentMethod.last4 }} · {{ paymentMethod.expiration }}</span></div><strong>{{ paymentMethod.isDefault ? 'Default' : '' }}</strong></article>
+                  }
+                </div>
+              } @else {
+                <div class="empty-state safe-payment"><i class="pi pi-lock"></i><h3>No saved payment methods</h3><p>Add a payment method during checkout. This application stores only mock tokens and masked card metadata.</p></div>
+              }
+            </section>
+          }
+          @case ('orders') {
+            <section class="content-section">
+              <div class="section-heading"><div><p class="eyebrow">Purchase history</p><h2>Recent orders</h2></div></div>
+              @if (orders().length) {
+                <div class="order-list">
+                  @for (order of orders(); track order.id) {
+                    <article><div><strong>{{ order.orderName }}</strong><span>{{ order.itemCount }} item(s)</span></div><strong>{{ order.totalPrice | currency:(account()?.preferences?.currency || 'USD') }}</strong></article>
+                  }
+                </div>
+              } @else { <div class="empty-state"><i class="pi pi-receipt"></i><h3>No orders yet</h3><p>Your customer-scoped order history will appear here.</p></div> }
+            </section>
+          }
+          @case ('preferences') {
+            <section class="content-section">
+              <div class="section-heading"><div><p class="eyebrow">Store settings</p><h2>Preferences</h2></div></div>
+              <form class="preferences-form" [formGroup]="preferencesForm" (ngSubmit)="savePreferences()">
+                <label>Language and region<select formControlName="locale"><option value="en-US">English (United States)</option><option value="pt-BR">Português (Brasil)</option><option value="es-ES">Español</option></select></label>
+                <label>Currency<select formControlName="currency"><option value="USD">USD — US Dollar</option><option value="BRL">BRL — Real</option><option value="EUR">EUR — Euro</option></select></label>
+                <label class="toggle-row"><input type="checkbox" formControlName="orderStatusNotifications"><span><strong>Order updates</strong><small>Receive status and delivery notifications.</small></span></label>
+                <label class="toggle-row"><input type="checkbox" formControlName="marketingEmails"><span><strong>Offers and product news</strong><small>Receive occasional store announcements.</small></span></label>
+                <div><button pButton type="submit" label="Save preferences" icon="pi pi-check" [loading]="saving()"></button></div>
+              </form>
+            </section>
+          }
+          @case ('security') {
+            <section class="content-section">
+              <div class="section-heading"><div><p class="eyebrow">Keycloak security</p><h2>Security</h2></div></div>
+              <div class="security-list">
+                <article><i class="pi pi-key"></i><div><strong>Password</strong><span>Change your password through Keycloak.</span></div><button pButton type="button" icon="pi pi-external-link" label="Manage" severity="secondary" (click)="auth.openAccountConsole()"></button></article>
+                <article><i class="pi pi-mobile"></i><div><strong>Two-factor authentication</strong><span>Configure an authenticator for stronger protection.</span></div><button pButton type="button" icon="pi pi-external-link" label="Configure" severity="secondary" (click)="auth.openAccountConsole()"></button></article>
+                <article><i class="pi pi-desktop"></i><div><strong>Active sessions</strong><span>Review and sign out devices connected to your account.</span></div><button pButton type="button" icon="pi pi-external-link" label="Review" severity="secondary" (click)="auth.openAccountConsole()"></button></article>
+              </div>
+            </section>
+          }
+        }
+      }
+    </main>
+  </div>
+</section>
+
+<p-dialog
+  [header]="editingAddressId() ? 'Edit address' : 'Add address'"
+  [visible]="addressDialogVisible()"
+  [modal]="true"
+  [style]="{ width: 'min(46rem, 94vw)' }"
+  [closable]="!saving()"
+  (onHide)="closeAddressDialog()">
+  <form class="address-form" [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+    <label>Label<input pInputText formControlName="label" placeholder="Home, Work..." /></label>
+    <label>First name<input pInputText formControlName="firstName" /></label>
+    <label>Last name<input pInputText formControlName="lastName" /></label>
+    <label>Email<input pInputText type="email" formControlName="email" /></label>
+    <label>Phone<input pInputText type="tel" formControlName="phone" /></label>
+    <label class="wide-field">Address line 1<input pInputText formControlName="addressLine1" /></label>
+    <label class="wide-field">Address line 2 <span>(optional)</span><input pInputText formControlName="addressLine2" /></label>
+    <label>City<input pInputText formControlName="city" /></label>
+    <label>State or region<input pInputText formControlName="state" /></label>
+    <label>Postal code<input pInputText formControlName="postalCode" /></label>
+    <label>Country code<input pInputText formControlName="countryCode" maxlength="2" placeholder="US" /></label>
+    <label class="check-field"><input type="checkbox" formControlName="isDefaultShipping"> Default shipping</label>
+    <label class="check-field"><input type="checkbox" formControlName="isDefaultBilling"> Default billing</label>
+    @if (addressForm.invalid && addressForm.touched) { <p class="form-error wide-field">Complete all required fields with valid contact details.</p> }
+    <footer class="dialog-actions wide-field">
+      <button pButton type="button" label="Cancel" severity="secondary" [disabled]="saving()" (click)="closeAddressDialog()"></button>
+      <button pButton type="submit" label="Save address" icon="pi pi-check" [loading]="saving()"></button>
+    </footer>
+  </form>
+</p-dialog>

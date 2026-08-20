@@ -54,15 +54,24 @@ namespace Ordering.Data.Migrations
                         {
                             b1.IsRequired();
 
-                            b1.Property<string>("AddressLine")
+                            b1.Property<string>("AddressLine1")
                                 .IsRequired()
                                 .HasMaxLength(180)
                                 .HasColumnType("character varying(180)");
 
-                            b1.Property<string>("Country")
+                            b1.Property<string>("AddressLine2")
+                                .HasMaxLength(180)
+                                .HasColumnType("character varying(180)");
+
+                            b1.Property<string>("City")
                                 .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("character varying(50)");
+                                .HasMaxLength(80)
+                                .HasColumnType("character varying(80)");
+
+                            b1.Property<string>("CountryCode")
+                                .IsRequired()
+                                .HasMaxLength(2)
+                                .HasColumnType("character varying(2)");
 
                             b1.Property<string>("EmailAddress")
                                 .HasMaxLength(50)
@@ -78,57 +87,74 @@ namespace Ordering.Data.Migrations
                                 .HasMaxLength(50)
                                 .HasColumnType("character varying(50)");
 
+                            b1.Property<string>("Phone")
+                                .IsRequired()
+                                .HasMaxLength(30)
+                                .HasColumnType("character varying(30)");
+
+                            b1.Property<string>("PostalCode")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("character varying(20)");
+
                             b1.Property<string>("State")
                                 .IsRequired()
                                 .HasMaxLength(50)
                                 .HasColumnType("character varying(50)");
-
-                            b1.Property<string>("ZipCode")
-                                .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("character varying(20)");
                         });
 
                     b.ComplexProperty(typeof(Dictionary<string, object>), "Payment", "Ordering.Orders.Models.Order.Payment#Payment", b1 =>
                         {
                             b1.IsRequired();
 
-                            b1.Property<string>("CVV")
+                            b1.Property<string>("Brand")
                                 .IsRequired()
-                                .HasMaxLength(3)
-                                .HasColumnType("character varying(3)");
+                                .HasMaxLength(30)
+                                .HasColumnType("character varying(30)");
 
-                            b1.Property<string>("CardName")
-                                .HasMaxLength(50)
-                                .HasColumnType("character varying(50)");
-
-                            b1.Property<string>("CardNumber")
+                            b1.Property<string>("CardholderName")
                                 .IsRequired()
-                                .HasMaxLength(24)
-                                .HasColumnType("character varying(24)");
+                                .HasMaxLength(100)
+                                .HasColumnType("character varying(100)");
 
                             b1.Property<string>("Expiration")
                                 .IsRequired()
                                 .HasMaxLength(10)
                                 .HasColumnType("character varying(10)");
 
-                            b1.Property<int>("PaymentMethod")
-                                .HasColumnType("integer");
+                            b1.Property<string>("Last4")
+                                .IsRequired()
+                                .HasMaxLength(4)
+                                .HasColumnType("character varying(4)");
+
+                            b1.Property<string>("Token")
+                                .IsRequired()
+                                .HasMaxLength(200)
+                                .HasColumnType("character varying(200)");
                         });
 
                     b.ComplexProperty(typeof(Dictionary<string, object>), "ShippingAddress", "Ordering.Orders.Models.Order.ShippingAddress#Address", b1 =>
                         {
                             b1.IsRequired();
 
-                            b1.Property<string>("AddressLine")
+                            b1.Property<string>("AddressLine1")
                                 .IsRequired()
                                 .HasMaxLength(180)
                                 .HasColumnType("character varying(180)");
 
-                            b1.Property<string>("Country")
+                            b1.Property<string>("AddressLine2")
+                                .HasMaxLength(180)
+                                .HasColumnType("character varying(180)");
+
+                            b1.Property<string>("City")
                                 .IsRequired()
-                                .HasMaxLength(50)
-                                .HasColumnType("character varying(50)");
+                                .HasMaxLength(80)
+                                .HasColumnType("character varying(80)");
+
+                            b1.Property<string>("CountryCode")
+                                .IsRequired()
+                                .HasMaxLength(2)
+                                .HasColumnType("character varying(2)");
 
                             b1.Property<string>("EmailAddress")
                                 .HasMaxLength(50)
@@ -144,15 +170,20 @@ namespace Ordering.Data.Migrations
                                 .HasMaxLength(50)
                                 .HasColumnType("character varying(50)");
 
+                            b1.Property<string>("Phone")
+                                .IsRequired()
+                                .HasMaxLength(30)
+                                .HasColumnType("character varying(30)");
+
+                            b1.Property<string>("PostalCode")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("character varying(20)");
+
                             b1.Property<string>("State")
                                 .IsRequired()
                                 .HasMaxLength(50)
                                 .HasColumnType("character varying(50)");
-
-                            b1.Property<string>("ZipCode")
-                                .IsRequired()
-                                .HasMaxLength(20)
-                                .HasColumnType("character varying(20)");
                         });
 
                     b.HasKey("Id");

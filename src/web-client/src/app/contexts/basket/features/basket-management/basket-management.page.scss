@@ -1,0 +1,197 @@
+﻿.page-shell {
+  display: grid;
+}
+
+.page-card {
+  border-radius: 1rem;
+}
+
+.hero-meta,
+.table-caption,
+.caption-actions,
+.item-editor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-meta,
+.table-caption {
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.meta-pill {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-weight: 600;
+}
+
+.caption-title {
+  color: #334155;
+  font-weight: 700;
+}
+
+.expander-column {
+  width: 4rem;
+}
+
+.row-id {
+  max-width: 22rem;
+  margin-top: 0.2rem;
+  overflow: hidden;
+  color: #64748b;
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expanded-cell {
+  padding: 0 !important;
+  background: #f8fafc;
+}
+
+.items-panel {
+  margin: 0.75rem 2rem 1.25rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.items-panel h3,
+.dialog-section h3 {
+  margin: 0 0 0.75rem;
+  color: #334155;
+}
+
+.dialog-section {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.checkout-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.selection-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.selection-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.selection-card span,
+.selection-card small {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.selection-card small,
+.empty-state,
+.safe-payment-note {
+  color: #64748b;
+}
+
+.checkout-error {
+  margin: 0 0 1rem;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.safe-payment-note {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.item-editor {
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.item-fields {
+  flex: 1;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.order-item-fields {
+  grid-template-columns: minmax(12rem, 2fr) 1fr 1fr;
+}
+
+.two-column-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.draft-items-table {
+  margin-top: 1rem;
+}
+
+:host ::ng-deep .p-dialog .dialog-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+:host ::ng-deep .p-dialog .dialog-form > div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+:host ::ng-deep .p-dialog .dialog-form label {
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+:host ::ng-deep .p-dialog .dialog-form input,
+:host ::ng-deep .p-dialog .dialog-form p-inputnumber {
+  width: 100%;
+}
+
+:host ::ng-deep .p-dialog .dialog-note {
+  color: #64748b;
+  margin-top: 0;
+}
+
+@media (max-width: 60rem) {
+  .item-editor {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .item-fields,
+  .two-column-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .hero-meta,
+  .table-caption,
+  .caption-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .item-fields,
+  .two-column-form {
+    grid-template-columns: 1fr;
+  }
+
+  .items-panel {
+    margin: 0.5rem;
+  }
+}

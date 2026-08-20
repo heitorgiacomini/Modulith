@@ -17,6 +17,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Bootstrapper/Api/Api.csproj", "Bootstrapper/Api/"]
+COPY ["Modules/Accounts/Accounts.csproj", "Modules/Accounts/"]
 COPY ["Modules/Basket/Basket.csproj", "Modules/Basket/"]
 COPY ["Shared/Shared.Messaging/Shared.Messaging.csproj", "Shared/Shared.Messaging/"]
 COPY ["Shared/Shared/Shared.csproj", "Shared/Shared/"]
