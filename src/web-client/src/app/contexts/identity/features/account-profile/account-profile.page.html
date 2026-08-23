@@ -102,8 +102,8 @@
                       <div class="address-card-header">
                         <div><span class="address-label">{{ address.label }}</span><strong>{{ address.firstName }} {{ address.lastName }}</strong></div>
                         <div class="icon-actions">
-                          <button pButton type="button" icon="pi pi-pencil" severity="secondary" pTooltip="Edit address" (click)="openAddressDialog(address)"></button>
-                          <button pButton type="button" icon="pi pi-trash" severity="danger" pTooltip="Delete address" (click)="deleteAddress(address)"></button>
+                          <button pButton type="button" icon="pi pi-pencil" class="icon-action-button" ariaLabel="Edit address" pTooltip="Edit address" tooltipPosition="top" (click)="openAddressDialog(address)"></button>
+                          <button pButton type="button" icon="pi pi-trash" class="icon-action-button icon-action-button--delete" ariaLabel="Delete address" pTooltip="Delete address" tooltipPosition="top" (click)="deleteAddress(address)"></button>
                         </div>
                       </div>
                       <p>{{ address.addressLine1 }}<br>@if (address.addressLine2) { {{ address.addressLine2 }}<br> }{{ address.city }}, {{ address.state }} {{ address.postalCode }}<br>{{ address.countryCode }}</p>

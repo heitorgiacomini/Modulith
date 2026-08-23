@@ -6,6 +6,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskDirective } from 'primeng/inputmask';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { GraphqlLazyLoadEvent } from '../../../../core/graphql/graphql-query-builder.service';
 import { IdentityFacade, Account, SaveAddress, SavePaymentMethod, SavedAddress, SavedPaymentMethod } from '../../../identity';
@@ -16,7 +17,7 @@ import { TableCaptionComponent } from '../../../../shared/ui/table-caption.compo
 
 @Component({
   selector: 'app-basket-management-page',
-  imports: [ButtonModule, CurrencyPipe, DataPageCardComponent, DialogModule, FormsModule, InputMaskDirective, InputTextModule, TableCaptionComponent, TableModule],
+  imports: [ButtonModule, CurrencyPipe, DataPageCardComponent, DialogModule, FormsModule, InputMaskDirective, InputTextModule, TableCaptionComponent, TableModule, TooltipModule],
   templateUrl: './basket-management.page.html',
   styleUrl: './basket-management.page.scss'
 })

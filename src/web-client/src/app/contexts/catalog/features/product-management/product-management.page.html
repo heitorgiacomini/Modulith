@@ -71,12 +71,15 @@
       <ng-template pTemplate="body" let-product>
         <tr>
           <td class="options-column">
-            <button
-              pButton
-              type="button"
-              label="Show"
-              icon="pi pi-bars"
-              (click)="selectProduct(product)"></button>
+            <div class="table-row-actions">
+              <button pButton type="button" icon="pi pi-eye" class="icon-action-button"
+                ariaLabel="Show product" pTooltip="Show product" tooltipPosition="top"
+                (click)="selectProduct(product)"></button>
+              <button pButton type="button" icon="pi pi-trash"
+                class="icon-action-button icon-action-button--delete" ariaLabel="Delete product"
+                pTooltip="Delete product" tooltipPosition="top" [loading]="saving()"
+                (click)="deleteProduct(product)"></button>
+            </div>
           </td>
           <td>{{ product.name }}</td>
           <td class="description-column">{{ product.description }}</td>

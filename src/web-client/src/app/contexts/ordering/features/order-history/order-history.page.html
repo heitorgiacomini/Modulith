@@ -12,7 +12,7 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th class="expander-column"></th>
+          <th class="expander-column" aria-label="Actions"></th>
           <th>Order</th>
           <th>Items</th>
           <th>Total</th>
@@ -20,8 +20,16 @@
       </ng-template>
       <ng-template pTemplate="body" let-order let-expanded="expanded">
         <tr>
-          <td><button pButton type="button" [pRowToggler]="order" [text]="true" [rounded]="true"
-              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button></td>
+          <td><div class="table-row-actions">
+            <button pButton type="button" [pRowToggler]="order" class="icon-action-button"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+              [attr.aria-label]="expanded ? 'Collapse order' : 'Expand order'"
+              [pTooltip]="expanded ? 'Collapse order' : 'Expand order'" tooltipPosition="top"></button>
+            <button pButton type="button" icon="pi pi-trash"
+              class="icon-action-button icon-action-button--delete" ariaLabel="Delete order"
+              pTooltip="Delete order" tooltipPosition="top" [loading]="loading()"
+              (click)="deleteOrder(order)"></button>
+          </div></td>
           <td><strong>{{ order.orderName }}</strong>
             <div class="row-id">{{ order.id }}</div>
           </td>

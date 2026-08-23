@@ -71,6 +71,10 @@ export class CatalogService {
     return this.httpClient.post<void>(`${environment.apiUrl}/products`, request);
   }
 
+  deleteProduct(productId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${environment.apiUrl}/products/${productId}`);
+  }
+
   private graphql<T, TVariables extends object = Record<string, unknown>>(
     query: string,
     variables: TVariables

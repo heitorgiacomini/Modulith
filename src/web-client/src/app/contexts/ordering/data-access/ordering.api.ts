@@ -31,6 +31,10 @@ export class OrderingService {
     resource: 'Orders',
     scopes: ['orders:create-own']
   });
+  private readonly deleteOwnContext = new HttpContext().set(AUTHORIZATION_PERMISSION, {
+    resource: 'Orders',
+    scopes: ['orders:delete-own']
+  });
   private readonly ordersQuery = this.graphqlQueryBuilder.buildQuery({
     operationName: 'Orders',
     variableDefinitions: {
@@ -81,6 +85,12 @@ export class OrderingService {
   createOrder(request: CreateOrderRequest): Observable<void> {
     return this.httpClient.post<void>(`${environment.apiUrl}/orders`, request, {
       context: this.createOwnContext
+    });
+  }
+
+  deleteOrder(orderId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${environment.apiUrl}/orders/${orderId}`, {
+      context: this.deleteOwnContext
     });
   }
 

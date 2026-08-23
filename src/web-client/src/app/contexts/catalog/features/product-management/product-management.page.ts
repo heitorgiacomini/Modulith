@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { TagModule } from 'primeng/tag';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 import { CatalogService } from '../../data-access/catalog.api';
 import { CreateProductRequest, ProductDto } from '../../data-access/catalog.models';
 import { BasketFacade } from '../../../basket';
@@ -21,7 +22,7 @@ import { DEFAULT_PRODUCT_PAGE_SIZE } from './product-list/product-list.constants
 
 @Component({
   selector: 'app-product-management-page',
-  imports: [CommonModule, FormsModule, ButtonModule, CardModule, DataPageCardComponent, DialogModule, InputNumberModule, InputTextModule, MessageModule, TableCaptionComponent, TagModule, TableModule],
+  imports: [CommonModule, FormsModule, ButtonModule, CardModule, DataPageCardComponent, DialogModule, InputNumberModule, InputTextModule, MessageModule, TableCaptionComponent, TagModule, TableModule, TooltipModule],
   templateUrl: './product-management.page.html',
   styleUrl: './product-management.page.scss'
 })
@@ -97,6 +98,24 @@ export class ProductManagementPage {
 
   selectProduct(product: ProductDto): void {
     this.selectedProduct.set(product);
+  }
+
+  deleteProduct(product: ProductDto): void {
+    if (!window.confirm(`Delete ${product.name}?`)) return;
+
+    this.saving.set(true);
+    this.errorMessage.set('');
+    this.catalogService.deleteProduct(product.id).subscribe({
+      next: () => {
+        if (this.selectedProduct()?.id === product.id) this.selectedProduct.set(null);
+        this.saving.set(false);
+        this.refresh();
+      },
+      error: error => {
+        this.saving.set(false);
+        this.errorMessage.set(this.toMessage(error));
+      }
+    });
   }
 
   openAddToCartDialog(): void {

@@ -2,6 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { GraphqlLazyLoadEvent } from '../../../../core/graphql/graphql-query-builder.service';
 import { OrderListItem } from '../../data-access/ordering.models';
@@ -11,7 +12,7 @@ import { TableCaptionComponent } from '../../../../shared/ui/table-caption.compo
 
 @Component({
   selector: 'app-order-history-page',
-  imports: [ButtonModule, CurrencyPipe, DataPageCardComponent, TableCaptionComponent, TableModule],
+  imports: [ButtonModule, CurrencyPipe, DataPageCardComponent, TableCaptionComponent, TableModule, TooltipModule],
   templateUrl: './order-history.page.html',
   styleUrl: './order-history.page.scss'
 })
@@ -40,6 +41,20 @@ export class OrderHistoryPage {
   refresh(): void { this.loadOrders(this.lastLazyLoadEvent); }
   clearFilters(table: Table): void { table.clear(); }
   lineTotal(item: { quantity: number; price: number }): number { return item.quantity * item.price; }
+
+  deleteOrder(order: OrderListItem): void {
+    if (!window.confirm(`Delete ${order.orderName}?`)) return;
+
+    this.loading.set(true);
+    this.errorMessage.set('');
+    this.orderingService.deleteOrder(order.id).subscribe({
+      next: () => this.refresh(),
+      error: error => {
+        this.loading.set(false);
+        this.errorMessage.set(error instanceof Error ? error.message : 'Unable to delete the order.');
+      }
+    });
+  }
 
   private loadOrders(event: GraphqlLazyLoadEvent): void {
     if (!this.auth.customerId()) return;
