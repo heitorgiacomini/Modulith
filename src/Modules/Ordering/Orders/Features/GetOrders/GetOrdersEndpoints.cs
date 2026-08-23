@@ -1,6 +1,4 @@
 ﻿using Ordering.Orders.Authorization;
-using System.Security.Claims;
-
 namespace Ordering.Orders.Features.GetOrders;
 
 //public record GetOrdersRequest(PaginationRequest PaginationRequest);
@@ -13,10 +11,9 @@ public class GetOrdersEndpoints : ICarterModule
         app.MapGet("/orders", async (
             [AsParameters] PaginationRequest request,
             ISender sender,
-            ClaimsPrincipal user,
             IOrderingPermissionEvaluator evaluator) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate(user);
+            OrderingPermission? permission = evaluator.Evaluate();
             if (permission is null)
             {
                 return Results.Unauthorized();

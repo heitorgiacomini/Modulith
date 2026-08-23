@@ -16,3 +16,5 @@ global using Microsoft.AspNetCore.Mvc;
 global using Basket.Data.Repository;
 global using Catalog.Contracts.Products.Features.GetProductById;
 global using Shared.Contracts.CQRS;
+global using Shared.Data;
+global using Shared.Data.Auditing;

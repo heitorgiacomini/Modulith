@@ -1,8 +1,5 @@
 namespace Basket.Basket.Features.RemoveItemFromBasket;
 
-using global::Basket.Basket.Security;
-using System.Security.Claims;
-
 //public record RemoveItemFromBasketRequest(string UserName, Guid ProductId);
 public record RemoveItemFromBasketResponse(Guid Id);
 
@@ -14,9 +11,9 @@ public class RemoveItemFromBasketEndpoint : ICarterModule
         async ([FromRoute] String userName,
                [FromRoute] Guid productId,
                ISender sender,
-               ClaimsPrincipal user) =>
+               ICurrentUser currentUser) =>
         {
-          string? authenticatedUserName = BasketIdentity.GetUserName(user);
+          string? authenticatedUserName = currentUser.UserName;
           if (string.IsNullOrWhiteSpace(authenticatedUserName) ||
               !string.Equals(userName, authenticatedUserName, StringComparison.OrdinalIgnoreCase))
           {

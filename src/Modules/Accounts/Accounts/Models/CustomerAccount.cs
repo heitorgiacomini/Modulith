@@ -1,6 +1,6 @@
 namespace Accounts.Accounts.Models;
 
-public sealed class CustomerAccount : Aggregate<Guid>
+public sealed class CustomerAccount : FullAuditedAggregate<Guid>
 {
   private readonly List<SavedAddress> _addresses = [];
   private readonly List<SavedPaymentMethod> _paymentMethods = [];

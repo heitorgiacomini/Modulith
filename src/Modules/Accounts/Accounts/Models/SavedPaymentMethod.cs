@@ -1,14 +1,16 @@
 namespace Accounts.Accounts.Models;
 
-public sealed class SavedPaymentMethod : Entity<Guid>
+using Shared.Data.Auditing;
+
+public sealed class SavedPaymentMethod : FullAuditedEntity<Guid>
 {
   public Guid CustomerAccountId { get; private set; }
   public string Label { get; private set; } = default!;
-  public string CardholderName { get; private set; } = default!;
-  public string Brand { get; private set; } = default!;
-  public string Last4 { get; private set; } = default!;
-  public string Expiration { get; private set; } = default!;
-  public string Token { get; private set; } = default!;
+  [AuditSensitive] public string CardholderName { get; private set; } = default!;
+  [AuditSensitive] public string Brand { get; private set; } = default!;
+  [AuditSensitive] public string Last4 { get; private set; } = default!;
+  [AuditSensitive] public string Expiration { get; private set; } = default!;
+  [AuditSensitive] public string Token { get; private set; } = default!;
   public bool IsDefault { get; private set; }
 
   internal static SavedPaymentMethod Create(Guid id, Guid accountId, PaymentMethodData paymentMethod)

@@ -1,13 +1,13 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 using Ordering.Orders.Authorization;
+using Shared.Data.Auditing;
 using Xunit;
 
 namespace OrderingTests;
 
 public sealed class OrderingPermissionEvaluatorTests
 {
-    private readonly OrderingPermissionEvaluator evaluator = new();
-
     [Fact]
     public void Evaluate_ReturnsCustomerAndOwnScope_FromValidRptClaims()
     {
@@ -19,7 +19,7 @@ public sealed class OrderingPermissionEvaluatorTests
             {"permissions":[{"rsname":"Orders","scopes":["orders:read-own"]}]}
             """);
 
-        OrderingPermission? permission = evaluator.Evaluate(user);
+        OrderingPermission? permission = CreateEvaluator(user).Evaluate();
 
         Assert.NotNull(permission);
         Assert.Equal(customerId, permission.CustomerId);
@@ -37,7 +37,7 @@ public sealed class OrderingPermissionEvaluatorTests
             {"permissions":[{"resource_name":"Orders","scopes":["orders:read-all","orders:delete-all"]}]}
             """);
 
-        OrderingPermission? permission = evaluator.Evaluate(user);
+        OrderingPermission? permission = CreateEvaluator(user).Evaluate();
 
         Assert.NotNull(permission);
         Assert.True(permission.HasScope("orders:read-all"));
@@ -56,7 +56,7 @@ public sealed class OrderingPermissionEvaluatorTests
             {"permissions":[{"rsname":"Orders","scopes":["orders:read-own"]}]}
             """);
 
-        Assert.Null(evaluator.Evaluate(user));
+        Assert.Null(CreateEvaluator(user).Evaluate());
     }
 
     [Fact]
@@ -69,7 +69,7 @@ public sealed class OrderingPermissionEvaluatorTests
             {"permissions":[{"rsname":"Accounts","scopes":["orders:read-all"]}]}
             """);
 
-        Assert.Null(evaluator.Evaluate(user));
+        Assert.Null(CreateEvaluator(user).Evaluate());
     }
 
     private static ClaimsPrincipal CreateUser(Guid subject, string audience, string authorization)
@@ -82,4 +82,19 @@ public sealed class OrderingPermissionEvaluatorTests
             new Claim("aud", audience),
             new Claim("authorization", authorization)
         ], "Test"));
+
+    private static OrderingPermissionEvaluator CreateEvaluator(ClaimsPrincipal user)
+    {
+        DefaultHttpContext context = new() { User = user };
+        HttpContextAccessor accessor = new() { HttpContext = context };
+        return new OrderingPermissionEvaluator(new TestCurrentUser(user), accessor);
+    }
+
+    private sealed class TestCurrentUser(ClaimsPrincipal user) : ICurrentUser
+    {
+        public Guid? Id => Guid.TryParse(user.FindFirstValue("sub"), out Guid id) ? id : null;
+        public string? UserName => null;
+        public bool IsAuthenticated => user.Identity?.IsAuthenticated == true;
+        public string? TraceId => null;
+    }
 }

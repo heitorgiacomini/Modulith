@@ -1,6 +1,6 @@
 ﻿namespace Basket.Basket.Models;
 
-public class ShoppingCart : Aggregate<Guid>
+public class ShoppingCart : FullAuditedAggregate<Guid>
 {
     public String UserName { get; private set; } = default!;
 

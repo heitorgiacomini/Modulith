@@ -12,6 +12,10 @@
       },
       {
         "name": "admin"
+      },
+      {
+        "name": "audit:read",
+        "description": "Allows protected access to audit information"
       }
     ]
   },

@@ -1,8 +1,5 @@
 namespace Basket.Basket.Features.DeleteBasket;
 
-using global::Basket.Basket.Security;
-using System.Security.Claims;
-
 //public record DeleteBasketRequest(string UserName);
 public record DeleteBasketResponse(Boolean IsSuccess);
 
@@ -10,9 +7,9 @@ public class DeleteBasketEndpoint : ICarterModule
 {
   public void AddRoutes(IEndpointRouteBuilder app)
   {
-    _ = app.MapDelete("/basket/{userName}", async (String userName, ISender sender, ClaimsPrincipal user) =>
+    _ = app.MapDelete("/basket/{userName}", async (String userName, ISender sender, ICurrentUser currentUser) =>
     {
-      string? authenticatedUserName = BasketIdentity.GetUserName(user);
+      string? authenticatedUserName = currentUser.UserName;
       if (string.IsNullOrWhiteSpace(authenticatedUserName) ||
           !string.Equals(userName, authenticatedUserName, StringComparison.OrdinalIgnoreCase))
       {

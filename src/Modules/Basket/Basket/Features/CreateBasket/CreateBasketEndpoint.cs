@@ -1,6 +1,3 @@
-using System.Security.Claims;
-using Basket.Basket.Security;
-
 namespace Basket.Basket.Features.CreateBasket;
 
 public record CreateBasketRequest(ShoppingCartDto ShoppingCart);
@@ -10,9 +7,9 @@ public class CreateBasketEndpoint : ICarterModule
 {
   public void AddRoutes(IEndpointRouteBuilder app)
   {
-    _ = app.MapPost("/basket", async (CreateBasketRequest request, ISender sender, ClaimsPrincipal user) =>
+    _ = app.MapPost("/basket", async (CreateBasketRequest request, ISender sender, ICurrentUser currentUser) =>
     {
-      string? userName = BasketIdentity.GetUserName(user);
+      string? userName = currentUser.UserName;
       if (string.IsNullOrWhiteSpace(userName))
       {
         return Results.Unauthorized();

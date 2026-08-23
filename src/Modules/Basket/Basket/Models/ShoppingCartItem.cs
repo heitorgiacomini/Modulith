@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Basket.Basket.Models;
 
-public class ShoppingCartItem : Entity<Guid>
+public class ShoppingCartItem : FullAuditedEntity<Guid>
 {
   public Guid ShoppingCartId { get; private set; } = default!;
   public Guid ProductId { get; private set; } = default!;

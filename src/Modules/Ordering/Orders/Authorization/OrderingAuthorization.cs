@@ -27,16 +27,21 @@ public sealed record OrderingPermission(Guid CustomerId, IReadOnlySet<string> Sc
 
 public interface IOrderingPermissionEvaluator
 {
-    OrderingPermission? Evaluate(ClaimsPrincipal user);
+    OrderingPermission? Evaluate();
 }
 
-public sealed class OrderingPermissionEvaluator : IOrderingPermissionEvaluator
+public sealed class OrderingPermissionEvaluator(
+    ICurrentUser currentUser,
+    IHttpContextAccessor httpContextAccessor) : IOrderingPermissionEvaluator
 {
-    public OrderingPermission? Evaluate(ClaimsPrincipal user)
+    public OrderingPermission? Evaluate()
     {
-        if (user.Identity?.IsAuthenticated != true ||
+        ClaimsPrincipal? user = httpContextAccessor.HttpContext?.User;
+        if (user is null ||
+            !currentUser.IsAuthenticated ||
+            currentUser.Id is not Guid customerId ||
             !HasAudience(user, OrderingAuthorization.Audience) ||
-            !Guid.TryParse(user.FindFirstValue("sub"), out Guid customerId))
+            user.Identity?.IsAuthenticated != true)
         {
             return null;
         }
@@ -120,7 +125,7 @@ internal sealed class OrderingScopeAuthorizationHandler(IOrderingPermissionEvalu
         AuthorizationHandlerContext context,
         OrderingScopeRequirement requirement)
     {
-        OrderingPermission? permission = evaluator.Evaluate(context.User);
+        OrderingPermission? permission = evaluator.Evaluate();
         if (permission is not null && permission.Scopes.Overlaps(requirement.Scopes))
         {
             context.Succeed(requirement);

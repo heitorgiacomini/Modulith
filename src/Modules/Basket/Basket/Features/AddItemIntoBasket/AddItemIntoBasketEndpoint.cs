@@ -1,8 +1,5 @@
 namespace Basket.Basket.Features.AddItemIntoBasket;
 
-using global::Basket.Basket.Security;
-using System.Security.Claims;
-
 public record AddItemIntoBasketRequest(String UserName, ShoppingCartItemDto ShoppingCartItem);
 public record AddItemIntoBasketResponse(Guid Id);
 
@@ -14,9 +11,9 @@ public class AddItemIntoBasketEndpoint : ICarterModule
         async ([FromRoute] String userName,
                [FromBody] AddItemIntoBasketRequest request,
                ISender sender,
-               ClaimsPrincipal user) =>
+               ICurrentUser currentUser) =>
         {
-          string? authenticatedUserName = BasketIdentity.GetUserName(user);
+          string? authenticatedUserName = currentUser.UserName;
           if (string.IsNullOrWhiteSpace(authenticatedUserName) ||
               !string.Equals(userName, authenticatedUserName, StringComparison.OrdinalIgnoreCase))
           {

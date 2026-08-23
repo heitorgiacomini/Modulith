@@ -11,6 +11,7 @@ public class OrderingDbContext : DbContext
     {
         builder.HasDefaultSchema("ordering");
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        builder.ApplySoftDeleteQueryFilters();
         base.OnModelCreating(builder);
     }
 }

@@ -1,11 +1,11 @@
 ﻿namespace Ordering.Orders.ValueObjects;
 public record Payment
 {
-    public string Token { get; } = default!;
-    public string CardholderName { get; } = default!;
-    public string Brand { get; } = default!;
-    public string Last4 { get; } = default!;
-    public string Expiration { get; } = default!;
+    [Shared.Data.Auditing.AuditSensitive] public string Token { get; } = default!;
+    [Shared.Data.Auditing.AuditSensitive] public string CardholderName { get; } = default!;
+    [Shared.Data.Auditing.AuditSensitive] public string Brand { get; } = default!;
+    [Shared.Data.Auditing.AuditSensitive] public string Last4 { get; } = default!;
+    [Shared.Data.Auditing.AuditSensitive] public string Expiration { get; } = default!;
 
     protected Payment()
     {

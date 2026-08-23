@@ -10,6 +10,7 @@ public sealed class AccountsDbContext(DbContextOptions<AccountsDbContext> option
   {
     builder.HasDefaultSchema("accounts");
     builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    builder.ApplySoftDeleteQueryFilters();
     base.OnModelCreating(builder);
   }
 }

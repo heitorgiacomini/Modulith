@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Shared.Data.Interceptors;
 
 namespace Catalog;
@@ -26,8 +27,8 @@ public static class CatalogModule
         //Data — Infrastructure servlces
         String? connectionString = configuration.GetConnectionString("Database");
 
-        _ = services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-        _ = services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
 
         _ = services.AddDbContext<CatalogDbContext>((serviceProvider, options) =>
         {

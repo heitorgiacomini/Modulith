@@ -1,6 +1,4 @@
 ﻿using Ordering.Orders.Authorization;
-using System.Security.Claims;
-
 namespace Ordering.Orders.Features.GetOrderById;
 
 //public record GetOrderByIdRequest();
@@ -13,10 +11,9 @@ public class GetOrderByIdEndpoints : ICarterModule
         app.MapGet("/orders/{id}", async (
             Guid id,
             ISender sender,
-            ClaimsPrincipal user,
             IOrderingPermissionEvaluator evaluator) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate(user);
+            OrderingPermission? permission = evaluator.Evaluate();
             if (permission is null)
             {
                 return Results.Unauthorized();

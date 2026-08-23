@@ -1,6 +1,6 @@
 namespace Accounts.Accounts.Models;
 
-public sealed class SavedAddress : Entity<Guid>
+public sealed class SavedAddress : FullAuditedEntity<Guid>
 {
   public Guid CustomerAccountId { get; private set; }
   public string Label { get; private set; } = default!;

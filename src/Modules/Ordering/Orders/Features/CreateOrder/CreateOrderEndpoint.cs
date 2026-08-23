@@ -1,6 +1,4 @@
 ﻿using Ordering.Orders.Authorization;
-using System.Security.Claims;
-
 namespace Ordering.Orders.Features.CreateOrder;
 
 public record CreateOrderRequest(CreateOrderInput Order);
@@ -20,10 +18,9 @@ public class CreateOrderEndpoint : ICarterModule
         app.MapPost("/orders", async (
             CreateOrderRequest request,
             ISender sender,
-            ClaimsPrincipal user,
             IOrderingPermissionEvaluator evaluator) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate(user);
+            OrderingPermission? permission = evaluator.Evaluate();
             if (permission is null)
             {
                 return Results.Unauthorized();

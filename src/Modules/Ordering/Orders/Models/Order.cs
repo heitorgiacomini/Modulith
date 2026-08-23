@@ -1,5 +1,5 @@
 ﻿namespace Ordering.Orders.Models;
-public class Order : Aggregate<Guid>
+public class Order : FullAuditedAggregate<Guid>
 {
     private readonly List<OrderItem> _items = new();
     public IReadOnlyList<OrderItem> Items => _items.AsReadOnly();

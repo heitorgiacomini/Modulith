@@ -1,8 +1,5 @@
 namespace Basket.Basket.Features.GetBasket;
 
-using global::Basket.Basket.Security;
-using System.Security.Claims;
-
 //public record GetBasketRequest(string UserName); 
 public record GetBasketResponse(ShoppingCartDto ShoppingCart);
 
@@ -10,9 +7,9 @@ public class GetBasketEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/basket/{userName}", async (string userName, ISender sender, ClaimsPrincipal user) =>
+        app.MapGet("/basket/{userName}", async (string userName, ISender sender, ICurrentUser currentUser) =>
         {
-            string? authenticatedUserName = BasketIdentity.GetUserName(user);
+            string? authenticatedUserName = currentUser.UserName;
             if (string.IsNullOrWhiteSpace(authenticatedUserName) ||
                 !string.Equals(userName, authenticatedUserName, StringComparison.OrdinalIgnoreCase))
             {

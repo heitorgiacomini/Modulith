@@ -26,6 +26,7 @@
     <Project Path="Tests/AccountsTests/AccountsTests.csproj" />
     <Project Path="Tests/ArchitectureTests/ArchitectureTests.csproj" />
     <Project Path="Tests/OrderingTests/OrderingTests.csproj" />
+    <Project Path="Tests/SharedTests/SharedTests.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />

@@ -1,6 +1,3 @@
-﻿using Basket.Basket.Security;
-using System.Security.Claims;
-
 namespace Basket.Basket.Features.CheckoutBasket;
 
 public record CheckoutBasketRequest(BasketCheckoutDto BasketCheckout);
@@ -10,11 +7,11 @@ public class CheckoutBasketEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/basket/checkout", 
-            async (CheckoutBasketRequest request, ISender sender, ClaimsPrincipal user) =>
+        app.MapPost("/basket/checkout",
+            async (CheckoutBasketRequest request, ISender sender, ICurrentUser currentUser) =>
             {
-                string? userName = BasketIdentity.GetUserName(user);
-                Guid? customerId = BasketIdentity.GetCustomerId(user);
+                string? userName = currentUser.UserName;
+                Guid? customerId = currentUser.Id;
                 if (string.IsNullOrWhiteSpace(userName) || customerId is null)
                 {
                     return Results.Problem(

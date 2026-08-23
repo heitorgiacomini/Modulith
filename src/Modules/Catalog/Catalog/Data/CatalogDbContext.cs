@@ -15,6 +15,7 @@ public class CatalogDbContext : DbContext
 		_ = modelBuilder.HasDefaultSchema("catalog");
 		//modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogDbContext).Assembly);
 		_ = modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+		_ = modelBuilder.ApplySoftDeleteQueryFilters();
 
 		base.OnModelCreating(modelBuilder);
 	}

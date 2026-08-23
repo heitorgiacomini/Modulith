@@ -5,7 +5,6 @@ using HotChocolate.Types;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Data;
 using Ordering.Orders.Authorization;
-using System.Security.Claims;
 
 namespace Ordering.Orders.GraphQL;
 
@@ -18,10 +17,9 @@ public sealed class OrderingQueries
   [UseSorting]
   public IQueryable<OrderListItem> Orders(
     [Service] OrderingDbContext orderingDbContext,
-    ClaimsPrincipal user,
     [Service] IOrderingPermissionEvaluator evaluator)
   {
-    OrderingPermission permission = evaluator.Evaluate(user)
+    OrderingPermission permission = evaluator.Evaluate()
       ?? throw new GraphQLException("Authentication is required.");
 
     IQueryable<Order> orders = orderingDbContext.Orders.AsNoTracking();

@@ -2,7 +2,7 @@
 
 namespace Catalog.Products.Models;
 
-public class Product : Aggregate<Guid>
+public class Product : FullAuditedAggregate<Guid>
 {
 	public String Name { get; private set; } = default!;
 	public List<String> Category { get; set; } = [];

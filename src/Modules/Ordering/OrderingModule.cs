@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Ordering.Data;
 using Ordering.Orders.Authorization;
 using Ordering.Orders.GraphQL;
@@ -25,8 +26,8 @@ public static class OrderingModule
         // 3. Data - Infrastructure services
         var connectionString = configuration.GetConnectionString("Database");
 
-        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
 
         services.AddDbContext<OrderingDbContext>((sp, options) =>
         {
@@ -34,7 +35,7 @@ public static class OrderingModule
             options.UseNpgsql(connectionString);
         });
 
-        services.AddSingleton<IOrderingPermissionEvaluator, OrderingPermissionEvaluator>();
+        services.AddScoped<IOrderingPermissionEvaluator, OrderingPermissionEvaluator>();
         services.AddScoped<IAuthorizationHandler, OrderingScopeAuthorizationHandler>();
         services.AddAuthorization(options =>
         {

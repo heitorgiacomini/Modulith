@@ -8,7 +8,8 @@ public class ShoppingCartConfiguration : IEntityTypeConfiguration<ShoppingCart>
         builder.HasKey(e => e.Id);
 
         builder.HasIndex(e => e.UserName)
-               .IsUnique();
+               .IsUnique()
+               .HasFilter("\"IsDeleted\" = FALSE");
 
         builder.Property(e => e.UserName)
                .IsRequired()

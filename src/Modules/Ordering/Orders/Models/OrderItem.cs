@@ -1,5 +1,5 @@
 ﻿namespace Ordering.Orders.Models;
-public class OrderItem : Entity<Guid>
+public class OrderItem : FullAuditedEntity<Guid>
 {
     internal OrderItem(Guid orderId, Guid productId, int quantity, decimal price)
     {

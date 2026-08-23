@@ -13,6 +13,7 @@ public class BasketDbContext : DbContext
   {
     _ = builder.HasDefaultSchema("basket");
     _ = builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    _ = builder.ApplySoftDeleteQueryFilters();
     base.OnModelCreating(builder);
   }
 }

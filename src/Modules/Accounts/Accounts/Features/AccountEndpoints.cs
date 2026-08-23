@@ -1,6 +1,3 @@
-using Accounts.Accounts.Security;
-using System.Security.Claims;
-
 namespace Accounts.Accounts.Features;
 
 public sealed class AccountEndpoints : ICarterModule
@@ -23,10 +20,10 @@ public sealed class AccountEndpoints : ICarterModule
 
   private static async Task<IResult> GetAccount(
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -39,10 +36,10 @@ public sealed class AccountEndpoints : ICarterModule
   private static async Task<IResult> UpdatePreferences(
     PreferencesDto preferences,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -57,10 +54,10 @@ public sealed class AccountEndpoints : ICarterModule
   private static async Task<IResult> AddAddress(
     SaveAddressDto address,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -76,10 +73,10 @@ public sealed class AccountEndpoints : ICarterModule
     Guid addressId,
     SaveAddressDto address,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -94,10 +91,10 @@ public sealed class AccountEndpoints : ICarterModule
   private static async Task<IResult> DeleteAddress(
     Guid addressId,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -112,10 +109,10 @@ public sealed class AccountEndpoints : ICarterModule
   private static async Task<IResult> AddPaymentMethod(
     SavePaymentMethodDto paymentMethod,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -130,10 +127,10 @@ public sealed class AccountEndpoints : ICarterModule
   private static async Task<IResult> DeletePaymentMethod(
     Guid paymentMethodId,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();
@@ -148,10 +145,10 @@ public sealed class AccountEndpoints : ICarterModule
   private static async Task<IResult> SetDefaultPaymentMethod(
     Guid paymentMethodId,
     ISender sender,
-    ClaimsPrincipal user,
+    ICurrentUser currentUser,
     CancellationToken cancellationToken)
   {
-    Guid? customerId = AccountIdentity.GetCustomerId(user);
+    Guid? customerId = currentUser.Id;
     if (customerId is null)
     {
       return Results.Unauthorized();

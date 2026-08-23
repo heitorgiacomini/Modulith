@@ -1,6 +1,4 @@
 ﻿using Ordering.Orders.Authorization;
-using System.Security.Claims;
-
 namespace Ordering.Orders.Features.DeleteOrder;
 
 //public record DeleteOrderRequest(Guid Id);
@@ -13,10 +11,9 @@ public class DeleteOrderEndpoints : ICarterModule
         app.MapDelete("/orders/{id}", async (
             Guid id,
             ISender sender,
-            ClaimsPrincipal user,
             IOrderingPermissionEvaluator evaluator) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate(user);
+            OrderingPermission? permission = evaluator.Evaluate();
             if (permission is null)
             {
                 return Results.Unauthorized();

@@ -3,6 +3,7 @@ using Basket.Data.Processors;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Shared.Data;
 using Shared.Data.Interceptors;
 
@@ -26,8 +27,8 @@ public static class BasketModule
 
     String? connectionString = configuration.GetConnectionString("Database");
 
-    _ = services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-    _ = services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
 
     _ = services.AddDbContext<BasketDbContext>((serviceProvider, options) =>
     {

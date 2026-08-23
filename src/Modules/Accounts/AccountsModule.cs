@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Shared.Data;
 using Shared.Data.Interceptors;
 
@@ -14,8 +15,8 @@ public static class AccountsModule
   {
     string? connectionString = configuration.GetConnectionString("Database");
 
-    services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-    services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
     services.AddDbContext<AccountsDbContext>((serviceProvider, options) =>
     {
       options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());

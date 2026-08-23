@@ -1,6 +1,8 @@
 using Keycloak.AuthServices.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
+using Api.Infrastructure;
+using Shared.Data.Auditing;
 
 namespace Api;
 
@@ -62,6 +64,8 @@ public partial class Program
         options.TokenValidationParameters.ValidIssuer = publicIssuer;
       });
     _ = webAppBuilder.Services.AddAuthorization();
+    _ = webAppBuilder.Services.AddHttpContextAccessor();
+    _ = webAppBuilder.Services.AddScoped<ICurrentUser, HttpContextCurrentUser>();
 
     _ = webAppBuilder.Services.AddCors(options =>
     {
