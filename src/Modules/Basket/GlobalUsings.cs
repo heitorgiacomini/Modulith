@@ -18,3 +18,4 @@ global using Catalog.Contracts.Products.Features.GetProductById;
 global using Shared.Contracts.CQRS;
 global using Shared.Data;
 global using Shared.Data.Auditing;
+global using Shared.Data.Filtering;

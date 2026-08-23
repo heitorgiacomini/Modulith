@@ -1,8 +1,12 @@
 ﻿namespace Ordering.Data;
-public class OrderingDbContext : DbContext
+public class OrderingDbContext : DbContext, IDataFilterContext
 {
-    public OrderingDbContext(DbContextOptions<OrderingDbContext> options)
-        : base(options) { }
+    private readonly IDataFilter dataFilter;
+
+    public OrderingDbContext(DbContextOptions<OrderingDbContext> options, IDataFilter dataFilter)
+        : base(options) => this.dataFilter = dataFilter;
+
+    public bool IsSoftDeleteFilterEnabled => dataFilter.IsEnabled<ISoftDelete>();
 
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
@@ -11,7 +15,7 @@ public class OrderingDbContext : DbContext
     {
         builder.HasDefaultSchema("ordering");
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        builder.ApplySoftDeleteQueryFilters();
+        builder.ApplySoftDeleteQueryFilters(this);
         base.OnModelCreating(builder);
     }
 }

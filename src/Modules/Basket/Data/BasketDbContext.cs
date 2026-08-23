@@ -1,9 +1,13 @@
 namespace Basket.Data;
 
-public class BasketDbContext : DbContext
+public class BasketDbContext : DbContext, IDataFilterContext
 {
-  public BasketDbContext(DbContextOptions<BasketDbContext> options)
-      : base(options) { }
+  private readonly IDataFilter dataFilter;
+
+  public BasketDbContext(DbContextOptions<BasketDbContext> options, IDataFilter dataFilter)
+      : base(options) => this.dataFilter = dataFilter;
+
+  public bool IsSoftDeleteFilterEnabled => dataFilter.IsEnabled<ISoftDelete>();
 
   public DbSet<ShoppingCart> ShoppingCarts => this.Set<ShoppingCart>();
   public DbSet<ShoppingCartItem> ShoppingCartItems => this.Set<ShoppingCartItem>();
@@ -13,7 +17,7 @@ public class BasketDbContext : DbContext
   {
     _ = builder.HasDefaultSchema("basket");
     _ = builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    _ = builder.ApplySoftDeleteQueryFilters();
+    _ = builder.ApplySoftDeleteQueryFilters(this);
     base.OnModelCreating(builder);
   }
 }

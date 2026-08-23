@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Reflection;
 using Api.Infrastructure;
 using Shared.Data.Auditing;
+using Shared.Data.Filtering;
 
 namespace Api;
 
@@ -64,6 +65,7 @@ public partial class Program
         options.TokenValidationParameters.ValidIssuer = publicIssuer;
       });
     _ = webAppBuilder.Services.AddAuthorization();
+    _ = webAppBuilder.Services.AddDataFilters();
     _ = webAppBuilder.Services.AddHttpContextAccessor();
     _ = webAppBuilder.Services.AddScoped<ICurrentUser, HttpContextCurrentUser>();
 

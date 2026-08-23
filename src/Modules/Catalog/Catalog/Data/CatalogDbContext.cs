@@ -1,11 +1,16 @@
 ﻿namespace Catalog.Data;
 
-public class CatalogDbContext : DbContext
+public class CatalogDbContext : DbContext, IDataFilterContext
 {
-	public CatalogDbContext(DbContextOptions<CatalogDbContext> options)
+	private readonly IDataFilter dataFilter;
+
+	public CatalogDbContext(DbContextOptions<CatalogDbContext> options, IDataFilter dataFilter)
 			: base(options)
 	{
+		this.dataFilter = dataFilter;
 	}
+
+	public bool IsSoftDeleteFilterEnabled => this.dataFilter.IsEnabled<ISoftDelete>();
 	// Define DbSets for your entities here
 	//public DbSet<Product> Products { get; set; }
 	public DbSet<Product> Products => this.Set<Product>();
@@ -15,7 +20,7 @@ public class CatalogDbContext : DbContext
 		_ = modelBuilder.HasDefaultSchema("catalog");
 		//modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogDbContext).Assembly);
 		_ = modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-		_ = modelBuilder.ApplySoftDeleteQueryFilters();
+		_ = modelBuilder.ApplySoftDeleteQueryFilters(this);
 
 		base.OnModelCreating(modelBuilder);
 	}

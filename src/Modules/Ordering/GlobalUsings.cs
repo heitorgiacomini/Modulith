@@ -2,6 +2,7 @@ global using Shared.DDD;
 global using Shared.Contracts.CQRS;
 global using Shared.Data;
 global using Shared.Data.Auditing;
+global using Shared.Data.Filtering;
 global using Shared.Pagination;
 global using Ordering.Orders.Models;
 global using Ordering.Orders.ValueObjects;

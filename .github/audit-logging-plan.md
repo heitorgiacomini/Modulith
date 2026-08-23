@@ -67,6 +67,11 @@
 ## Soft-Delete Queries
 
 - [x] Add a reusable EF Core soft-delete filter for entities implementing `ISoftDelete`.
+- [x] Add typed `IDataFilter` and `IDataFilter<TFilter>` contracts.
+- [x] Keep soft delete enabled by default.
+- [x] Use ambient `AsyncLocal` state with nested-scope restoration.
+- [x] Parameterize each DbContext filter using `IDataFilter.IsEnabled<ISoftDelete>()`.
+- [x] Support `Disable<ISoftDelete>()` across asynchronous application flows.
 - [x] Apply the filter to `AccountsDbContext`.
 - [x] Apply the filter to `BasketDbContext`.
 - [x] Apply the filter to `CatalogDbContext`.
@@ -116,6 +121,8 @@
 - [x] Test transitive `ISoftDelete` interface detection.
 - [x] Test physical deletion and absence of filters for identity-only entities.
 - [x] Test that `OutboxMessage` is neither audited nor soft-deletable.
+- [x] Test typed data-filter defaults, nested scopes, exceptions, async flow, and concurrency isolation.
+- [x] Test soft-deleted queries with `Disable<ISoftDelete>()` without `IgnoreQueryFilters()`.
 - [x] Test successful structured audit-event emission.
 - [x] Test that failed saves do not emit successful audit events.
 - [x] Test sensitive-value redaction.

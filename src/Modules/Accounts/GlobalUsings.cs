@@ -12,5 +12,6 @@ global using Microsoft.EntityFrameworkCore;
 global using Shared.Contracts.CQRS;
 global using Shared.Data;
 global using Shared.Data.Auditing;
+global using Shared.Data.Filtering;
 global using Shared.DDD;
 global using System.Reflection;

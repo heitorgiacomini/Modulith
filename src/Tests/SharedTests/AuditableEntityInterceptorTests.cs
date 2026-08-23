@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Shared.Data;
 using Shared.Data.Auditing;
+using Shared.Data.Filtering;
 using Shared.Data.Interceptors;
 using Shared.DDD;
 using Xunit;
@@ -94,7 +95,10 @@ public sealed class AuditableEntityInterceptorTests
     Assert.Equal(userId, entity.DeletedBy);
     Assert.NotNull(entity.DeletedAt);
     Assert.Empty(await dbContext.Entities.ToListAsync());
-    Assert.Single(await dbContext.Entities.IgnoreQueryFilters().ToListAsync());
+    using (dbContext.DataFilter.Disable<ISoftDelete>())
+    {
+      Assert.Single(await dbContext.Entities.ToListAsync());
+    }
     Assert.Contains(logger.Messages, message => message.Contains("Deleted", StringComparison.Ordinal));
   }
 
@@ -160,7 +164,7 @@ public sealed class AuditableEntityInterceptorTests
       .UseInMemoryDatabase(Guid.NewGuid().ToString())
       .AddInterceptors(auditInterceptor, new FailingSaveInterceptor())
       .Options;
-    await using TestDbContext dbContext = new(options, currentUser);
+    await using TestDbContext dbContext = new(options, currentUser, new TestDataFilter());
     dbContext.Entities.Add(new TestEntity { Id = Guid.NewGuid(), Name = "Failure", Secret = "hidden" });
 
     await Assert.ThrowsAsync<InvalidOperationException>(() => dbContext.SaveChangesAsync());
@@ -193,13 +197,18 @@ public sealed class AuditableEntityInterceptorTests
       .UseInMemoryDatabase(Guid.NewGuid().ToString())
       .AddInterceptors(interceptor)
       .Options;
-    return new TestDbContext(options, currentUser);
+    return new TestDbContext(options, currentUser, new TestDataFilter());
   }
 
-  private sealed class TestDbContext(DbContextOptions<TestDbContext> options, TestCurrentUser currentUser)
-    : DbContext(options)
+  private sealed class TestDbContext(
+    DbContextOptions<TestDbContext> options,
+    TestCurrentUser currentUser,
+    TestDataFilter dataFilter)
+    : DbContext(options), IDataFilterContext
   {
     public TestCurrentUser CurrentUser { get; } = currentUser;
+    public TestDataFilter DataFilter { get; } = dataFilter;
+    public bool IsSoftDeleteFilterEnabled => DataFilter.IsEnabled<ISoftDelete>();
     public DbSet<TestEntity> Entities => Set<TestEntity>();
     public DbSet<BasicEntity> BasicEntities => Set<BasicEntity>();
 
@@ -208,7 +217,7 @@ public sealed class AuditableEntityInterceptorTests
       modelBuilder.Entity<TestEntity>().HasKey(entity => entity.Id);
       modelBuilder.Entity<TestEntity>().OwnsOne(entity => entity.Detail);
       modelBuilder.Entity<BasicEntity>().HasKey(entity => entity.Id);
-      modelBuilder.ApplySoftDeleteQueryFilters();
+      modelBuilder.ApplySoftDeleteQueryFilters(this);
     }
   }
 
@@ -235,6 +244,32 @@ public sealed class AuditableEntityInterceptorTests
     public string? UserName => null;
     public bool IsAuthenticated => Id is not null;
     public string? TraceId => "test-trace";
+  }
+
+  private sealed class TestDataFilter : IDataFilter
+  {
+    public bool IsSoftDeleteEnabled { get; private set; } = true;
+
+    public IDisposable Enable<TFilter>() where TFilter : class => Change<TFilter>(true);
+    public IDisposable Disable<TFilter>() where TFilter : class => Change<TFilter>(false);
+    public bool IsEnabled<TFilter>() where TFilter : class =>
+      typeof(TFilter) != typeof(ISoftDelete) || IsSoftDeleteEnabled;
+
+    private IDisposable Change<TFilter>(bool enabled) where TFilter : class
+    {
+      bool previous = IsSoftDeleteEnabled;
+      if (typeof(TFilter) == typeof(ISoftDelete))
+      {
+        IsSoftDeleteEnabled = enabled;
+      }
+
+      return new TestScope(() => IsSoftDeleteEnabled = previous);
+    }
+
+    private sealed class TestScope(Action restore) : IDisposable
+    {
+      public void Dispose() => restore();
+    }
   }
 
   private sealed class ListLogger : ILogger<AuditableEntityInterceptor>
