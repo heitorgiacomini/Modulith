@@ -1,6 +1,6 @@
 
 
-namespace Catalog.Products.Models;
+namespace Catalog.Products.Domain;
 
 public class Product : FullAuditedAggregate<Guid>, IMultiTenant
 {

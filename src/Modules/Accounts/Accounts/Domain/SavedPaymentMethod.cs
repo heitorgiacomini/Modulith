@@ -1,4 +1,4 @@
-namespace Accounts.Accounts.Models;
+namespace Accounts.Accounts.Domain;
 
 using Shared.Data.Auditing;
 
@@ -13,6 +13,10 @@ public sealed class SavedPaymentMethod : FullAuditedEntity<Guid>, IMultiTenant
   [AuditSensitive] public string Expiration { get; private set; } = default!;
   [AuditSensitive] public string Token { get; private set; } = default!;
   public bool IsDefault { get; private set; }
+
+  private SavedPaymentMethod()
+  {
+  }
 
   internal static SavedPaymentMethod Create(Guid id, Guid accountId, PaymentMethodData paymentMethod)
   {

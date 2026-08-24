@@ -9,16 +9,16 @@ public class UpdateProductEndpoint : ICarterModule
     {
         app.MapPut("/products", async (UpdateProductRequest request, ISender sender) =>
         {
-            var command = request.Adapt<UpdateProductCommand>();
+            var command = CatalogMapper.ToCommand(request);
 
             var result = await sender.Send(command);
 
-            var response = result.Adapt<UpdateProductResponse>();
+            var response = CatalogMapper.ToResponse(result);
 
             return Results.Ok(response);
         })
         .WithName("UpdateProduct")
-        .RequireAuthorization(TenantAuthorizationPolicies.Admin)
+        .RequireAuthorization(CatalogAuthorization.AdminPolicy)
         .Produces<UpdateProductResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)

@@ -1,12 +1,13 @@
 global using Shared.DDD;
-global using Basket.Basket.Models;
+global using Basket.Basket.Domain;
+global using Basket.Basket.Mapping;
+global using Basket.Data.Outbox;
 global using Microsoft.EntityFrameworkCore;
 global using System.Reflection;
 global using Basket.Data;
 global using Basket.Basket.Dtos;
 global using FluentValidation;
 global using Basket.Basket.Exceptions;
-global using Mapster;
 global using Carter;
 global using MediatR;
 global using Microsoft.AspNetCore.Builder;

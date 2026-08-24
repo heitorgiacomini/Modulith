@@ -74,10 +74,6 @@ public partial class Program
         .AddRequirements(new CurrentTenantRequirement())
         .AddRequirements(new OrganizationRoleRequirement("customer", "admin"))
         .Build();
-      options.AddPolicy(TenantAuthorizationPolicies.Admin, policy => policy
-        .RequireAuthenticatedUser()
-        .AddRequirements(new CurrentTenantRequirement())
-        .AddRequirements(new OrganizationRoleRequirement("admin")));
     });
     _ = webAppBuilder.Services.AddSingleton<IAuthorizationHandler, CurrentTenantAuthorizationHandler>();
     _ = webAppBuilder.Services.AddSingleton<IAuthorizationHandler, OrganizationRoleAuthorizationHandler>();

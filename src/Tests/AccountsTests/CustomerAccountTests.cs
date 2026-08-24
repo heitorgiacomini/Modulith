@@ -1,4 +1,4 @@
-using Accounts.Accounts.Models;
+using Accounts.Accounts.Domain;
 using Xunit;
 
 namespace AccountsTests;

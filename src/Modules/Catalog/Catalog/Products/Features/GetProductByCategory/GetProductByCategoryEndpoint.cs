@@ -11,7 +11,7 @@ public class GetProductByCategoryEndpoint : ICarterModule
 		{
 			var result = await sender.Send(new GetProductByCategoryQuery(category));
 
-			GetProductByCategoryResponse response = result.Adapt<GetProductByCategoryResponse>();
+			GetProductByCategoryResponse response = CatalogMapper.ToResponse(result);
 
 			return Results.Ok(response);
 		})

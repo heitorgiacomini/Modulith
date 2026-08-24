@@ -13,6 +13,6 @@ internal sealed class GetMyAccountHandler(AccountsDbContext dbContext)
 			.Include(item => item.PaymentMethods)
 			.SingleOrDefaultAsync(item => item.UserId == query.CustomerId, cancellationToken);
 
-		return account is null ? AccountMapping.Empty() : AccountMapping.ToDto(account);
+		return account is null ? AccountDtoDefaults.Empty() : AccountMapper.ToDto(account);
 	}
 }

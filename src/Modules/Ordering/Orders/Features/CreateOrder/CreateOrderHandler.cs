@@ -11,12 +11,14 @@ public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
     }
 }
 
-internal class CreateOrderHandler(OrderingDbContext dbContext)
+internal class CreateOrderHandler(OrderingDbContext dbContext, IOrderingPermissionEvaluator evaluator)
     : ICommandHandler<CreateOrderCommand, CreateOrderResult>
 {
     public async Task<CreateOrderResult> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
     {
-        var order = CreateNewOrder(command.Order);
+        OrderingPermission permission = evaluator.Evaluate()
+            ?? throw new ForbiddenException("Ordering create permission is required.");
+        var order = CreateNewOrder(command.Order with { CustomerId = permission.CustomerId });
 
         dbContext.Orders.Add(order);
         await dbContext.SaveChangesAsync(cancellationToken);

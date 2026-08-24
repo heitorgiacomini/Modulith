@@ -1,4 +1,4 @@
-namespace Accounts.Accounts.Models;
+namespace Accounts.Accounts.Domain;
 
 public sealed class SavedAddress : FullAuditedEntity<Guid>, IMultiTenant
 {
@@ -17,6 +17,10 @@ public sealed class SavedAddress : FullAuditedEntity<Guid>, IMultiTenant
   public string CountryCode { get; private set; } = default!;
   public bool IsDefaultShipping { get; private set; }
   public bool IsDefaultBilling { get; private set; }
+
+  private SavedAddress()
+  {
+  }
 
   internal static SavedAddress Create(Guid id, Guid accountId, AddressData address)
   {

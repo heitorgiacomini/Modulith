@@ -1,4 +1,6 @@
 ﻿using Catalog.GraphQL;
+using Catalog.Products.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,6 +46,13 @@ public static class CatalogModule
 
 
         _ = services.AddScoped<IDataSeeder, CatalogDataSeeder>();
+        _ = services.AddScoped<IAuthorizationHandler, CatalogAdminAuthorizationHandler>();
+        _ = services.AddAuthorization(options =>
+        {
+            options.AddPolicy(CatalogAuthorization.AdminPolicy, policy =>
+                policy.RequireAuthenticatedUser()
+                    .AddRequirements(new CatalogAdminRequirement()));
+        });
 
         _ = services
             .AddGraphQLServer(GraphQLSchemaName)

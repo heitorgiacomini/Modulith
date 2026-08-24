@@ -24,7 +24,7 @@ public class RemoveItemFromBasketEndpoint : ICarterModule
 
           var result = await sender.Send(command);
 
-          var response = result.Adapt<RemoveItemFromBasketResponse>();
+          var response = BasketMapper.ToResponse(result);
 
           return Results.Ok(response);
         })

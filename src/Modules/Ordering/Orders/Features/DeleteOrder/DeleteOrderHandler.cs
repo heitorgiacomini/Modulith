@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Orders.Features.DeleteOrder;
 
-public record DeleteOrderCommand(Guid OrderId, Guid CustomerId, bool CanDeleteAll)
+public record DeleteOrderCommand(Guid OrderId)
     : ICommand<DeleteOrderResult>;
 public record DeleteOrderResult(bool IsSuccess);
 public class DeleteOrderCommandValidator : AbstractValidator<DeleteOrderCommand>
@@ -11,15 +11,17 @@ public class DeleteOrderCommandValidator : AbstractValidator<DeleteOrderCommand>
     }
 }
 
-internal class DeleteOrderHandler(OrderingDbContext dbContext)
+internal class DeleteOrderHandler(OrderingDbContext dbContext, IOrderingPermissionEvaluator evaluator)
     : ICommandHandler<DeleteOrderCommand, DeleteOrderResult>
 {
     public async Task<DeleteOrderResult> Handle(DeleteOrderCommand command, CancellationToken cancellationToken)
     {
+        OrderingPermission permission = evaluator.Evaluate()
+            ?? throw new ForbiddenException("Ordering delete permission is required.");
         IQueryable<Order> orders = dbContext.Orders;
-        if (!command.CanDeleteAll)
+        if (!permission.HasScope(OrderingAuthorization.DeleteAllScope))
         {
-            orders = orders.Where(order => order.CustomerId == command.CustomerId);
+            orders = orders.Where(order => order.CustomerId == permission.CustomerId);
         }
 
         var order = await orders.SingleOrDefaultAsync(

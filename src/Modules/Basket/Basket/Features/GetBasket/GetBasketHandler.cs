@@ -13,7 +13,7 @@ internal class GetBasketHandler(IBasketRepository repository)
 
         ShoppingCart basket = await repository.GetBasketAsync(query.UserName, true, cancellationToken);
         //mapping basket entity to shoppingcartdto
-        ShoppingCartDto basketDto = basket.Adapt<ShoppingCartDto>();
+        ShoppingCartDto basketDto = BasketMapper.ToDto(basket);
 
         return new GetBasketResult(basketDto);
     }

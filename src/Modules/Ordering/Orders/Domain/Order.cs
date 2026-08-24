@@ -1,4 +1,4 @@
-﻿namespace Ordering.Orders.Models;
+namespace Ordering.Orders.Domain;
 public class Order : FullAuditedAggregate<Guid>, IMultiTenant
 {
     public Guid? TenantId { get; set; }
@@ -11,6 +11,10 @@ public class Order : FullAuditedAggregate<Guid>, IMultiTenant
     public Address BillingAddress { get; private set; } = default!;
     public Payment Payment { get; private set; } = default!;
     public decimal TotalPrice => Items.Sum(x => x.Price * x.Quantity);
+
+    private Order()
+    {
+    }
 
     public static Order Create(Guid id, Guid customerId, string orderName, Address shippingAddress, Address billingAddress, Payment payment)
     {
@@ -42,7 +46,7 @@ public class Order : FullAuditedAggregate<Guid>, IMultiTenant
         }
         else
         {
-            var orderItem = new OrderItem(Id, productId, quantity, price);
+            var orderItem = OrderItem.Create(Id, productId, quantity, price);
             _items.Add(orderItem);
         }
     }

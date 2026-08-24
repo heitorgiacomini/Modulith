@@ -24,7 +24,7 @@ public class AddItemIntoBasketEndpoint : ICarterModule
 
           var result = await sender.Send(command);
 
-          var response = result.Adapt<AddItemIntoBasketResponse>();
+          var response = BasketMapper.ToResponse(result);
 
           return Results.Created($"/basket/{response.Id}", response);
         })

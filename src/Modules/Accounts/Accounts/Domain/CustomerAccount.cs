@@ -1,4 +1,4 @@
-namespace Accounts.Accounts.Models;
+namespace Accounts.Accounts.Domain;
 
 public sealed class CustomerAccount : FullAuditedAggregate<Guid>, IMultiTenant
 {
@@ -13,6 +13,10 @@ public sealed class CustomerAccount : FullAuditedAggregate<Guid>, IMultiTenant
   public bool MarketingEmails { get; private set; }
   public Guid UserId { get; private set; }
   public Guid? TenantId { get; set; }
+
+  private CustomerAccount()
+  {
+  }
 
   public static CustomerAccount Create(Guid userId) => new() { Id = Guid.NewGuid(), UserId = userId };
 

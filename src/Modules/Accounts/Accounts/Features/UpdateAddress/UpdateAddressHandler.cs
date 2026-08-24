@@ -40,12 +40,12 @@ internal sealed class UpdateAddressHandler(AccountsDbContext dbContext)
 		CustomerAccount? account = await dbContext.CustomerAccounts
 			.Include(item => item.Addresses)
 			.SingleOrDefaultAsync(item => item.UserId == command.CustomerId, cancellationToken);
-		if (account is null || !account.UpdateAddress(command.AddressId, AccountMapping.ToData(command.Address)))
+		if (account is null || !account.UpdateAddress(command.AddressId, AccountMapper.ToDomain(command.Address)))
 		{
 			return new UpdateAddressResult(null);
 		}
 
 		await dbContext.SaveChangesAsync(cancellationToken);
-		return new UpdateAddressResult(AccountMapping.ToDto(account.Addresses.Single(item => item.Id == command.AddressId)));
+		return new UpdateAddressResult(AccountMapper.ToDto(account.Addresses.Single(item => item.Id == command.AddressId)));
 	}
 }

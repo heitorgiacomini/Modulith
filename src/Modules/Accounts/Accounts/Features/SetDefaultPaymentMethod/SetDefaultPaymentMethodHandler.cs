@@ -22,6 +22,6 @@ internal sealed class SetDefaultPaymentMethodHandler(AccountsDbContext dbContext
 
 		await dbContext.SaveChangesAsync(cancellationToken);
 		return new SetDefaultPaymentMethodResult(
-			AccountMapping.ToDto(account.PaymentMethods.Single(item => item.Id == command.PaymentMethodId)));
+			AccountMapper.ToDto(account.PaymentMethods.Single(item => item.Id == command.PaymentMethodId)));
 	}
 }

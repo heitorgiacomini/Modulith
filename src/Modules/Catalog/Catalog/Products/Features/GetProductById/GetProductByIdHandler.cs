@@ -20,7 +20,7 @@ public class GetProductsByIdHandler(CatalogDbContext catalogDbContext)
     {
       throw new ProductNotFoundException(query.Id);
     }
-    ProductDto productsDto = product.Adapt<ProductDto>();
+    ProductDto productsDto = CatalogMapper.ToDto(product);
 
     return new GetProductByIdResult(productsDto);
   }

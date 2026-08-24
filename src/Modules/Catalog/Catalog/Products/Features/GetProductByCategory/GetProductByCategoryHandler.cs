@@ -18,7 +18,7 @@ public class GetProductsByCategoryHandler(CatalogDbContext catalogDbContext)
 			.OrderBy(p => p.Name)
 			.ToListAsync(cancellationToken);
 
-		List<ProductDto> productsDto = products.Adapt<List<ProductDto>>();
+		List<ProductDto> productsDto = CatalogMapper.ToDtos(products);
 
 		return new GetProductsByCategoryResult(productsDto);
 	}

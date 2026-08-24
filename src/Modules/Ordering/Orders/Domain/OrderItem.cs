@@ -1,13 +1,21 @@
-﻿namespace Ordering.Orders.Models;
+namespace Ordering.Orders.Domain;
 public class OrderItem : FullAuditedEntity<Guid>, IMultiTenant
 {
     public Guid? TenantId { get; set; }
-    internal OrderItem(Guid orderId, Guid productId, int quantity, decimal price)
+
+    private OrderItem()
     {
-        OrderId = orderId;
-        ProductId = productId;
-        Quantity = quantity;
-        Price = price;
+    }
+
+    internal static OrderItem Create(Guid orderId, Guid productId, int quantity, decimal price)
+    {
+        return new OrderItem
+        {
+            OrderId = orderId,
+            ProductId = productId,
+            Quantity = quantity,
+            Price = price
+        };
     }
 
     public Guid OrderId { get; private set; } = default!;

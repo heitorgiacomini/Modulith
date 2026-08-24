@@ -1,10 +1,10 @@
 ﻿namespace Ordering.Orders.Features.GetOrders;
 
-public record GetOrdersQuery(Guid? CustomerId, PaginationRequest PaginationRequest)
+public record GetOrdersQuery(PaginationRequest PaginationRequest)
     : IQuery<GetOrdersResult>;
 public record GetOrdersResult(PaginatedResult<OrderDto> Orders);
 
-internal class GetOrdersHandler(OrderingDbContext dbContext)
+internal class GetOrdersHandler(OrderingDbContext dbContext, IOrderingPermissionEvaluator evaluator)
     : IQueryHandler<GetOrdersQuery, GetOrdersResult>
 {
     public async Task<GetOrdersResult> Handle(GetOrdersQuery query, CancellationToken cancellationToken)
@@ -12,10 +12,12 @@ internal class GetOrdersHandler(OrderingDbContext dbContext)
         var pageIndex = query.PaginationRequest.PageIndex;
         var pageSize = query.PaginationRequest.PageSize;
 
+        OrderingPermission permission = evaluator.Evaluate()
+            ?? throw new ForbiddenException("Ordering read permission is required.");
         IQueryable<Order> customerOrders = dbContext.Orders;
-        if (query.CustomerId is { } customerId)
+        if (!permission.HasScope(OrderingAuthorization.ReadAllScope))
         {
-            customerOrders = customerOrders.Where(order => order.CustomerId == customerId);
+            customerOrders = customerOrders.Where(order => order.CustomerId == permission.CustomerId);
         }
 
         var totalCount = await customerOrders.LongCountAsync(cancellationToken);
@@ -28,7 +30,7 @@ internal class GetOrdersHandler(OrderingDbContext dbContext)
                         .Take(pageSize)
                         .ToListAsync(cancellationToken);
 
-        var orderDtos = orders.Adapt<List<OrderDto>>();
+        var orderDtos = OrderingMapper.ToDtos(orders);
 
         return new GetOrdersResult(
             new PaginatedResult<OrderDto>(

@@ -11,12 +11,12 @@ public class DeleteProductEndpoint : ICarterModule
         {
             var result = await sender.Send(new DeleteProductCommand(id));
 
-            var response = result.Adapt<DeleteProductResponse>();
+            var response = CatalogMapper.ToResponse(result);
 
             return Results.Ok(response);
         })
         .WithName("DeleteProduct")
-        .RequireAuthorization(TenantAuthorizationPolicies.Admin)
+        .RequireAuthorization(CatalogAuthorization.AdminPolicy)
         .Produces<DeleteProductResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)

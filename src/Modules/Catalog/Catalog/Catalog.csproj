@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Riok.Mapperly" Version="4.3.1" PrivateAssets="all" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="16.6.0" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="16.6.0" />
     <PackageReference Include="HotChocolate.Types.OffsetPagination" Version="16.6.0" />
@@ -17,6 +18,9 @@
     <ProjectReference Include="..\..\..\Shared\Shared.Messaging\Shared.Messaging.csproj" />
     <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
     <ProjectReference Include="..\Catalog.Contracts\Catalog.Contracts.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="ArchitectureTests" />
   </ItemGroup>
 
 </Project>

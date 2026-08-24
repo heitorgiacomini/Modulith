@@ -12,7 +12,7 @@ public class GetProductsEndpoint : ICarterModule
 		{
 			var result = await sender.Send(new GetProductsQuery(request));
 
-			GetProductsResponse response = result.Adapt<GetProductsResponse>();
+			GetProductsResponse response = CatalogMapper.ToResponse(result);
 
 			return Results.Ok(response);
 		})

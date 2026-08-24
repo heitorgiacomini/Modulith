@@ -10,22 +10,11 @@ public class DeleteOrderEndpoints : ICarterModule
     {
         app.MapDelete("/orders/{id}", async (
             Guid id,
-            ISender sender,
-            IOrderingPermissionEvaluator evaluator) =>
+            ISender sender) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate();
-            if (permission is null)
-            {
-                return Results.Unauthorized();
-            }
+            var result = await sender.Send(new DeleteOrderCommand(id));
 
-            bool canDeleteAll = permission.HasScope(OrderingAuthorization.DeleteAllScope);
-            var result = await sender.Send(new DeleteOrderCommand(
-                id,
-                permission.CustomerId,
-                canDeleteAll));
-
-            var response = result.Adapt<DeleteOrderResponse>();
+            var response = OrderingMapper.ToResponse(result);
 
             return Results.Ok(response);
         })

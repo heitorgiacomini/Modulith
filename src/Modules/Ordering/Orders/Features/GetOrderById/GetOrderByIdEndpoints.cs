@@ -10,19 +10,11 @@ public class GetOrderByIdEndpoints : ICarterModule
     {
         app.MapGet("/orders/{id}", async (
             Guid id,
-            ISender sender,
-            IOrderingPermissionEvaluator evaluator) =>
+            ISender sender) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate();
-            if (permission is null)
-            {
-                return Results.Unauthorized();
-            }
+            var result = await sender.Send(new GetOrderByIdQuery(id));
 
-            bool canReadAll = permission.HasScope(OrderingAuthorization.ReadAllScope);
-            var result = await sender.Send(new GetOrderByIdQuery(id, permission.CustomerId, canReadAll));
-
-            var response = result.Adapt<GetOrderByIdResponse>();
+            var response = OrderingMapper.ToResponse(result);
 
             return Results.Ok(response);
         })

@@ -17,7 +17,7 @@ public class ShoppingCartItemConverter : JsonConverter<ShoppingCartItem>
         var price = rootElement.GetProperty("price").GetDecimal();
         var productName = rootElement.GetProperty("productName").GetString()!;
 
-        return new ShoppingCartItem(id, shoppingCartId, productId, quantity, color, price, productName);
+        return ShoppingCartItem.Restore(id, shoppingCartId, productId, quantity, color, price, productName);
     }
 
     public override void Write(Utf8JsonWriter writer, ShoppingCartItem value, JsonSerializerOptions options)

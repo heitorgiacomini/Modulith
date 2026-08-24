@@ -24,7 +24,7 @@ internal sealed class UpdatePreferencesHandler(AccountsDbContext dbContext)
 			preferences.OrderStatusNotifications,
 			preferences.MarketingEmails);
 		await dbContext.SaveChangesAsync(cancellationToken);
-		return AccountMapping.ToDto(account);
+		return AccountMapper.ToDto(account);
 	}
 
 	private async Task<CustomerAccount> LoadOrCreate(Guid customerId, CancellationToken cancellationToken)

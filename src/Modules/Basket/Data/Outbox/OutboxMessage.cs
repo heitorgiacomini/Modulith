@@ -1,4 +1,4 @@
-﻿namespace Basket.Basket.Models;
+namespace Basket.Data.Outbox;
 public class OutboxMessage : Entity<Guid>
 {
     public Guid TenantId { get; set; }

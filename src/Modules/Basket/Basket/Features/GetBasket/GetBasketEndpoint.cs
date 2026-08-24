@@ -18,7 +18,7 @@ public class GetBasketEndpoint : ICarterModule
 
             var result = await sender.Send(new GetBasketQuery(authenticatedUserName));
 
-            var response = result.Adapt<GetBasketResponse>();
+            var response = BasketMapper.ToResponse(result);
 
             return Results.Ok(response);
         })

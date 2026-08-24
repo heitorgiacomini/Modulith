@@ -1,4 +1,4 @@
-﻿namespace Basket.Basket.Models;
+namespace Basket.Basket.Domain;
 
 public class ShoppingCart : FullAuditedAggregate<Guid>, IMultiTenant
 {
@@ -8,6 +8,10 @@ public class ShoppingCart : FullAuditedAggregate<Guid>, IMultiTenant
     private readonly List<ShoppingCartItem> _items = [];
     public IReadOnlyList<ShoppingCartItem> Items => this._items.AsReadOnly();
     public Decimal TotalPrice => this.Items.Sum(x => x.Price * x.Quantity);
+
+    private ShoppingCart()
+    {
+    }
 
     public static ShoppingCart Create(Guid id, String userName)
     {
@@ -19,6 +23,13 @@ public class ShoppingCart : FullAuditedAggregate<Guid>, IMultiTenant
             UserName = userName
         };
 
+        return shoppingCart;
+    }
+
+    internal static ShoppingCart Restore(Guid id, String userName, IEnumerable<ShoppingCartItem> items)
+    {
+        ShoppingCart shoppingCart = Create(id, userName);
+        shoppingCart._items.AddRange(items);
         return shoppingCart;
     }
 
@@ -35,10 +46,7 @@ public class ShoppingCart : FullAuditedAggregate<Guid>, IMultiTenant
         }
         else
         {
-            ShoppingCartItem newItem = new ShoppingCartItem(this.Id, productId, quantity, color, price, productName)
-            {
-                //Id = Guid.NewGuid()
-            };
+            ShoppingCartItem newItem = ShoppingCartItem.Create(this.Id, productId, quantity, color, price, productName);
             this._items.Add(newItem);
         }
     }

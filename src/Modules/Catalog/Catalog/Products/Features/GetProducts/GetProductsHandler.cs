@@ -26,8 +26,7 @@ public class GetProductsHandler(CatalogDbContext catalogDbContext)
 										.Take(pageSize)
 										.ToListAsync(cancellationToken);
 
-		//mapping product entity to ProductDto using Mapster
-		var productDtos = products.Adapt<List<ProductDto>>();
+		var productDtos = CatalogMapper.ToDtos(products);
 
 		return new GetProductsResult(
 				new PaginatedResult<ProductDto>(

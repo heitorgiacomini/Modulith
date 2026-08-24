@@ -1,10 +1,10 @@
 ﻿namespace Ordering.Orders.Features.GetOrderById;
 
-public record GetOrderByIdQuery(Guid Id, Guid CustomerId, bool CanReadAll)
+public record GetOrderByIdQuery(Guid Id)
     : IQuery<GetOrderByIdResult>;
 public record GetOrderByIdResult(OrderDto Order);
 
-internal class GetOrderByIdHandler(OrderingDbContext dbContext)
+internal class GetOrderByIdHandler(OrderingDbContext dbContext, IOrderingPermissionEvaluator evaluator)
     : IQueryHandler<GetOrderByIdQuery, GetOrderByIdResult>
 {
     public async Task<GetOrderByIdResult> Handle(GetOrderByIdQuery query, CancellationToken cancellationToken)
@@ -13,9 +13,11 @@ internal class GetOrderByIdHandler(OrderingDbContext dbContext)
             .AsNoTracking()
             .Include(order => order.Items);
 
-        if (!query.CanReadAll)
+        OrderingPermission permission = evaluator.Evaluate()
+            ?? throw new ForbiddenException("Ordering read permission is required.");
+        if (!permission.HasScope(OrderingAuthorization.ReadAllScope))
         {
-            orders = orders.Where(order => order.CustomerId == query.CustomerId);
+            orders = orders.Where(order => order.CustomerId == permission.CustomerId);
         }
 
         var order = await orders.SingleOrDefaultAsync(
@@ -27,7 +29,7 @@ internal class GetOrderByIdHandler(OrderingDbContext dbContext)
             throw new OrderNotFoundException(query.Id);
         }
 
-        var orderDto = order.Adapt<OrderDto>();
+        var orderDto = OrderingMapper.ToDto(order);
 
         return new GetOrderByIdResult(orderDto);
     }

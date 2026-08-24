@@ -36,9 +36,9 @@ internal sealed class AddPaymentMethodHandler(AccountsDbContext dbContext)
 			dbContext.CustomerAccounts.Add(account);
 		}
 
-		SavedPaymentMethod paymentMethod = account.AddPaymentMethod(AccountMapping.ToData(command.PaymentMethod));
+		SavedPaymentMethod paymentMethod = account.AddPaymentMethod(AccountMapper.ToDomain(command.PaymentMethod));
 		dbContext.SavedPaymentMethods.Add(paymentMethod);
 		await dbContext.SaveChangesAsync(cancellationToken);
-		return AccountMapping.ToDto(paymentMethod);
+		return AccountMapper.ToDto(paymentMethod);
 	}
 }

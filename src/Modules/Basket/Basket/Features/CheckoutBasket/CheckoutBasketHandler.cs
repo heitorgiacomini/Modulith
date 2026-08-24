@@ -1,4 +1,4 @@
-﻿using Shared.Messaging.Events;
+using Shared.Messaging.Events;
 using System.Text.Json;
 
 namespace Basket.Basket.Features.CheckoutBasket;
@@ -89,7 +89,7 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext, ICurrentTenant c
         //var basket =
         //    await repository.GetBasket(command.BasketCheckout.UserName, true, cancellationToken);
 
-        //var eventMessage = command.BasketCheckout.Adapt<BasketCheckoutIntegrationEvent>();
+
         //eventMessage.TotalPrice = basket.TotalPrice;
 
         //await bus.Publish(eventMessage, cancellationToken);

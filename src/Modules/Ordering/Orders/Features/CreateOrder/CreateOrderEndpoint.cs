@@ -17,33 +17,13 @@ public class CreateOrderEndpoint : ICarterModule
     {
         app.MapPost("/orders", async (
             CreateOrderRequest request,
-            ISender sender,
-            IOrderingPermissionEvaluator evaluator) =>
+            ISender sender) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate();
-            if (permission is null)
-            {
-                return Results.Unauthorized();
-            }
-
-            var command = new CreateOrderCommand(new OrderDto(
-                Id: Guid.Empty,
-                CustomerId: permission.CustomerId,
-                OrderName: request.Order.OrderName,
-                ShippingAddress: request.Order.ShippingAddress,
-                BillingAddress: request.Order.BillingAddress,
-                Payment: request.Order.Payment,
-                Items: request.Order.Items
-                    .Select(item => new OrderItemDto(
-                        Guid.Empty,
-                        item.ProductId,
-                        item.Quantity,
-                        item.Price))
-                    .ToList()));
+            var command = new CreateOrderCommand(OrderingMapper.ToDto(request.Order));
 
             var result = await sender.Send(command);
 
-            var response = result.Adapt<CreateOrderResponse>();
+            var response = OrderingMapper.ToResponse(result);
 
             return Results.Created($"/Orders/{response.Id}", response);
         })

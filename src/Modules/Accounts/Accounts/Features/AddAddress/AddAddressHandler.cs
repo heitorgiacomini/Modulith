@@ -39,9 +39,9 @@ internal sealed class AddAddressHandler(AccountsDbContext dbContext)
 			dbContext.CustomerAccounts.Add(account);
 		}
 
-		SavedAddress address = account.AddAddress(AccountMapping.ToData(command.Address));
+		SavedAddress address = account.AddAddress(AccountMapper.ToDomain(command.Address));
 		dbContext.SavedAddresses.Add(address);
 		await dbContext.SaveChangesAsync(cancellationToken);
-		return AccountMapping.ToDto(address);
+		return AccountMapper.ToDto(address);
 	}
 }

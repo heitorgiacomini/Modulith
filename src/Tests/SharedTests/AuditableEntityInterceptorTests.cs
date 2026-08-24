@@ -23,8 +23,8 @@ public sealed class AuditableEntityInterceptorTests
   public void Basic_and_outbox_entities_are_not_audited_or_soft_deletable()
   {
     Assert.False(typeof(ISoftDelete).IsAssignableFrom(typeof(BasicEntity)));
-    Assert.False(typeof(IAuditedObject).IsAssignableFrom(typeof(Basket.Basket.Models.OutboxMessage)));
-    Assert.False(typeof(ISoftDelete).IsAssignableFrom(typeof(Basket.Basket.Models.OutboxMessage)));
+    Assert.False(typeof(IAuditedObject).IsAssignableFrom(typeof(Basket.Data.Outbox.OutboxMessage)));
+    Assert.False(typeof(ISoftDelete).IsAssignableFrom(typeof(Basket.Data.Outbox.OutboxMessage)));
   }
 
   [Fact]

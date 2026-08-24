@@ -10,21 +10,11 @@ public class GetOrdersEndpoints : ICarterModule
     {
         app.MapGet("/orders", async (
             [AsParameters] PaginationRequest request,
-            ISender sender,
-            IOrderingPermissionEvaluator evaluator) =>
+            ISender sender) =>
         {
-            OrderingPermission? permission = evaluator.Evaluate();
-            if (permission is null)
-            {
-                return Results.Unauthorized();
-            }
+            var result = await sender.Send(new GetOrdersQuery(request));
 
-            Guid? customerId = permission.HasScope(OrderingAuthorization.ReadAllScope)
-                ? null
-                : permission.CustomerId;
-            var result = await sender.Send(new GetOrdersQuery(customerId, request));
-
-            GetOrdersResponse response = result.Adapt<GetOrdersResponse>();
+            GetOrdersResponse response = OrderingMapper.ToResponse(result);
 
             return Results.Ok(response);
         })

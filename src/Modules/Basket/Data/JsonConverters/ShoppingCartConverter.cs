@@ -13,16 +13,8 @@ public class ShoppingCartConverter : JsonConverter<ShoppingCart>
         var userName = rootElement.GetProperty("userName").GetString()!;
         var itemsElement = rootElement.GetProperty("items");
 
-        var shoppingCart = ShoppingCart.Create(id, userName);
-
-        var items = itemsElement.Deserialize<List<ShoppingCartItem>>(options);
-        if (items != null)
-        {
-            var itemsField = typeof(ShoppingCart).GetField("_items", BindingFlags.NonPublic | BindingFlags.Instance);
-            itemsField?.SetValue(shoppingCart, items);
-        }
-
-        return shoppingCart;
+        var items = itemsElement.Deserialize<List<ShoppingCartItem>>(options) ?? [];
+        return ShoppingCart.Restore(id, userName, items);
     }
 
     public override void Write(Utf8JsonWriter writer, ShoppingCart value, JsonSerializerOptions options)

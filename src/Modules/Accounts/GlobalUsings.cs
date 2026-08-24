@@ -1,10 +1,9 @@
 global using Accounts.Accounts.Dtos;
 global using Accounts.Accounts.Mapping;
-global using Accounts.Accounts.Models;
+global using Accounts.Accounts.Domain;
 global using Accounts.Data;
 global using Carter;
 global using FluentValidation;
-global using Mapster;
 global using MediatR;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Http;

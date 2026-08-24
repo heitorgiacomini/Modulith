@@ -18,11 +18,11 @@ public class CreateBasketEndpoint : ICarterModule
       ShoppingCartDto updatedShoppingCart = request.ShoppingCart with { UserName = userName };
 
       CreateBasketCommand command = new CreateBasketCommand(updatedShoppingCart);
-      //CreateBasketCommand command = request.Adapt<CreateBasketCommand>();
+
 
       CreateBasketResult result = await sender.Send(command);
 
-      CreateBasketResponse response = result.Adapt<CreateBasketResponse>();
+      CreateBasketResponse response = BasketMapper.ToResponse(result);
 
       return Results.Created($"/basket/{response.Id}", response);
     })
