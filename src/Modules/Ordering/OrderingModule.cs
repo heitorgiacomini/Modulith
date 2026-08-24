@@ -27,6 +27,7 @@ public static class OrderingModule
         var connectionString = configuration.GetConnectionString("Database");
 
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
 
         services.AddDbContext<OrderingDbContext>((sp, options) =>

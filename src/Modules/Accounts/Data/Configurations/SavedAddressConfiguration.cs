@@ -7,6 +7,7 @@ public sealed class SavedAddressConfiguration : IEntityTypeConfiguration<SavedAd
   public void Configure(EntityTypeBuilder<SavedAddress> builder)
   {
     builder.HasKey(address => address.Id);
+    builder.Property(address => address.TenantId).IsRequired();
     builder.Property(address => address.Label).HasMaxLength(40).IsRequired();
     builder.Property(address => address.FirstName).HasMaxLength(50).IsRequired();
     builder.Property(address => address.LastName).HasMaxLength(50).IsRequired();
@@ -18,6 +19,6 @@ public sealed class SavedAddressConfiguration : IEntityTypeConfiguration<SavedAd
     builder.Property(address => address.State).HasMaxLength(80).IsRequired();
     builder.Property(address => address.PostalCode).HasMaxLength(20).IsRequired();
     builder.Property(address => address.CountryCode).HasMaxLength(2).IsRequired();
-    builder.HasIndex(address => new { address.CustomerAccountId, address.Label });
+    builder.HasIndex(address => new { address.TenantId, address.CustomerAccountId, address.Label });
   }
 }

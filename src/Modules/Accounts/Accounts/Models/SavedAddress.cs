@@ -1,8 +1,9 @@
 namespace Accounts.Accounts.Models;
 
-public sealed class SavedAddress : FullAuditedEntity<Guid>
+public sealed class SavedAddress : FullAuditedEntity<Guid>, IMultiTenant
 {
   public Guid CustomerAccountId { get; private set; }
+  public Guid? TenantId { get; set; }
   public string Label { get; private set; } = default!;
   public string FirstName { get; private set; } = default!;
   public string LastName { get; private set; } = default!;

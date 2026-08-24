@@ -32,6 +32,7 @@ public interface IOrderingPermissionEvaluator
 
 public sealed class OrderingPermissionEvaluator(
     ICurrentUser currentUser,
+    ICurrentTenant currentTenant,
     IHttpContextAccessor httpContextAccessor) : IOrderingPermissionEvaluator
 {
     public OrderingPermission? Evaluate()
@@ -39,7 +40,9 @@ public sealed class OrderingPermissionEvaluator(
         ClaimsPrincipal? user = httpContextAccessor.HttpContext?.User;
         if (user is null ||
             !currentUser.IsAuthenticated ||
+            !currentTenant.IsAvailable ||
             currentUser.Id is not Guid customerId ||
+            !TryGetOrganizationRoles(user, currentTenant.Id!.Value, out IReadOnlySet<string>? organizationRoles) ||
             !HasAudience(user, OrderingAuthorization.Audience) ||
             user.Identity?.IsAuthenticated != true)
         {
@@ -79,7 +82,13 @@ public sealed class OrderingPermissionEvaluator(
                 {
                     if (scope.GetString() is { } value)
                     {
-                        scopes.Add(value);
+                        bool isTenantAdmin = organizationRoles.Contains("admin");
+                        bool isTenantMember = isTenantAdmin || organizationRoles.Contains("customer");
+                        if ((value.EndsWith("-all", StringComparison.Ordinal) && isTenantAdmin) ||
+                            (value.EndsWith("-own", StringComparison.Ordinal) && isTenantMember))
+                        {
+                            scopes.Add(value);
+                        }
                     }
                 }
             }
@@ -96,6 +105,56 @@ public sealed class OrderingPermissionEvaluator(
         => user.FindAll("aud").Any(claim =>
             string.Equals(claim.Value, audience, StringComparison.Ordinal) ||
             TryReadAudienceArray(claim.Value, audience));
+
+    private static bool TryGetOrganizationRoles(
+        ClaimsPrincipal user,
+        Guid tenantId,
+        out IReadOnlySet<string> roles)
+    {
+        roles = new HashSet<string>(StringComparer.Ordinal);
+        string? claim = user.FindFirstValue("organization");
+        if (string.IsNullOrWhiteSpace(claim))
+        {
+            return false;
+        }
+
+        try
+        {
+            using JsonDocument document = JsonDocument.Parse(claim);
+            JsonProperty[] organizations = document.RootElement.ValueKind == JsonValueKind.Object
+                ? document.RootElement.EnumerateObject().ToArray()
+                : [];
+            if (organizations.Length != 1 ||
+                organizations[0].Value.ValueKind != JsonValueKind.Object ||
+                !organizations[0].Value.TryGetProperty("id", out JsonElement idValue) ||
+                !Guid.TryParse(idValue.GetString(), out Guid claimTenantId) ||
+                claimTenantId != tenantId)
+            {
+                return false;
+            }
+
+            HashSet<string> effectiveRoles = new(StringComparer.Ordinal);
+            if (organizations[0].Value.TryGetProperty("realm_access", out JsonElement realmAccess) &&
+                realmAccess.TryGetProperty("roles", out JsonElement roleValues) &&
+                roleValues.ValueKind == JsonValueKind.Array)
+            {
+                foreach (JsonElement role in roleValues.EnumerateArray())
+                {
+                    if (role.GetString() is { } roleName)
+                    {
+                        effectiveRoles.Add(roleName);
+                    }
+                }
+            }
+
+            roles = effectiveRoles;
+            return true;
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
+    }
 
     private static bool TryReadAudienceArray(string value, string audience)
     {

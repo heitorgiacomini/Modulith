@@ -45,6 +45,20 @@
   gap: 0.75rem;
 }
 
+.tenant-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
 :host ::ng-deep .toolbar-actions a.active-nav-item {
   background: var(--p-primary-color);
   border-color: var(--p-primary-color);

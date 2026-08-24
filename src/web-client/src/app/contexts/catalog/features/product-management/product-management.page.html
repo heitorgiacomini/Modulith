@@ -19,7 +19,9 @@
       (onLazyLoad)="onLazyLoad($event)">
       <ng-template pTemplate="caption">
         <app-table-caption title="Products" (clear)="clearFilters(productsTable)">
-          <button actions pButton type="button" label="New Product" icon="pi pi-plus" (click)="openCreateDialog()"></button>
+          @if (auth.tenantRoles().includes('admin')) {
+            <button actions pButton type="button" label="New Product" icon="pi pi-plus" (click)="openCreateDialog()"></button>
+          }
         </app-table-caption>
       </ng-template>
 
@@ -75,10 +77,12 @@
               <button pButton type="button" icon="pi pi-eye" class="icon-action-button"
                 ariaLabel="Show product" pTooltip="Show product" tooltipPosition="top"
                 (click)="selectProduct(product)"></button>
-              <button pButton type="button" icon="pi pi-trash"
-                class="icon-action-button icon-action-button--delete" ariaLabel="Delete product"
-                pTooltip="Delete product" tooltipPosition="top" [loading]="saving()"
-                (click)="deleteProduct(product)"></button>
+              @if (auth.tenantRoles().includes('admin')) {
+                <button pButton type="button" icon="pi pi-trash"
+                  class="icon-action-button icon-action-button--delete" ariaLabel="Delete product"
+                  pTooltip="Delete product" tooltipPosition="top" [loading]="saving()"
+                  (click)="deleteProduct(product)"></button>
+              }
             </div>
           </td>
           <td>{{ product.name }}</td>

@@ -12,7 +12,17 @@ services:
     image: rabbitmq:management
 
   keycloak:
-    image: docker.io/keycloak/keycloak:24.0.3
+    image: ${DOCKER_REGISTRY-}keycloak-organizations
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: docker-config/keycloak/Dockerfile
+
+  keycloak-configurator:
+    image: node:24-alpine
+
+  keycloak-verifier:
+    image: node:24-alpine
 
   api:
     image: ${DOCKER_REGISTRY-}api

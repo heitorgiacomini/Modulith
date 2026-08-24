@@ -150,7 +150,7 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up -
 | Catalog source schema | <http://localhost:5004/graphql/catalog> | Catalog GraphQL endpoint |
 | Basket source schema | <http://localhost:5004/graphql/basket> | Basket GraphQL endpoint |
 | Ordering source schema | <http://localhost:5004/graphql/ordering> | Ordering GraphQL endpoint |
-| Keycloak | <http://localhost:9090> | Identity provider (`myrealm`) |
+| Keycloak | <http://localhost:9090> | Identity provider (`eshoprealm`) |
 | Seq | <http://localhost:9091> | Structured-log UI |
 | RabbitMQ management | <http://localhost:15672> | Broker administration UI |
 | PostgreSQL | `localhost:5434` | Development database |
@@ -196,7 +196,7 @@ and Keycloak ports listed above.
 
 ## Authentication and authorization
 
-Compose imports `src/docker-config/keycloak/myrealm-realm.json` into Keycloak. Both the API and Fusion gateway validate Keycloak JWT bearer tokens, and the gateway forwards the caller's `Authorization` header to source schemas. Ordering applies scope-based authorization policies, while Accounts and user-owned Basket operations derive the customer identity from token claims.
+Compose imports `src/docker-config/keycloak/eshoprealm-realm.json` into Keycloak. Both the API and Fusion gateway validate Keycloak JWT bearer tokens, and the gateway forwards the caller's `Authorization` header to source schemas. Ordering applies scope-based authorization policies, while Accounts and user-owned Basket operations derive the customer identity from token claims.
 
 ## Project structure
 

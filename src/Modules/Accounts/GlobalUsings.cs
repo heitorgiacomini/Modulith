@@ -1,4 +1,5 @@
 global using Accounts.Accounts.Dtos;
+global using Accounts.Accounts.Mapping;
 global using Accounts.Accounts.Models;
 global using Accounts.Data;
 global using Carter;
@@ -13,5 +14,6 @@ global using Shared.Contracts.CQRS;
 global using Shared.Data;
 global using Shared.Data.Auditing;
 global using Shared.Data.Filtering;
+global using Shared.Data.MultiTenancy;
 global using Shared.DDD;
 global using System.Reflection;

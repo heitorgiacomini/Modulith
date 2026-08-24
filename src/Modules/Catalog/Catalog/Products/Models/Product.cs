@@ -1,17 +1,21 @@
-﻿
+
 
 namespace Catalog.Products.Models;
 
-public class Product : FullAuditedAggregate<Guid>
+public class Product : FullAuditedAggregate<Guid>, IMultiTenant
 {
+	public Guid? TenantId { get; set; }
 	public String Name { get; private set; } = default!;
 	public List<String> Category { get; set; } = [];
 	public String Description { get; set; } = default!;
 	public String ImageFile { get; set; } = default!;
 	public Decimal Price { get; private set; }
 
+  private Product()
+  {
 
-	public static Product Create(Guid id, String name, List<String> category, String description, String imageFile, Decimal price)
+  }
+  public static Product Create(Guid id, String name, List<String> category, String description, String imageFile, Decimal price)
 	{
 		ArgumentException.ThrowIfNullOrEmpty(name);
 		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);

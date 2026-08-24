@@ -15,7 +15,7 @@ public class CheckoutBasketCommandValidator : AbstractValidator<CheckoutBasketCo
     }
 }
 
-internal class CheckoutBasketHandler(BasketDbContext dbContext)
+internal class CheckoutBasketHandler(BasketDbContext dbContext, ICurrentTenant currentTenant)
     : ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
 {
     public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
@@ -44,6 +44,7 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext)
             var checkout = command.BasketCheckout;
             var eventMessage = new BasketCheckoutIntegrationEvent
             {
+                TenantId = currentTenant.Id ?? throw new InvalidOperationException("An active tenant is required."),
                 UserName = checkout.UserName,
                 CustomerId = checkout.CustomerId,
                 TotalPrice = basket.TotalPrice,
@@ -62,6 +63,7 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext)
             var outboxMessage = new OutboxMessage
             {
                 Id = Guid.NewGuid(),
+                TenantId = eventMessage.TenantId,
                 Type = typeof(BasketCheckoutIntegrationEvent).AssemblyQualifiedName!,
                 Content = JsonSerializer.Serialize(eventMessage),
                 OccuredOn = DateTime.UtcNow

@@ -46,6 +46,29 @@ services:
       postgres:
         condition: service_healthy
 
+  keycloak-configurator:
+    environment:
+      - KEYCLOAK_URL=http://keycloak:9090
+      - KEYCLOAK_ADMIN=eshopdb
+      - KEYCLOAK_ADMIN_PASSWORD=eshopdb
+    volumes:
+      - ./docker-config/keycloak/configure-organizations.mjs:/configure-organizations.mjs:ro
+    command: ["node", "/configure-organizations.mjs"]
+    depends_on:
+      keycloak:
+        condition: service_started
+    restart: "no"
+
+  keycloak-verifier:
+    environment:
+      - KEYCLOAK_URL=http://keycloak:9090
+      - API_URL=http://api:8080
+    volumes:
+      - ./docker-config/keycloak/verify-multitenancy.mjs:/verify-multitenancy.mjs:ro
+    command: ["node", "/verify-multitenancy.mjs"]
+    profiles: ["tools"]
+    restart: "no"
+
   redis:
     restart: always
     ports:
@@ -82,7 +105,7 @@ services:
       - MessageBroker__UserName=eshopdb
       - MessageBroker__Password=eshopdb
       - Keycloak__AuthServerUrl=http://keycloak:9090/
-      - Keycloak__PublicIssuer=http://localhost:9090/realms/myrealm
+      - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
       - Serilog__Using__0=Serilog.Sinks.Console
       - Serilog__Using__1=Serilog.Sinks.Seq
       - Serilog__MinimumLevel__Default=Information
@@ -98,11 +121,16 @@ services:
       - Serilog__Properties__Application=EShop ASP.NET Core App
       - Serilog__Properties__Environment=Development
     depends_on:
-      - postgres
-      - redis
-      - seq
-      - rabbitmq
-      - keycloak
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+      seq:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+      keycloak-configurator:
+        condition: service_completed_successfully
     ports:
       - "5004:8080"
       - "6060:8081"
@@ -139,7 +167,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - Fusion__SchemaPath=/app/fusion/gateway.far
       - Keycloak__AuthServerUrl=http://keycloak:9090/
-      - Keycloak__PublicIssuer=http://localhost:9090/realms/myrealm
+      - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
     volumes:
       - fusion_gateway:/app/fusion:ro
     depends_on:

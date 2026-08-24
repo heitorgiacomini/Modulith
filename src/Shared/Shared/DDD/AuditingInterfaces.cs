@@ -16,11 +16,6 @@ public interface IAuditedObject : ICreationAuditedObject, IModificationAuditedOb
 {
 }
 
-public interface ISoftDelete
-{
-  bool IsDeleted { get; set; }
-}
-
 public interface IDeletionAuditedObject : ISoftDelete
 {
   DateTimeOffset? DeletedAt { get; set; }

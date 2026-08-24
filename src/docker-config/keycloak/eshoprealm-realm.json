@@ -1,0 +1,326 @@
+{
+  "realm": "eshoprealm",
+  "enabled": true,
+  "displayName": "Course EShop",
+  "organizationsEnabled": true,
+  "registrationAllowed": false,
+  "resetPasswordAllowed": true,
+  "loginWithEmailAllowed": true,
+  "roles": {
+    "realm": [
+      {
+        "name": "customer"
+      },
+      {
+        "name": "admin"
+      },
+      {
+        "name": "audit:read",
+        "description": "Allows protected access to audit information"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "myclient",
+      "name": "Course Angular Client",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:4200/*",
+        "http://127.0.0.1:4200/*"
+      ],
+      "webOrigins": [
+        "http://localhost:4200",
+        "http://127.0.0.1:4200"
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:4200/*##http://127.0.0.1:4200/*",
+        "pkce.code.challenge.method": "S256"
+      },
+      "protocol": "openid-connect",
+      "optionalClientScopes": [
+        "organization"
+      ],
+      "protocolMappers": [
+        {
+          "name": "Subject (sub)",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "lightweight.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "Preferred username",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "username",
+            "claim.name": "preferred_username",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "lightweight.claim": "true",
+            "userinfo.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "ordering-api",
+      "name": "Ordering Resource Server",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "ordering-api-local-secret",
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "protocol": "openid-connect",
+      "optionalClientScopes": [
+        "organization"
+      ],
+      "protocolMappers": [
+        {
+          "name": "Source Organization Claim",
+          "protocol": "openid-connect",
+          "protocolMapper": "script-source-organization-claim.js",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "organization",
+            "jsonType.label": "JSON",
+            "access.token.claim": "true",
+            "id.token.claim": "false",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "Subject (sub)",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "lightweight.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ],
+      "authorizationSettings": {
+        "allowRemoteResourceManagement": false,
+        "policyEnforcementMode": "ENFORCING",
+        "resources": [
+          {
+            "name": "Orders",
+            "type": "urn:course:ordering:orders",
+            "ownerManagedAccess": false,
+            "attributes": {},
+            "uris": [],
+            "scopes": [
+              {
+                "name": "orders:create-own"
+              },
+              {
+                "name": "orders:read-own"
+              },
+              {
+                "name": "orders:read-all"
+              },
+              {
+                "name": "orders:delete-own"
+              },
+              {
+                "name": "orders:delete-all"
+              }
+            ]
+          }
+        ],
+        "policies": [
+          {
+            "name": "Keycloak Organization Customer",
+            "description": "Requires customer in the single selected Keycloak organization claim.",
+            "type": "script-selected-organization-customer.js",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {}
+          },
+          {
+            "name": "Keycloak Organization Admin",
+            "description": "Requires admin in the single selected Keycloak organization claim.",
+            "type": "script-selected-organization-admin.js",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {}
+          },
+          {
+            "name": "Customer Own Orders",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "resources": "[\"Orders\"]",
+              "scopes": "[\"orders:create-own\",\"orders:read-own\",\"orders:delete-own\"]",
+              "applyPolicies": "[\"Keycloak Organization Customer\"]"
+            }
+          },
+          {
+            "name": "Admin All Orders",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "resources": "[\"Orders\"]",
+              "scopes": "[\"orders:read-all\",\"orders:delete-all\"]",
+              "applyPolicies": "[\"Keycloak Organization Admin\"]"
+            }
+          }
+        ],
+        "scopes": [
+          {
+            "name": "orders:create-own"
+          },
+          {
+            "name": "orders:read-own"
+          },
+          {
+            "name": "orders:read-all"
+          },
+          {
+            "name": "orders:delete-own"
+          },
+          {
+            "name": "orders:delete-all"
+          }
+        ],
+        "decisionStrategy": "UNANIMOUS"
+      }
+    }
+  ],
+  "clientScopes": [
+    {
+      "name": "organization",
+      "description": "Organization membership, groups, and organization-specific role mappings",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "consent.screen.text": "${organizationScopeConsentText}",
+        "display.on.consent.screen": "true"
+      },
+      "protocolMappers": [
+        {
+          "name": "organization",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-organization-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "claim.name": "organization",
+            "jsonType.label": "String",
+            "multivalued": "true",
+            "addOrganizationId": "true",
+            "addOrganizationAttributes": "false"
+          }
+        },
+        {
+          "name": "organization groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-organization-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "id.token.claim": "true",
+            "introspection.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "lightweight.claim": "false",
+            "addGroupRoleMappings": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "name": "Acme",
+      "alias": "acme",
+      "enabled": true,
+      "domains": [],
+      "members": [
+        {
+          "username": "shopper"
+        }
+      ],
+      "groups": [
+        {
+          "name": "Customers",
+          "realmRoles": [
+            "customer"
+          ]
+        },
+        {
+          "name": "Admins",
+          "realmRoles": [
+            "admin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22222222-2222-2222-2222-222222222222",
+      "name": "Contoso",
+      "alias": "contoso",
+      "enabled": true,
+      "domains": [],
+      "members": [
+        {
+          "username": "shopper"
+        }
+      ],
+      "groups": [
+        {
+          "name": "Customers",
+          "realmRoles": [
+            "customer"
+          ]
+        },
+        {
+          "name": "Admins",
+          "realmRoles": []
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "shopper",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Local",
+      "lastName": "Shopper",
+      "email": "shopper@example.test",
+      "realmRoles": [
+        "default-roles-eshoprealm"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "shopper",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

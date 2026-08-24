@@ -39,6 +39,9 @@ namespace Basket.Data.Migrations
                     b.Property<DateTime?>("ProcessedOn")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("text");
@@ -75,6 +78,9 @@ namespace Basket.Data.Migrations
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -82,7 +88,7 @@ namespace Basket.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserName")
+                    b.HasIndex("TenantId", "UserName")
                         .IsUnique()
                         .HasFilter("\"IsDeleted\" = FALSE");
 
@@ -134,6 +140,9 @@ namespace Basket.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<Guid>("ShoppingCartId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("TenantId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");

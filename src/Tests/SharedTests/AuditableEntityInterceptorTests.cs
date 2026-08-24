@@ -5,6 +5,7 @@ using Shared.Data;
 using Shared.Data.Auditing;
 using Shared.Data.Filtering;
 using Shared.Data.Interceptors;
+using Shared.Data.MultiTenancy;
 using Shared.DDD;
 using Xunit;
 
@@ -54,6 +55,25 @@ public sealed class AuditableEntityInterceptorTests
     Assert.Contains(logger.Messages, message => message.Contains("Created", StringComparison.Ordinal));
     Assert.DoesNotContain(logger.Messages, message => message.Contains("hidden", StringComparison.Ordinal));
     Assert.Contains(logger.Messages, message => message.Contains("[REDACTED]", StringComparison.Ordinal));
+  }
+
+  [Fact]
+  public async Task Audit_event_contains_current_tenant_id()
+  {
+    Guid tenantId = Guid.NewGuid();
+    ListLogger logger = new();
+    await using TestDbContext dbContext = CreateContext(Guid.NewGuid(), logger, tenantId);
+    dbContext.Entities.Add(new TestEntity
+    {
+      Id = Guid.NewGuid(),
+      Name = "Tenant audit",
+      Secret = "hidden",
+    });
+
+    await dbContext.SaveChangesAsync();
+
+    Assert.Contains(logger.Messages, message =>
+      message.Contains(tenantId.ToString(), StringComparison.OrdinalIgnoreCase));
   }
 
   [Fact]
@@ -159,7 +179,7 @@ public sealed class AuditableEntityInterceptorTests
   {
     ListLogger logger = new();
     TestCurrentUser currentUser = new() { Id = Guid.NewGuid() };
-    AuditableEntityInterceptor auditInterceptor = new(currentUser, logger);
+    AuditableEntityInterceptor auditInterceptor = new(currentUser, new CurrentTenant(), logger);
     DbContextOptions<TestDbContext> options = new DbContextOptionsBuilder<TestDbContext>()
       .UseInMemoryDatabase(Guid.NewGuid().ToString())
       .AddInterceptors(auditInterceptor, new FailingSaveInterceptor())
@@ -189,10 +209,16 @@ public sealed class AuditableEntityInterceptorTests
     Assert.Empty(logger.Messages);
   }
 
-  private static TestDbContext CreateContext(Guid? userId, ListLogger logger)
+  private static TestDbContext CreateContext(Guid? userId, ListLogger logger, Guid? tenantId = null)
   {
     TestCurrentUser currentUser = new() { Id = userId };
-    AuditableEntityInterceptor interceptor = new(currentUser, logger);
+    CurrentTenant currentTenant = new();
+    if (tenantId is not null)
+    {
+      _ = currentTenant.Change(tenantId, "test");
+    }
+
+    AuditableEntityInterceptor interceptor = new(currentUser, currentTenant, logger);
     DbContextOptions<TestDbContext> options = new DbContextOptionsBuilder<TestDbContext>()
       .UseInMemoryDatabase(Guid.NewGuid().ToString())
       .AddInterceptors(interceptor)
@@ -209,6 +235,8 @@ public sealed class AuditableEntityInterceptorTests
     public TestCurrentUser CurrentUser { get; } = currentUser;
     public TestDataFilter DataFilter { get; } = dataFilter;
     public bool IsSoftDeleteFilterEnabled => DataFilter.IsEnabled<ISoftDelete>();
+    public bool IsMultiTenantFilterEnabled => DataFilter.IsEnabled<IMultiTenant>();
+    public Guid? CurrentTenantId => null;
     public DbSet<TestEntity> Entities => Set<TestEntity>();
     public DbSet<BasicEntity> BasicEntities => Set<BasicEntity>();
 
@@ -217,7 +245,7 @@ public sealed class AuditableEntityInterceptorTests
       modelBuilder.Entity<TestEntity>().HasKey(entity => entity.Id);
       modelBuilder.Entity<TestEntity>().OwnsOne(entity => entity.Detail);
       modelBuilder.Entity<BasicEntity>().HasKey(entity => entity.Id);
-      modelBuilder.ApplySoftDeleteQueryFilters(this);
+      modelBuilder.ApplyDataFilters(this);
     }
   }
 

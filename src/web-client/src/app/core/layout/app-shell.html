@@ -15,6 +15,10 @@
       <a pButton routerLink="/baskets" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" label="Baskets" icon="pi pi-shopping-cart" severity="secondary"></a>
       <a pButton routerLink="/orders" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" label="Orders" icon="pi pi-receipt" severity="secondary"></a>
       @if (auth.authenticated()) {
+        @if (auth.tenantId()) {
+          <span class="tenant-indicator"><i class="pi pi-building"></i>{{ auth.tenantName() }}</span>
+          <button pButton type="button" label="Switch organization" icon="pi pi-sync" severity="secondary" (click)="auth.switchOrganization()"></button>
+        }
         <a pButton routerLink="/account" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{ exact: true }" [label]="auth.userName() || 'Account'" icon="pi pi-user" severity="secondary"></a>
         <button pButton type="button" label="Sign out" icon="pi pi-sign-out" severity="secondary" (click)="auth.logout()"></button>
       } @else {

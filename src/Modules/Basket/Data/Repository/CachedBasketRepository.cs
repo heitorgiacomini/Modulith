@@ -6,7 +6,10 @@ using System.Text.Json.Serialization;
 
 namespace Basket.Data.Repository;
 
-public class CachedBasketRepository(IBasketRepository repository, IDistributedCache distributedCache) : IBasketRepository
+public class CachedBasketRepository(
+  IBasketRepository repository,
+  IDistributedCache distributedCache,
+  ICurrentTenant currentTenant) : IBasketRepository
 {
   private readonly JsonSerializerOptions _options = new JsonSerializerOptions
   {
@@ -17,6 +20,7 @@ public class CachedBasketRepository(IBasketRepository repository, IDistributedCa
 
   public async Task<ShoppingCart> GetBasketAsync(String userName, Boolean asNoTracking = true, CancellationToken cancellationToken = default)
   {
+    string cacheKey = GetCacheKey(userName);
     //if (!asNoTracking)
     //{
     //  return await repository.GetBasketAsync(userName, false, cancellationToken);
@@ -33,30 +37,31 @@ public class CachedBasketRepository(IBasketRepository repository, IDistributedCa
 
     if (asNoTracking)
     {
-      String? cachedBasket = await distributedCache.GetStringAsync(userName, cancellationToken);
-      if (cachedBasket.HasContent())
+      String? cachedBasket = await distributedCache.GetStringAsync(cacheKey, cancellationToken);
+      if (!string.IsNullOrWhiteSpace(cachedBasket) &&
+        JsonSerializer.Deserialize<ShoppingCart>(cachedBasket, this._options) is { } deserializedBasket)
       {
-        return JsonSerializer.Deserialize<ShoppingCart>(cachedBasket, this._options);
+        return deserializedBasket;
       }
     }
 
     ShoppingCart basket = await repository.GetBasketAsync(userName, asNoTracking, cancellationToken);
 
-    await distributedCache.SetStringAsync(userName, JsonSerializer.Serialize(basket, _options), cancellationToken);
+    await distributedCache.SetStringAsync(cacheKey, JsonSerializer.Serialize(basket, _options), cancellationToken);
     return basket;
 
   }
   public async Task<ShoppingCart> CreateBasketAsync(ShoppingCart basket, CancellationToken cancellationToken = default)
   {
     _ = await repository.CreateBasketAsync(basket, cancellationToken);
-    await distributedCache.SetStringAsync(basket.UserName, JsonSerializer.Serialize(basket, _options), cancellationToken);
+    await distributedCache.SetStringAsync(GetCacheKey(basket.UserName), JsonSerializer.Serialize(basket, _options), cancellationToken);
     return basket;
   }
 
   public async Task<Boolean> DeleteBasketAsync(String userName, CancellationToken cancellationToken = default)
   {
     Boolean result = await repository.DeleteBasketAsync(userName, cancellationToken);
-    await distributedCache.RemoveAsync(userName, cancellationToken);
+    await distributedCache.RemoveAsync(GetCacheKey(userName), cancellationToken);
     return result;
   }
 
@@ -67,9 +72,12 @@ public class CachedBasketRepository(IBasketRepository repository, IDistributedCa
 
     if (userName.HasContent())
     {
-      await distributedCache.RemoveAsync(userName, cancellationToken);
+      await distributedCache.RemoveAsync(GetCacheKey(userName!), cancellationToken);
     }
 
     return result;
   }
+
+  private string GetCacheKey(string userName) =>
+    $"{currentTenant.Id ?? throw new InvalidOperationException("An active tenant is required.")}:basket:{userName}";
 }

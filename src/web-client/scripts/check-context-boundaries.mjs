@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, normalize, relative, resolve } from 'node:path';
+import { isAbsolute, join, normalize, relative, resolve } from 'node:path';
 
 const appDirectory = resolve('src/app');
 const contextsDirectory = join(appDirectory, 'contexts');
@@ -14,7 +14,10 @@ function files(directory) {
 }
 
 function contextOf(path) {
-  const parts = relative(contextsDirectory, path).split(/[\\/]/);
+  const relativePath = relative(contextsDirectory, path);
+  if (relativePath.startsWith('..') || isAbsolute(relativePath)) return undefined;
+
+  const parts = relativePath.split(/[\\/]/);
   return parts.length > 1 ? parts[0] : undefined;
 }
 

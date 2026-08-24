@@ -66,7 +66,17 @@ namespace Accounts.Data.Migrations
                     b.Property<bool>("OrderStatusNotifications")
                         .HasColumnType("boolean");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TenantId", "UserId")
+                        .IsUnique()
+                        .HasFilter("\"IsDeleted\" = FALSE");
 
                     b.ToTable("CustomerAccounts", "accounts");
                 });
@@ -161,9 +171,14 @@ namespace Accounts.Data.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("character varying(80)");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerAccountId", "Label");
+                    b.HasIndex("CustomerAccountId");
+
+                    b.HasIndex("TenantId", "CustomerAccountId", "Label");
 
                     b.ToTable("SavedAddresses", "accounts");
                 });
@@ -226,6 +241,9 @@ namespace Accounts.Data.Migrations
                     b.Property<Guid?>("LastModifiedBy")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Token")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -233,7 +251,9 @@ namespace Accounts.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerAccountId", "Label");
+                    b.HasIndex("CustomerAccountId");
+
+                    b.HasIndex("TenantId", "CustomerAccountId", "Label");
 
                     b.ToTable("SavedPaymentMethods", "accounts");
                 });

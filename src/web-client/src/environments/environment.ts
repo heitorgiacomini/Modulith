@@ -3,7 +3,7 @@ export const environment = {
   graphqlUrl: 'http://127.0.0.1:5002/graphql',
   keycloak: {
     url: 'http://localhost:9090',
-    realm: 'myrealm',
+    realm: 'eshoprealm',
     clientId: 'myclient'
   }
 };

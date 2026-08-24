@@ -59,6 +59,9 @@ namespace Ordering.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
+
                     b.ComplexProperty(typeof(Dictionary<string, object>), "BillingAddress", "Ordering.Orders.Models.Order.BillingAddress#Address", b1 =>
                         {
                             b1.IsRequired();
@@ -197,7 +200,7 @@ namespace Ordering.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderName")
+                    b.HasIndex("TenantId", "OrderName")
                         .IsUnique();
 
                     b.ToTable("Orders", "ordering");
@@ -241,6 +244,9 @@ namespace Ordering.Data.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 

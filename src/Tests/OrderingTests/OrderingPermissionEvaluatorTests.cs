@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Ordering.Orders.Authorization;
 using Shared.Data.Auditing;
+using Shared.Data.MultiTenancy;
 using Xunit;
 
 namespace OrderingTests;
@@ -76,18 +77,27 @@ public sealed class OrderingPermissionEvaluatorTests
         => CreateUser(subject.ToString(), audience, authorization);
 
     private static ClaimsPrincipal CreateUser(string subject, string audience, string authorization)
-        => new(new ClaimsIdentity(
+    {
+        string role = authorization.Contains("-all", StringComparison.Ordinal) ? "admin" : "customer";
+        string organization = """
+            {"test":{"id":"11111111-1111-1111-1111-111111111111","realm_access":{"roles":["$role"]}}}
+            """.Replace("$role", role, StringComparison.Ordinal);
+        return new(new ClaimsIdentity(
         [
             new Claim("sub", subject),
             new Claim("aud", audience),
-            new Claim("authorization", authorization)
+            new Claim("authorization", authorization),
+            new Claim("organization", organization)
         ], "Test"));
+    }
 
     private static OrderingPermissionEvaluator CreateEvaluator(ClaimsPrincipal user)
     {
         DefaultHttpContext context = new() { User = user };
         HttpContextAccessor accessor = new() { HttpContext = context };
-        return new OrderingPermissionEvaluator(new TestCurrentUser(user), accessor);
+        CurrentTenant currentTenant = new();
+        _ = currentTenant.Change(Guid.Parse("11111111-1111-1111-1111-111111111111"), "test");
+        return new OrderingPermissionEvaluator(new TestCurrentUser(user), currentTenant, accessor);
     }
 
     private sealed class TestCurrentUser(ClaimsPrincipal user) : ICurrentUser

@@ -2,9 +2,12 @@ namespace Accounts.Data;
 
 public sealed class AccountsDbContext(
   DbContextOptions<AccountsDbContext> options,
-  IDataFilter dataFilter) : DbContext(options), IDataFilterContext
+  IDataFilter dataFilter,
+  ICurrentTenant currentTenant) : DbContext(options), IDataFilterContext
 {
   public bool IsSoftDeleteFilterEnabled => dataFilter.IsEnabled<ISoftDelete>();
+  public bool IsMultiTenantFilterEnabled => dataFilter.IsEnabled<IMultiTenant>();
+  public Guid? CurrentTenantId => currentTenant.Id;
 
   public DbSet<CustomerAccount> CustomerAccounts => Set<CustomerAccount>();
   public DbSet<SavedAddress> SavedAddresses => Set<SavedAddress>();
@@ -14,7 +17,7 @@ public sealed class AccountsDbContext(
   {
     builder.HasDefaultSchema("accounts");
     builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    builder.ApplySoftDeleteQueryFilters(this);
+    builder.ApplyDataFilters(this);
     base.OnModelCreating(builder);
   }
 }

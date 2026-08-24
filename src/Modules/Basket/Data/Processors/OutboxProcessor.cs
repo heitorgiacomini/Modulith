@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
+using Shared.Data.MultiTenancy;
+using Shared.Messaging.Events;
 
 namespace Basket.Data.Processors;
 public class OutboxProcessor
@@ -17,6 +19,7 @@ public class OutboxProcessor
             {
                 using var scope = serviceProvider.CreateScope();
                 var dbContext = scope.ServiceProvider.GetRequiredService<BasketDbContext>();
+                var currentTenant = scope.ServiceProvider.GetRequiredService<ICurrentTenant>();
                 var outboxMessages = await dbContext.OutboxMessages
                     .Where(m => m.ProcessedOn == null)
                     .ToListAsync(stoppingToken);
@@ -36,7 +39,15 @@ public class OutboxProcessor
                         continue;
                     }
 
-                    await bus.Publish(eventMessage, stoppingToken);
+                    if (eventMessage is IntegrationEvent integrationEvent && integrationEvent.TenantId == Guid.Empty)
+                    {
+                        integrationEvent.TenantId = message.TenantId;
+                    }
+
+                    using (currentTenant.Change(message.TenantId))
+                    {
+                        await bus.Publish(eventMessage, stoppingToken);
+                    }
 
                     message.ProcessedOn = DateTime.UtcNow;
 

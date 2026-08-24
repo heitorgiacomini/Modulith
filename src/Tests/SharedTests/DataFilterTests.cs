@@ -14,6 +14,7 @@ public sealed class DataFilterTests
     IDataFilter dataFilter = provider.GetRequiredService<IDataFilter>();
 
     Assert.True(dataFilter.IsEnabled<ISoftDelete>());
+    Assert.True(dataFilter.IsEnabled<IMultiTenant>());
   }
 
   [Fact]

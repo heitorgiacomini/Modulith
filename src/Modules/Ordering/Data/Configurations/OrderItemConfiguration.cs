@@ -6,6 +6,7 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     public void Configure(EntityTypeBuilder<OrderItem> builder)
     {
         builder.HasKey(e => e.Id);
+        builder.Property(e => e.TenantId).IsRequired();
 
         builder.Property(oi => oi.ProductId).IsRequired();
 

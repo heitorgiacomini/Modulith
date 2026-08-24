@@ -7,6 +7,11 @@ public sealed class CustomerAccountConfiguration : IEntityTypeConfiguration<Cust
   public void Configure(EntityTypeBuilder<CustomerAccount> builder)
   {
     builder.HasKey(account => account.Id);
+    builder.Property(account => account.TenantId).IsRequired();
+    builder.Property(account => account.UserId).IsRequired();
+    builder.HasIndex(account => new { account.TenantId, account.UserId })
+      .IsUnique()
+      .HasFilter("\"IsDeleted\" = FALSE");
     builder.Property(account => account.Locale).HasMaxLength(10).IsRequired();
     builder.Property(account => account.Currency).HasMaxLength(3).IsRequired();
     builder.HasMany(account => account.Addresses)

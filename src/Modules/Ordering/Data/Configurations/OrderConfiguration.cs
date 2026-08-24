@@ -6,10 +6,11 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
     public void Configure(EntityTypeBuilder<Order> builder)
     {
         builder.HasKey(e => e.Id);
+        builder.Property(e => e.TenantId).IsRequired();
 
         builder.Property(o => o.CustomerId);
 
-        builder.HasIndex(e => e.OrderName)
+        builder.HasIndex(e => new { e.TenantId, e.OrderName })
                .IsUnique();
 
         builder.Property(e => e.OrderName)

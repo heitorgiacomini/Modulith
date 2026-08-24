@@ -1,6 +1,7 @@
 ﻿namespace Ordering.Orders.Models;
-public class OrderItem : FullAuditedEntity<Guid>
+public class OrderItem : FullAuditedEntity<Guid>, IMultiTenant
 {
+    public Guid? TenantId { get; set; }
     internal OrderItem(Guid orderId, Guid productId, int quantity, decimal price)
     {
         OrderId = orderId;

@@ -1,6 +1,7 @@
 ﻿namespace Ordering.Orders.Models;
-public class Order : FullAuditedAggregate<Guid>
+public class Order : FullAuditedAggregate<Guid>, IMultiTenant
 {
+    public Guid? TenantId { get; set; }
     private readonly List<OrderItem> _items = new();
     public IReadOnlyList<OrderItem> Items => _items.AsReadOnly();
 

@@ -1,9 +1,12 @@
 using Keycloak.AuthServices.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Policy;
 using System.Reflection;
 using Api.Infrastructure;
 using Shared.Data.Auditing;
 using Shared.Data.Filtering;
+using Shared.Data.MultiTenancy;
 
 namespace Api;
 
@@ -64,7 +67,21 @@ public partial class Program
         options.MapInboundClaims = false;
         options.TokenValidationParameters.ValidIssuer = publicIssuer;
       });
-    _ = webAppBuilder.Services.AddAuthorization();
+    _ = webAppBuilder.Services.AddAuthorization(options =>
+    {
+      options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .AddRequirements(new CurrentTenantRequirement())
+        .AddRequirements(new OrganizationRoleRequirement("customer", "admin"))
+        .Build();
+      options.AddPolicy(TenantAuthorizationPolicies.Admin, policy => policy
+        .RequireAuthenticatedUser()
+        .AddRequirements(new CurrentTenantRequirement())
+        .AddRequirements(new OrganizationRoleRequirement("admin")));
+    });
+    _ = webAppBuilder.Services.AddSingleton<IAuthorizationHandler, CurrentTenantAuthorizationHandler>();
+    _ = webAppBuilder.Services.AddSingleton<IAuthorizationHandler, OrganizationRoleAuthorizationHandler>();
+    _ = webAppBuilder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, TenantAuthorizationMiddlewareResultHandler>();
     _ = webAppBuilder.Services.AddDataFilters();
     _ = webAppBuilder.Services.AddHttpContextAccessor();
     _ = webAppBuilder.Services.AddScoped<ICurrentUser, HttpContextCurrentUser>();
@@ -93,15 +110,19 @@ public partial class Program
     _ = webApp.MapGraphQL("/graphql/catalog", CatalogModule.GraphQLSchemaName);
     _ = webApp.MapGraphQL("/graphql/basket", BasketModule.GraphQLSchemaName);
     _ = webApp.MapGraphQL("/graphql/ordering", OrderingModule.GraphQLSchemaName);
-    _ = webApp.MapGraphQLSchema("/graphql/catalog/schema.graphqls", CatalogModule.GraphQLSchemaName);
-    _ = webApp.MapGraphQLSchema("/graphql/basket/schema.graphqls", BasketModule.GraphQLSchemaName);
-    _ = webApp.MapGraphQLSchema("/graphql/ordering/schema.graphqls", OrderingModule.GraphQLSchemaName);
+    _ = webApp.MapGraphQLSchema("/graphql/catalog/schema.graphqls", CatalogModule.GraphQLSchemaName)
+      .AllowAnonymous();
+    _ = webApp.MapGraphQLSchema("/graphql/basket/schema.graphqls", BasketModule.GraphQLSchemaName)
+      .AllowAnonymous();
+    _ = webApp.MapGraphQLSchema("/graphql/ordering/schema.graphqls", OrderingModule.GraphQLSchemaName)
+      .AllowAnonymous();
 
     _ = webApp.UseSerilogRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
     _ = webApp.UseCors(FrontendCorsPolicy);
 
     _ = webApp.UseAuthentication();
+    _ = webApp.UseMiddleware<CurrentTenantMiddleware>();
     _ = webApp.UseAuthorization();
 
     if (webAppBuilder.Configuration.GetValue("Database:RunMigrations", true))

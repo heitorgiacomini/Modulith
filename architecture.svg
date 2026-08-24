@@ -21,7 +21,7 @@
   <rect x="90" y="250" width="230" height="95" rx="16" class="box client"/>
   <text x="205" y="286" text-anchor="middle" class="bt">Angular 21 client</text><text x="205" y="316" text-anchor="middle" class="body">localhost:4200</text>
   <rect x="520" y="238" width="260" height="120" rx="16" class="box auth"/>
-  <text x="650" y="278" text-anchor="middle" class="bt">Keycloak</text><text x="650" y="307" text-anchor="middle" class="body">OIDC / JWT · localhost:9090</text><text x="650" y="333" text-anchor="middle" class="small">realm: myrealm</text>
+  <text x="650" y="278" text-anchor="middle" class="bt">Keycloak</text><text x="650" y="307" text-anchor="middle" class="body">OIDC / JWT · localhost:9090</text><text x="650" y="333" text-anchor="middle" class="small">realm: eshoprealm</text>
   <rect x="90" y="430" width="300" height="120" rx="16" class="box gateway"/>
   <text x="240" y="470" text-anchor="middle" class="bt">Fusion GraphQL Gateway</text><text x="240" y="500" text-anchor="middle" class="body">localhost:5002/graphql</text><text x="240" y="526" text-anchor="middle" class="small">routes composed operations</text>
   <rect x="500" y="430" width="280" height="120" rx="16" class="box api"/>

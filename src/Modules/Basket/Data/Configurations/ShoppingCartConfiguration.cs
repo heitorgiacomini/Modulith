@@ -6,8 +6,9 @@ public class ShoppingCartConfiguration : IEntityTypeConfiguration<ShoppingCart>
     public void Configure(EntityTypeBuilder<ShoppingCart> builder)
     {
         builder.HasKey(e => e.Id);
+        builder.Property(e => e.TenantId).IsRequired();
 
-        builder.HasIndex(e => e.UserName)
+        builder.HasIndex(e => new { e.TenantId, e.UserName })
                .IsUnique()
                .HasFilter("\"IsDeleted\" = FALSE");
 

@@ -16,6 +16,7 @@ public class DeleteProductEndpoint : ICarterModule
             return Results.Ok(response);
         })
         .WithName("DeleteProduct")
+        .RequireAuthorization(TenantAuthorizationPolicies.Admin)
         .Produces<DeleteProductResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)

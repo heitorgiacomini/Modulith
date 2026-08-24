@@ -16,6 +16,7 @@ global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Logging;
 global using Shared.Data;
 global using Shared.Data.Filtering;
+global using Shared.Data.MultiTenancy;
 global using Shared.Data.Seed;
 global using Shared.DDD;
 global using System.Reflection;

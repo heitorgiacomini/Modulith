@@ -1,6 +1,6 @@
 namespace Accounts.Accounts.Models;
 
-public sealed class CustomerAccount : FullAuditedAggregate<Guid>
+public sealed class CustomerAccount : FullAuditedAggregate<Guid>, IMultiTenant
 {
   private readonly List<SavedAddress> _addresses = [];
   private readonly List<SavedPaymentMethod> _paymentMethods = [];
@@ -11,8 +11,10 @@ public sealed class CustomerAccount : FullAuditedAggregate<Guid>
   public string Currency { get; private set; } = "USD";
   public bool OrderStatusNotifications { get; private set; } = true;
   public bool MarketingEmails { get; private set; }
+  public Guid UserId { get; private set; }
+  public Guid? TenantId { get; set; }
 
-  public static CustomerAccount Create(Guid customerId) => new() { Id = customerId };
+  public static CustomerAccount Create(Guid userId) => new() { Id = Guid.NewGuid(), UserId = userId };
 
   public SavedAddress AddAddress(AddressData address)
   {

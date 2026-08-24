@@ -1,4 +1,4 @@
-﻿namespace Catalog.Products.Features.CreateProduct;
+namespace Catalog.Products.Features.CreateProduct;
 
 public record CreateProductCommand
 	(ProductDto Product)
@@ -37,7 +37,8 @@ public class CreateProductHandler(
 
 	private static Product CreateNewProduct(ProductDto productDto)
 	{
-		Product product = Product.Create(
+
+    Product product = Product.Create(
 			Guid.NewGuid(),
 			productDto.Name,
 			productDto.Category,

@@ -6,12 +6,14 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Shared.Data.Auditing;
+using Shared.Data.MultiTenancy;
 using Shared.DDD;
 
 namespace Shared.Data.Interceptors;
 
 public sealed class AuditableEntityInterceptor(
   ICurrentUser currentUser,
+  ICurrentTenant currentTenant,
   ILogger<AuditableEntityInterceptor> logger) : SaveChangesInterceptor
 {
   private static readonly HashSet<string> AuditPropertyNames =
@@ -160,6 +162,7 @@ public sealed class AuditableEntityInterceptor(
           GetEntityId(entry),
           operation,
           actorId,
+          currentTenant.Id,
           timestamp,
           currentUser.TraceId,
           changes));
@@ -260,12 +263,13 @@ public sealed class AuditableEntityInterceptor(
     foreach (PendingAuditEvent auditEvent in events)
     {
       logger.LogInformation(
-        "Business entity {AuditOperation}: {AuditModule}.{AuditEntityType} {AuditEntityId} by {AuditActorId} at {AuditTimestampUtc}. Trace: {AuditTraceId}. Changes: {AuditChanges}",
+        "Business entity {AuditOperation}: {AuditModule}.{AuditEntityType} {AuditEntityId} by {AuditActorId} in tenant {AuditTenantId} at {AuditTimestampUtc}. Trace: {AuditTraceId}. Changes: {AuditChanges}",
         auditEvent.Operation,
         auditEvent.Module,
         auditEvent.EntityType,
         auditEvent.EntityId,
         auditEvent.ActorId,
+        auditEvent.TenantId,
         auditEvent.TimestampUtc,
         auditEvent.TraceId,
         JsonSerializer.Serialize(auditEvent.Changes));
@@ -288,6 +292,7 @@ public sealed class AuditableEntityInterceptor(
     string EntityId,
     string Operation,
     Guid? ActorId,
+    Guid? TenantId,
     DateTimeOffset TimestampUtc,
     string? TraceId,
     IReadOnlyDictionary<string, AuditValueChange> Changes);

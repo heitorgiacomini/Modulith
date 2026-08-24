@@ -1,0 +1,21 @@
+{
+  "policies": [
+    {
+      "name": "Selected Organization Customer",
+      "fileName": "selected-organization-customer.js",
+      "description": "Requires the customer role in the single selected Keycloak organization."
+    },
+    {
+      "name": "Selected Organization Admin",
+      "fileName": "selected-organization-admin.js",
+      "description": "Requires the admin role in the single selected Keycloak organization."
+    }
+  ],
+  "mappers": [
+    {
+      "name": "Source Organization Claim",
+      "fileName": "source-organization-claim.js",
+      "description": "Copies the signed organization context from the UMA source access token into the RPT."
+    }
+  ]
+}

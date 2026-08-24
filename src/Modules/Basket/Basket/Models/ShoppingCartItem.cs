@@ -2,8 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace Basket.Basket.Models;
 
-public class ShoppingCartItem : FullAuditedEntity<Guid>
+public class ShoppingCartItem : FullAuditedEntity<Guid>, IMultiTenant
 {
+  public Guid? TenantId { get; set; }
   public Guid ShoppingCartId { get; private set; } = default!;
   public Guid ProductId { get; private set; } = default!;
   public Int32 Quantity { get; internal set; } = default!;

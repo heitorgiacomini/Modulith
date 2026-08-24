@@ -16,6 +16,7 @@ public static class AccountsModule
     string? connectionString = configuration.GetConnectionString("Database");
 
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
     services.AddDbContext<AccountsDbContext>((serviceProvider, options) =>
     {

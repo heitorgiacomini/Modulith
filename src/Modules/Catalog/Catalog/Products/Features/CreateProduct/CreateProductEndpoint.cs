@@ -19,6 +19,7 @@ public class CreateProductEndpoint : ICarterModule
 
 		})
 		.WithName("CreateProduct")
+		.RequireAuthorization(TenantAuthorizationPolicies.Admin)
 		.Produces<CreateProductResponse>(StatusCodes.Status201Created)
 		.ProducesProblem(StatusCodes.Status400BadRequest)
 		.WithSummary("Create Product")

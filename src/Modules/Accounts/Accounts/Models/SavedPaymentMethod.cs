@@ -2,9 +2,10 @@ namespace Accounts.Accounts.Models;
 
 using Shared.Data.Auditing;
 
-public sealed class SavedPaymentMethod : FullAuditedEntity<Guid>
+public sealed class SavedPaymentMethod : FullAuditedEntity<Guid>, IMultiTenant
 {
   public Guid CustomerAccountId { get; private set; }
+  public Guid? TenantId { get; set; }
   public string Label { get; private set; } = default!;
   [AuditSensitive] public string CardholderName { get; private set; } = default!;
   [AuditSensitive] public string Brand { get; private set; } = default!;

@@ -5,6 +5,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 	public void Configure(EntityTypeBuilder<Product> builder)
 	{
 		_ = builder.HasKey(x => x.Id);
+		_ = builder.Property(x => x.TenantId).IsRequired();
 		_ = builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
 		_ = builder.Property(x => x.Category).IsRequired();
 		_ = builder.Property(x => x.Description).HasMaxLength(200);

@@ -28,6 +28,7 @@ public static class BasketModule
     String? connectionString = configuration.GetConnectionString("Database");
 
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
 
     _ = services.AddDbContext<BasketDbContext>((serviceProvider, options) =>
@@ -58,5 +59,4 @@ public static class BasketModule
   }
 
 }
-
 

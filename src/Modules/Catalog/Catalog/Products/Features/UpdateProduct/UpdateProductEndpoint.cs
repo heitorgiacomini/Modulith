@@ -18,6 +18,7 @@ public class UpdateProductEndpoint : ICarterModule
             return Results.Ok(response);
         })
         .WithName("UpdateProduct")
+        .RequireAuthorization(TenantAuthorizationPolicies.Admin)
         .Produces<UpdateProductResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)

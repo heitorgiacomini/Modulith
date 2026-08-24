@@ -4,7 +4,7 @@ using Shared.Messaging.Events;
 namespace Catalog.Products.Events.EventHandlers;
 
 public class ProductPriceChangedEventHandler
-  (IBus bus, ILogger<ProductPriceChangedEventHandler> logger)
+  (IBus bus, ICurrentTenant currentTenant, ILogger<ProductPriceChangedEventHandler> logger)
     : INotificationHandler<ProductPriceChangedEvent>
 {
 
@@ -18,6 +18,7 @@ public class ProductPriceChangedEventHandler
     // Publish product price changed integration event for update basket prices
     ProductPriceChangedIntegrationEvent integrationEvent = new ProductPriceChangedIntegrationEvent
     {
+      TenantId = currentTenant.Id ?? throw new InvalidOperationException("An active tenant is required."),
       ProductId = notification.Product.Id,
       Name = notification.Product.Name,
       Category = notification.Product.Category,

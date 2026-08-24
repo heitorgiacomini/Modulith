@@ -6,6 +6,7 @@ public class ShoppingCartItemConfiguration : IEntityTypeConfiguration<ShoppingCa
     public void Configure(EntityTypeBuilder<ShoppingCartItem> builder)
     {
         builder.HasKey(e => e.Id);
+        builder.Property(e => e.TenantId).IsRequired();
 
         builder.Property(oi => oi.ProductId).IsRequired();
 

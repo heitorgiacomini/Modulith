@@ -13,6 +13,11 @@ public static class CatalogModule
 
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration configuration)
     {
+		_ = services.AddOptions<CatalogSeedOptions>()
+			.Bind(configuration.GetSection(CatalogSeedOptions.SectionName))
+			.Validate(options => options.SeedTenantIds.All(tenantId => tenantId != Guid.Empty), "Catalog seed tenant IDs cannot be empty GUIDs.")
+			.ValidateOnStart();
+
         // Add services to the container.
         // Api Endpoint services
         // Application Use Case services
@@ -28,6 +33,7 @@ public static class CatalogModule
         String? connectionString = configuration.GetConnectionString("Database");
 
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
 
         _ = services.AddDbContext<CatalogDbContext>((serviceProvider, options) =>

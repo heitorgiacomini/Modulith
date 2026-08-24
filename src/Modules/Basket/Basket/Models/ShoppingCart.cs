@@ -1,7 +1,8 @@
 ﻿namespace Basket.Basket.Models;
 
-public class ShoppingCart : FullAuditedAggregate<Guid>
+public class ShoppingCart : FullAuditedAggregate<Guid>, IMultiTenant
 {
+    public Guid? TenantId { get; set; }
     public String UserName { get; private set; } = default!;
 
     private readonly List<ShoppingCartItem> _items = [];
