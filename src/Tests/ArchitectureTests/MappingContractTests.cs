@@ -9,6 +9,7 @@ using Ordering.Orders.Domain;
 using Ordering.Orders.Features.CreateOrder;
 using Ordering.Orders.Mapping;
 using Ordering.Orders.ValueObjects;
+using Shared.Messaging.Events;
 using Xunit;
 
 namespace ArchitectureTests;
@@ -66,5 +67,37 @@ public sealed class MappingContractTests
         Assert.Equal(Guid.Empty, dto.Id);
         Assert.Equal(Guid.Empty, dto.CustomerId);
         Assert.Equal(Guid.Empty, dto.Items.Single().OrderId);
+    }
+
+    [Fact]
+    public void OrderingMapper_MapsCommandsAndCreatesAggregate()
+    {
+        CreateOrderInput input = new(
+            "order",
+            new("Ada", "Lovelace", "ada@example.test", "+1", "One Street", null, "London", "LN", "12345", "GB"),
+            new("Ada", "Lovelace", "ada@example.test", "+1", "One Street", null, "London", "LN", "12345", "GB"),
+            new("token", "Ada Lovelace", "visa", "4242", "12/30"),
+            [new(Guid.NewGuid(), 1, 10m)]);
+
+        CreateOrderCommand command = OrderingMapper.ToCommand(new CreateOrderRequest(input));
+        Order order = OrderingMapper.ToDomain(command.Order with { CustomerId = Guid.NewGuid() });
+
+        Assert.StartsWith("order_", order.OrderName);
+        Assert.Single(order.Items);
+
+        BasketCheckoutIntegrationEvent integrationEvent = new()
+        {
+            CustomerId = Guid.NewGuid(),
+            UserName = "ada",
+            Address = new("Ada", "Lovelace", "ada@example.test", "+1", "One Street", null, "London", "LN", "12345", "GB"),
+            Payment = new("token", "Ada Lovelace", "visa", "4242", "12/30"),
+            Items = [new(Guid.NewGuid(), 2, 20m)],
+        };
+
+        CreateOrderFromCheckoutCommand checkoutCommand = OrderingMapper.ToCommand(integrationEvent);
+
+        Assert.Equal(integrationEvent.CustomerId, checkoutCommand.Order.CustomerId);
+        Assert.Equal(integrationEvent.UserName, checkoutCommand.Order.OrderName);
+        Assert.Single(checkoutCommand.Order.Items);
     }
 }

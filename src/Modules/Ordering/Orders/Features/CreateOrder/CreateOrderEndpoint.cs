@@ -19,7 +19,7 @@ public class CreateOrderEndpoint : ICarterModule
             CreateOrderRequest request,
             ISender sender) =>
         {
-            var command = new CreateOrderCommand(OrderingMapper.ToDto(request.Order));
+            var command = OrderingMapper.ToCommand(request);
 
             var result = await sender.Send(command);
 

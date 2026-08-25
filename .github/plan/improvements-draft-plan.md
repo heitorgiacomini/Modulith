@@ -1,5 +1,5 @@
-0. keycloak keeps asking for login. event happens most on press f5 refresh page
 1. put mapperlly in shared
+ 9. do not use factory use mapperly. force guide rule .github. CreateOrderEndpoint
 2. a schema per module and a dedicated database role.
 Grant that role privileges only on its schema and set its default search path.
 CREATE ROLE orders_role LOGIN PASSWORD 'orders_secret';
@@ -15,4 +15,9 @@ ALTER ROLE orders_role SET search_path = orders;
  6. set logging level to info in all services when dev docker-compose override
  7. add a health check endpoint to all services
  8. Rational Performance Tester
- 9. to not use factory use mapperly. force guide rule .github. CreateOrderEndpoint
+
+10. integracoes
+Gateway de pagamento e antifraude
+ERP
+Emissão fiscal (NFe)
+Transportadoras ou marketplaces

@@ -20,7 +20,7 @@ This directory contains the reusable building blocks used by the Accounts, Baske
 | Entity Framework Core and Npgsql | Provide module-owned PostgreSQL persistence, filters, interceptors, and migrations |
 | MassTransit | Publishes and consumes integration events through RabbitMQ |
 | Hot Chocolate | Hosts the module GraphQL schemas |
-| Mapperly | Generates compile-time mappings inside each module; Shared carries the common build dependency but owns no business mapper |
+| Mapperly | Generates compile-time mappings inside each module; `src/Directory.Build.props` carries the shared build dependency and Shared owns no business mapper |
 | Serilog | Emits structured application and audit logs from the bootstrapper and shared infrastructure |
 
 The dependency direction should remain toward these projects. Shared must not reference Accounts, Basket, Catalog, Ordering, or Bootstrapper. HTTP-specific implementations belong in Bootstrapper, while business-specific implementations belong in their module.
@@ -96,7 +96,7 @@ public interface ICurrentUser
 
 Shared declares only the abstraction. `HttpContextCurrentUser` is implemented and registered in Bootstrapper because Shared must not depend on the current HTTP transport.
 
-Mapperly follows the same ownership rule: the package version is shared as build infrastructure, while mapper declarations stay in the module that owns the source and target contracts. Mapping is generated at compile time and requires no runtime mapper registration.
+Mapperly follows the same ownership rule: `src/Directory.Build.props` provides the repository-wide build dependency, while mapper declarations stay in the module that owns the source and target contracts. Mapping is generated at compile time and requires no runtime mapper registration.
 
 The HTTP implementation follows these rules:
 

@@ -47,7 +47,7 @@ Integration events and background work carry a tenant identifier explicitly and 
 
 REST responses, GraphQL result types, commands that cross a transport boundary, and integration events must not serialize domain entities. Preserve DTO wire names, nullability, nesting, and collection shapes.
 
-Each module declares static partial Mapperly mappers near its DTO boundary. Generated mapping is preferred for ordinary member copying, collections, and wrapper responses. Explicit attributes document renamed, nested, constant, or generated values. Small user mapping methods are reserved for transformations Mapperly cannot express directly; semantic defaults belong in named default factories rather than mapping code.
+Each module declares static partial Mapperly mappers near its DTO boundary. Generated mapping is required for ordinary member copying, collections, and wrapper responses; do not introduce handwritten mapping factories or property-copy helpers. Explicit attributes document renamed, nested, constant, or generated values. Small imperative methods inside the module mapper are reserved for aggregate creation methods and domain invariants that Mapperly cannot express directly; semantic defaults belong in explicitly named defaults rather than mapping code.
 
 ## Testing expectations
 

@@ -53,7 +53,7 @@ Don't assume every module mirrors the same nesting. Actual layout:
 - CQRS marker interfaces live in `src/Shared/Shared.Contracts/CQRS/*`:
   - Commands implement `ICommand<TResponse>` and handlers implement `ICommandHandler<TCommand, TResponse>`.
   - Queries implement `IQuery<TResponse>` and handlers implement `IQueryHandler<TQuery, TResponse>`.
-- Mapping between request/result/response DTOs commonly uses **Mapster** (`request.Adapt<...>()`).
+- Use **Mapperly** for request/command, result/response, event/DTO, and DTO/domain object conversion. Add mappings to the owning module's static partial mapper; do not add handwritten mapping factories or property-copy helpers. Keep imperative mapper methods only where aggregate creation methods or domain invariants require behavior that generated member mapping cannot express.
 
 ## Persistence + domain events
 - Modules use EF Core + PostgreSQL with schemas: Accounts (`accounts`), Catalog (`catalog`), Basket (`basket`), and Ordering (`ordering`).

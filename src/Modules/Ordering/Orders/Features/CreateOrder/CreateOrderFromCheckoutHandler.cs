@@ -22,7 +22,7 @@ internal sealed class CreateOrderFromCheckoutHandler(OrderingDbContext dbContext
         CreateOrderFromCheckoutCommand command,
         CancellationToken cancellationToken)
     {
-        Order order = OrderFactory.Create(command.Order);
+        Order order = OrderingMapper.ToDomain(command.Order);
 
         dbContext.Orders.Add(order);
         await dbContext.SaveChangesAsync(cancellationToken);

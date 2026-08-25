@@ -18,39 +18,11 @@ internal class CreateOrderHandler(OrderingDbContext dbContext, IOrderingPermissi
     {
         OrderingPermission permission = evaluator.Evaluate()
             ?? throw new ForbiddenException("Ordering create permission is required.");
-        var order = OrderFactory.Create(command.Order with { CustomerId = permission.CustomerId });
+        var order = OrderingMapper.ToDomain(command.Order with { CustomerId = permission.CustomerId });
 
         dbContext.Orders.Add(order);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         return new CreateOrderResult(order.Id);
-    }
-}
-
-internal static class OrderFactory
-{
-    public static Order Create(OrderDto orderDto)
-    {
-        var shippingAddress = Address.Of(orderDto.ShippingAddress.FirstName, orderDto.ShippingAddress.LastName, orderDto.ShippingAddress.EmailAddress, orderDto.ShippingAddress.Phone, orderDto.ShippingAddress.AddressLine1, orderDto.ShippingAddress.AddressLine2, orderDto.ShippingAddress.City, orderDto.ShippingAddress.State, orderDto.ShippingAddress.PostalCode, orderDto.ShippingAddress.CountryCode);
-        var billingAddress = Address.Of(orderDto.BillingAddress.FirstName, orderDto.BillingAddress.LastName, orderDto.BillingAddress.EmailAddress, orderDto.BillingAddress.Phone, orderDto.BillingAddress.AddressLine1, orderDto.BillingAddress.AddressLine2, orderDto.BillingAddress.City, orderDto.BillingAddress.State, orderDto.BillingAddress.PostalCode, orderDto.BillingAddress.CountryCode);
-
-        var newOrder = Order.Create(
-                id: Guid.NewGuid(),
-                customerId: orderDto.CustomerId,
-                orderName: $"{orderDto.OrderName}_{new Random().Next()}",
-                shippingAddress: shippingAddress,
-                billingAddress: billingAddress,
-                payment: Payment.Of(orderDto.Payment.Token, orderDto.Payment.CardholderName, orderDto.Payment.Brand, orderDto.Payment.Last4, orderDto.Payment.Expiration)
-                );
-
-        orderDto.Items.ForEach(item =>
-        {
-            newOrder.Add(
-                item.ProductId,
-                item.Quantity,
-                item.Price);
-        });
-
-        return newOrder;
     }
 }
