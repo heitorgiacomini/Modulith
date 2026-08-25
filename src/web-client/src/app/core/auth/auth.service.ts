@@ -6,6 +6,7 @@ import { AuthorizationPermission } from './authorization-context';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private static readonly activeOrganizationStorageKey = 'modulith-course.active-organization';
   private readonly keycloak = new Keycloak(environment.keycloak);
   private readonly authorization = new KeycloakAuthorization(this.keycloak);
   private readonly permissionTokens = new Map<string, string>();
@@ -19,14 +20,6 @@ export class AuthService {
   readonly profile = signal<KeycloakProfile | null>(null);
 
   async initialize(): Promise<void> {
-    const authenticated = await this.keycloak.init({
-      onLoad: 'check-sso',
-      pkceMethod: 'S256',
-      checkLoginIframe: false,
-      scope: 'organization'
-    });
-    this.updateIdentity(authenticated);
-
     this.keycloak.onAuthSuccess = () => this.updateIdentity(true);
     this.keycloak.onAuthLogout = () => {
       this.permissionTokens.clear();
@@ -35,22 +28,35 @@ export class AuthService {
     this.keycloak.onTokenExpired = () => {
       void this.refreshToken();
     };
+
+    const authenticated = await this.keycloak.init({
+      onLoad: 'check-sso',
+      pkceMethod: 'S256',
+      checkLoginIframe: false,
+      silentCheckSsoRedirectUri: `${window.location.origin}/silent-check-sso.html`,
+      scope: this.organizationScope()
+    });
+    this.updateIdentity(authenticated);
   }
 
   login(): Promise<void> {
-    return this.keycloak.login({ redirectUri: window.location.href, scope: 'organization' });
+    return this.keycloak.login({
+      redirectUri: window.location.href,
+      scope: this.organizationScope()
+    });
   }
 
   switchOrganization(): Promise<void> {
     this.permissionTokens.clear();
+    this.forgetActiveOrganization();
     return this.keycloak.login({
       redirectUri: window.location.href,
-      scope: 'organization',
-      prompt: 'login'
+      scope: 'organization'
     });
   }
 
   logout(): Promise<void> {
+    this.forgetActiveOrganization();
     return this.keycloak.logout({ redirectUri: window.location.origin });
   }
 
@@ -112,6 +118,9 @@ export class AuthService {
       ? Object.entries(profile.organization)
       : [];
     const activeOrganization = organizations.length === 1 ? organizations[0] : null;
+    if (activeOrganization) {
+      this.rememberActiveOrganization(activeOrganization[0]);
+    }
     this.userName.set(authenticated ? profile?.preferred_username ?? profile?.username ?? null : null);
     this.customerId.set(authenticated ? profile?.sub ?? null : null);
     this.tenantName.set(activeOrganization?.[0] ?? null);
@@ -139,6 +148,35 @@ export class AuthService {
       });
 
     return this.refreshPromise;
+  }
+
+  private organizationScope(): string {
+    const alias = this.activeOrganizationAlias();
+    return alias ? `organization:${alias}` : 'organization';
+  }
+
+  private activeOrganizationAlias(): string | null {
+    try {
+      return window.sessionStorage.getItem(AuthService.activeOrganizationStorageKey);
+    } catch {
+      return null;
+    }
+  }
+
+  private rememberActiveOrganization(alias: string): void {
+    try {
+      window.sessionStorage.setItem(AuthService.activeOrganizationStorageKey, alias);
+    } catch {
+      // The next authentication falls back to Keycloak's organization selector.
+    }
+  }
+
+  private forgetActiveOrganization(): void {
+    try {
+      window.sessionStorage.removeItem(AuthService.activeOrganizationStorageKey);
+    } catch {
+      // Storage can be unavailable in privacy-restricted browser contexts.
+    }
   }
 
   private hasTokenLifetime(token: string, minimumValiditySeconds: number): boolean {
