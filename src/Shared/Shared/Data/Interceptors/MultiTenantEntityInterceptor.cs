@@ -57,8 +57,13 @@ public sealed class MultiTenantEntityInterceptor(ICurrentTenant currentTenant) :
       var tenantProperty = entry.Property(entity => entity.TenantId);
       if (entry.State != EntityState.Added && tenantProperty.IsModified)
       {
-        throw new InvalidOperationException(
-          $"The tenant ownership of {entry.Metadata.ClrType.Name} cannot be changed.");
+        if (tenantProperty.OriginalValue != tenantProperty.CurrentValue)
+        {
+          throw new InvalidOperationException(
+            $"The tenant ownership of {entry.Metadata.ClrType.Name} cannot be changed.");
+        }
+
+        tenantProperty.IsModified = false;
       }
     }
   }

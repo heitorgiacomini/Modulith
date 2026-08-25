@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging.Abstractions;
 using Shared.Data;
+using Shared.Data.Auditing;
 using Shared.Data.Filtering;
 using Shared.Data.Interceptors;
 using Shared.Data.MultiTenancy;
@@ -96,6 +98,30 @@ public sealed class MultiTenantPersistenceTests
   }
 
   [Fact]
+  public async Task Soft_delete_preserves_unchanged_tenant_ownership()
+  {
+    using ServiceProvider services = CreateServices();
+    ICurrentTenant currentTenant = services.GetRequiredService<ICurrentTenant>();
+    IDataFilter dataFilter = services.GetRequiredService<IDataFilter>();
+    string databaseName = Guid.NewGuid().ToString();
+
+    using (currentTenant.Change(Acme))
+    await using (TenantDbContext context = CreateAuditedContext(databaseName, dataFilter, currentTenant))
+    {
+      TenantEntity entity = new() { Id = Guid.NewGuid(), Name = "Checkout basket" };
+      context.TenantEntities.Add(entity);
+      await context.SaveChangesAsync();
+
+      context.TenantEntities.Remove(entity);
+      await context.SaveChangesAsync();
+
+      Assert.Equal(Acme, entity.TenantId);
+      Assert.True(entity.IsDeleted);
+      Assert.Empty(await context.TenantEntities.ToListAsync());
+    }
+  }
+
+  [Fact]
   public void Full_audited_interface_is_transitively_soft_delete_capable()
   {
     Assert.True(typeof(ISoftDelete).IsAssignableFrom(typeof(FullAuditedEntity<Guid>)));
@@ -117,6 +143,22 @@ public sealed class MultiTenantPersistenceTests
     DbContextOptions<TenantDbContext> options = new DbContextOptionsBuilder<TenantDbContext>()
       .UseInMemoryDatabase(databaseName)
       .AddInterceptors(new MultiTenantEntityInterceptor(currentTenant))
+      .Options;
+    return new TenantDbContext(options, dataFilter, currentTenant);
+  }
+
+  private static TenantDbContext CreateAuditedContext(
+    string databaseName,
+    IDataFilter dataFilter,
+    ICurrentTenant currentTenant)
+  {
+    AuditableEntityInterceptor auditInterceptor = new(
+      new TestCurrentUser(),
+      currentTenant,
+      NullLogger<AuditableEntityInterceptor>.Instance);
+    DbContextOptions<TenantDbContext> options = new DbContextOptionsBuilder<TenantDbContext>()
+      .UseInMemoryDatabase(databaseName)
+      .AddInterceptors(auditInterceptor, new MultiTenantEntityInterceptor(currentTenant))
       .Options;
     return new TenantDbContext(options, dataFilter, currentTenant);
   }
@@ -148,4 +190,12 @@ public sealed class MultiTenantPersistenceTests
   }
 
   private sealed class HostEntity : Entity<Guid>;
+
+  private sealed class TestCurrentUser : ICurrentUser
+  {
+    public Guid? Id => Guid.Parse("33333333-3333-3333-3333-333333333333");
+    public string? UserName => "test-user";
+    public bool IsAuthenticated => true;
+    public string? TraceId => "test-trace";
+  }
 }

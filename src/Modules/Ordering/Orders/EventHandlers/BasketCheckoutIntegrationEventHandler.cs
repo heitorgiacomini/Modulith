@@ -17,7 +17,7 @@ public class BasketCheckoutIntegrationEventHandler
         await sender.Send(createOrderCommand);
     }
 
-    private CreateOrderCommand MapToCreateOrderCommand(BasketCheckoutIntegrationEvent message)
+    private CreateOrderFromCheckoutCommand MapToCreateOrderCommand(BasketCheckoutIntegrationEvent message)
     {
         // Create full order with incoming event data
         var addressDto = new AddressDto(
@@ -40,6 +40,6 @@ public class BasketCheckoutIntegrationEventHandler
                 .Select(item => new OrderItemDto(orderId, item.ProductId, item.Quantity, item.Price))
                 .ToList());
 
-        return new CreateOrderCommand(orderDto);
+        return new CreateOrderFromCheckoutCommand(orderDto);
     }
 }

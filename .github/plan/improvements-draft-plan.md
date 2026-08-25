@@ -1,22 +1,18 @@
-1. set all constructos of classes inside models to private and create static factory methods for them if needed 
-2. rename "Models" folder inside module to "Domain"?
-3. ICurrentTenant is registered from shared module, could we register ICurrentUser too? what can we do reduce code in infrastructure folder inside api project?
-4. There is lots of hardcoded Autorization requirements inside api project, should move them to each module and use them from there. example existing code in program.cs:   options.FallbackPolicy = new AuthorizationPolicyBuilder()
-    .RequireAuthenticatedUser()
-    .AddRequirements(new CurrentTenantRequirement())
-    .AddRequirements(new OrganizationRoleRequirement("customer", "admin"))
-    .Build();
-  options.AddPolicy(TenantAuthorizationPolicies.Admin, policy => policy
-    .RequireAuthenticatedUser()
-    .AddRequirements(new CurrentTenantRequirement())
-    .AddRequirements(new OrganizationRoleRequirement("admin")));
-});
-5. Autorization should be handed in domain layer and not in Endpoint.cs like: .RequireAuthorization(TenantAuthorizationPolicies.Admin). what do you think?
-7. Ensure ever Enpointcs clas return dto instead of domain object.
-8. use Mapperly instead of mapster, do not use hand made onversion like: 
-\src\Modules\Accounts\Accounts\Mapping\AccountMapping.cs. set Mapperly as a shared reference and use it in all modules.
-9. improve shared.md description and explain ther libraries used.
-10. create a module.md file explaining how it works
+0. keycloak keeps asking for login. event happens most on press f5 refresh page
+1. put mapperlly in shared
+2. a schema per module and a dedicated database role.
+Grant that role privileges only on its schema and set its default search path.
+CREATE ROLE orders_role LOGIN PASSWORD 'orders_secret';
+CREATE SCHEMA orders AUTHORIZATION orders_role;
+GRANT USAGE ON SCHEMA orders TO orders_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA orders TO orders_role;
+ALTER ROLE orders_role SET search_path = orders;
 
-
-
+ "Orders": "Host=localhost;Database=appdb;Username=orders_role;Password=orders_secret",
+ 3. why annoying json converter in basket/data
+ 4. appy rate limit
+ 5. add item into basket use userID
+ 6. set logging level to info in all services when dev docker-compose override
+ 7. add a health check endpoint to all services
+ 8. Rational Performance Tester
+ 9. to not use factory use mapperly. force guide rule .github. CreateOrderEndpoint
