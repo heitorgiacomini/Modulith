@@ -76,11 +76,11 @@
     ],
     "dest": "_site",
     "globalMetadata": {
-      "_appTitle": "SINTER",
-      "_appFooter": "© 2026 Sinter. All rights reserved.",
+      "_appTitle": "ESHOP",
+      "_appFooter": "© 2026 Eshop. All rights reserved.",
       "_disableContribution": false,
-      "_appFaviconPath": "images/sinter-logo.png",
-      "_appLogoPath": "images/sinter-logo.png",
+      "_appFaviconPath": "images/eshop-logo.png",
+      "_appLogoPath": "images/eshop-logo.png",
       "_enableSearch": true
     },
     "styles": [

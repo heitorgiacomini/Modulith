@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/_0PROJETOS/.NET/SINTER/ModulithCourse/docs",
+  "source_base_path": "C:/_0PROJETOS/.NET/ESHOP/ModulithCourse/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -630,10 +630,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/sinter-logo.png",
+      "source_relative_path": "images/eshop-logo.png",
       "output": {
         "resource": {
-          "relative_path": "images/sinter-logo.png"
+          "relative_path": "images/eshop-logo.png"
         }
       },
       "version": ""

@@ -1,4 +1,4 @@
-# Code of Conduct - Sinter
+# Code of Conduct - Eshop
 
 ## Our Pledge
 
