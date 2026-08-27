@@ -1,4 +1,5 @@
-4. [x] Apply rate limiting to the API and Fusion gateway.
+11. add audit service or module
+12. monitoring ou observability service
  5. add item into basket use userID
  7. add a health check endpoint to all services
 
