@@ -7,6 +7,7 @@ using Api.Infrastructure;
 using Shared.Data.Auditing;
 using Shared.Data.Filtering;
 using Shared.Data.MultiTenancy;
+using Shared.Hosting.RateLimiting;
 
 namespace Api;
 
@@ -78,6 +79,9 @@ public partial class Program
     _ = webAppBuilder.Services.AddSingleton<IAuthorizationHandler, CurrentTenantAuthorizationHandler>();
     _ = webAppBuilder.Services.AddSingleton<IAuthorizationHandler, OrganizationRoleAuthorizationHandler>();
     _ = webAppBuilder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, TenantAuthorizationMiddlewareResultHandler>();
+    _ = webAppBuilder.Services.AddApplicationRateLimiting(
+      webAppBuilder.Configuration,
+      FrontendCorsPolicy);
     _ = webAppBuilder.Services.AddDataFilters();
     _ = webAppBuilder.Services.AddHttpContextAccessor();
     _ = webAppBuilder.Services.AddScoped<ICurrentUser, HttpContextCurrentUser>();
@@ -115,9 +119,9 @@ public partial class Program
 
     _ = webApp.UseSerilogRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
-    _ = webApp.UseCors(FrontendCorsPolicy);
-
     _ = webApp.UseAuthentication();
+    _ = webApp.UseRateLimiter();
+    _ = webApp.UseCors(FrontendCorsPolicy);
     _ = webApp.UseMiddleware<CurrentTenantMiddleware>();
     _ = webApp.UseAuthorization();
 

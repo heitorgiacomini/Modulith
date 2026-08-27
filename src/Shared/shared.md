@@ -8,6 +8,7 @@ This directory contains the reusable building blocks used by the Accounts, Baske
 | --- | --- | --- |
 | `Shared.Contracts` | Minimal CQRS contracts built on MediatR | Commands, queries, and their handlers in every module |
 | `Shared` | DDD primitives, auditing, EF Core filters and interceptors, pipeline behaviors, exceptions, pagination, and startup helpers | Bootstrapper and module projects |
+| `Shared.Hosting` | Reusable ASP.NET Core hosting concerns, including rate limiting and its HTTP rejection contract | API and gateway bootstrapper projects |
 | `Shared.Messaging` | Integration-event contracts and MassTransit/RabbitMQ registration | Modules that publish or consume cross-module events |
 
 ## Core libraries
@@ -20,10 +21,24 @@ This directory contains the reusable building blocks used by the Accounts, Baske
 | Entity Framework Core and Npgsql | Provide module-owned PostgreSQL persistence, filters, interceptors, and migrations |
 | MassTransit | Publishes and consumes integration events through RabbitMQ |
 | Hot Chocolate | Hosts the module GraphQL schemas |
+| ASP.NET Core rate limiting | Enforces per-user or per-IP fixed-window quotas at each HTTP host |
 | Mapperly | Generates compile-time mappings inside each module; `src/Directory.Build.props` carries the shared build dependency and Shared owns no business mapper |
 | Serilog | Emits structured application and audit logs from the bootstrapper and shared infrastructure |
 
-The dependency direction should remain toward these projects. Shared must not reference Accounts, Basket, Catalog, Ordering, or Bootstrapper. HTTP-specific implementations belong in Bootstrapper, while business-specific implementations belong in their module.
+The dependency direction should remain toward these projects. Shared projects must not reference Accounts, Basket, Catalog, Ordering, or Bootstrapper. Reusable host-level infrastructure belongs in `Shared.Hosting`, application-specific HTTP implementations belong in Bootstrapper, and business-specific implementations belong in their module.
+
+## Application rate limiting
+
+`Shared.Hosting` provides the common fixed-window rate limiter used by the modular API and Fusion gateway. Each host owns an independent, process-local counter with these defaults:
+
+- 60 requests per 60-second window;
+- no request queue or endpoint exclusions;
+- authenticated partitions keyed by the signed JWT `sub` claim;
+- anonymous partitions keyed by the normalized connection IP, with `anonymous:unknown` as the final fallback.
+
+Both hosts bind `RateLimiting:PermitLimit` and `RateLimiting:WindowSeconds` and fail during startup when either value is missing or non-positive. Authentication runs before rate limiting so the user partition is available. Rate limiting runs before CORS, tenant resolution, and authorization; the rejection handler applies the named CORS policy itself so real preflight requests consume quota and cross-origin `429` responses remain readable by the browser.
+
+Rejected requests return `application/problem+json` with status `429`, request path, trace ID, and a `Retry-After` header when the limiter provides retry metadata. The API counts every Fusion source request independently, while the gateway counts the original composed request.
 
 ## DDD entity contracts
 

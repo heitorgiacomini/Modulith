@@ -1,10 +1,10 @@
- 3. why annoying json converter in basket/data
- 4. appy rate limit
+4. [x] Apply rate limiting to the API and Fusion gateway.
  5. add item into basket use userID
  7. add a health check endpoint to all services
- 6. set logging level to info in all services when dev docker-compose override
- 8. Rational Performance Tester
 
+
+ 8. Rational Performance Tester
+ 3. why annoying json converter in basket/data
 10. integracoes
 Gateway de pagamento e antifraude
 ERP

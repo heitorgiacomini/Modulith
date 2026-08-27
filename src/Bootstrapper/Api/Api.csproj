@@ -75,6 +75,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Shared.Hosting\Shared.Hosting.csproj" />
     <ProjectReference Include="..\..\Modules\Accounts\Accounts.csproj" />
     <ProjectReference Include="..\..\Modules\Basket\Basket.csproj" />
     <ProjectReference Include="..\..\Modules\Catalog\Catalog\Catalog.csproj" />

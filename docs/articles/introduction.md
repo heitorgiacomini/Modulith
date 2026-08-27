@@ -11,7 +11,7 @@ It demonstrates a modular-monolith approach with well-known patterns and support
 
 - A modular structure (bounded contexts/modules) with clear boundaries and contracts
 - A feature-first workflow (vertical slice) with CQRS-style commands/queries and validation
-- Production-ready defaults for persistence, messaging, caching, logging, and error handling
+- Production-ready defaults for persistence, messaging, caching, logging, rate limiting, and error handling
 - Consistent conventions across the codebase so teams can scale development safely
 
 ## Why it exists

@@ -1,6 +1,7 @@
 using Gateway;
 using Keycloak.AuthServices.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Shared.Hosting.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.PostConfigure<JwtBearerOptions>(
         options.TokenValidationParameters.ValidIssuer = publicIssuer;
     });
 builder.Services.AddAuthorization();
+builder.Services.AddApplicationRateLimiting(builder.Configuration, FrontendCorsPolicy);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(FrontendCorsPolicy, policy =>
@@ -40,8 +42,9 @@ builder
     .AddFileSystemConfiguration(schemaPath);
 
 var app = builder.Build();
-app.UseCors(FrontendCorsPolicy);
 app.UseAuthentication();
+app.UseRateLimiter();
+app.UseCors(FrontendCorsPolicy);
 app.UseAuthorization();
 app.MapGraphQL();
 await app.RunAsync();
