@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Extensions/CarterExtensions.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: CarterExtensions
     path: ../src/Shared/Shared/Extensions/CarterExtensions.cs
     startLine: 6
@@ -52,8 +52,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Extensions/CarterExtensions.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: AddCarterWithAssemblies
     path: ../src/Shared/Shared/Extensions/CarterExtensions.cs
     startLine: 8

@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/BadRequestException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: BadRequestException
     path: ../src/Shared/Shared/Exceptions/BadRequestException.cs
     startLine: 1
@@ -66,8 +66,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/BadRequestException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Exceptions/BadRequestException.cs
     startLine: 3
@@ -98,8 +98,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/BadRequestException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Exceptions/BadRequestException.cs
     startLine: 8
@@ -132,8 +132,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/BadRequestException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Details
     path: ../src/Shared/Shared/Exceptions/BadRequestException.cs
     startLine: 14

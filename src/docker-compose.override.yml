@@ -51,37 +51,20 @@ services:
       - KEYCLOAK_URL=http://keycloak:9090
       - KEYCLOAK_ADMIN=eshopdb
       - KEYCLOAK_ADMIN_PASSWORD=eshopdb
+      - API_URL=http://api:8080
     volumes:
       - ./docker-config/keycloak/configure-organizations.mjs:/configure-organizations.mjs:ro
+      - ./docker-config/keycloak/verify-multitenancy.mjs:/verify-multitenancy.mjs:ro
     command: ["node", "/configure-organizations.mjs"]
     depends_on:
       keycloak:
         condition: service_started
     restart: "no"
 
-  keycloak-verifier:
-    environment:
-      - KEYCLOAK_URL=http://keycloak:9090
-      - API_URL=http://api:8080
-    volumes:
-      - ./docker-config/keycloak/verify-multitenancy.mjs:/verify-multitenancy.mjs:ro
-    command: ["node", "/verify-multitenancy.mjs"]
-    profiles: ["tools"]
-    restart: "no"
-
   redis:
     restart: always
     ports:
       - "127.0.0.1:6379:6379"
-
-  seq:
-    environment:
-      ACCEPT_EULA: "Y"
-      SEQ_FIRSTRUN_NOAUTHENTICATION: true
-    restart: always
-    ports:
-      - "127.0.0.1:5341:5341"
-      - "127.0.0.1:9091:80"
 
   rabbitmq:
     hostname: ecommerce-mq
@@ -106,26 +89,20 @@ services:
       - MessageBroker__Password=eshopdb
       - Keycloak__AuthServerUrl=http://keycloak:9090/
       - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
-      - Serilog__Using__0=Serilog.Sinks.Console
-      - Serilog__Using__1=Serilog.Sinks.Seq
-      - Serilog__MinimumLevel__Default=Information
-      - Serilog__MinimumLevel__Override__Microsoft=Information
-      - Serilog__MinimumLevel__Override__System=Warning
-      - Serilog__WriteTo__0__Name=Console
-      - Serilog__WriteTo__1__Name=Seq
-      - Serilog__WriteTo__1__Args__serverUrl=http://seq:5341
-      - Serilog__Enrich__0=FromLogContext
-      - Serilog__Enrich__1=WithMachineName
-      - Serilog__Enrich__2=WithProcessId
-      - Serilog__Enrich__3=WithThreadId
-      - Serilog__Properties__Application=EShop ASP.NET Core App
-      - Serilog__Properties__Environment=Development
+      - OTEL_SERVICE_NAME=eshop-api
+      - OTEL_DEPLOYMENT_ENVIRONMENT=Development
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - AuditTrail__DirectoryPath=/var/log/eshop/audit
+      - AuditTrail__FileNamePrefix=eshop-audit
+      - AuditTrail__MaxFileSizeBytes=134217728
+      - AuditTrail__RetainedFileCount=8
     depends_on:
+      otel-collector:
+        condition: service_healthy
       postgres:
         condition: service_started
       redis:
-        condition: service_started
-      seq:
         condition: service_started
       rabbitmq:
         condition: service_started
@@ -139,6 +116,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - audit_logs:/var/log/eshop/audit
     healthcheck:
       test: ["CMD", "curl", "--fail", "--silent", "http://localhost:8080/graphql/catalog/schema.graphqls"]
       interval: 5s
@@ -146,7 +124,29 @@ services:
       retries: 20
       start_period: 20s
 
-  fusion-composer:
+  graphql-gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - Fusion__SchemaPath=/app/fusion/gateway.far
+      - ReverseProxy__Clusters__api__Destinations__primary__Address=http://api:8080/
+      - Keycloak__AuthServerUrl=http://keycloak:9090/
+      - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
+      - OTEL_SERVICE_NAME=eshop-gateway
+      - OTEL_DEPLOYMENT_ENVIRONMENT=Development
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+    volumes:
+      - fusion_gateway:/app/fusion:ro
+    depends_on:
+      graphql-gateway-configurator:
+        condition: service_completed_successfully
+      otel-collector:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+
+  graphql-gateway-configurator:
     working_dir: /workspace
     environment:
       - API_URL=http://api:8080
@@ -161,19 +161,6 @@ services:
         condition: service_started
     restart: "no"
 
-  graphql-gateway:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-      - Fusion__SchemaPath=/app/fusion/gateway.far
-      - Keycloak__AuthServerUrl=http://keycloak:9090/
-      - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
-    volumes:
-      - fusion_gateway:/app/fusion:ro
-    depends_on:
-      fusion-composer:
-        condition: service_started
-
   web-client:
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -186,3 +173,122 @@ services:
       - ./web-client:/app
       - angular_node_modules:/app/node_modules
     command: sh -c "npm install && npm start -- --host 0.0.0.0 --port 4200 --poll 1000"
+
+  opensearch:
+    environment:
+      - cluster.name=eshop-observability
+      - node.name=eshop-opensearch
+      - discovery.type=single-node
+      - cluster.default_number_of_replicas=0
+      - bootstrap.memory_lock=true
+      - OPENSEARCH_JAVA_OPTS=-Xms3g -Xmx3g
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_ADMIN_PASSWORD:-V7!qR2@nL9%P4kX6}
+    restart: unless-stopped
+    mem_limit: 6g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    ports:
+      - "127.0.0.1:9200:9200"
+      - "127.0.0.1:9600:9600"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl --fail --silent --insecure --user admin:$$OPENSEARCH_INITIAL_ADMIN_PASSWORD https://localhost:9200/_cluster/health >/dev/null
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  opensearch-configurator:
+    environment:
+      - OPENSEARCH_ADMIN_PASSWORD=${OPENSEARCH_ADMIN_PASSWORD:-V7!qR2@nL9%P4kX6}
+      - OPENSEARCH_INGEST_USERNAME=${OPENSEARCH_INGEST_USERNAME:-eshop_ingest}
+      - OPENSEARCH_INGEST_PASSWORD=${OPENSEARCH_INGEST_PASSWORD:-J4@vM8!zQ2%tL7cN5}
+      - OPENSEARCH_OPERATOR_USERNAME=${OPENSEARCH_OPERATOR_USERNAME:-eshop_operator}
+      - OPENSEARCH_OPERATOR_PASSWORD=${OPENSEARCH_OPERATOR_PASSWORD:-P9!hN3@xC7%rW5qK2}
+    entrypoint: ["sh", "/bootstrap/bootstrap.sh"]
+    volumes:
+      - ./docker-config/observability/opensearch:/bootstrap:ro
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    restart: "no"
+
+  opensearch-dashboards:
+    environment:
+      - OPENSEARCH_HOSTS=["https://opensearch:9200"]
+      # Use the Security plugin's server account; operators authenticate separately.
+      - OPENSEARCH_USERNAME=kibanaserver
+      - OPENSEARCH_PASSWORD=kibanaserver
+      - SERVER_HOST=0.0.0.0
+    restart: unless-stopped
+    mem_limit: 1g
+    ports:
+      - "127.0.0.1:5601:5601"
+    depends_on:
+      opensearch:
+        condition: service_healthy
+      opensearch-configurator:
+        condition: service_completed_successfully
+
+  opensearch-dashboards-configurator:
+    environment:
+      - OPENSEARCH_ADMIN_PASSWORD=${OPENSEARCH_ADMIN_PASSWORD:-V7!qR2@nL9%P4kX6}
+    entrypoint: ["sh", "/bootstrap/dashboards-bootstrap.sh"]
+    volumes:
+      - ./docker-config/observability:/bootstrap:ro
+      - ./docker-config/observability/dashboards:/dashboards:ro
+    depends_on:
+      opensearch-dashboards:
+        condition: service_started
+    restart: "no"
+
+  otel-collector:
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    environment:
+      - OTEL_TAIL_SAMPLING_PERCENTAGE=${OTEL_TAIL_SAMPLING_PERCENTAGE:-100}
+      - OPENSEARCH_INGEST_USERNAME=${OPENSEARCH_INGEST_USERNAME:-eshop_ingest}
+      - OPENSEARCH_INGEST_PASSWORD=${OPENSEARCH_INGEST_PASSWORD:-J4@vM8!zQ2%tL7cN5}
+    restart: unless-stopped
+    mem_limit: 512m
+    volumes:
+      - ./docker-config/observability/otel-collector.yaml:/etc/otelcol-contrib/config.yaml:ro
+      - audit_logs:/var/log/eshop/audit:ro
+      - otel_collector_state:/var/lib/otelcol
+    ports:
+      - "127.0.0.1:4317:4317"
+      - "127.0.0.1:4318:4318"
+      - "127.0.0.1:8888:8888"
+      - "127.0.0.1:13133:13133"
+    healthcheck:
+      test: ["CMD", "/otelcol-contrib", "validate", "--config=/etc/otelcol-contrib/config.yaml"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    depends_on:
+      opensearch-configurator:
+        condition: service_completed_successfully
+      otel-collector-configurator:
+        condition: service_completed_successfully
+
+  otel-collector-configurator:
+    user: "0:0"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        mkdir -p /var/lib/otelcol /var/log/eshop/audit &&
+        chown -R 10001:10001 /var/lib/otelcol &&
+        chown -R 1654:10001 /var/log/eshop/audit &&
+        chmod 0750 /var/log/eshop/audit
+    restart: "no"
+    volumes:
+      - otel_collector_state:/var/lib/otelcol
+      - audit_logs:/var/log/eshop/audit

@@ -1,0 +1,63 @@
+{
+  "type": "monitor",
+  "name": "Eshop OpenSearch disk thresholds",
+  "monitor_type": "query_level_monitor",
+  "enabled": true,
+  "schedule": {
+    "period": { "interval": 1, "unit": "MINUTES" }
+  },
+  "inputs": [
+    {
+      "uri": {
+        "api_type": "CLUSTER_STATS",
+        "path": "_cluster/stats/",
+        "path_params": "",
+        "url": "http://localhost:9200/_cluster/stats/"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "query_level_trigger": {
+        "id": "eshop-disk-70-trigger",
+        "name": "Disk usage at or above 70 percent",
+        "severity": "3",
+        "condition": {
+          "script": {
+            "source": "100.0 - (ctx.results[0].nodes.fs.available_in_bytes * 100.0 / ctx.results[0].nodes.fs.total_in_bytes) >= 70",
+            "lang": "painless"
+          }
+        },
+        "actions": []
+      }
+    },
+    {
+      "query_level_trigger": {
+        "id": "eshop-disk-80-trigger",
+        "name": "Disk usage at or above 80 percent",
+        "severity": "2",
+        "condition": {
+          "script": {
+            "source": "100.0 - (ctx.results[0].nodes.fs.available_in_bytes * 100.0 / ctx.results[0].nodes.fs.total_in_bytes) >= 80",
+            "lang": "painless"
+          }
+        },
+        "actions": []
+      }
+    },
+    {
+      "query_level_trigger": {
+        "id": "eshop-disk-85-trigger",
+        "name": "Disk usage at or above 85 percent",
+        "severity": "1",
+        "condition": {
+          "script": {
+            "source": "100.0 - (ctx.results[0].nodes.fs.available_in_bytes * 100.0 / ctx.results[0].nodes.fs.total_in_bytes) >= 85",
+            "lang": "painless"
+          }
+        },
+        "actions": []
+      }
+    }
+  ]
+}

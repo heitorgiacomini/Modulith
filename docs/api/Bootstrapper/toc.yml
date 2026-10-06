@@ -7,4 +7,35 @@ items:
   - uid: Api.Program
     name: Program
     type: Class
+- uid: Api.Infrastructure
+  name: Api.Infrastructure
+  type: Namespace
+  items:
+  - uid: Api.Infrastructure.CurrentTenantAuthorizationHandler
+    name: CurrentTenantAuthorizationHandler
+    type: Class
+  - uid: Api.Infrastructure.CurrentTenantMiddleware
+    name: CurrentTenantMiddleware
+    type: Class
+  - uid: Api.Infrastructure.CurrentTenantRequirement
+    name: CurrentTenantRequirement
+    type: Class
+  - uid: Api.Infrastructure.HttpContextCurrentUser
+    name: HttpContextCurrentUser
+    type: Class
+  - uid: Api.Infrastructure.KeycloakOrganization
+    name: KeycloakOrganization
+    type: Class
+  - uid: Api.Infrastructure.KeycloakOrganizationClaimParser
+    name: KeycloakOrganizationClaimParser
+    type: Class
+  - uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler
+    name: OrganizationRoleAuthorizationHandler
+    type: Class
+  - uid: Api.Infrastructure.OrganizationRoleRequirement
+    name: OrganizationRoleRequirement
+    type: Class
+  - uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+    name: TenantAuthorizationMiddlewareResultHandler
+    type: Class
 memberLayout: SamePage

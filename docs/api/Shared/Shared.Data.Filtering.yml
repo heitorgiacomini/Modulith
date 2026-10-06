@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Filtering
+  commentId: N:Shared.Data.Filtering
+  id: Shared.Data.Filtering
+  children:
+  - Shared.Data.Filtering.DataFilter
+  - Shared.Data.Filtering.DataFilterOptions
+  - Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+  - Shared.Data.Filtering.DataFilter`1
+  - Shared.Data.Filtering.IDataFilter
+  - Shared.Data.Filtering.IDataFilterContext
+  - Shared.Data.Filtering.IDataFilter`1
+  langs:
+  - csharp
+  - vb
+  name: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Data.Filtering.DataFilter
+  commentId: T:Shared.Data.Filtering.DataFilter
+  href: Shared.Data.Filtering.DataFilter.html
+  name: DataFilter
+  nameWithType: DataFilter
+  fullName: Shared.Data.Filtering.DataFilter
+- uid: Shared.Data.Filtering.DataFilter`1
+  commentId: T:Shared.Data.Filtering.DataFilter`1
+  href: Shared.Data.Filtering.DataFilter-1.html
+  name: DataFilter<TFilter>
+  nameWithType: DataFilter<TFilter>
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>
+  nameWithType.vb: DataFilter(Of TFilter)
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter)
+  name.vb: DataFilter(Of TFilter)
+  spec.csharp:
+  - uid: Shared.Data.Filtering.DataFilter`1
+    name: DataFilter
+    href: Shared.Data.Filtering.DataFilter-1.html
+  - name: <
+  - name: TFilter
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Data.Filtering.DataFilter`1
+    name: DataFilter
+    href: Shared.Data.Filtering.DataFilter-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: )
+- uid: Shared.Data.Filtering.DataFilterOptions
+  commentId: T:Shared.Data.Filtering.DataFilterOptions
+  href: Shared.Data.Filtering.DataFilterOptions.html
+  name: DataFilterOptions
+  nameWithType: DataFilterOptions
+  fullName: Shared.Data.Filtering.DataFilterOptions
+- uid: Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+  commentId: T:Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+  href: Shared.Data.Filtering.DataFilterServiceCollectionExtensions.html
+  name: DataFilterServiceCollectionExtensions
+  nameWithType: DataFilterServiceCollectionExtensions
+  fullName: Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+- uid: Shared.Data.Filtering.IDataFilter
+  commentId: T:Shared.Data.Filtering.IDataFilter
+  parent: Shared.Data.Filtering
+  href: Shared.Data.Filtering.IDataFilter.html
+  name: IDataFilter
+  nameWithType: IDataFilter
+  fullName: Shared.Data.Filtering.IDataFilter
+- uid: Shared.Data.Filtering.IDataFilter`1
+  commentId: T:Shared.Data.Filtering.IDataFilter`1
+  href: Shared.Data.Filtering.IDataFilter-1.html
+  name: IDataFilter<TFilter>
+  nameWithType: IDataFilter<TFilter>
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>
+  nameWithType.vb: IDataFilter(Of TFilter)
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter)
+  name.vb: IDataFilter(Of TFilter)
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter
+    href: Shared.Data.Filtering.IDataFilter-1.html
+  - name: <
+  - name: TFilter
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter
+    href: Shared.Data.Filtering.IDataFilter-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: )
+- uid: Shared.Data.Filtering.IDataFilterContext
+  commentId: T:Shared.Data.Filtering.IDataFilterContext
+  parent: Shared.Data.Filtering
+  href: Shared.Data.Filtering.IDataFilterContext.html
+  name: IDataFilterContext
+  nameWithType: IDataFilterContext
+  fullName: Shared.Data.Filtering.IDataFilterContext
+- uid: Shared.Data.Filtering
+  commentId: N:Shared.Data.Filtering
+  href: Shared.html
+  name: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html

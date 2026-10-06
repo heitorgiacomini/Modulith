@@ -1,5 +1,5 @@
 export const environment = {
-  apiUrl: 'http://127.0.0.1:5004',
+  apiUrl: 'http://127.0.0.1:5002/api',
   graphqlUrl: 'http://127.0.0.1:5002/graphql',
   keycloak: {
     url: 'http://localhost:9090',

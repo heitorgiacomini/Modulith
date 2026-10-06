@@ -7,7 +7,7 @@ The Compose stack runs Keycloak 26.7.0 with the `eshoprealm` realm. Keycloak is 
 1. `eshoprealm-realm.json` is imported when Keycloak starts with an empty `keycloak` PostgreSQL schema.
 2. The import creates the realm, clients, development user, roles, and the fixed Acme and Contoso Organizations.
 3. `configure-organizations.mjs` uses the Admin REST API to reconcile organization groups, memberships, role mappings, client scopes, protocol mappers, and Ordering authorization policies.
-4. The optional `keycloak-verifier` Compose tool obtains real organization-selected tokens and RPTs and exercises tenant isolation through the API after startup.
+4. The optional verification command reuses the `keycloak-configurator` container to obtain real organization-selected tokens and RPTs and exercise tenant isolation through the API after startup.
 
 The realm JSON is authoritative for development organization IDs:
 
@@ -49,7 +49,7 @@ The Angular client requests `openid organization:<alias>`. Ordering exchanges th
 Run the live verifier from `src` after the stack is healthy:
 
 ```powershell
-docker compose run --rm --no-deps keycloak-verifier node /verify-multitenancy.mjs
+docker compose run --rm --no-deps keycloak-configurator node /verify-multitenancy.mjs
 ```
 
 ## Production provisioning

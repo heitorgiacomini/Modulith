@@ -1,10 +1,9 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Reflection;
-using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Logging;
 using Shared.Data.Auditing;
 using Shared.Data.MultiTenancy;
 using Shared.DDD;
@@ -14,7 +13,7 @@ namespace Shared.Data.Interceptors;
 public sealed class AuditableEntityInterceptor(
   ICurrentUser currentUser,
   ICurrentTenant currentTenant,
-  ILogger<AuditableEntityInterceptor> logger) : SaveChangesInterceptor
+  IAuditTrail auditTrail) : SaveChangesInterceptor
 {
   private static readonly HashSet<string> AuditPropertyNames =
   [
@@ -27,8 +26,9 @@ public sealed class AuditableEntityInterceptor(
   private static readonly string[] SensitiveNameFragments =
   [
     "password", "secret", "token", "authorization", "card", "payment", "expiration", "last4",
-    "email", "phone", "address", "postal"
-  ];
+    "email", "phone", "address", "postal", "body", "query", "document",
+    "credential", "apikey", "cookie"
+  ]; //, "graphql"
 
   private readonly ConcurrentDictionary<Guid, IReadOnlyList<PendingAuditEvent>> pendingEvents = [];
 
@@ -119,7 +119,7 @@ public sealed class AuditableEntityInterceptor(
         EntityState.Deleted => "Deleted",
         _ => "Modified"
       };
-      Dictionary<string, AuditValueChange> changes = CaptureChanges(entry, originalState);
+      Dictionary<string, AuditValueChangeV1> changes = CaptureChanges(entry, originalState);
 
       if (originalState == EntityState.Added)
       {
@@ -156,6 +156,7 @@ public sealed class AuditableEntityInterceptor(
 
       if (ShouldLog(entry))
       {
+        Activity? activity = Activity.Current;
         events.Add(new PendingAuditEvent(
           context.GetType().Name.Replace("DbContext", string.Empty, StringComparison.Ordinal),
           entry.Metadata.ClrType.Name,
@@ -164,7 +165,9 @@ public sealed class AuditableEntityInterceptor(
           actorId,
           currentTenant.Id,
           timestamp,
-          currentUser.TraceId,
+          activity?.TraceId.ToString() ?? currentUser.TraceId,
+          activity?.SpanId.ToString(),
+          activity?.GetBaggageItem("correlation.id"),
           changes));
       }
     }
@@ -179,11 +182,11 @@ public sealed class AuditableEntityInterceptor(
     }
   }
 
-  private static Dictionary<string, AuditValueChange> CaptureChanges(
+  private static Dictionary<string, AuditValueChangeV1> CaptureChanges(
     EntityEntry<IEntity> entry,
     EntityState state)
   {
-    Dictionary<string, AuditValueChange> changes = [];
+    Dictionary<string, AuditValueChangeV1> changes = [];
     foreach (PropertyEntry property in entry.Properties)
     {
       if (property.Metadata.IsPrimaryKey() || AuditPropertyNames.Contains(property.Metadata.Name))
@@ -200,8 +203,8 @@ public sealed class AuditableEntityInterceptor(
       object? oldValue = state == EntityState.Added ? null : property.OriginalValue;
       object? newValue = state == EntityState.Deleted ? null : property.CurrentValue;
       changes[property.Metadata.Name] = sensitive
-        ? new AuditValueChange("[REDACTED]", "[REDACTED]")
-        : new AuditValueChange(oldValue, newValue);
+        ? new AuditValueChangeV1("[REDACTED]", "[REDACTED]")
+        : new AuditValueChangeV1(oldValue, newValue);
     }
 
     CaptureComplexChanges(entry.ComplexProperties, state, changes, null);
@@ -212,7 +215,7 @@ public sealed class AuditableEntityInterceptor(
   private static void CaptureComplexChanges(
     IEnumerable<ComplexPropertyEntry> complexProperties,
     EntityState state,
-    IDictionary<string, AuditValueChange> changes,
+    IDictionary<string, AuditValueChangeV1> changes,
     string? parentPath)
   {
     foreach (ComplexPropertyEntry complexProperty in complexProperties)
@@ -233,8 +236,8 @@ public sealed class AuditableEntityInterceptor(
         object? oldValue = state == EntityState.Added ? null : property.OriginalValue;
         object? newValue = state == EntityState.Deleted ? null : property.CurrentValue;
         changes[$"{path}.{property.Metadata.Name}"] = sensitive
-          ? new AuditValueChange("[REDACTED]", "[REDACTED]")
-          : new AuditValueChange(oldValue, newValue);
+          ? new AuditValueChangeV1("[REDACTED]", "[REDACTED]")
+          : new AuditValueChangeV1(oldValue, newValue);
       }
 
       CaptureComplexChanges(complexProperty.ComplexProperties, state, changes, path);
@@ -262,17 +265,24 @@ public sealed class AuditableEntityInterceptor(
 
     foreach (PendingAuditEvent auditEvent in events)
     {
-      logger.LogInformation(
-        "Business entity {AuditOperation}: {AuditModule}.{AuditEntityType} {AuditEntityId} by {AuditActorId} in tenant {AuditTenantId} at {AuditTimestampUtc}. Trace: {AuditTraceId}. Changes: {AuditChanges}",
-        auditEvent.Operation,
-        auditEvent.Module,
-        auditEvent.EntityType,
-        auditEvent.EntityId,
-        auditEvent.ActorId,
-        auditEvent.TenantId,
-        auditEvent.TimestampUtc,
-        auditEvent.TraceId,
-        JsonSerializer.Serialize(auditEvent.Changes));
+      auditTrail.Write(new AuditEventV1
+      {
+        EventId = Guid.NewGuid(),
+        OccurredAtUtc = auditEvent.TimestampUtc,
+        Service = Environment.GetEnvironmentVariable("OTEL_SERVICE_NAME") ??
+          AppDomain.CurrentDomain.FriendlyName,
+        Module = auditEvent.Module,
+        Category = AuditCategory.DataChange,
+        Action = auditEvent.Operation,
+        Outcome = AuditOutcome.Succeeded,
+        TenantId = auditEvent.TenantId,
+        Actor = new AuditActorV1(auditEvent.ActorId),
+        Subject = new AuditSubjectV1(auditEvent.EntityType, auditEvent.EntityId),
+        TraceId = auditEvent.TraceId,
+        SpanId = auditEvent.SpanId,
+        CorrelationId = auditEvent.CorrelationId,
+        Changes = auditEvent.Changes
+      });
     }
   }
 
@@ -284,8 +294,6 @@ public sealed class AuditableEntityInterceptor(
     }
   }
 
-  private sealed record AuditValueChange(object? OldValue, object? NewValue);
-
   private sealed record PendingAuditEvent(
     string Module,
     string EntityType,
@@ -295,7 +303,9 @@ public sealed class AuditableEntityInterceptor(
     Guid? TenantId,
     DateTimeOffset TimestampUtc,
     string? TraceId,
-    IReadOnlyDictionary<string, AuditValueChange> Changes);
+    string? SpanId,
+    string? CorrelationId,
+    IReadOnlyDictionary<string, AuditValueChangeV1> Changes);
 }
 
 public static class Extensions

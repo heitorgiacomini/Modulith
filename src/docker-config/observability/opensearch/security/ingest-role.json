@@ -1,0 +1,27 @@
+{
+  "cluster_permissions": [
+    "cluster_monitor",
+    "cluster_composite_ops"
+  ],
+  "index_permissions": [
+    {
+      "index_patterns": [
+        "eshop-app-logs-*",
+        "eshop-app-metrics-*",
+        "eshop-audit-*",
+        "otel-v1-apm-span-*"
+      ],
+      "allowed_actions": [
+        "indices:data/write/index",
+        "indices:data/write/bulk*",
+        "indices:admin/create",
+        "indices:admin/mapping/put"
+      ]
+    },
+    {
+      "index_patterns": ["*"],
+      "allowed_actions": ["indices:admin/aliases/get"]
+    }
+  ],
+  "tenant_permissions": []
+}

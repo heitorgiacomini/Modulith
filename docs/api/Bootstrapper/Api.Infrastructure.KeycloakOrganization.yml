@@ -1,0 +1,609 @@
+### YamlMime:ManagedReference
+items:
+- uid: Api.Infrastructure.KeycloakOrganization
+  commentId: T:Api.Infrastructure.KeycloakOrganization
+  id: KeycloakOrganization
+  parent: Api.Infrastructure
+  children:
+  - Api.Infrastructure.KeycloakOrganization.#ctor(System.Guid,System.String,System.Collections.Generic.IReadOnlySet{System.String})
+  - Api.Infrastructure.KeycloakOrganization.Alias
+  - Api.Infrastructure.KeycloakOrganization.Id
+  - Api.Infrastructure.KeycloakOrganization.Roles
+  langs:
+  - csharp
+  - vb
+  name: KeycloakOrganization
+  nameWithType: KeycloakOrganization
+  fullName: Api.Infrastructure.KeycloakOrganization
+  type: Class
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: KeycloakOrganization
+    path: ../src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+    startLine: 4
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: 'public sealed record KeycloakOrganization : IEquatable<KeycloakOrganization>'
+    content.vb: Public NotInheritable Class KeycloakOrganization Implements IEquatable(Of KeycloakOrganization)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Api.Infrastructure.KeycloakOrganization}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Api.Infrastructure.KeycloakOrganization.#ctor(System.Guid,System.String,System.Collections.Generic.IReadOnlySet{System.String})
+  commentId: M:Api.Infrastructure.KeycloakOrganization.#ctor(System.Guid,System.String,System.Collections.Generic.IReadOnlySet{System.String})
+  id: '#ctor(System.Guid,System.String,System.Collections.Generic.IReadOnlySet{System.String})'
+  parent: Api.Infrastructure.KeycloakOrganization
+  langs:
+  - csharp
+  - vb
+  name: KeycloakOrganization(Guid, string, IReadOnlySet<string>)
+  nameWithType: KeycloakOrganization.KeycloakOrganization(Guid, string, IReadOnlySet<string>)
+  fullName: Api.Infrastructure.KeycloakOrganization.KeycloakOrganization(System.Guid, string, System.Collections.Generic.IReadOnlySet<string>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: .ctor
+    path: ../src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+    startLine: 4
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: public KeycloakOrganization(Guid Id, string Alias, IReadOnlySet<string> Roles)
+    parameters:
+    - id: Id
+      type: System.Guid
+    - id: Alias
+      type: System.String
+    - id: Roles
+      type: System.Collections.Generic.IReadOnlySet{System.String}
+    content.vb: Public Sub New(Id As Guid, [Alias] As String, Roles As IReadOnlySet(Of String))
+  overload: Api.Infrastructure.KeycloakOrganization.#ctor*
+  nameWithType.vb: KeycloakOrganization.New(Guid, String, IReadOnlySet(Of String))
+  fullName.vb: Api.Infrastructure.KeycloakOrganization.New(System.Guid, String, System.Collections.Generic.IReadOnlySet(Of String))
+  name.vb: New(Guid, String, IReadOnlySet(Of String))
+- uid: Api.Infrastructure.KeycloakOrganization.Id
+  commentId: P:Api.Infrastructure.KeycloakOrganization.Id
+  id: Id
+  parent: Api.Infrastructure.KeycloakOrganization
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: KeycloakOrganization.Id
+  fullName: Api.Infrastructure.KeycloakOrganization.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Id
+    path: ../src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+    startLine: 4
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: public Guid Id { get; init; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Api.Infrastructure.KeycloakOrganization.Id*
+- uid: Api.Infrastructure.KeycloakOrganization.Alias
+  commentId: P:Api.Infrastructure.KeycloakOrganization.Alias
+  id: Alias
+  parent: Api.Infrastructure.KeycloakOrganization
+  langs:
+  - csharp
+  - vb
+  name: Alias
+  nameWithType: KeycloakOrganization.Alias
+  fullName: Api.Infrastructure.KeycloakOrganization.Alias
+  type: Property
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Alias
+    path: ../src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+    startLine: 4
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: public string Alias { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property [Alias] As String
+  overload: Api.Infrastructure.KeycloakOrganization.Alias*
+- uid: Api.Infrastructure.KeycloakOrganization.Roles
+  commentId: P:Api.Infrastructure.KeycloakOrganization.Roles
+  id: Roles
+  parent: Api.Infrastructure.KeycloakOrganization
+  langs:
+  - csharp
+  - vb
+  name: Roles
+  nameWithType: KeycloakOrganization.Roles
+  fullName: Api.Infrastructure.KeycloakOrganization.Roles
+  type: Property
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Roles
+    path: ../src/Bootstrapper/Api/Infrastructure/KeycloakOrganizationClaimParser.cs
+    startLine: 4
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: public IReadOnlySet<string> Roles { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlySet{System.String}
+    content.vb: Public Property Roles As IReadOnlySet(Of String)
+  overload: Api.Infrastructure.KeycloakOrganization.Roles*
+references:
+- uid: Api.Infrastructure
+  commentId: N:Api.Infrastructure
+  href: Api.html
+  name: Api.Infrastructure
+  nameWithType: Api.Infrastructure
+  fullName: Api.Infrastructure
+  spec.csharp:
+  - uid: Api
+    name: Api
+    href: Api.html
+  - name: .
+  - uid: Api.Infrastructure
+    name: Infrastructure
+    href: Api.Infrastructure.html
+  spec.vb:
+  - uid: Api
+    name: Api
+    href: Api.html
+  - name: .
+  - uid: Api.Infrastructure
+    name: Infrastructure
+    href: Api.Infrastructure.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Api.Infrastructure.KeycloakOrganization}
+  commentId: T:System.IEquatable{Api.Infrastructure.KeycloakOrganization}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<KeycloakOrganization>
+  nameWithType: IEquatable<KeycloakOrganization>
+  fullName: System.IEquatable<Api.Infrastructure.KeycloakOrganization>
+  nameWithType.vb: IEquatable(Of KeycloakOrganization)
+  fullName.vb: System.IEquatable(Of Api.Infrastructure.KeycloakOrganization)
+  name.vb: IEquatable(Of KeycloakOrganization)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Api.Infrastructure.KeycloakOrganization
+    name: KeycloakOrganization
+    href: Api.Infrastructure.KeycloakOrganization.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Api.Infrastructure.KeycloakOrganization
+    name: KeycloakOrganization
+    href: Api.Infrastructure.KeycloakOrganization.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Api.Infrastructure.KeycloakOrganization.#ctor*
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.#ctor
+  href: Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization__ctor_System_Guid_System_String_System_Collections_Generic_IReadOnlySet_System_String__
+  name: KeycloakOrganization
+  nameWithType: KeycloakOrganization.KeycloakOrganization
+  fullName: Api.Infrastructure.KeycloakOrganization.KeycloakOrganization
+  nameWithType.vb: KeycloakOrganization.New
+  fullName.vb: Api.Infrastructure.KeycloakOrganization.New
+  name.vb: New
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IReadOnlySet{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlySet{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlySet`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<string>
+  nameWithType: IReadOnlySet<string>
+  fullName: System.Collections.Generic.IReadOnlySet<string>
+  nameWithType.vb: IReadOnlySet(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of String)
+  name.vb: IReadOnlySet(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlySet`1
+  commentId: T:System.Collections.Generic.IReadOnlySet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  name: IReadOnlySet<T>
+  nameWithType: IReadOnlySet<T>
+  fullName: System.Collections.Generic.IReadOnlySet<T>
+  nameWithType.vb: IReadOnlySet(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlySet(Of T)
+  name.vb: IReadOnlySet(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlySet`1
+    name: IReadOnlySet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlyset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Api.Infrastructure.KeycloakOrganization.Id*
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.Id
+  href: Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Id
+  name: Id
+  nameWithType: KeycloakOrganization.Id
+  fullName: Api.Infrastructure.KeycloakOrganization.Id
+- uid: Api.Infrastructure.KeycloakOrganization.Alias*
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.Alias
+  href: Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Alias
+  name: Alias
+  nameWithType: KeycloakOrganization.Alias
+  fullName: Api.Infrastructure.KeycloakOrganization.Alias
+- uid: Api.Infrastructure.KeycloakOrganization.Roles*
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.Roles
+  href: Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Roles
+  name: Roles
+  nameWithType: KeycloakOrganization.Roles
+  fullName: Api.Infrastructure.KeycloakOrganization.Roles

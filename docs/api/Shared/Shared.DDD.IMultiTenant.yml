@@ -1,0 +1,142 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IMultiTenant
+  commentId: T:Shared.DDD.IMultiTenant
+  id: IMultiTenant
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IMultiTenant.TenantId
+  langs:
+  - csharp
+  - vb
+  name: IMultiTenant
+  nameWithType: IMultiTenant
+  fullName: Shared.DDD.IMultiTenant
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IMultiTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IMultiTenant
+    path: ../src/Shared/Shared/DDD/IMultiTenant.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: public interface IMultiTenant
+    content.vb: Public Interface IMultiTenant
+- uid: Shared.DDD.IMultiTenant.TenantId
+  commentId: P:Shared.DDD.IMultiTenant.TenantId
+  id: TenantId
+  parent: Shared.DDD.IMultiTenant
+  langs:
+  - csharp
+  - vb
+  name: TenantId
+  nameWithType: IMultiTenant.TenantId
+  fullName: Shared.DDD.IMultiTenant.TenantId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/IMultiTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: TenantId
+    path: ../src/Shared/Shared/DDD/IMultiTenant.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: Guid? TenantId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Property TenantId As Guid?
+  overload: Shared.DDD.IMultiTenant.TenantId*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IMultiTenant.TenantId*
+  commentId: Overload:Shared.DDD.IMultiTenant.TenantId
+  href: Shared.DDD.IMultiTenant.html#Shared_DDD_IMultiTenant_TenantId
+  name: TenantId
+  nameWithType: IMultiTenant.TenantId
+  fullName: Shared.DDD.IMultiTenant.TenantId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

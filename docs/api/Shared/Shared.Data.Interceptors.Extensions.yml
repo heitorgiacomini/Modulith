@@ -16,11 +16,11 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Extensions
     path: ../src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
-    startLine: 46
+    startLine: 310
   assemblies:
   - Shared
   namespace: Shared.Data.Interceptors
@@ -52,11 +52,11 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: HasChangedOwnedEntities
     path: ../src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs
-    startLine: 48
+    startLine: 312
   assemblies:
   - Shared
   namespace: Shared.Data.Interceptors

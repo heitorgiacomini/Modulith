@@ -1,0 +1,486 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Filtering.DataFilterOptions
+  commentId: T:Shared.Data.Filtering.DataFilterOptions
+  id: DataFilterOptions
+  parent: Shared.Data.Filtering
+  children:
+  - Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  - Shared.Data.Filtering.DataFilterOptions.IsEnabled``1
+  langs:
+  - csharp
+  - vb
+  name: DataFilterOptions
+  nameWithType: DataFilterOptions
+  fullName: Shared.Data.Filtering.DataFilterOptions
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilterOptions.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DataFilterOptions
+    path: ../src/Shared/Shared/Data/Filtering/DataFilterOptions.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: public sealed class DataFilterOptions
+    content.vb: Public NotInheritable Class DataFilterOptions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  commentId: P:Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  id: DefaultStates
+  parent: Shared.Data.Filtering.DataFilterOptions
+  langs:
+  - csharp
+  - vb
+  name: DefaultStates
+  nameWithType: DataFilterOptions.DefaultStates
+  fullName: Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilterOptions.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DefaultStates
+    path: ../src/Shared/Shared/Data/Filtering/DataFilterOptions.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: public IDictionary<Type, bool> DefaultStates { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IDictionary{System.Type,System.Boolean}
+    content.vb: Public ReadOnly Property DefaultStates As IDictionary(Of Type, Boolean)
+  overload: Shared.Data.Filtering.DataFilterOptions.DefaultStates*
+- uid: Shared.Data.Filtering.DataFilterOptions.IsEnabled``1
+  commentId: M:Shared.Data.Filtering.DataFilterOptions.IsEnabled``1
+  id: IsEnabled``1
+  parent: Shared.Data.Filtering.DataFilterOptions
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled<TFilter>()
+  nameWithType: DataFilterOptions.IsEnabled<TFilter>()
+  fullName: Shared.Data.Filtering.DataFilterOptions.IsEnabled<TFilter>()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilterOptions.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsEnabled
+    path: ../src/Shared/Shared/Data/Filtering/DataFilterOptions.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: 'public bool IsEnabled<TFilter>() where TFilter : class'
+    typeParameters:
+    - id: TFilter
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsEnabled(Of TFilter As Class)() As Boolean
+  overload: Shared.Data.Filtering.DataFilterOptions.IsEnabled*
+  nameWithType.vb: DataFilterOptions.IsEnabled(Of TFilter)()
+  fullName.vb: Shared.Data.Filtering.DataFilterOptions.IsEnabled(Of TFilter)()
+  name.vb: IsEnabled(Of TFilter)()
+references:
+- uid: Shared.Data.Filtering
+  commentId: N:Shared.Data.Filtering
+  href: Shared.html
+  name: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Data.Filtering.DataFilterOptions.DefaultStates*
+  commentId: Overload:Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  href: Shared.Data.Filtering.DataFilterOptions.html#Shared_Data_Filtering_DataFilterOptions_DefaultStates
+  name: DefaultStates
+  nameWithType: DataFilterOptions.DefaultStates
+  fullName: Shared.Data.Filtering.DataFilterOptions.DefaultStates
+- uid: System.Collections.Generic.IDictionary{System.Type,System.Boolean}
+  commentId: T:System.Collections.Generic.IDictionary{System.Type,System.Boolean}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<Type, bool>
+  nameWithType: IDictionary<Type, bool>
+  fullName: System.Collections.Generic.IDictionary<System.Type, bool>
+  nameWithType.vb: IDictionary(Of Type, Boolean)
+  fullName.vb: System.Collections.Generic.IDictionary(Of System.Type, Boolean)
+  name.vb: IDictionary(Of Type, Boolean)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Shared.Data.Filtering.DataFilterOptions.IsEnabled*
+  commentId: Overload:Shared.Data.Filtering.DataFilterOptions.IsEnabled
+  href: Shared.Data.Filtering.DataFilterOptions.html#Shared_Data_Filtering_DataFilterOptions_IsEnabled__1
+  name: IsEnabled
+  nameWithType: DataFilterOptions.IsEnabled
+  fullName: Shared.Data.Filtering.DataFilterOptions.IsEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

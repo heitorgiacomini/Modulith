@@ -1,0 +1,104 @@
+### YamlMime:ManagedReference
+items:
+- uid: Api.Infrastructure
+  commentId: N:Api.Infrastructure
+  id: Api.Infrastructure
+  children:
+  - Api.Infrastructure.CurrentTenantAuthorizationHandler
+  - Api.Infrastructure.CurrentTenantMiddleware
+  - Api.Infrastructure.CurrentTenantRequirement
+  - Api.Infrastructure.HttpContextCurrentUser
+  - Api.Infrastructure.KeycloakOrganization
+  - Api.Infrastructure.KeycloakOrganizationClaimParser
+  - Api.Infrastructure.OrganizationRoleAuthorizationHandler
+  - Api.Infrastructure.OrganizationRoleRequirement
+  - Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+  langs:
+  - csharp
+  - vb
+  name: Api.Infrastructure
+  nameWithType: Api.Infrastructure
+  fullName: Api.Infrastructure
+  type: Namespace
+  assemblies:
+  - Api
+references:
+- uid: Api.Infrastructure.CurrentTenantRequirement
+  commentId: T:Api.Infrastructure.CurrentTenantRequirement
+  parent: Api.Infrastructure
+  href: Api.Infrastructure.CurrentTenantRequirement.html
+  name: CurrentTenantRequirement
+  nameWithType: CurrentTenantRequirement
+  fullName: Api.Infrastructure.CurrentTenantRequirement
+- uid: Api.Infrastructure.OrganizationRoleRequirement
+  commentId: T:Api.Infrastructure.OrganizationRoleRequirement
+  parent: Api.Infrastructure
+  href: Api.Infrastructure.OrganizationRoleRequirement.html
+  name: OrganizationRoleRequirement
+  nameWithType: OrganizationRoleRequirement
+  fullName: Api.Infrastructure.OrganizationRoleRequirement
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  commentId: T:Api.Infrastructure.CurrentTenantAuthorizationHandler
+  href: Api.Infrastructure.CurrentTenantAuthorizationHandler.html
+  name: CurrentTenantAuthorizationHandler
+  nameWithType: CurrentTenantAuthorizationHandler
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler
+- uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler
+  commentId: T:Api.Infrastructure.OrganizationRoleAuthorizationHandler
+  href: Api.Infrastructure.OrganizationRoleAuthorizationHandler.html
+  name: OrganizationRoleAuthorizationHandler
+  nameWithType: OrganizationRoleAuthorizationHandler
+  fullName: Api.Infrastructure.OrganizationRoleAuthorizationHandler
+- uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+  commentId: T:Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+  href: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html
+  name: TenantAuthorizationMiddlewareResultHandler
+  nameWithType: TenantAuthorizationMiddlewareResultHandler
+  fullName: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+- uid: Api.Infrastructure.CurrentTenantMiddleware
+  commentId: T:Api.Infrastructure.CurrentTenantMiddleware
+  href: Api.Infrastructure.CurrentTenantMiddleware.html
+  name: CurrentTenantMiddleware
+  nameWithType: CurrentTenantMiddleware
+  fullName: Api.Infrastructure.CurrentTenantMiddleware
+- uid: Api.Infrastructure.HttpContextCurrentUser
+  commentId: T:Api.Infrastructure.HttpContextCurrentUser
+  href: Api.Infrastructure.HttpContextCurrentUser.html
+  name: HttpContextCurrentUser
+  nameWithType: HttpContextCurrentUser
+  fullName: Api.Infrastructure.HttpContextCurrentUser
+- uid: Api.Infrastructure.KeycloakOrganization
+  commentId: T:Api.Infrastructure.KeycloakOrganization
+  parent: Api.Infrastructure
+  href: Api.Infrastructure.KeycloakOrganization.html
+  name: KeycloakOrganization
+  nameWithType: KeycloakOrganization
+  fullName: Api.Infrastructure.KeycloakOrganization
+- uid: Api.Infrastructure.KeycloakOrganizationClaimParser
+  commentId: T:Api.Infrastructure.KeycloakOrganizationClaimParser
+  href: Api.Infrastructure.KeycloakOrganizationClaimParser.html
+  name: KeycloakOrganizationClaimParser
+  nameWithType: KeycloakOrganizationClaimParser
+  fullName: Api.Infrastructure.KeycloakOrganizationClaimParser
+- uid: Api.Infrastructure
+  commentId: N:Api.Infrastructure
+  href: Api.html
+  name: Api.Infrastructure
+  nameWithType: Api.Infrastructure
+  fullName: Api.Infrastructure
+  spec.csharp:
+  - uid: Api
+    name: Api
+    href: Api.html
+  - name: .
+  - uid: Api.Infrastructure
+    name: Infrastructure
+    href: Api.Infrastructure.html
+  spec.vb:
+  - uid: Api
+    name: Api
+    href: Api.html
+  - name: .
+  - uid: Api.Infrastructure
+    name: Infrastructure
+    href: Api.Infrastructure.html

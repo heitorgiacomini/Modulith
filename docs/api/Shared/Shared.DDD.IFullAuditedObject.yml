@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IFullAuditedObject
+  commentId: T:Shared.DDD.IFullAuditedObject
+  id: IFullAuditedObject
+  parent: Shared.DDD
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IFullAuditedObject
+  nameWithType: IFullAuditedObject
+  fullName: Shared.DDD.IFullAuditedObject
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IFullAuditedObject
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 24
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IFullAuditedObject : IAuditedObject, ICreationAuditedObject, IModificationAuditedObject, IDeletionAuditedObject, ISoftDelete'
+    content.vb: Public Interface IFullAuditedObject Inherits IAuditedObject, ICreationAuditedObject, IModificationAuditedObject, IDeletionAuditedObject, ISoftDelete
+  inheritedMembers:
+  - Shared.DDD.ICreationAuditedObject.CreatedAt
+  - Shared.DDD.ICreationAuditedObject.CreatedBy
+  - Shared.DDD.IModificationAuditedObject.LastModified
+  - Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  - Shared.DDD.IDeletionAuditedObject.DeletedAt
+  - Shared.DDD.IDeletionAuditedObject.DeletedBy
+  - Shared.DDD.ISoftDelete.IsDeleted
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.ICreationAuditedObject.CreatedAt
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedAt
+  parent: Shared.DDD.ICreationAuditedObject
+  href: Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedAt
+  name: CreatedAt
+  nameWithType: ICreationAuditedObject.CreatedAt
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedAt
+- uid: Shared.DDD.ICreationAuditedObject.CreatedBy
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedBy
+  parent: Shared.DDD.ICreationAuditedObject
+  href: Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedBy
+  name: CreatedBy
+  nameWithType: ICreationAuditedObject.CreatedBy
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedBy
+- uid: Shared.DDD.IModificationAuditedObject.LastModified
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModified
+  parent: Shared.DDD.IModificationAuditedObject
+  href: Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModified
+  name: LastModified
+  nameWithType: IModificationAuditedObject.LastModified
+  fullName: Shared.DDD.IModificationAuditedObject.LastModified
+- uid: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  parent: Shared.DDD.IModificationAuditedObject
+  href: Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IModificationAuditedObject.LastModifiedBy
+  fullName: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedAt
+  parent: Shared.DDD.IDeletionAuditedObject
+  href: Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedAt
+  name: DeletedAt
+  nameWithType: IDeletionAuditedObject.DeletedAt
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedAt
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedBy
+  parent: Shared.DDD.IDeletionAuditedObject
+  href: Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedBy
+  name: DeletedBy
+  nameWithType: IDeletionAuditedObject.DeletedBy
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedBy
+- uid: Shared.DDD.ISoftDelete.IsDeleted
+  commentId: P:Shared.DDD.ISoftDelete.IsDeleted
+  parent: Shared.DDD.ISoftDelete
+  href: Shared.DDD.ISoftDelete.html#Shared_DDD_ISoftDelete_IsDeleted
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+- uid: Shared.DDD.ICreationAuditedObject
+  commentId: T:Shared.DDD.ICreationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.ICreationAuditedObject.html
+  name: ICreationAuditedObject
+  nameWithType: ICreationAuditedObject
+  fullName: Shared.DDD.ICreationAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject
+  commentId: T:Shared.DDD.IModificationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IModificationAuditedObject.html
+  name: IModificationAuditedObject
+  nameWithType: IModificationAuditedObject
+  fullName: Shared.DDD.IModificationAuditedObject
+- uid: Shared.DDD.IDeletionAuditedObject
+  commentId: T:Shared.DDD.IDeletionAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IDeletionAuditedObject.html
+  name: IDeletionAuditedObject
+  nameWithType: IDeletionAuditedObject
+  fullName: Shared.DDD.IDeletionAuditedObject
+- uid: Shared.DDD.ISoftDelete
+  commentId: T:Shared.DDD.ISoftDelete
+  parent: Shared.DDD
+  href: Shared.DDD.ISoftDelete.html
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Shared.DDD.ISoftDelete

@@ -1,0 +1,1249 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Auditing.AuditEventV1
+  commentId: T:Shared.Data.Auditing.AuditEventV1
+  id: AuditEventV1
+  parent: Shared.Data.Auditing
+  children:
+  - Shared.Data.Auditing.AuditEventV1.Action
+  - Shared.Data.Auditing.AuditEventV1.Actor
+  - Shared.Data.Auditing.AuditEventV1.Category
+  - Shared.Data.Auditing.AuditEventV1.Changes
+  - Shared.Data.Auditing.AuditEventV1.CorrelationId
+  - Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  - Shared.Data.Auditing.AuditEventV1.EventId
+  - Shared.Data.Auditing.AuditEventV1.Metadata
+  - Shared.Data.Auditing.AuditEventV1.Module
+  - Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  - Shared.Data.Auditing.AuditEventV1.Outcome
+  - Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  - Shared.Data.Auditing.AuditEventV1.Service
+  - Shared.Data.Auditing.AuditEventV1.SpanId
+  - Shared.Data.Auditing.AuditEventV1.Subject
+  - Shared.Data.Auditing.AuditEventV1.TenantId
+  - Shared.Data.Auditing.AuditEventV1.TraceId
+  langs:
+  - csharp
+  - vb
+  name: AuditEventV1
+  nameWithType: AuditEventV1
+  fullName: Shared.Data.Auditing.AuditEventV1
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: AuditEventV1
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 26
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: 'public sealed record AuditEventV1 : IEquatable<AuditEventV1>'
+    content.vb: Public NotInheritable Class AuditEventV1 Implements IEquatable(Of AuditEventV1)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Shared.Data.Auditing.AuditEventV1}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  commentId: F:Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  id: CurrentSchemaVersion
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: CurrentSchemaVersion
+  nameWithType: AuditEventV1.CurrentSchemaVersion
+  fullName: Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  type: Field
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: CurrentSchemaVersion
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 28
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public const int CurrentSchemaVersion = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const CurrentSchemaVersion As Integer = 1
+- uid: Shared.Data.Auditing.AuditEventV1.EventId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.EventId
+  id: EventId
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: EventId
+  nameWithType: AuditEventV1.EventId
+  fullName: Shared.Data.Auditing.AuditEventV1.EventId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: EventId
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 30
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required Guid EventId { get; init; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property EventId As Guid
+  overload: Shared.Data.Auditing.AuditEventV1.EventId*
+- uid: Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  commentId: P:Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  id: SchemaVersion
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: SchemaVersion
+  nameWithType: AuditEventV1.SchemaVersion
+  fullName: Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: SchemaVersion
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 31
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public int SchemaVersion { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SchemaVersion As Integer
+  overload: Shared.Data.Auditing.AuditEventV1.SchemaVersion*
+- uid: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  commentId: P:Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  id: OccurredAtUtc
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: OccurredAtUtc
+  nameWithType: AuditEventV1.OccurredAtUtc
+  fullName: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: OccurredAtUtc
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 32
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required DateTimeOffset OccurredAtUtc { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property OccurredAtUtc As DateTimeOffset
+  overload: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc*
+- uid: Shared.Data.Auditing.AuditEventV1.Service
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Service
+  id: Service
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Service
+  nameWithType: AuditEventV1.Service
+  fullName: Shared.Data.Auditing.AuditEventV1.Service
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Service
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 33
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required string Service { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Service As String
+  overload: Shared.Data.Auditing.AuditEventV1.Service*
+- uid: Shared.Data.Auditing.AuditEventV1.Module
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Module
+  id: Module
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Module
+  nameWithType: AuditEventV1.Module
+  fullName: Shared.Data.Auditing.AuditEventV1.Module
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Module
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 34
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required string Module { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property [Module] As String
+  overload: Shared.Data.Auditing.AuditEventV1.Module*
+- uid: Shared.Data.Auditing.AuditEventV1.Category
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Category
+  id: Category
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Category
+  nameWithType: AuditEventV1.Category
+  fullName: Shared.Data.Auditing.AuditEventV1.Category
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Category
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 36
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: >-
+      [JsonConverter(typeof(JsonStringEnumConverter<AuditCategory>))]
+
+      public required AuditCategory Category { get; init; }
+    parameters: []
+    return:
+      type: Shared.Data.Auditing.AuditCategory
+    content.vb: >-
+      <JsonConverter(GetType(JsonStringEnumConverter(Of AuditCategory)))>
+
+      Public Property Category As AuditCategory
+  overload: Shared.Data.Auditing.AuditEventV1.Category*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConverterAttribute
+    ctor: System.Text.Json.Serialization.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: System.Text.Json.Serialization.JsonStringEnumConverter{Shared.Data.Auditing.AuditCategory}
+- uid: Shared.Data.Auditing.AuditEventV1.Action
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Action
+  id: Action
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Action
+  nameWithType: AuditEventV1.Action
+  fullName: Shared.Data.Auditing.AuditEventV1.Action
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Action
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 39
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required string Action { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Action As String
+  overload: Shared.Data.Auditing.AuditEventV1.Action*
+- uid: Shared.Data.Auditing.AuditEventV1.Outcome
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Outcome
+  id: Outcome
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Outcome
+  nameWithType: AuditEventV1.Outcome
+  fullName: Shared.Data.Auditing.AuditEventV1.Outcome
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Outcome
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 41
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: >-
+      [JsonConverter(typeof(JsonStringEnumConverter<AuditOutcome>))]
+
+      public required AuditOutcome Outcome { get; init; }
+    parameters: []
+    return:
+      type: Shared.Data.Auditing.AuditOutcome
+    content.vb: >-
+      <JsonConverter(GetType(JsonStringEnumConverter(Of AuditOutcome)))>
+
+      Public Property Outcome As AuditOutcome
+  overload: Shared.Data.Auditing.AuditEventV1.Outcome*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConverterAttribute
+    ctor: System.Text.Json.Serialization.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: System.Text.Json.Serialization.JsonStringEnumConverter{Shared.Data.Auditing.AuditOutcome}
+- uid: Shared.Data.Auditing.AuditEventV1.TenantId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.TenantId
+  id: TenantId
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: TenantId
+  nameWithType: AuditEventV1.TenantId
+  fullName: Shared.Data.Auditing.AuditEventV1.TenantId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: TenantId
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 44
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public Guid? TenantId { get; init; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property TenantId As Guid?
+  overload: Shared.Data.Auditing.AuditEventV1.TenantId*
+- uid: Shared.Data.Auditing.AuditEventV1.Actor
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Actor
+  id: Actor
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Actor
+  nameWithType: AuditEventV1.Actor
+  fullName: Shared.Data.Auditing.AuditEventV1.Actor
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Actor
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 45
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required AuditActorV1 Actor { get; init; }
+    parameters: []
+    return:
+      type: Shared.Data.Auditing.AuditActorV1
+    content.vb: Public Property Actor As AuditActorV1
+  overload: Shared.Data.Auditing.AuditEventV1.Actor*
+- uid: Shared.Data.Auditing.AuditEventV1.Subject
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Subject
+  id: Subject
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Subject
+  nameWithType: AuditEventV1.Subject
+  fullName: Shared.Data.Auditing.AuditEventV1.Subject
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Subject
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 46
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public required AuditSubjectV1 Subject { get; init; }
+    parameters: []
+    return:
+      type: Shared.Data.Auditing.AuditSubjectV1
+    content.vb: Public Property Subject As AuditSubjectV1
+  overload: Shared.Data.Auditing.AuditEventV1.Subject*
+- uid: Shared.Data.Auditing.AuditEventV1.TraceId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.TraceId
+  id: TraceId
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: TraceId
+  nameWithType: AuditEventV1.TraceId
+  fullName: Shared.Data.Auditing.AuditEventV1.TraceId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: TraceId
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 47
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public string? TraceId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TraceId As String
+  overload: Shared.Data.Auditing.AuditEventV1.TraceId*
+- uid: Shared.Data.Auditing.AuditEventV1.SpanId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.SpanId
+  id: SpanId
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: SpanId
+  nameWithType: AuditEventV1.SpanId
+  fullName: Shared.Data.Auditing.AuditEventV1.SpanId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: SpanId
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 48
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public string? SpanId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SpanId As String
+  overload: Shared.Data.Auditing.AuditEventV1.SpanId*
+- uid: Shared.Data.Auditing.AuditEventV1.CorrelationId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.CorrelationId
+  id: CorrelationId
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: CorrelationId
+  nameWithType: AuditEventV1.CorrelationId
+  fullName: Shared.Data.Auditing.AuditEventV1.CorrelationId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: CorrelationId
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 49
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public string? CorrelationId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CorrelationId As String
+  overload: Shared.Data.Auditing.AuditEventV1.CorrelationId*
+- uid: Shared.Data.Auditing.AuditEventV1.Changes
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Changes
+  id: Changes
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Changes
+  nameWithType: AuditEventV1.Changes
+  fullName: Shared.Data.Auditing.AuditEventV1.Changes
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Changes
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 50
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public IReadOnlyDictionary<string, AuditValueChangeV1> Changes { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,Shared.Data.Auditing.AuditValueChangeV1}
+    content.vb: Public Property Changes As IReadOnlyDictionary(Of String, AuditValueChangeV1)
+  overload: Shared.Data.Auditing.AuditEventV1.Changes*
+- uid: Shared.Data.Auditing.AuditEventV1.Metadata
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Metadata
+  id: Metadata
+  parent: Shared.Data.Auditing.AuditEventV1
+  langs:
+  - csharp
+  - vb
+  name: Metadata
+  nameWithType: AuditEventV1.Metadata
+  fullName: Shared.Data.Auditing.AuditEventV1.Metadata
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Metadata
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 52
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public IReadOnlyDictionary<string, object?> Metadata { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+    content.vb: Public Property Metadata As IReadOnlyDictionary(Of String, Object)
+  overload: Shared.Data.Auditing.AuditEventV1.Metadata*
+references:
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  href: Shared.html
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Shared.Data.Auditing.AuditEventV1}
+  commentId: T:System.IEquatable{Shared.Data.Auditing.AuditEventV1}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<AuditEventV1>
+  nameWithType: IEquatable<AuditEventV1>
+  fullName: System.IEquatable<Shared.Data.Auditing.AuditEventV1>
+  nameWithType.vb: IEquatable(Of AuditEventV1)
+  fullName.vb: System.IEquatable(Of Shared.Data.Auditing.AuditEventV1)
+  name.vb: IEquatable(Of AuditEventV1)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Shared.Data.Auditing.AuditEventV1
+    name: AuditEventV1
+    href: Shared.Data.Auditing.AuditEventV1.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Shared.Data.Auditing.AuditEventV1
+    name: AuditEventV1
+    href: Shared.Data.Auditing.AuditEventV1.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Shared.Data.Auditing.AuditEventV1.EventId*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.EventId
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_EventId
+  name: EventId
+  nameWithType: AuditEventV1.EventId
+  fullName: Shared.Data.Auditing.AuditEventV1.EventId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Shared.Data.Auditing.AuditEventV1.SchemaVersion*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_SchemaVersion
+  name: SchemaVersion
+  nameWithType: AuditEventV1.SchemaVersion
+  fullName: Shared.Data.Auditing.AuditEventV1.SchemaVersion
+- uid: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_OccurredAtUtc
+  name: OccurredAtUtc
+  nameWithType: AuditEventV1.OccurredAtUtc
+  fullName: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: Shared.Data.Auditing.AuditEventV1.Service*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Service
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Service
+  name: Service
+  nameWithType: AuditEventV1.Service
+  fullName: Shared.Data.Auditing.AuditEventV1.Service
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Shared.Data.Auditing.AuditEventV1.Module*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Module
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Module
+  name: Module
+  nameWithType: AuditEventV1.Module
+  fullName: Shared.Data.Auditing.AuditEventV1.Module
+- uid: Shared.Data.Auditing.AuditEventV1.Category*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Category
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Category
+  name: Category
+  nameWithType: AuditEventV1.Category
+  fullName: Shared.Data.Auditing.AuditEventV1.Category
+- uid: Shared.Data.Auditing.AuditCategory
+  commentId: T:Shared.Data.Auditing.AuditCategory
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditCategory.html
+  name: AuditCategory
+  nameWithType: AuditCategory
+  fullName: Shared.Data.Auditing.AuditCategory
+- uid: Shared.Data.Auditing.AuditEventV1.Action*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Action
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Action
+  name: Action
+  nameWithType: AuditEventV1.Action
+  fullName: Shared.Data.Auditing.AuditEventV1.Action
+- uid: Shared.Data.Auditing.AuditEventV1.Outcome*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Outcome
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Outcome
+  name: Outcome
+  nameWithType: AuditEventV1.Outcome
+  fullName: Shared.Data.Auditing.AuditEventV1.Outcome
+- uid: Shared.Data.Auditing.AuditOutcome
+  commentId: T:Shared.Data.Auditing.AuditOutcome
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditOutcome.html
+  name: AuditOutcome
+  nameWithType: AuditOutcome
+  fullName: Shared.Data.Auditing.AuditOutcome
+- uid: Shared.Data.Auditing.AuditEventV1.TenantId*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.TenantId
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_TenantId
+  name: TenantId
+  nameWithType: AuditEventV1.TenantId
+  fullName: Shared.Data.Auditing.AuditEventV1.TenantId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.Data.Auditing.AuditEventV1.Actor*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Actor
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Actor
+  name: Actor
+  nameWithType: AuditEventV1.Actor
+  fullName: Shared.Data.Auditing.AuditEventV1.Actor
+- uid: Shared.Data.Auditing.AuditActorV1
+  commentId: T:Shared.Data.Auditing.AuditActorV1
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditActorV1.html
+  name: AuditActorV1
+  nameWithType: AuditActorV1
+  fullName: Shared.Data.Auditing.AuditActorV1
+- uid: Shared.Data.Auditing.AuditEventV1.Subject*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Subject
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Subject
+  name: Subject
+  nameWithType: AuditEventV1.Subject
+  fullName: Shared.Data.Auditing.AuditEventV1.Subject
+- uid: Shared.Data.Auditing.AuditSubjectV1
+  commentId: T:Shared.Data.Auditing.AuditSubjectV1
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditSubjectV1.html
+  name: AuditSubjectV1
+  nameWithType: AuditSubjectV1
+  fullName: Shared.Data.Auditing.AuditSubjectV1
+- uid: Shared.Data.Auditing.AuditEventV1.TraceId*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.TraceId
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_TraceId
+  name: TraceId
+  nameWithType: AuditEventV1.TraceId
+  fullName: Shared.Data.Auditing.AuditEventV1.TraceId
+- uid: Shared.Data.Auditing.AuditEventV1.SpanId*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.SpanId
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_SpanId
+  name: SpanId
+  nameWithType: AuditEventV1.SpanId
+  fullName: Shared.Data.Auditing.AuditEventV1.SpanId
+- uid: Shared.Data.Auditing.AuditEventV1.CorrelationId*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.CorrelationId
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_CorrelationId
+  name: CorrelationId
+  nameWithType: AuditEventV1.CorrelationId
+  fullName: Shared.Data.Auditing.AuditEventV1.CorrelationId
+- uid: Shared.Data.Auditing.AuditEventV1.Changes*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Changes
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Changes
+  name: Changes
+  nameWithType: AuditEventV1.Changes
+  fullName: Shared.Data.Auditing.AuditEventV1.Changes
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,Shared.Data.Auditing.AuditValueChangeV1}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,Shared.Data.Auditing.AuditValueChangeV1}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, AuditValueChangeV1>
+  nameWithType: IReadOnlyDictionary<string, AuditValueChangeV1>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, Shared.Data.Auditing.AuditValueChangeV1>
+  nameWithType.vb: IReadOnlyDictionary(Of String, AuditValueChangeV1)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Shared.Data.Auditing.AuditValueChangeV1)
+  name.vb: IReadOnlyDictionary(Of String, AuditValueChangeV1)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Shared.Data.Auditing.AuditValueChangeV1
+    name: AuditValueChangeV1
+    href: Shared.Data.Auditing.AuditValueChangeV1.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Shared.Data.Auditing.AuditValueChangeV1
+    name: AuditValueChangeV1
+    href: Shared.Data.Auditing.AuditValueChangeV1.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Shared.Data.Auditing.AuditEventV1.Metadata*
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Metadata
+  href: Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Metadata
+  name: Metadata
+  nameWithType: AuditEventV1.Metadata
+  fullName: Shared.Data.Auditing.AuditEventV1.Metadata
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )

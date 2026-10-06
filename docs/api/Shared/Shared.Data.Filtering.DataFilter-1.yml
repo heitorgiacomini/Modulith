@@ -1,0 +1,728 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Filtering.DataFilter`1
+  commentId: T:Shared.Data.Filtering.DataFilter`1
+  id: DataFilter`1
+  parent: Shared.Data.Filtering
+  children:
+  - Shared.Data.Filtering.DataFilter`1.#ctor(Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions})
+  - Shared.Data.Filtering.DataFilter`1.Disable
+  - Shared.Data.Filtering.DataFilter`1.Enable
+  - Shared.Data.Filtering.DataFilter`1.IsEnabled
+  langs:
+  - csharp
+  - vb
+  name: DataFilter<TFilter>
+  nameWithType: DataFilter<TFilter>
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DataFilter
+    path: ../src/Shared/Shared/Data/Filtering/DataFilter.cs
+    startLine: 22
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: 'public sealed class DataFilter<TFilter> : IDataFilter<TFilter> where TFilter : class'
+    typeParameters:
+    - id: TFilter
+    content.vb: Public NotInheritable Class DataFilter(Of TFilter As Class) Implements IDataFilter(Of TFilter)
+  inheritance:
+  - System.Object
+  implements:
+  - Shared.Data.Filtering.IDataFilter{{TFilter}}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: DataFilter(Of TFilter)
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter)
+  name.vb: DataFilter(Of TFilter)
+- uid: Shared.Data.Filtering.DataFilter`1.#ctor(Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions})
+  commentId: M:Shared.Data.Filtering.DataFilter`1.#ctor(Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions})
+  id: '#ctor(Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions})'
+  parent: Shared.Data.Filtering.DataFilter`1
+  langs:
+  - csharp
+  - vb
+  name: DataFilter(IOptions<DataFilterOptions>)
+  nameWithType: DataFilter<TFilter>.DataFilter(IOptions<DataFilterOptions>)
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.DataFilter(Microsoft.Extensions.Options.IOptions<Shared.Data.Filtering.DataFilterOptions>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: .ctor
+    path: ../src/Shared/Shared/Data/Filtering/DataFilter.cs
+    startLine: 22
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: public DataFilter(IOptions<DataFilterOptions> options)
+    parameters:
+    - id: options
+      type: Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions}
+    content.vb: Public Sub New(options As IOptions(Of DataFilterOptions))
+  overload: Shared.Data.Filtering.DataFilter`1.#ctor*
+  nameWithType.vb: DataFilter(Of TFilter).New(IOptions(Of DataFilterOptions))
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).New(Microsoft.Extensions.Options.IOptions(Of Shared.Data.Filtering.DataFilterOptions))
+  name.vb: New(IOptions(Of DataFilterOptions))
+- uid: Shared.Data.Filtering.DataFilter`1.IsEnabled
+  commentId: P:Shared.Data.Filtering.DataFilter`1.IsEnabled
+  id: IsEnabled
+  parent: Shared.Data.Filtering.DataFilter`1
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled
+  nameWithType: DataFilter<TFilter>.IsEnabled
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.IsEnabled
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsEnabled
+    path: ../src/Shared/Shared/Data/Filtering/DataFilter.cs
+    startLine: 27
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  example: []
+  syntax:
+    content: public bool IsEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsEnabled As Boolean
+  overload: Shared.Data.Filtering.DataFilter`1.IsEnabled*
+  implements:
+  - Shared.Data.Filtering.IDataFilter{{TFilter}}.IsEnabled
+  nameWithType.vb: DataFilter(Of TFilter).IsEnabled
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).IsEnabled
+- uid: Shared.Data.Filtering.DataFilter`1.Enable
+  commentId: M:Shared.Data.Filtering.DataFilter`1.Enable
+  id: Enable
+  parent: Shared.Data.Filtering.DataFilter`1
+  langs:
+  - csharp
+  - vb
+  name: Enable()
+  nameWithType: DataFilter<TFilter>.Enable()
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Enable()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Enable
+    path: ../src/Shared/Shared/Data/Filtering/DataFilter.cs
+    startLine: 29
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  example: []
+  syntax:
+    content: public IDisposable Enable()
+    return:
+      type: System.IDisposable
+    content.vb: Public Function Enable() As IDisposable
+  overload: Shared.Data.Filtering.DataFilter`1.Enable*
+  implements:
+  - Shared.Data.Filtering.IDataFilter{{TFilter}}.Enable
+  nameWithType.vb: DataFilter(Of TFilter).Enable()
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Enable()
+- uid: Shared.Data.Filtering.DataFilter`1.Disable
+  commentId: M:Shared.Data.Filtering.DataFilter`1.Disable
+  id: Disable
+  parent: Shared.Data.Filtering.DataFilter`1
+  langs:
+  - csharp
+  - vb
+  name: Disable()
+  nameWithType: DataFilter<TFilter>.Disable()
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Disable()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/DataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Disable
+    path: ../src/Shared/Shared/Data/Filtering/DataFilter.cs
+    startLine: 31
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  example: []
+  syntax:
+    content: public IDisposable Disable()
+    return:
+      type: System.IDisposable
+    content.vb: Public Function Disable() As IDisposable
+  overload: Shared.Data.Filtering.DataFilter`1.Disable*
+  implements:
+  - Shared.Data.Filtering.IDataFilter{{TFilter}}.Disable
+  nameWithType.vb: DataFilter(Of TFilter).Disable()
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Disable()
+references:
+- uid: Shared.Data.Filtering
+  commentId: N:Shared.Data.Filtering
+  href: Shared.html
+  name: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Shared.Data.Filtering.IDataFilter{{TFilter}}
+  commentId: T:Shared.Data.Filtering.IDataFilter{`0}
+  parent: Shared.Data.Filtering
+  definition: Shared.Data.Filtering.IDataFilter`1
+  href: Shared.Data.Filtering.IDataFilter-1.html
+  name: IDataFilter<TFilter>
+  nameWithType: IDataFilter<TFilter>
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>
+  nameWithType.vb: IDataFilter(Of TFilter)
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter)
+  name.vb: IDataFilter(Of TFilter)
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter
+    href: Shared.Data.Filtering.IDataFilter-1.html
+  - name: <
+  - name: TFilter
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter
+    href: Shared.Data.Filtering.IDataFilter-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Data.Filtering.IDataFilter`1
+  commentId: T:Shared.Data.Filtering.IDataFilter`1
+  href: Shared.Data.Filtering.IDataFilter-1.html
+  name: IDataFilter<TFilter>
+  nameWithType: IDataFilter<TFilter>
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>
+  nameWithType.vb: IDataFilter(Of TFilter)
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter)
+  name.vb: IDataFilter(Of TFilter)
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter
+    href: Shared.Data.Filtering.IDataFilter-1.html
+  - name: <
+  - name: TFilter
+  - name: '>'
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter
+    href: Shared.Data.Filtering.IDataFilter-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TFilter
+  - name: )
+- uid: Shared.Data.Filtering.DataFilter`1.#ctor*
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.#ctor
+  href: Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1__ctor_Microsoft_Extensions_Options_IOptions_Shared_Data_Filtering_DataFilterOptions__
+  name: DataFilter
+  nameWithType: DataFilter<TFilter>.DataFilter
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.DataFilter
+  nameWithType.vb: DataFilter(Of TFilter).New
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).New
+  name.vb: New
+- uid: Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions}
+  commentId: T:Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions}
+  parent: Microsoft.Extensions.Options
+  definition: Microsoft.Extensions.Options.IOptions`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  name: IOptions<DataFilterOptions>
+  nameWithType: IOptions<DataFilterOptions>
+  fullName: Microsoft.Extensions.Options.IOptions<Shared.Data.Filtering.DataFilterOptions>
+  nameWithType.vb: IOptions(Of DataFilterOptions)
+  fullName.vb: Microsoft.Extensions.Options.IOptions(Of Shared.Data.Filtering.DataFilterOptions)
+  name.vb: IOptions(Of DataFilterOptions)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: <
+  - uid: Shared.Data.Filtering.DataFilterOptions
+    name: DataFilterOptions
+    href: Shared.Data.Filtering.DataFilterOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Shared.Data.Filtering.DataFilterOptions
+    name: DataFilterOptions
+    href: Shared.Data.Filtering.DataFilterOptions.html
+  - name: )
+- uid: Microsoft.Extensions.Options.IOptions`1
+  commentId: T:Microsoft.Extensions.Options.IOptions`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  name: IOptions<TOptions>
+  nameWithType: IOptions<TOptions>
+  fullName: Microsoft.Extensions.Options.IOptions<TOptions>
+  nameWithType.vb: IOptions(Of TOptions)
+  fullName.vb: Microsoft.Extensions.Options.IOptions(Of TOptions)
+  name.vb: IOptions(Of TOptions)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: <
+  - name: TOptions
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Options.IOptions`1
+    name: IOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TOptions
+  - name: )
+- uid: Microsoft.Extensions.Options
+  commentId: N:Microsoft.Extensions.Options
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Options
+  nameWithType: Microsoft.Extensions.Options
+  fullName: Microsoft.Extensions.Options
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Options
+    name: Options
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Options
+    name: Options
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.options
+- uid: Shared.Data.Filtering.DataFilter`1.IsEnabled*
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.IsEnabled
+  href: Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_IsEnabled
+  name: IsEnabled
+  nameWithType: DataFilter<TFilter>.IsEnabled
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.IsEnabled
+  nameWithType.vb: DataFilter(Of TFilter).IsEnabled
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).IsEnabled
+- uid: Shared.Data.Filtering.IDataFilter{{TFilter}}.IsEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilter{`0}.IsEnabled
+  parent: Shared.Data.Filtering.IDataFilter{{TFilter}}
+  definition: Shared.Data.Filtering.IDataFilter`1.IsEnabled
+  href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_IsEnabled
+  name: IsEnabled
+  nameWithType: IDataFilter<TFilter>.IsEnabled
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.IsEnabled
+  nameWithType.vb: IDataFilter(Of TFilter).IsEnabled
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).IsEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Shared.Data.Filtering.IDataFilter`1.IsEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilter`1.IsEnabled
+  href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_IsEnabled
+  name: IsEnabled
+  nameWithType: IDataFilter<TFilter>.IsEnabled
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.IsEnabled
+  nameWithType.vb: IDataFilter(Of TFilter).IsEnabled
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).IsEnabled
+- uid: Shared.Data.Filtering.DataFilter`1.Enable*
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.Enable
+  href: Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_Enable
+  name: Enable
+  nameWithType: DataFilter<TFilter>.Enable
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Enable
+  nameWithType.vb: DataFilter(Of TFilter).Enable
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Enable
+- uid: Shared.Data.Filtering.IDataFilter{{TFilter}}.Enable
+  commentId: M:Shared.Data.Filtering.IDataFilter{`0}.Enable
+  parent: Shared.Data.Filtering.IDataFilter{{TFilter}}
+  definition: Shared.Data.Filtering.IDataFilter`1.Enable
+  href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  name: Enable()
+  nameWithType: IDataFilter<TFilter>.Enable()
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Enable()
+  nameWithType.vb: IDataFilter(Of TFilter).Enable()
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Enable()
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter{`0}.Enable
+    name: Enable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter{`0}.Enable
+    name: Enable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Shared.Data.Filtering.IDataFilter`1.Enable
+  commentId: M:Shared.Data.Filtering.IDataFilter`1.Enable
+  href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  name: Enable()
+  nameWithType: IDataFilter<TFilter>.Enable()
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Enable()
+  nameWithType.vb: IDataFilter(Of TFilter).Enable()
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Enable()
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter`1.Enable
+    name: Enable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter`1.Enable
+    name: Enable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  - name: (
+  - name: )
+- uid: Shared.Data.Filtering.DataFilter`1.Disable*
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.Disable
+  href: Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_Disable
+  name: Disable
+  nameWithType: DataFilter<TFilter>.Disable
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Disable
+  nameWithType.vb: DataFilter(Of TFilter).Disable
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Disable
+- uid: Shared.Data.Filtering.IDataFilter{{TFilter}}.Disable
+  commentId: M:Shared.Data.Filtering.IDataFilter{`0}.Disable
+  parent: Shared.Data.Filtering.IDataFilter{{TFilter}}
+  definition: Shared.Data.Filtering.IDataFilter`1.Disable
+  href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  name: Disable()
+  nameWithType: IDataFilter<TFilter>.Disable()
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Disable()
+  nameWithType.vb: IDataFilter(Of TFilter).Disable()
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Disable()
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter{`0}.Disable
+    name: Disable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter{`0}.Disable
+    name: Disable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  - name: (
+  - name: )
+- uid: Shared.Data.Filtering.IDataFilter`1.Disable
+  commentId: M:Shared.Data.Filtering.IDataFilter`1.Disable
+  href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  name: Disable()
+  nameWithType: IDataFilter<TFilter>.Disable()
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Disable()
+  nameWithType.vb: IDataFilter(Of TFilter).Disable()
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Disable()
+  spec.csharp:
+  - uid: Shared.Data.Filtering.IDataFilter`1.Disable
+    name: Disable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Shared.Data.Filtering.IDataFilter`1.Disable
+    name: Disable
+    href: Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  - name: (
+  - name: )

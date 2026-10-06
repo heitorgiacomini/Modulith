@@ -1,0 +1,29 @@
+{
+  "index_patterns": ["eshop-app-logs-*"],
+  "order": 1100,
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "plugins.index_state_management.policy_id": "eshop-observability-15d"
+  },
+  "mappings": {
+    "dynamic": true,
+    "properties": {
+      "time": { "type": "date" },
+      "observedTime": { "type": "date" },
+      "traceId": { "type": "keyword" },
+      "spanId": { "type": "keyword" },
+      "severity": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "keyword" },
+          "number": { "type": "integer" }
+        }
+      },
+      "body": { "type": "text", "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } } },
+      "resource": { "type": "object", "dynamic": true },
+      "instrumentationScope": { "type": "object", "dynamic": true },
+      "attributes": { "type": "object", "dynamic": true }
+    }
+  }
+}

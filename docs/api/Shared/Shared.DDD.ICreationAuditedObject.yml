@@ -1,0 +1,186 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.ICreationAuditedObject
+  commentId: T:Shared.DDD.ICreationAuditedObject
+  id: ICreationAuditedObject
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.ICreationAuditedObject.CreatedAt
+  - Shared.DDD.ICreationAuditedObject.CreatedBy
+  langs:
+  - csharp
+  - vb
+  name: ICreationAuditedObject
+  nameWithType: ICreationAuditedObject
+  fullName: Shared.DDD.ICreationAuditedObject
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: ICreationAuditedObject
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: public interface ICreationAuditedObject
+    content.vb: Public Interface ICreationAuditedObject
+- uid: Shared.DDD.ICreationAuditedObject.CreatedAt
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedAt
+  id: CreatedAt
+  parent: Shared.DDD.ICreationAuditedObject
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: ICreationAuditedObject.CreatedAt
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: CreatedAt
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: DateTimeOffset CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Property CreatedAt As DateTimeOffset
+  overload: Shared.DDD.ICreationAuditedObject.CreatedAt*
+- uid: Shared.DDD.ICreationAuditedObject.CreatedBy
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedBy
+  id: CreatedBy
+  parent: Shared.DDD.ICreationAuditedObject
+  langs:
+  - csharp
+  - vb
+  name: CreatedBy
+  nameWithType: ICreationAuditedObject.CreatedBy
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedBy
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: CreatedBy
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: Guid? CreatedBy { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Property CreatedBy As Guid?
+  overload: Shared.DDD.ICreationAuditedObject.CreatedBy*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.ICreationAuditedObject.CreatedAt*
+  commentId: Overload:Shared.DDD.ICreationAuditedObject.CreatedAt
+  href: Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedAt
+  name: CreatedAt
+  nameWithType: ICreationAuditedObject.CreatedAt
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedAt
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.DDD.ICreationAuditedObject.CreatedBy*
+  commentId: Overload:Shared.DDD.ICreationAuditedObject.CreatedBy
+  href: Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedBy
+  name: CreatedBy
+  nameWithType: ICreationAuditedObject.CreatedBy
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedBy
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

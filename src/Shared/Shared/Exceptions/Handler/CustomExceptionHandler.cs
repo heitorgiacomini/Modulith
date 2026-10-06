@@ -11,10 +11,6 @@ public class CustomExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
     {
-        logger.LogError(
-            "Error Message: {exceptionMessage}, Time of occurrence {time}",
-            exception.Message, DateTime.UtcNow);
-
         (string Detail, string Title, int StatusCode) details = exception switch
         {
             InternalServerException =>
@@ -55,6 +51,23 @@ public class CustomExceptionHandler
             )
         };
 
+        if (details.StatusCode >= StatusCodes.Status500InternalServerError)
+        {
+            logger.LogError(
+                exception,
+                "Request failed with {ExceptionType} and status code {StatusCode}",
+                exception.GetType().Name,
+                details.StatusCode);
+        }
+        else
+        {
+            logger.LogWarning(
+                exception,
+                "Request was rejected with {ExceptionType} and status code {StatusCode}",
+                exception.GetType().Name,
+                details.StatusCode);
+        }
+
         var problemDetails = new ProblemDetails
         {
             Title = details.Title,
@@ -63,7 +76,8 @@ public class CustomExceptionHandler
             Instance = context.Request.Path
         };
 
-        problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
+        string traceId = System.Diagnostics.Activity.Current?.TraceId.ToString() ?? context.TraceIdentifier;
+        problemDetails.Extensions.Add("traceId", traceId);
 
         if (exception is ValidationException validationException)
         {

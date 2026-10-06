@@ -1,0 +1,205 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Filtering.IDataFilter
+  commentId: T:Shared.Data.Filtering.IDataFilter
+  id: IDataFilter
+  parent: Shared.Data.Filtering
+  children:
+  - Shared.Data.Filtering.IDataFilter.Disable``1
+  - Shared.Data.Filtering.IDataFilter.Enable``1
+  - Shared.Data.Filtering.IDataFilter.IsEnabled``1
+  langs:
+  - csharp
+  - vb
+  name: IDataFilter
+  nameWithType: IDataFilter
+  fullName: Shared.Data.Filtering.IDataFilter
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IDataFilter
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilter.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: public interface IDataFilter
+    content.vb: Public Interface IDataFilter
+- uid: Shared.Data.Filtering.IDataFilter.Enable``1
+  commentId: M:Shared.Data.Filtering.IDataFilter.Enable``1
+  id: Enable``1
+  parent: Shared.Data.Filtering.IDataFilter
+  langs:
+  - csharp
+  - vb
+  name: Enable<TFilter>()
+  nameWithType: IDataFilter.Enable<TFilter>()
+  fullName: Shared.Data.Filtering.IDataFilter.Enable<TFilter>()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Enable
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilter.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: 'IDisposable Enable<TFilter>() where TFilter : class'
+    typeParameters:
+    - id: TFilter
+    return:
+      type: System.IDisposable
+    content.vb: Function Enable(Of TFilter As Class)() As IDisposable
+  overload: Shared.Data.Filtering.IDataFilter.Enable*
+  nameWithType.vb: IDataFilter.Enable(Of TFilter)()
+  fullName.vb: Shared.Data.Filtering.IDataFilter.Enable(Of TFilter)()
+  name.vb: Enable(Of TFilter)()
+- uid: Shared.Data.Filtering.IDataFilter.Disable``1
+  commentId: M:Shared.Data.Filtering.IDataFilter.Disable``1
+  id: Disable``1
+  parent: Shared.Data.Filtering.IDataFilter
+  langs:
+  - csharp
+  - vb
+  name: Disable<TFilter>()
+  nameWithType: IDataFilter.Disable<TFilter>()
+  fullName: Shared.Data.Filtering.IDataFilter.Disable<TFilter>()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Disable
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilter.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: 'IDisposable Disable<TFilter>() where TFilter : class'
+    typeParameters:
+    - id: TFilter
+    return:
+      type: System.IDisposable
+    content.vb: Function Disable(Of TFilter As Class)() As IDisposable
+  overload: Shared.Data.Filtering.IDataFilter.Disable*
+  nameWithType.vb: IDataFilter.Disable(Of TFilter)()
+  fullName.vb: Shared.Data.Filtering.IDataFilter.Disable(Of TFilter)()
+  name.vb: Disable(Of TFilter)()
+- uid: Shared.Data.Filtering.IDataFilter.IsEnabled``1
+  commentId: M:Shared.Data.Filtering.IDataFilter.IsEnabled``1
+  id: IsEnabled``1
+  parent: Shared.Data.Filtering.IDataFilter
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled<TFilter>()
+  nameWithType: IDataFilter.IsEnabled<TFilter>()
+  fullName: Shared.Data.Filtering.IDataFilter.IsEnabled<TFilter>()
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilter.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsEnabled
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilter.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: 'bool IsEnabled<TFilter>() where TFilter : class'
+    typeParameters:
+    - id: TFilter
+    return:
+      type: System.Boolean
+    content.vb: Function IsEnabled(Of TFilter As Class)() As Boolean
+  overload: Shared.Data.Filtering.IDataFilter.IsEnabled*
+  nameWithType.vb: IDataFilter.IsEnabled(Of TFilter)()
+  fullName.vb: Shared.Data.Filtering.IDataFilter.IsEnabled(Of TFilter)()
+  name.vb: IsEnabled(Of TFilter)()
+references:
+- uid: Shared.Data.Filtering
+  commentId: N:Shared.Data.Filtering
+  href: Shared.html
+  name: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+- uid: Shared.Data.Filtering.IDataFilter.Enable*
+  commentId: Overload:Shared.Data.Filtering.IDataFilter.Enable
+  href: Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_Enable__1
+  name: Enable
+  nameWithType: IDataFilter.Enable
+  fullName: Shared.Data.Filtering.IDataFilter.Enable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Data.Filtering.IDataFilter.Disable*
+  commentId: Overload:Shared.Data.Filtering.IDataFilter.Disable
+  href: Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_Disable__1
+  name: Disable
+  nameWithType: IDataFilter.Disable
+  fullName: Shared.Data.Filtering.IDataFilter.Disable
+- uid: Shared.Data.Filtering.IDataFilter.IsEnabled*
+  commentId: Overload:Shared.Data.Filtering.IDataFilter.IsEnabled
+  href: Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_IsEnabled__1
+  name: IsEnabled
+  nameWithType: IDataFilter.IsEnabled
+  fullName: Shared.Data.Filtering.IDataFilter.IsEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

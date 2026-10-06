@@ -7,6 +7,7 @@ items:
   - Shared.Data.Interceptors.AuditableEntityInterceptor
   - Shared.Data.Interceptors.DispatchDomainEventsInterceptor
   - Shared.Data.Interceptors.Extensions
+  - Shared.Data.Interceptors.MultiTenantEntityInterceptor
   langs:
   - csharp
   - vb
@@ -35,3 +36,9 @@ references:
   name: DispatchDomainEventsInterceptor
   nameWithType: DispatchDomainEventsInterceptor
   fullName: Shared.Data.Interceptors.DispatchDomainEventsInterceptor
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor
+  commentId: T:Shared.Data.Interceptors.MultiTenantEntityInterceptor
+  href: Shared.Data.Interceptors.MultiTenantEntityInterceptor.html
+  name: MultiTenantEntityInterceptor
+  nameWithType: MultiTenantEntityInterceptor
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor

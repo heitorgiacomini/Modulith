@@ -1,0 +1,471 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Auditing.AuditSubjectV1
+  commentId: T:Shared.Data.Auditing.AuditSubjectV1
+  id: AuditSubjectV1
+  parent: Shared.Data.Auditing
+  children:
+  - Shared.Data.Auditing.AuditSubjectV1.#ctor(System.String,System.String)
+  - Shared.Data.Auditing.AuditSubjectV1.Id
+  - Shared.Data.Auditing.AuditSubjectV1.Type
+  langs:
+  - csharp
+  - vb
+  name: AuditSubjectV1
+  nameWithType: AuditSubjectV1
+  fullName: Shared.Data.Auditing.AuditSubjectV1
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: AuditSubjectV1
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 22
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: 'public sealed record AuditSubjectV1 : IEquatable<AuditSubjectV1>'
+    content.vb: Public NotInheritable Class AuditSubjectV1 Implements IEquatable(Of AuditSubjectV1)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable{Shared.Data.Auditing.AuditSubjectV1}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Shared.Data.Auditing.AuditSubjectV1.#ctor(System.String,System.String)
+  commentId: M:Shared.Data.Auditing.AuditSubjectV1.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: Shared.Data.Auditing.AuditSubjectV1
+  langs:
+  - csharp
+  - vb
+  name: AuditSubjectV1(string, string)
+  nameWithType: AuditSubjectV1.AuditSubjectV1(string, string)
+  fullName: Shared.Data.Auditing.AuditSubjectV1.AuditSubjectV1(string, string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: .ctor
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 22
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public AuditSubjectV1(string Type, string Id)
+    parameters:
+    - id: Type
+      type: System.String
+    - id: Id
+      type: System.String
+    content.vb: Public Sub New(Type As String, Id As String)
+  overload: Shared.Data.Auditing.AuditSubjectV1.#ctor*
+  nameWithType.vb: AuditSubjectV1.New(String, String)
+  fullName.vb: Shared.Data.Auditing.AuditSubjectV1.New(String, String)
+  name.vb: New(String, String)
+- uid: Shared.Data.Auditing.AuditSubjectV1.Type
+  commentId: P:Shared.Data.Auditing.AuditSubjectV1.Type
+  id: Type
+  parent: Shared.Data.Auditing.AuditSubjectV1
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: AuditSubjectV1.Type
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Type
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Type
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 22
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public string Type { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Type As String
+  overload: Shared.Data.Auditing.AuditSubjectV1.Type*
+- uid: Shared.Data.Auditing.AuditSubjectV1.Id
+  commentId: P:Shared.Data.Auditing.AuditSubjectV1.Id
+  id: Id
+  parent: Shared.Data.Auditing.AuditSubjectV1
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: AuditSubjectV1.Id
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Id
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Id
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 22
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public string Id { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Shared.Data.Auditing.AuditSubjectV1.Id*
+references:
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  href: Shared.html
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IEquatable{Shared.Data.Auditing.AuditSubjectV1}
+  commentId: T:System.IEquatable{Shared.Data.Auditing.AuditSubjectV1}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<AuditSubjectV1>
+  nameWithType: IEquatable<AuditSubjectV1>
+  fullName: System.IEquatable<Shared.Data.Auditing.AuditSubjectV1>
+  nameWithType.vb: IEquatable(Of AuditSubjectV1)
+  fullName.vb: System.IEquatable(Of Shared.Data.Auditing.AuditSubjectV1)
+  name.vb: IEquatable(Of AuditSubjectV1)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Shared.Data.Auditing.AuditSubjectV1
+    name: AuditSubjectV1
+    href: Shared.Data.Auditing.AuditSubjectV1.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Shared.Data.Auditing.AuditSubjectV1
+    name: AuditSubjectV1
+    href: Shared.Data.Auditing.AuditSubjectV1.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.Data.Auditing.AuditSubjectV1.#ctor*
+  commentId: Overload:Shared.Data.Auditing.AuditSubjectV1.#ctor
+  href: Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1__ctor_System_String_System_String_
+  name: AuditSubjectV1
+  nameWithType: AuditSubjectV1.AuditSubjectV1
+  fullName: Shared.Data.Auditing.AuditSubjectV1.AuditSubjectV1
+  nameWithType.vb: AuditSubjectV1.New
+  fullName.vb: Shared.Data.Auditing.AuditSubjectV1.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Shared.Data.Auditing.AuditSubjectV1.Type*
+  commentId: Overload:Shared.Data.Auditing.AuditSubjectV1.Type
+  href: Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1_Type
+  name: Type
+  nameWithType: AuditSubjectV1.Type
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Type
+- uid: Shared.Data.Auditing.AuditSubjectV1.Id*
+  commentId: Overload:Shared.Data.Auditing.AuditSubjectV1.Id
+  href: Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1_Id
+  name: Id
+  nameWithType: AuditSubjectV1.Id
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Id

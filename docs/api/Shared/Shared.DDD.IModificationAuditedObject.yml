@@ -1,0 +1,198 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IModificationAuditedObject
+  commentId: T:Shared.DDD.IModificationAuditedObject
+  id: IModificationAuditedObject
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IModificationAuditedObject.LastModified
+  - Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  langs:
+  - csharp
+  - vb
+  name: IModificationAuditedObject
+  nameWithType: IModificationAuditedObject
+  fullName: Shared.DDD.IModificationAuditedObject
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IModificationAuditedObject
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 8
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: public interface IModificationAuditedObject
+    content.vb: Public Interface IModificationAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject.LastModified
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModified
+  id: LastModified
+  parent: Shared.DDD.IModificationAuditedObject
+  langs:
+  - csharp
+  - vb
+  name: LastModified
+  nameWithType: IModificationAuditedObject.LastModified
+  fullName: Shared.DDD.IModificationAuditedObject.LastModified
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: LastModified
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 10
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: DateTimeOffset? LastModified { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Property LastModified As DateTimeOffset?
+  overload: Shared.DDD.IModificationAuditedObject.LastModified*
+- uid: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  id: LastModifiedBy
+  parent: Shared.DDD.IModificationAuditedObject
+  langs:
+  - csharp
+  - vb
+  name: LastModifiedBy
+  nameWithType: IModificationAuditedObject.LastModifiedBy
+  fullName: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: LastModifiedBy
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 11
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: Guid? LastModifiedBy { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Property LastModifiedBy As Guid?
+  overload: Shared.DDD.IModificationAuditedObject.LastModifiedBy*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.IModificationAuditedObject.LastModified*
+  commentId: Overload:Shared.DDD.IModificationAuditedObject.LastModified
+  href: Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModified
+  name: LastModified
+  nameWithType: IModificationAuditedObject.LastModified
+  fullName: Shared.DDD.IModificationAuditedObject.LastModified
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.DDD.IModificationAuditedObject.LastModifiedBy*
+  commentId: Overload:Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  href: Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IModificationAuditedObject.LastModifiedBy
+  fullName: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'

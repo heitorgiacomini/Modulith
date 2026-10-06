@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.MultiTenancy
+  commentId: N:Shared.Data.MultiTenancy
+  id: Shared.Data.MultiTenancy
+  children:
+  - Shared.Data.MultiTenancy.CurrentTenant
+  - Shared.Data.MultiTenancy.ICurrentTenant
+  - Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+  langs:
+  - csharp
+  - vb
+  name: Shared.Data.MultiTenancy
+  nameWithType: Shared.Data.MultiTenancy
+  fullName: Shared.Data.MultiTenancy
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Data.MultiTenancy.CurrentTenant
+  commentId: T:Shared.Data.MultiTenancy.CurrentTenant
+  href: Shared.Data.MultiTenancy.CurrentTenant.html
+  name: CurrentTenant
+  nameWithType: CurrentTenant
+  fullName: Shared.Data.MultiTenancy.CurrentTenant
+- uid: Shared.Data.MultiTenancy.ICurrentTenant
+  commentId: T:Shared.Data.MultiTenancy.ICurrentTenant
+  parent: Shared.Data.MultiTenancy
+  href: Shared.Data.MultiTenancy.ICurrentTenant.html
+  name: ICurrentTenant
+  nameWithType: ICurrentTenant
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant
+- uid: Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+  commentId: T:Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+  href: Shared.Data.MultiTenancy.TenantAuthorizationPolicies.html
+  name: TenantAuthorizationPolicies
+  nameWithType: TenantAuthorizationPolicies
+  fullName: Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+- uid: Shared.Data.MultiTenancy
+  commentId: N:Shared.Data.MultiTenancy
+  href: Shared.html
+  name: Shared.Data.MultiTenancy
+  nameWithType: Shared.Data.MultiTenancy
+  fullName: Shared.Data.MultiTenancy
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.MultiTenancy
+    name: MultiTenancy
+    href: Shared.Data.MultiTenancy.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.MultiTenancy
+    name: MultiTenancy
+    href: Shared.Data.MultiTenancy.html

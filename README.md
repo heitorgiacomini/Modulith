@@ -21,10 +21,10 @@ The Compose project in `src/` starts the following topology:
 2. GraphQL requests go to the **Hot Chocolate Fusion gateway** at `http://localhost:5002/graphql`.
 3. The gateway delegates fields to the Catalog, Basket, and Ordering source schemas hosted by the modular API.
 4. REST requests, including the Accounts API, go directly to the API host at `http://localhost:5004`.
-5. A short-lived **Fusion Composer** container downloads the three source schemas and generates `gateway.far` in a shared Docker volume before the gateway starts serving requests.
-6. The API uses PostgreSQL, Redis, RabbitMQ, Keycloak, and Seq as backing services.
+5. The short-lived **`graphql-gateway-configurator`** service downloads the three source schemas and generates `gateway.far` in a shared Docker volume before the gateway starts serving requests.
+6. The API uses PostgreSQL, Redis, RabbitMQ, and Keycloak, and exports observability signals through OpenTelemetry Collector to OpenSearch.
 
-The composer is a startup job, not a long-running request-path service. If a source GraphQL schema changes, recreate the composer and gateway so the Fusion archive is regenerated.
+`graphql-gateway-configurator` is a startup job, not a long-running request-path service. If a source GraphQL schema changes, recreate the configurator and gateway so the Fusion archive is regenerated.
 
 ### Internal .NET modules
 
@@ -75,7 +75,7 @@ Architecture tests enforce that business module assemblies do not directly depen
 - REST endpoints with Carter and GraphQL with Hot Chocolate/Fusion
 - OAuth 2.0/OpenID Connect and JWT bearer authentication with Keycloak
 - Per-user and per-IP fixed-window rate limiting at the API and Fusion gateway
-- Structured logging with Serilog and Seq
+- Structured, trace-correlated logging with OpenTelemetry Collector and OpenSearch
 - Angular and PrimeNG client organized by bounded context
 
 ## Prerequisites
@@ -104,10 +104,10 @@ Check container status and follow startup logs:
 
 ```bash
 docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml ps
-docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml logs -f api fusion-composer graphql-gateway web-client
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml logs -f api graphql-gateway-configurator graphql-gateway web-client
 ```
 
-When `fusion-composer` exits with code `0`, schema composition completed
+When `graphql-gateway-configurator` exits with code `0`, schema composition completed
 successfully. The other application containers should remain running.
 
 ### Stop or reset the application
@@ -135,10 +135,10 @@ affected services:
 docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --build -d
 ```
 
-After changing a GraphQL source schema, recreate the composer and gateway:
+After changing a GraphQL source schema, recreate `graphql-gateway-configurator` and the gateway:
 
 ```bash
-docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --force-recreate fusion-composer graphql-gateway
+docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up --force-recreate graphql-gateway-configurator graphql-gateway
 ```
 
 ### Local service URLs
@@ -152,10 +152,18 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up -
 | Basket source schema | <http://localhost:5004/graphql/basket> | Basket GraphQL endpoint |
 | Ordering source schema | <http://localhost:5004/graphql/ordering> | Ordering GraphQL endpoint |
 | Keycloak | <http://localhost:9090> | Identity provider (`eshoprealm`) |
-| Seq | <http://localhost:9091> | Structured-log UI |
+| OpenSearch Dashboards | <http://localhost:5601> | Logs, sampled traces, audit searches, dashboards, and alerts |
 | RabbitMQ management | <http://localhost:15672> | Broker administration UI |
 | PostgreSQL | `localhost:5434` | Development database |
 | Redis | `localhost:6379` | Distributed basket cache |
+
+OpenSearch Dashboards provides native trace and span lists, timelines, and
+drill-down from the stored `otel-v1-apm-span-*` data. For a clearer operational
+view, open **Dashboards > Eshop Trace Explorer** for status flags, trace and
+span tables, and a parent/child waterfall. Its native service-map view is
+intentionally empty; see the
+[known observability gap](src/docker-config/observability/README.md#known-observability-gap)
+for the Collector-only compatibility index and release-gated topology plan.
 
 The sample Compose credentials for PostgreSQL and RabbitMQ are `eshopdb` / `eshopdb`. They are development-only values and must not be reused in production.
 

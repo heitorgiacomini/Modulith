@@ -15,8 +15,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/IAggregate.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: IAggregate
     path: ../src/Shared/Shared/DDD/IAggregate.cs
     startLine: 2
@@ -32,10 +32,6 @@ items:
   - Shared.DDD.IAggregate.DomainEvents
   - Shared.DDD.IAggregate.ClearDomainEvents
   - Shared.DDD.IEntity{{T}}.Id
-  - Shared.DDD.IEntity.CreatedAt
-  - Shared.DDD.IEntity.CreatedBy
-  - Shared.DDD.IEntity.LastModified
-  - Shared.DDD.IEntity.LastModifiedBy
   nameWithType.vb: IAggregate(Of T)
   fullName.vb: Shared.DDD.IAggregate(Of T)
   name.vb: IAggregate(Of T)
@@ -98,34 +94,6 @@ references:
   fullName: Shared.DDD.IEntity<T>.Id
   nameWithType.vb: IEntity(Of T).Id
   fullName.vb: Shared.DDD.IEntity(Of T).Id
-- uid: Shared.DDD.IEntity.CreatedAt
-  commentId: P:Shared.DDD.IEntity.CreatedAt
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
-  name: CreatedAt
-  nameWithType: IEntity.CreatedAt
-  fullName: Shared.DDD.IEntity.CreatedAt
-- uid: Shared.DDD.IEntity.CreatedBy
-  commentId: P:Shared.DDD.IEntity.CreatedBy
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
-  name: CreatedBy
-  nameWithType: IEntity.CreatedBy
-  fullName: Shared.DDD.IEntity.CreatedBy
-- uid: Shared.DDD.IEntity.LastModified
-  commentId: P:Shared.DDD.IEntity.LastModified
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
-  name: LastModified
-  nameWithType: IEntity.LastModified
-  fullName: Shared.DDD.IEntity.LastModified
-- uid: Shared.DDD.IEntity.LastModifiedBy
-  commentId: P:Shared.DDD.IEntity.LastModifiedBy
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
-  name: LastModifiedBy
-  nameWithType: IEntity.LastModifiedBy
-  fullName: Shared.DDD.IEntity.LastModifiedBy
 - uid: Shared.DDD.IAggregate
   commentId: T:Shared.DDD.IAggregate
   parent: Shared.DDD
@@ -168,13 +136,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Shared.DDD.IEntity
-  commentId: T:Shared.DDD.IEntity
-  parent: Shared.DDD
-  href: Shared.DDD.IEntity.html
-  name: IEntity
-  nameWithType: IEntity
-  fullName: Shared.DDD.IEntity
 - uid: Shared.DDD.IEntity`1
   commentId: T:Shared.DDD.IEntity`1
   href: Shared.DDD.IEntity-1.html

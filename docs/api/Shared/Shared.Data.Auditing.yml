@@ -1,0 +1,116 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  id: Shared.Data.Auditing
+  children:
+  - Shared.Data.Auditing.AuditActorV1
+  - Shared.Data.Auditing.AuditCategory
+  - Shared.Data.Auditing.AuditEventV1
+  - Shared.Data.Auditing.AuditOutcome
+  - Shared.Data.Auditing.AuditSensitiveAttribute
+  - Shared.Data.Auditing.AuditSubjectV1
+  - Shared.Data.Auditing.AuditValueChangeV1
+  - Shared.Data.Auditing.IAuditTrail
+  - Shared.Data.Auditing.ICurrentUser
+  langs:
+  - csharp
+  - vb
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  type: Namespace
+  assemblies:
+  - Shared
+references:
+- uid: Shared.Data.Auditing.AuditCategory
+  commentId: T:Shared.Data.Auditing.AuditCategory
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditCategory.html
+  name: AuditCategory
+  nameWithType: AuditCategory
+  fullName: Shared.Data.Auditing.AuditCategory
+- uid: Shared.Data.Auditing.AuditOutcome
+  commentId: T:Shared.Data.Auditing.AuditOutcome
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditOutcome.html
+  name: AuditOutcome
+  nameWithType: AuditOutcome
+  fullName: Shared.Data.Auditing.AuditOutcome
+- uid: Shared.Data.Auditing.AuditActorV1
+  commentId: T:Shared.Data.Auditing.AuditActorV1
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditActorV1.html
+  name: AuditActorV1
+  nameWithType: AuditActorV1
+  fullName: Shared.Data.Auditing.AuditActorV1
+- uid: Shared.Data.Auditing.AuditSubjectV1
+  commentId: T:Shared.Data.Auditing.AuditSubjectV1
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditSubjectV1.html
+  name: AuditSubjectV1
+  nameWithType: AuditSubjectV1
+  fullName: Shared.Data.Auditing.AuditSubjectV1
+- uid: Shared.Data.Auditing.AuditValueChangeV1
+  commentId: T:Shared.Data.Auditing.AuditValueChangeV1
+  href: Shared.Data.Auditing.AuditValueChangeV1.html
+  name: AuditValueChangeV1
+  nameWithType: AuditValueChangeV1
+  fullName: Shared.Data.Auditing.AuditValueChangeV1
+- uid: Shared.Data.Auditing.AuditEventV1
+  commentId: T:Shared.Data.Auditing.AuditEventV1
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditEventV1.html
+  name: AuditEventV1
+  nameWithType: AuditEventV1
+  fullName: Shared.Data.Auditing.AuditEventV1
+- uid: Shared.Data.Auditing.AuditSensitiveAttribute
+  commentId: T:Shared.Data.Auditing.AuditSensitiveAttribute
+  href: Shared.Data.Auditing.AuditSensitiveAttribute.html
+  name: AuditSensitiveAttribute
+  nameWithType: AuditSensitiveAttribute
+  fullName: Shared.Data.Auditing.AuditSensitiveAttribute
+- uid: Shared.Data.Auditing.IAuditTrail
+  commentId: T:Shared.Data.Auditing.IAuditTrail
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.IAuditTrail.html
+  name: IAuditTrail
+  nameWithType: IAuditTrail
+  fullName: Shared.Data.Auditing.IAuditTrail
+- uid: Shared.Data.Auditing.ICurrentUser
+  commentId: T:Shared.Data.Auditing.ICurrentUser
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.ICurrentUser.html
+  name: ICurrentUser
+  nameWithType: ICurrentUser
+  fullName: Shared.Data.Auditing.ICurrentUser
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  href: Shared.html
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html

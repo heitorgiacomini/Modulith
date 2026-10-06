@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Pagination/PaginationRequest.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: PaginationRequest
     path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
     startLine: 1
@@ -55,8 +55,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Pagination/PaginationRequest.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
     startLine: 1
@@ -89,8 +89,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Pagination/PaginationRequest.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: PageIndex
     path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
     startLine: 1
@@ -118,8 +118,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Pagination/PaginationRequest.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: PageSize
     path: ../src/Shared/Shared/Pagination/PaginationRequest.cs
     startLine: 1

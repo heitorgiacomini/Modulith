@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Extentions.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Extentions
     path: ../src/Shared/Shared/Data/Extentions.cs
     startLine: 7
@@ -52,11 +52,11 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Extentions.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: UseMigration
     path: ../src/Shared/Shared/Data/Extentions.cs
-    startLine: 10
+    startLine: 9
   assemblies:
   - Shared
   namespace: Shared.Data

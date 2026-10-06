@@ -1,0 +1,701 @@
+### YamlMime:ManagedReference
+items:
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  commentId: T:Api.Infrastructure.CurrentTenantAuthorizationHandler
+  id: CurrentTenantAuthorizationHandler
+  parent: Api.Infrastructure
+  children:
+  - Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  - Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  langs:
+  - csharp
+  - vb
+  name: CurrentTenantAuthorizationHandler
+  nameWithType: CurrentTenantAuthorizationHandler
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  type: Class
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/CurrentTenantAuthorization.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: CurrentTenantAuthorizationHandler
+    path: ../src/Bootstrapper/Api/Infrastructure/CurrentTenantAuthorization.cs
+    startLine: 10
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: 'public sealed class CurrentTenantAuthorizationHandler : AuthorizationHandler<CurrentTenantRequirement>, IAuthorizationHandler'
+    content.vb: Public NotInheritable Class CurrentTenantAuthorizationHandler Inherits AuthorizationHandler(Of CurrentTenantRequirement) Implements IAuthorizationHandler
+  inheritance:
+  - System.Object
+  - Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}
+  implements:
+  - Microsoft.AspNetCore.Authorization.IAuthorizationHandler
+  inheritedMembers:
+  - Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  commentId: M:Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  id: '#ctor(Shared.Data.MultiTenancy.ICurrentTenant)'
+  parent: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  langs:
+  - csharp
+  - vb
+  name: CurrentTenantAuthorizationHandler(ICurrentTenant)
+  nameWithType: CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler(ICurrentTenant)
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler(Shared.Data.MultiTenancy.ICurrentTenant)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/CurrentTenantAuthorization.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: .ctor
+    path: ../src/Bootstrapper/Api/Infrastructure/CurrentTenantAuthorization.cs
+    startLine: 10
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  syntax:
+    content: public CurrentTenantAuthorizationHandler(ICurrentTenant currentTenant)
+    parameters:
+    - id: currentTenant
+      type: Shared.Data.MultiTenancy.ICurrentTenant
+    content.vb: Public Sub New(currentTenant As ICurrentTenant)
+  overload: Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor*
+  nameWithType.vb: CurrentTenantAuthorizationHandler.New(ICurrentTenant)
+  fullName.vb: Api.Infrastructure.CurrentTenantAuthorizationHandler.New(Shared.Data.MultiTenancy.ICurrentTenant)
+  name.vb: New(ICurrentTenant)
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  commentId: M:Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  id: HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  parent: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  langs:
+  - csharp
+  - vb
+  name: HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+  nameWithType: CurrentTenantAuthorizationHandler.HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, Api.Infrastructure.CurrentTenantRequirement)
+  type: Method
+  source:
+    remote:
+      path: src/Bootstrapper/Api/Infrastructure/CurrentTenantAuthorization.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: HandleRequirementAsync
+    path: ../src/Bootstrapper/Api/Infrastructure/CurrentTenantAuthorization.cs
+    startLine: 13
+  assemblies:
+  - Api
+  namespace: Api.Infrastructure
+  summary: Makes a decision if authorization is allowed based on a specific requirement.
+  example: []
+  syntax:
+    content: protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CurrentTenantRequirement requirement)
+    parameters:
+    - id: context
+      type: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+      description: The authorization context.
+    - id: requirement
+      type: Api.Infrastructure.CurrentTenantRequirement
+      description: The requirement to evaluate.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Overrides Function HandleRequirementAsync(context As AuthorizationHandlerContext, requirement As CurrentTenantRequirement) As Task
+  overridden: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  overload: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync*
+references:
+- uid: Api.Infrastructure
+  commentId: N:Api.Infrastructure
+  href: Api.html
+  name: Api.Infrastructure
+  nameWithType: Api.Infrastructure
+  fullName: Api.Infrastructure
+  spec.csharp:
+  - uid: Api
+    name: Api
+    href: Api.html
+  - name: .
+  - uid: Api.Infrastructure
+    name: Infrastructure
+    href: Api.Infrastructure.html
+  spec.vb:
+  - uid: Api
+    name: Api
+    href: Api.html
+  - name: .
+  - uid: Api.Infrastructure
+    name: Infrastructure
+    href: Api.Infrastructure.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}
+  commentId: T:Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}
+  parent: Microsoft.AspNetCore.Authorization
+  definition: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1
+  name: AuthorizationHandler<CurrentTenantRequirement>
+  nameWithType: AuthorizationHandler<CurrentTenantRequirement>
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandler<Api.Infrastructure.CurrentTenantRequirement>
+  nameWithType.vb: AuthorizationHandler(Of CurrentTenantRequirement)
+  fullName.vb: Microsoft.AspNetCore.Authorization.AuthorizationHandler(Of Api.Infrastructure.CurrentTenantRequirement)
+  name.vb: AuthorizationHandler(Of CurrentTenantRequirement)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+    name: AuthorizationHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1
+  - name: <
+  - uid: Api.Infrastructure.CurrentTenantRequirement
+    name: CurrentTenantRequirement
+    href: Api.Infrastructure.CurrentTenantRequirement.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+    name: AuthorizationHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Api.Infrastructure.CurrentTenantRequirement
+    name: CurrentTenantRequirement
+    href: Api.Infrastructure.CurrentTenantRequirement.html
+  - name: )
+- uid: Microsoft.AspNetCore.Authorization.IAuthorizationHandler
+  commentId: T:Microsoft.AspNetCore.Authorization.IAuthorizationHandler
+  parent: Microsoft.AspNetCore.Authorization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationhandler
+  name: IAuthorizationHandler
+  nameWithType: IAuthorizationHandler
+  fullName: Microsoft.AspNetCore.Authorization.IAuthorizationHandler
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  commentId: M:Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  parent: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}
+  definition: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handleasync
+  name: HandleAsync(AuthorizationHandlerContext)
+  nameWithType: AuthorizationHandler<CurrentTenantRequirement>.HandleAsync(AuthorizationHandlerContext)
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandler<Api.Infrastructure.CurrentTenantRequirement>.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  nameWithType.vb: AuthorizationHandler(Of CurrentTenantRequirement).HandleAsync(AuthorizationHandlerContext)
+  fullName.vb: Microsoft.AspNetCore.Authorization.AuthorizationHandler(Of Api.Infrastructure.CurrentTenantRequirement).HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+    name: HandleAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handleasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+    name: HandleAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handleasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+  commentId: T:Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1
+  name: AuthorizationHandler<TRequirement>
+  nameWithType: AuthorizationHandler<TRequirement>
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>
+  nameWithType.vb: AuthorizationHandler(Of TRequirement)
+  fullName.vb: Microsoft.AspNetCore.Authorization.AuthorizationHandler(Of TRequirement)
+  name.vb: AuthorizationHandler(Of TRequirement)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+    name: AuthorizationHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1
+  - name: <
+  - name: TRequirement
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1
+    name: AuthorizationHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TRequirement
+  - name: )
+- uid: Microsoft.AspNetCore.Authorization
+  commentId: N:Microsoft.AspNetCore.Authorization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Authorization
+  nameWithType: Microsoft.AspNetCore.Authorization
+  fullName: Microsoft.AspNetCore.Authorization
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Authorization
+    name: Authorization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Authorization
+    name: Authorization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  commentId: M:Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handleasync
+  name: HandleAsync(AuthorizationHandlerContext)
+  nameWithType: AuthorizationHandler<TRequirement>.HandleAsync(AuthorizationHandlerContext)
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  nameWithType.vb: AuthorizationHandler(Of TRequirement).HandleAsync(AuthorizationHandlerContext)
+  fullName.vb: Microsoft.AspNetCore.Authorization.AuthorizationHandler(Of TRequirement).HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+    name: HandleAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handleasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext)
+    name: HandleAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handleasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: )
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor*
+  commentId: Overload:Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor
+  href: Api.Infrastructure.CurrentTenantAuthorizationHandler.html#Api_Infrastructure_CurrentTenantAuthorizationHandler__ctor_Shared_Data_MultiTenancy_ICurrentTenant_
+  name: CurrentTenantAuthorizationHandler
+  nameWithType: CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler
+  nameWithType.vb: CurrentTenantAuthorizationHandler.New
+  fullName.vb: Api.Infrastructure.CurrentTenantAuthorizationHandler.New
+  name.vb: New
+- uid: Shared.Data.MultiTenancy.ICurrentTenant
+  commentId: T:Shared.Data.MultiTenancy.ICurrentTenant
+  parent: Shared.Data.MultiTenancy
+  name: ICurrentTenant
+  nameWithType: ICurrentTenant
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant
+- uid: Shared.Data.MultiTenancy
+  commentId: N:Shared.Data.MultiTenancy
+  name: Shared.Data.MultiTenancy
+  nameWithType: Shared.Data.MultiTenancy
+  fullName: Shared.Data.MultiTenancy
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+  - name: .
+  - uid: Shared.Data
+    name: Data
+  - name: .
+  - uid: Shared.Data.MultiTenancy
+    name: MultiTenancy
+  spec.vb:
+  - uid: Shared
+    name: Shared
+  - name: .
+  - uid: Shared.Data
+    name: Data
+  - name: .
+  - uid: Shared.Data.MultiTenancy
+    name: MultiTenancy
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  commentId: M:Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  parent: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}
+  definition: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,`0)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handlerequirementasync
+  name: HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+  nameWithType: AuthorizationHandler<CurrentTenantRequirement>.HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandler<Api.Infrastructure.CurrentTenantRequirement>.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, Api.Infrastructure.CurrentTenantRequirement)
+  nameWithType.vb: AuthorizationHandler(Of CurrentTenantRequirement).HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+  fullName.vb: Microsoft.AspNetCore.Authorization.AuthorizationHandler(Of Api.Infrastructure.CurrentTenantRequirement).HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, Api.Infrastructure.CurrentTenantRequirement)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+    name: HandleRequirementAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handlerequirementasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: ','
+  - name: " "
+  - uid: Api.Infrastructure.CurrentTenantRequirement
+    name: CurrentTenantRequirement
+    href: Api.Infrastructure.CurrentTenantRequirement.html
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler{Api.Infrastructure.CurrentTenantRequirement}.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+    name: HandleRequirementAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handlerequirementasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: ','
+  - name: " "
+  - uid: Api.Infrastructure.CurrentTenantRequirement
+    name: CurrentTenantRequirement
+    href: Api.Infrastructure.CurrentTenantRequirement.html
+  - name: )
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync*
+  commentId: Overload:Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync
+  href: Api.Infrastructure.CurrentTenantAuthorizationHandler.html#Api_Infrastructure_CurrentTenantAuthorizationHandler_HandleRequirementAsync_Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Api_Infrastructure_CurrentTenantRequirement_
+  name: HandleRequirementAsync
+  nameWithType: CurrentTenantAuthorizationHandler.HandleRequirementAsync
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+  commentId: T:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+  parent: Microsoft.AspNetCore.Authorization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  name: AuthorizationHandlerContext
+  nameWithType: AuthorizationHandlerContext
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+- uid: Api.Infrastructure.CurrentTenantRequirement
+  commentId: T:Api.Infrastructure.CurrentTenantRequirement
+  parent: Api.Infrastructure
+  href: Api.Infrastructure.CurrentTenantRequirement.html
+  name: CurrentTenantRequirement
+  nameWithType: CurrentTenantRequirement
+  fullName: Api.Infrastructure.CurrentTenantRequirement
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,`0)
+  commentId: M:Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handlerequirementasync
+  name: HandleRequirementAsync(AuthorizationHandlerContext, TRequirement)
+  nameWithType: AuthorizationHandler<TRequirement>.HandleRequirementAsync(AuthorizationHandlerContext, TRequirement)
+  fullName: Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, TRequirement)
+  nameWithType.vb: AuthorizationHandler(Of TRequirement).HandleRequirementAsync(AuthorizationHandlerContext, TRequirement)
+  fullName.vb: Microsoft.AspNetCore.Authorization.AuthorizationHandler(Of TRequirement).HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, TRequirement)
+  spec.csharp:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,`0)
+    name: HandleRequirementAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handlerequirementasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: ','
+  - name: " "
+  - name: TRequirement
+  - name: )
+  spec.vb:
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandler`1.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,`0)
+    name: HandleRequirementAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1.handlerequirementasync
+  - name: (
+  - uid: Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext
+    name: AuthorizationHandlerContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext
+  - name: ','
+  - name: " "
+  - name: TRequirement
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

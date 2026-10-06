@@ -1,0 +1,105 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.ISoftDelete
+  commentId: T:Shared.DDD.ISoftDelete
+  id: ISoftDelete
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.ISoftDelete.IsDeleted
+  langs:
+  - csharp
+  - vb
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Shared.DDD.ISoftDelete
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/ISoftDelete.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: ISoftDelete
+    path: ../src/Shared/Shared/DDD/ISoftDelete.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: public interface ISoftDelete
+    content.vb: Public Interface ISoftDelete
+- uid: Shared.DDD.ISoftDelete.IsDeleted
+  commentId: P:Shared.DDD.ISoftDelete.IsDeleted
+  id: IsDeleted
+  parent: Shared.DDD.ISoftDelete
+  langs:
+  - csharp
+  - vb
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/ISoftDelete.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsDeleted
+    path: ../src/Shared/Shared/DDD/ISoftDelete.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: bool IsDeleted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsDeleted As Boolean
+  overload: Shared.DDD.ISoftDelete.IsDeleted*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.ISoftDelete.IsDeleted*
+  commentId: Overload:Shared.DDD.ISoftDelete.IsDeleted
+  href: Shared.DDD.ISoftDelete.html#Shared_DDD_ISoftDelete_IsDeleted
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

@@ -1,0 +1,98 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IAuditedObject
+  commentId: T:Shared.DDD.IAuditedObject
+  id: IAuditedObject
+  parent: Shared.DDD
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IAuditedObject
+  nameWithType: IAuditedObject
+  fullName: Shared.DDD.IAuditedObject
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IAuditedObject
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 14
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IAuditedObject : ICreationAuditedObject, IModificationAuditedObject'
+    content.vb: Public Interface IAuditedObject Inherits ICreationAuditedObject, IModificationAuditedObject
+  inheritedMembers:
+  - Shared.DDD.ICreationAuditedObject.CreatedAt
+  - Shared.DDD.ICreationAuditedObject.CreatedBy
+  - Shared.DDD.IModificationAuditedObject.LastModified
+  - Shared.DDD.IModificationAuditedObject.LastModifiedBy
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.ICreationAuditedObject.CreatedAt
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedAt
+  parent: Shared.DDD.ICreationAuditedObject
+  href: Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedAt
+  name: CreatedAt
+  nameWithType: ICreationAuditedObject.CreatedAt
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedAt
+- uid: Shared.DDD.ICreationAuditedObject.CreatedBy
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedBy
+  parent: Shared.DDD.ICreationAuditedObject
+  href: Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedBy
+  name: CreatedBy
+  nameWithType: ICreationAuditedObject.CreatedBy
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedBy
+- uid: Shared.DDD.IModificationAuditedObject.LastModified
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModified
+  parent: Shared.DDD.IModificationAuditedObject
+  href: Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModified
+  name: LastModified
+  nameWithType: IModificationAuditedObject.LastModified
+  fullName: Shared.DDD.IModificationAuditedObject.LastModified
+- uid: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  parent: Shared.DDD.IModificationAuditedObject
+  href: Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: IModificationAuditedObject.LastModifiedBy
+  fullName: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+- uid: Shared.DDD.ICreationAuditedObject
+  commentId: T:Shared.DDD.ICreationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.ICreationAuditedObject.html
+  name: ICreationAuditedObject
+  nameWithType: ICreationAuditedObject
+  fullName: Shared.DDD.ICreationAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject
+  commentId: T:Shared.DDD.IModificationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IModificationAuditedObject.html
+  name: IModificationAuditedObject
+  nameWithType: IModificationAuditedObject
+  fullName: Shared.DDD.IModificationAuditedObject

@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Extensions/MediatRExtension.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: MediatRExtension
     path: ../src/Shared/Shared/Extensions/MediatRExtension.cs
     startLine: 7
@@ -52,8 +52,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Extensions/MediatRExtension.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: AddMediatRWithAssemblies
     path: ../src/Shared/Shared/Extensions/MediatRExtension.cs
     startLine: 9

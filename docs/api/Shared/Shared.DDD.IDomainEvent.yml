@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/IDomainEvent.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: IDomainEvent
     path: ../src/Shared/Shared/DDD/IDomainEvent.cs
     startLine: 4
@@ -43,8 +43,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/IDomainEvent.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: EventId
     path: ../src/Shared/Shared/DDD/IDomainEvent.cs
     startLine: 6
@@ -72,8 +72,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/IDomainEvent.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: OccurredOn
     path: ../src/Shared/Shared/DDD/IDomainEvent.cs
     startLine: 7
@@ -101,8 +101,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/IDomainEvent.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: EventType
     path: ../src/Shared/Shared/DDD/IDomainEvent.cs
     startLine: 8

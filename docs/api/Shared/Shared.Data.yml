@@ -4,6 +4,7 @@ items:
   commentId: N:Shared.Data
   id: Shared.Data
   children:
+  - Shared.Data.DataFilterModelBuilderExtensions
   - Shared.Data.Extentions
   langs:
   - csharp
@@ -15,6 +16,12 @@ items:
   assemblies:
   - Shared
 references:
+- uid: Shared.Data.DataFilterModelBuilderExtensions
+  commentId: T:Shared.Data.DataFilterModelBuilderExtensions
+  href: Shared.Data.DataFilterModelBuilderExtensions.html
+  name: DataFilterModelBuilderExtensions
+  nameWithType: DataFilterModelBuilderExtensions
+  fullName: Shared.Data.DataFilterModelBuilderExtensions
 - uid: Shared.Data.Extentions
   commentId: T:Shared.Data.Extentions
   href: Shared.Data.Extentions.html

@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Behaviors/ValidationBehavior.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: ValidationBehavior
     path: ../src/Shared/Shared/Behaviors/ValidationBehavior.cs
     startLine: 7
@@ -60,8 +60,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Behaviors/ValidationBehavior.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Behaviors/ValidationBehavior.cs
     startLine: 7
@@ -92,8 +92,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Behaviors/ValidationBehavior.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Handle
     path: ../src/Shared/Shared/Behaviors/ValidationBehavior.cs
     startLine: 12

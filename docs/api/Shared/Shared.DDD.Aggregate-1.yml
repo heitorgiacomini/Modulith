@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/Aggregate.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Aggregate
     path: ../src/Shared/Shared/DDD/Aggregate.cs
     startLine: 2
@@ -34,6 +34,8 @@ items:
   inheritance:
   - System.Object
   - Shared.DDD.Entity{{TId}}
+  derivedClasses:
+  - Shared.DDD.AuditedAggregate`1
   implements:
   - Shared.DDD.IAggregate{{TId}}
   - Shared.DDD.IAggregate
@@ -41,10 +43,6 @@ items:
   - Shared.DDD.IEntity
   inheritedMembers:
   - Shared.DDD.Entity{{TId}}.Id
-  - Shared.DDD.Entity{{TId}}.CreatedAt
-  - Shared.DDD.Entity{{TId}}.CreatedBy
-  - Shared.DDD.Entity{{TId}}.LastModified
-  - Shared.DDD.Entity{{TId}}.LastModifiedBy
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
@@ -69,11 +67,11 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/Aggregate.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: DomainEvents
     path: ../src/Shared/Shared/DDD/Aggregate.cs
-    startLine: 6
+    startLine: 7
   assemblies:
   - Shared
   namespace: Shared.DDD
@@ -103,11 +101,11 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/Aggregate.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: AddDomainEvent
     path: ../src/Shared/Shared/DDD/Aggregate.cs
-    startLine: 8
+    startLine: 9
   assemblies:
   - Shared
   namespace: Shared.DDD
@@ -134,11 +132,11 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/Aggregate.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: ClearDomainEvents
     path: ../src/Shared/Shared/DDD/Aggregate.cs
-    startLine: 12
+    startLine: 13
   assemblies:
   - Shared
   namespace: Shared.DDD
@@ -292,46 +290,6 @@ references:
   fullName: Shared.DDD.Entity<TId>.Id
   nameWithType.vb: Entity(Of TId).Id
   fullName.vb: Shared.DDD.Entity(Of TId).Id
-- uid: Shared.DDD.Entity{{TId}}.CreatedAt
-  commentId: P:Shared.DDD.Entity{`0}.CreatedAt
-  parent: Shared.DDD.Entity{{TId}}
-  definition: Shared.DDD.Entity`1.CreatedAt
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt
-  name: CreatedAt
-  nameWithType: Entity<TId>.CreatedAt
-  fullName: Shared.DDD.Entity<TId>.CreatedAt
-  nameWithType.vb: Entity(Of TId).CreatedAt
-  fullName.vb: Shared.DDD.Entity(Of TId).CreatedAt
-- uid: Shared.DDD.Entity{{TId}}.CreatedBy
-  commentId: P:Shared.DDD.Entity{`0}.CreatedBy
-  parent: Shared.DDD.Entity{{TId}}
-  definition: Shared.DDD.Entity`1.CreatedBy
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy
-  name: CreatedBy
-  nameWithType: Entity<TId>.CreatedBy
-  fullName: Shared.DDD.Entity<TId>.CreatedBy
-  nameWithType.vb: Entity(Of TId).CreatedBy
-  fullName.vb: Shared.DDD.Entity(Of TId).CreatedBy
-- uid: Shared.DDD.Entity{{TId}}.LastModified
-  commentId: P:Shared.DDD.Entity{`0}.LastModified
-  parent: Shared.DDD.Entity{{TId}}
-  definition: Shared.DDD.Entity`1.LastModified
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified
-  name: LastModified
-  nameWithType: Entity<TId>.LastModified
-  fullName: Shared.DDD.Entity<TId>.LastModified
-  nameWithType.vb: Entity(Of TId).LastModified
-  fullName.vb: Shared.DDD.Entity(Of TId).LastModified
-- uid: Shared.DDD.Entity{{TId}}.LastModifiedBy
-  commentId: P:Shared.DDD.Entity{`0}.LastModifiedBy
-  parent: Shared.DDD.Entity{{TId}}
-  definition: Shared.DDD.Entity`1.LastModifiedBy
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy
-  name: LastModifiedBy
-  nameWithType: Entity<TId>.LastModifiedBy
-  fullName: Shared.DDD.Entity<TId>.LastModifiedBy
-  nameWithType.vb: Entity(Of TId).LastModifiedBy
-  fullName.vb: Shared.DDD.Entity(Of TId).LastModifiedBy
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -641,38 +599,6 @@ references:
   fullName: Shared.DDD.Entity<T>.Id
   nameWithType.vb: Entity(Of T).Id
   fullName.vb: Shared.DDD.Entity(Of T).Id
-- uid: Shared.DDD.Entity`1.CreatedAt
-  commentId: P:Shared.DDD.Entity`1.CreatedAt
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt
-  name: CreatedAt
-  nameWithType: Entity<T>.CreatedAt
-  fullName: Shared.DDD.Entity<T>.CreatedAt
-  nameWithType.vb: Entity(Of T).CreatedAt
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
-- uid: Shared.DDD.Entity`1.CreatedBy
-  commentId: P:Shared.DDD.Entity`1.CreatedBy
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy
-  name: CreatedBy
-  nameWithType: Entity<T>.CreatedBy
-  fullName: Shared.DDD.Entity<T>.CreatedBy
-  nameWithType.vb: Entity(Of T).CreatedBy
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
-- uid: Shared.DDD.Entity`1.LastModified
-  commentId: P:Shared.DDD.Entity`1.LastModified
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified
-  name: LastModified
-  nameWithType: Entity<T>.LastModified
-  fullName: Shared.DDD.Entity<T>.LastModified
-  nameWithType.vb: Entity(Of T).LastModified
-  fullName.vb: Shared.DDD.Entity(Of T).LastModified
-- uid: Shared.DDD.Entity`1.LastModifiedBy
-  commentId: P:Shared.DDD.Entity`1.LastModifiedBy
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy
-  name: LastModifiedBy
-  nameWithType: Entity<T>.LastModifiedBy
-  fullName: Shared.DDD.Entity<T>.LastModifiedBy
-  nameWithType.vb: Entity(Of T).LastModifiedBy
-  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
 - uid: Shared.DDD.Aggregate`1.DomainEvents*
   commentId: Overload:Shared.DDD.Aggregate`1.DomainEvents
   href: Shared.DDD.Aggregate-1.html#Shared_DDD_Aggregate_1_DomainEvents

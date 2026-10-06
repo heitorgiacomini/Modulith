@@ -1,0 +1,30 @@
+{
+  "index_patterns": ["eshop-audit-*"],
+  "order": 1100,
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "plugins.index_state_management.policy_id": "eshop-audit-60d"
+  },
+  "mappings": {
+    "dynamic": true,
+    "properties": {
+      "eventId": { "type": "keyword" },
+      "schemaVersion": { "type": "integer" },
+      "occurredAtUtc": { "type": "date" },
+      "service": { "type": "keyword" },
+      "module": { "type": "keyword" },
+      "category": { "type": "keyword" },
+      "action": { "type": "keyword" },
+      "outcome": { "type": "keyword" },
+      "tenantId": { "type": "keyword" },
+      "actor": { "type": "object", "dynamic": true },
+      "subject": { "type": "object", "dynamic": true },
+      "traceId": { "type": "keyword" },
+      "spanId": { "type": "keyword" },
+      "correlationId": { "type": "keyword" },
+      "changes": { "type": "object", "dynamic": true },
+      "metadata": { "type": "object", "dynamic": true }
+    }
+  }
+}

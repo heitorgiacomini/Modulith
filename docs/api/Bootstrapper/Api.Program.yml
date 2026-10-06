@@ -4,8 +4,7 @@ items:
   commentId: T:Api.Program
   id: Program
   parent: Api
-  children:
-  - Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
+  children: []
   langs:
   - csharp
   - vb
@@ -16,11 +15,11 @@ items:
   source:
     remote:
       path: src/Bootstrapper/Api/Program.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Program
     path: ../src/Bootstrapper/Api/Program.cs
-    startLine: 5
+    startLine: 15
   assemblies:
   - Api
   namespace: Api
@@ -37,46 +36,6 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  commentId: M:Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  id: UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  parent: Api.Program
-  langs:
-  - csharp
-  - vb
-  name: UseSerilog(WebApplicationBuilder)
-  nameWithType: Program.UseSerilog(WebApplicationBuilder)
-  fullName: Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  type: Method
-  source:
-    remote:
-      path: src/Bootstrapper/Api/Program.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
-    id: UseSerilog
-    path: ../src/Bootstrapper/Api/Program.cs
-    startLine: 106
-  assemblies:
-  - Api
-  namespace: Api
-  summary: Configures Serilog as the logging provider for the application host.
-  remarks: >-
-    This method hooks Serilog into the generic host and instructs it to read
-
-    its configuration (sinks, minimum levels, enrichers, etc.) from the
-
-    application's configuration sources (for example, appsettings.json and environment variables).
-
-    Call this before building the <xref href="Microsoft.AspNetCore.Builder.WebApplication" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: public static void UseSerilog(WebApplicationBuilder webAppBuilder)
-    parameters:
-    - id: webAppBuilder
-      type: Microsoft.AspNetCore.Builder.WebApplicationBuilder
-      description: The <xref href="Microsoft.AspNetCore.Builder.WebApplicationBuilder" data-throw-if-not-resolved="false"></xref> used to configure the application and host.
-    content.vb: Public Shared Sub UseSerilog(webAppBuilder As WebApplicationBuilder)
-  overload: Api.Program.UseSerilog*
 references:
 - uid: Api
   commentId: N:Api
@@ -321,61 +280,3 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Microsoft.AspNetCore.Builder.WebApplicationBuilder
-  commentId: T:Microsoft.AspNetCore.Builder.WebApplicationBuilder
-  parent: Microsoft.AspNetCore.Builder
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.webapplicationbuilder
-  name: WebApplicationBuilder
-  nameWithType: WebApplicationBuilder
-  fullName: Microsoft.AspNetCore.Builder.WebApplicationBuilder
-- uid: Microsoft.AspNetCore.Builder.WebApplication
-  commentId: T:Microsoft.AspNetCore.Builder.WebApplication
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.webapplication
-  name: WebApplication
-  nameWithType: WebApplication
-  fullName: Microsoft.AspNetCore.Builder.WebApplication
-- uid: Api.Program.UseSerilog*
-  commentId: Overload:Api.Program.UseSerilog
-  href: Api.Program.html#Api_Program_UseSerilog_Microsoft_AspNetCore_Builder_WebApplicationBuilder_
-  name: UseSerilog
-  nameWithType: Program.UseSerilog
-  fullName: Api.Program.UseSerilog
-- uid: Microsoft.AspNetCore.Builder
-  commentId: N:Microsoft.AspNetCore.Builder
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/microsoft
-  name: Microsoft.AspNetCore.Builder
-  nameWithType: Microsoft.AspNetCore.Builder
-  fullName: Microsoft.AspNetCore.Builder
-  spec.csharp:
-  - uid: Microsoft
-    name: Microsoft
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/microsoft
-  - name: .
-  - uid: Microsoft.AspNetCore
-    name: AspNetCore
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
-  - name: .
-  - uid: Microsoft.AspNetCore.Builder
-    name: Builder
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder
-  spec.vb:
-  - uid: Microsoft
-    name: Microsoft
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/microsoft
-  - name: .
-  - uid: Microsoft.AspNetCore
-    name: AspNetCore
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
-  - name: .
-  - uid: Microsoft.AspNetCore.Builder
-    name: Builder
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.builder

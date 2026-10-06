@@ -5,11 +5,7 @@ items:
   id: Entity`1
   parent: Shared.DDD
   children:
-  - Shared.DDD.Entity`1.CreatedAt
-  - Shared.DDD.Entity`1.CreatedBy
   - Shared.DDD.Entity`1.Id
-  - Shared.DDD.Entity`1.LastModified
-  - Shared.DDD.Entity`1.LastModifiedBy
   langs:
   - csharp
   - vb
@@ -20,8 +16,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/Entity.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Entity
     path: ../src/Shared/Shared/DDD/Entity.cs
     startLine: 3
@@ -37,6 +33,7 @@ items:
   - System.Object
   derivedClasses:
   - Shared.DDD.Aggregate`1
+  - Shared.DDD.AuditedEntity`1
   implements:
   - Shared.DDD.IEntity{{T}}
   - Shared.DDD.IEntity
@@ -65,8 +62,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/DDD/Entity.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Id
     path: ../src/Shared/Shared/DDD/Entity.cs
     startLine: 5
@@ -85,142 +82,6 @@ items:
   - Shared.DDD.IEntity{{T}}.Id
   nameWithType.vb: Entity(Of T).Id
   fullName.vb: Shared.DDD.Entity(Of T).Id
-- uid: Shared.DDD.Entity`1.CreatedAt
-  commentId: P:Shared.DDD.Entity`1.CreatedAt
-  id: CreatedAt
-  parent: Shared.DDD.Entity`1
-  langs:
-  - csharp
-  - vb
-  name: CreatedAt
-  nameWithType: Entity<T>.CreatedAt
-  fullName: Shared.DDD.Entity<T>.CreatedAt
-  type: Property
-  source:
-    remote:
-      path: src/Shared/Shared/DDD/Entity.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
-    id: CreatedAt
-    path: ../src/Shared/Shared/DDD/Entity.cs
-    startLine: 6
-  assemblies:
-  - Shared
-  namespace: Shared.DDD
-  example: []
-  syntax:
-    content: public DateTime? CreatedAt { get; set; }
-    parameters: []
-    return:
-      type: System.Nullable{System.DateTime}
-    content.vb: Public Property CreatedAt As Date?
-  overload: Shared.DDD.Entity`1.CreatedAt*
-  implements:
-  - Shared.DDD.IEntity.CreatedAt
-  nameWithType.vb: Entity(Of T).CreatedAt
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
-- uid: Shared.DDD.Entity`1.CreatedBy
-  commentId: P:Shared.DDD.Entity`1.CreatedBy
-  id: CreatedBy
-  parent: Shared.DDD.Entity`1
-  langs:
-  - csharp
-  - vb
-  name: CreatedBy
-  nameWithType: Entity<T>.CreatedBy
-  fullName: Shared.DDD.Entity<T>.CreatedBy
-  type: Property
-  source:
-    remote:
-      path: src/Shared/Shared/DDD/Entity.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
-    id: CreatedBy
-    path: ../src/Shared/Shared/DDD/Entity.cs
-    startLine: 7
-  assemblies:
-  - Shared
-  namespace: Shared.DDD
-  example: []
-  syntax:
-    content: public string? CreatedBy { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: Public Property CreatedBy As String
-  overload: Shared.DDD.Entity`1.CreatedBy*
-  implements:
-  - Shared.DDD.IEntity.CreatedBy
-  nameWithType.vb: Entity(Of T).CreatedBy
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
-- uid: Shared.DDD.Entity`1.LastModified
-  commentId: P:Shared.DDD.Entity`1.LastModified
-  id: LastModified
-  parent: Shared.DDD.Entity`1
-  langs:
-  - csharp
-  - vb
-  name: LastModified
-  nameWithType: Entity<T>.LastModified
-  fullName: Shared.DDD.Entity<T>.LastModified
-  type: Property
-  source:
-    remote:
-      path: src/Shared/Shared/DDD/Entity.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
-    id: LastModified
-    path: ../src/Shared/Shared/DDD/Entity.cs
-    startLine: 8
-  assemblies:
-  - Shared
-  namespace: Shared.DDD
-  example: []
-  syntax:
-    content: public DateTime? LastModified { get; set; }
-    parameters: []
-    return:
-      type: System.Nullable{System.DateTime}
-    content.vb: Public Property LastModified As Date?
-  overload: Shared.DDD.Entity`1.LastModified*
-  implements:
-  - Shared.DDD.IEntity.LastModified
-  nameWithType.vb: Entity(Of T).LastModified
-  fullName.vb: Shared.DDD.Entity(Of T).LastModified
-- uid: Shared.DDD.Entity`1.LastModifiedBy
-  commentId: P:Shared.DDD.Entity`1.LastModifiedBy
-  id: LastModifiedBy
-  parent: Shared.DDD.Entity`1
-  langs:
-  - csharp
-  - vb
-  name: LastModifiedBy
-  nameWithType: Entity<T>.LastModifiedBy
-  fullName: Shared.DDD.Entity<T>.LastModifiedBy
-  type: Property
-  source:
-    remote:
-      path: src/Shared/Shared/DDD/Entity.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
-    id: LastModifiedBy
-    path: ../src/Shared/Shared/DDD/Entity.cs
-    startLine: 9
-  assemblies:
-  - Shared
-  namespace: Shared.DDD
-  example: []
-  syntax:
-    content: public string? LastModifiedBy { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: Public Property LastModifiedBy As String
-  overload: Shared.DDD.Entity`1.LastModifiedBy*
-  implements:
-  - Shared.DDD.IEntity.LastModifiedBy
-  nameWithType.vb: Entity(Of T).LastModifiedBy
-  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
 references:
 - uid: Shared.DDD
   commentId: N:Shared.DDD
@@ -576,125 +437,3 @@ references:
   name: T
   nameWithType: T
   fullName: T
-- uid: Shared.DDD.Entity`1.CreatedAt*
-  commentId: Overload:Shared.DDD.Entity`1.CreatedAt
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt
-  name: CreatedAt
-  nameWithType: Entity<T>.CreatedAt
-  fullName: Shared.DDD.Entity<T>.CreatedAt
-  nameWithType.vb: Entity(Of T).CreatedAt
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
-- uid: Shared.DDD.IEntity.CreatedAt
-  commentId: P:Shared.DDD.IEntity.CreatedAt
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
-  name: CreatedAt
-  nameWithType: IEntity.CreatedAt
-  fullName: Shared.DDD.IEntity.CreatedAt
-- uid: System.Nullable{System.DateTime}
-  commentId: T:System.Nullable{System.DateTime}
-  parent: System
-  definition: System.Nullable`1
-  href: https://learn.microsoft.com/dotnet/api/system.datetime
-  name: DateTime?
-  nameWithType: DateTime?
-  fullName: System.DateTime?
-  nameWithType.vb: Date?
-  fullName.vb: Date?
-  name.vb: Date?
-  spec.csharp:
-  - uid: System.DateTime
-    name: DateTime
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetime
-  - name: '?'
-  spec.vb:
-  - uid: System.DateTime
-    name: Date
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.datetime
-  - name: '?'
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: Shared.DDD.Entity`1.CreatedBy*
-  commentId: Overload:Shared.DDD.Entity`1.CreatedBy
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy
-  name: CreatedBy
-  nameWithType: Entity<T>.CreatedBy
-  fullName: Shared.DDD.Entity<T>.CreatedBy
-  nameWithType.vb: Entity(Of T).CreatedBy
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
-- uid: Shared.DDD.IEntity.CreatedBy
-  commentId: P:Shared.DDD.IEntity.CreatedBy
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
-  name: CreatedBy
-  nameWithType: IEntity.CreatedBy
-  fullName: Shared.DDD.IEntity.CreatedBy
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: Shared.DDD.Entity`1.LastModified*
-  commentId: Overload:Shared.DDD.Entity`1.LastModified
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified
-  name: LastModified
-  nameWithType: Entity<T>.LastModified
-  fullName: Shared.DDD.Entity<T>.LastModified
-  nameWithType.vb: Entity(Of T).LastModified
-  fullName.vb: Shared.DDD.Entity(Of T).LastModified
-- uid: Shared.DDD.IEntity.LastModified
-  commentId: P:Shared.DDD.IEntity.LastModified
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
-  name: LastModified
-  nameWithType: IEntity.LastModified
-  fullName: Shared.DDD.IEntity.LastModified
-- uid: Shared.DDD.Entity`1.LastModifiedBy*
-  commentId: Overload:Shared.DDD.Entity`1.LastModifiedBy
-  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy
-  name: LastModifiedBy
-  nameWithType: Entity<T>.LastModifiedBy
-  fullName: Shared.DDD.Entity<T>.LastModifiedBy
-  nameWithType.vb: Entity(Of T).LastModifiedBy
-  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
-- uid: Shared.DDD.IEntity.LastModifiedBy
-  commentId: P:Shared.DDD.IEntity.LastModifiedBy
-  parent: Shared.DDD.IEntity
-  href: Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
-  name: LastModifiedBy
-  nameWithType: IEntity.LastModifiedBy
-  fullName: Shared.DDD.IEntity.LastModifiedBy

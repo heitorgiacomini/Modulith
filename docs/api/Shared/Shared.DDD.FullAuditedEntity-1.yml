@@ -1,0 +1,843 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.FullAuditedEntity`1
+  commentId: T:Shared.DDD.FullAuditedEntity`1
+  id: FullAuditedEntity`1
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.FullAuditedEntity`1.DeletedAt
+  - Shared.DDD.FullAuditedEntity`1.DeletedBy
+  - Shared.DDD.FullAuditedEntity`1.IsDeleted
+  langs:
+  - csharp
+  - vb
+  name: FullAuditedEntity<T>
+  nameWithType: FullAuditedEntity<T>
+  fullName: Shared.DDD.FullAuditedEntity<T>
+  type: Class
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditedEntity.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: FullAuditedEntity
+    path: ../src/Shared/Shared/DDD/AuditedEntity.cs
+    startLine: 10
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public abstract class FullAuditedEntity<T> : AuditedEntity<T>, IEntity<T>, IEntity, IFullAuditedObject, IAuditedObject, ICreationAuditedObject, IModificationAuditedObject, IDeletionAuditedObject, ISoftDelete where T : struct'
+    typeParameters:
+    - id: T
+    content.vb: Public MustInherit Class FullAuditedEntity(Of T As Structure) Inherits AuditedEntity(Of T) Implements IEntity(Of T), IEntity, IFullAuditedObject, IAuditedObject, ICreationAuditedObject, IModificationAuditedObject, IDeletionAuditedObject, ISoftDelete
+  inheritance:
+  - System.Object
+  - Shared.DDD.Entity{{T}}
+  - Shared.DDD.AuditedEntity{{T}}
+  implements:
+  - Shared.DDD.IEntity{{T}}
+  - Shared.DDD.IEntity
+  - Shared.DDD.IFullAuditedObject
+  - Shared.DDD.IAuditedObject
+  - Shared.DDD.ICreationAuditedObject
+  - Shared.DDD.IModificationAuditedObject
+  - Shared.DDD.IDeletionAuditedObject
+  - Shared.DDD.ISoftDelete
+  inheritedMembers:
+  - Shared.DDD.AuditedEntity{{T}}.CreatedAt
+  - Shared.DDD.AuditedEntity{{T}}.CreatedBy
+  - Shared.DDD.AuditedEntity{{T}}.LastModified
+  - Shared.DDD.AuditedEntity{{T}}.LastModifiedBy
+  - Shared.DDD.Entity{{T}}.Id
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: FullAuditedEntity(Of T)
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T)
+  name.vb: FullAuditedEntity(Of T)
+- uid: Shared.DDD.FullAuditedEntity`1.IsDeleted
+  commentId: P:Shared.DDD.FullAuditedEntity`1.IsDeleted
+  id: IsDeleted
+  parent: Shared.DDD.FullAuditedEntity`1
+  langs:
+  - csharp
+  - vb
+  name: IsDeleted
+  nameWithType: FullAuditedEntity<T>.IsDeleted
+  fullName: Shared.DDD.FullAuditedEntity<T>.IsDeleted
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditedEntity.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsDeleted
+    path: ../src/Shared/Shared/DDD/AuditedEntity.cs
+    startLine: 12
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  example: []
+  syntax:
+    content: public bool IsDeleted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsDeleted As Boolean
+  overload: Shared.DDD.FullAuditedEntity`1.IsDeleted*
+  implements:
+  - Shared.DDD.ISoftDelete.IsDeleted
+  nameWithType.vb: FullAuditedEntity(Of T).IsDeleted
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).IsDeleted
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedAt
+  commentId: P:Shared.DDD.FullAuditedEntity`1.DeletedAt
+  id: DeletedAt
+  parent: Shared.DDD.FullAuditedEntity`1
+  langs:
+  - csharp
+  - vb
+  name: DeletedAt
+  nameWithType: FullAuditedEntity<T>.DeletedAt
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedAt
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditedEntity.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DeletedAt
+    path: ../src/Shared/Shared/DDD/AuditedEntity.cs
+    startLine: 13
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  example: []
+  syntax:
+    content: public DateTimeOffset? DeletedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Public Property DeletedAt As DateTimeOffset?
+  overload: Shared.DDD.FullAuditedEntity`1.DeletedAt*
+  implements:
+  - Shared.DDD.IDeletionAuditedObject.DeletedAt
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedAt
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedAt
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedBy
+  commentId: P:Shared.DDD.FullAuditedEntity`1.DeletedBy
+  id: DeletedBy
+  parent: Shared.DDD.FullAuditedEntity`1
+  langs:
+  - csharp
+  - vb
+  name: DeletedBy
+  nameWithType: FullAuditedEntity<T>.DeletedBy
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedBy
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditedEntity.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DeletedBy
+    path: ../src/Shared/Shared/DDD/AuditedEntity.cs
+    startLine: 14
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  example: []
+  syntax:
+    content: public Guid? DeletedBy { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property DeletedBy As Guid?
+  overload: Shared.DDD.FullAuditedEntity`1.DeletedBy*
+  implements:
+  - Shared.DDD.IDeletionAuditedObject.DeletedBy
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedBy
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedBy
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Shared.DDD.Entity{{T}}
+  commentId: T:Shared.DDD.Entity{`0}
+  parent: Shared.DDD
+  definition: Shared.DDD.Entity`1
+  href: Shared.DDD.Entity-1.html
+  name: Entity<T>
+  nameWithType: Entity<T>
+  fullName: Shared.DDD.Entity<T>
+  nameWithType.vb: Entity(Of T)
+  fullName.vb: Shared.DDD.Entity(Of T)
+  name.vb: Entity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.Entity`1
+    name: Entity
+    href: Shared.DDD.Entity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.Entity`1
+    name: Entity
+    href: Shared.DDD.Entity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.AuditedEntity{{T}}
+  commentId: T:Shared.DDD.AuditedEntity{`0}
+  parent: Shared.DDD
+  definition: Shared.DDD.AuditedEntity`1
+  href: Shared.DDD.AuditedEntity-1.html
+  name: AuditedEntity<T>
+  nameWithType: AuditedEntity<T>
+  fullName: Shared.DDD.AuditedEntity<T>
+  nameWithType.vb: AuditedEntity(Of T)
+  fullName.vb: Shared.DDD.AuditedEntity(Of T)
+  name.vb: AuditedEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity
+    href: Shared.DDD.AuditedEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity
+    href: Shared.DDD.AuditedEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IEntity{{T}}
+  commentId: T:Shared.DDD.IEntity{`0}
+  parent: Shared.DDD
+  definition: Shared.DDD.IEntity`1
+  href: Shared.DDD.IEntity-1.html
+  name: IEntity<T>
+  nameWithType: IEntity<T>
+  fullName: Shared.DDD.IEntity<T>
+  nameWithType.vb: IEntity(Of T)
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  name.vb: IEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IEntity
+  commentId: T:Shared.DDD.IEntity
+  parent: Shared.DDD
+  href: Shared.DDD.IEntity.html
+  name: IEntity
+  nameWithType: IEntity
+  fullName: Shared.DDD.IEntity
+- uid: Shared.DDD.IFullAuditedObject
+  commentId: T:Shared.DDD.IFullAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IFullAuditedObject.html
+  name: IFullAuditedObject
+  nameWithType: IFullAuditedObject
+  fullName: Shared.DDD.IFullAuditedObject
+- uid: Shared.DDD.IAuditedObject
+  commentId: T:Shared.DDD.IAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IAuditedObject.html
+  name: IAuditedObject
+  nameWithType: IAuditedObject
+  fullName: Shared.DDD.IAuditedObject
+- uid: Shared.DDD.ICreationAuditedObject
+  commentId: T:Shared.DDD.ICreationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.ICreationAuditedObject.html
+  name: ICreationAuditedObject
+  nameWithType: ICreationAuditedObject
+  fullName: Shared.DDD.ICreationAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject
+  commentId: T:Shared.DDD.IModificationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IModificationAuditedObject.html
+  name: IModificationAuditedObject
+  nameWithType: IModificationAuditedObject
+  fullName: Shared.DDD.IModificationAuditedObject
+- uid: Shared.DDD.IDeletionAuditedObject
+  commentId: T:Shared.DDD.IDeletionAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IDeletionAuditedObject.html
+  name: IDeletionAuditedObject
+  nameWithType: IDeletionAuditedObject
+  fullName: Shared.DDD.IDeletionAuditedObject
+- uid: Shared.DDD.ISoftDelete
+  commentId: T:Shared.DDD.ISoftDelete
+  parent: Shared.DDD
+  href: Shared.DDD.ISoftDelete.html
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Shared.DDD.ISoftDelete
+- uid: Shared.DDD.AuditedEntity{{T}}.CreatedAt
+  commentId: P:Shared.DDD.AuditedEntity{`0}.CreatedAt
+  parent: Shared.DDD.AuditedEntity{{T}}
+  definition: Shared.DDD.AuditedEntity`1.CreatedAt
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedAt
+  name: CreatedAt
+  nameWithType: AuditedEntity<T>.CreatedAt
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedAt
+  nameWithType.vb: AuditedEntity(Of T).CreatedAt
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedAt
+- uid: Shared.DDD.AuditedEntity{{T}}.CreatedBy
+  commentId: P:Shared.DDD.AuditedEntity{`0}.CreatedBy
+  parent: Shared.DDD.AuditedEntity{{T}}
+  definition: Shared.DDD.AuditedEntity`1.CreatedBy
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedBy
+  name: CreatedBy
+  nameWithType: AuditedEntity<T>.CreatedBy
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedBy
+  nameWithType.vb: AuditedEntity(Of T).CreatedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedBy
+- uid: Shared.DDD.AuditedEntity{{T}}.LastModified
+  commentId: P:Shared.DDD.AuditedEntity{`0}.LastModified
+  parent: Shared.DDD.AuditedEntity{{T}}
+  definition: Shared.DDD.AuditedEntity`1.LastModified
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModified
+  name: LastModified
+  nameWithType: AuditedEntity<T>.LastModified
+  fullName: Shared.DDD.AuditedEntity<T>.LastModified
+  nameWithType.vb: AuditedEntity(Of T).LastModified
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModified
+- uid: Shared.DDD.AuditedEntity{{T}}.LastModifiedBy
+  commentId: P:Shared.DDD.AuditedEntity{`0}.LastModifiedBy
+  parent: Shared.DDD.AuditedEntity{{T}}
+  definition: Shared.DDD.AuditedEntity`1.LastModifiedBy
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: AuditedEntity<T>.LastModifiedBy
+  fullName: Shared.DDD.AuditedEntity<T>.LastModifiedBy
+  nameWithType.vb: AuditedEntity(Of T).LastModifiedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModifiedBy
+- uid: Shared.DDD.Entity{{T}}.Id
+  commentId: P:Shared.DDD.Entity{`0}.Id
+  parent: Shared.DDD.Entity{{T}}
+  definition: Shared.DDD.Entity`1.Id
+  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_Id
+  name: Id
+  nameWithType: Entity<T>.Id
+  fullName: Shared.DDD.Entity<T>.Id
+  nameWithType.vb: Entity(Of T).Id
+  fullName.vb: Shared.DDD.Entity(Of T).Id
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.DDD.Entity`1
+  commentId: T:Shared.DDD.Entity`1
+  href: Shared.DDD.Entity-1.html
+  name: Entity<T>
+  nameWithType: Entity<T>
+  fullName: Shared.DDD.Entity<T>
+  nameWithType.vb: Entity(Of T)
+  fullName.vb: Shared.DDD.Entity(Of T)
+  name.vb: Entity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.Entity`1
+    name: Entity
+    href: Shared.DDD.Entity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.Entity`1
+    name: Entity
+    href: Shared.DDD.Entity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.AuditedEntity`1
+  commentId: T:Shared.DDD.AuditedEntity`1
+  href: Shared.DDD.AuditedEntity-1.html
+  name: AuditedEntity<T>
+  nameWithType: AuditedEntity<T>
+  fullName: Shared.DDD.AuditedEntity<T>
+  nameWithType.vb: AuditedEntity(Of T)
+  fullName.vb: Shared.DDD.AuditedEntity(Of T)
+  name.vb: AuditedEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity
+    href: Shared.DDD.AuditedEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity
+    href: Shared.DDD.AuditedEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.IEntity`1
+  commentId: T:Shared.DDD.IEntity`1
+  href: Shared.DDD.IEntity-1.html
+  name: IEntity<T>
+  nameWithType: IEntity<T>
+  fullName: Shared.DDD.IEntity<T>
+  nameWithType.vb: IEntity(Of T)
+  fullName.vb: Shared.DDD.IEntity(Of T)
+  name.vb: IEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.IEntity`1
+    name: IEntity
+    href: Shared.DDD.IEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.AuditedEntity`1.CreatedAt
+  commentId: P:Shared.DDD.AuditedEntity`1.CreatedAt
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedAt
+  name: CreatedAt
+  nameWithType: AuditedEntity<T>.CreatedAt
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedAt
+  nameWithType.vb: AuditedEntity(Of T).CreatedAt
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedAt
+- uid: Shared.DDD.AuditedEntity`1.CreatedBy
+  commentId: P:Shared.DDD.AuditedEntity`1.CreatedBy
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedBy
+  name: CreatedBy
+  nameWithType: AuditedEntity<T>.CreatedBy
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedBy
+  nameWithType.vb: AuditedEntity(Of T).CreatedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedBy
+- uid: Shared.DDD.AuditedEntity`1.LastModified
+  commentId: P:Shared.DDD.AuditedEntity`1.LastModified
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModified
+  name: LastModified
+  nameWithType: AuditedEntity<T>.LastModified
+  fullName: Shared.DDD.AuditedEntity<T>.LastModified
+  nameWithType.vb: AuditedEntity(Of T).LastModified
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModified
+- uid: Shared.DDD.AuditedEntity`1.LastModifiedBy
+  commentId: P:Shared.DDD.AuditedEntity`1.LastModifiedBy
+  href: Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModifiedBy
+  name: LastModifiedBy
+  nameWithType: AuditedEntity<T>.LastModifiedBy
+  fullName: Shared.DDD.AuditedEntity<T>.LastModifiedBy
+  nameWithType.vb: AuditedEntity(Of T).LastModifiedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModifiedBy
+- uid: Shared.DDD.Entity`1.Id
+  commentId: P:Shared.DDD.Entity`1.Id
+  href: Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_Id
+  name: Id
+  nameWithType: Entity<T>.Id
+  fullName: Shared.DDD.Entity<T>.Id
+  nameWithType.vb: Entity(Of T).Id
+  fullName.vb: Shared.DDD.Entity(Of T).Id
+- uid: Shared.DDD.FullAuditedEntity`1.IsDeleted*
+  commentId: Overload:Shared.DDD.FullAuditedEntity`1.IsDeleted
+  href: Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_IsDeleted
+  name: IsDeleted
+  nameWithType: FullAuditedEntity<T>.IsDeleted
+  fullName: Shared.DDD.FullAuditedEntity<T>.IsDeleted
+  nameWithType.vb: FullAuditedEntity(Of T).IsDeleted
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).IsDeleted
+- uid: Shared.DDD.ISoftDelete.IsDeleted
+  commentId: P:Shared.DDD.ISoftDelete.IsDeleted
+  parent: Shared.DDD.ISoftDelete
+  href: Shared.DDD.ISoftDelete.html#Shared_DDD_ISoftDelete_IsDeleted
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedAt*
+  commentId: Overload:Shared.DDD.FullAuditedEntity`1.DeletedAt
+  href: Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_DeletedAt
+  name: DeletedAt
+  nameWithType: FullAuditedEntity<T>.DeletedAt
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedAt
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedAt
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedAt
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedAt
+  parent: Shared.DDD.IDeletionAuditedObject
+  href: Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedAt
+  name: DeletedAt
+  nameWithType: IDeletionAuditedObject.DeletedAt
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedAt
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedBy*
+  commentId: Overload:Shared.DDD.FullAuditedEntity`1.DeletedBy
+  href: Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_DeletedBy
+  name: DeletedBy
+  nameWithType: FullAuditedEntity<T>.DeletedBy
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedBy
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedBy
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedBy
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedBy
+  parent: Shared.DDD.IDeletionAuditedObject
+  href: Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedBy
+  name: DeletedBy
+  nameWithType: IDeletionAuditedObject.DeletedBy
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedBy
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'

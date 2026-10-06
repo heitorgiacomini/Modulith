@@ -77,7 +77,7 @@ Don't assume every module mirrors the same nesting. Actual layout:
 - Global exceptions are formatted as `ProblemDetails` via `Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs` (registered in `Bootstrapper/Api/Program.cs`).
 
 ## Logging
-- Serilog is the default logging stack; config is read from `appsettings.json` / environment variables and includes a Seq sink.
+- Built-in `ILogger` events are exported through OpenTelemetry to the Collector and OpenSearch, with SimpleConsole retained for local output.
 
 ## Frontend (Angular web-client)
 - `src/web-client` is Angular (standalone components) + PrimeNG (Aura theme) + primeicons. It talks to the API's GraphQL endpoint (see `src/web-client/src/environments/environment.ts` → `graphqlUrl`).
@@ -88,7 +88,7 @@ Don't assume every module mirrors the same nesting. Actual layout:
 
 ## Dev workflows (Windows)
 - Run all commands from `src/` unless noted otherwise.
-- Run dependencies: `docker compose up -d` (Postgres, Redis, Seq, RabbitMQ, Keycloak defined in `docker-compose.yml` / `docker-compose.override.yml`).
+- Run dependencies: `docker compose up -d` (Postgres, Redis, RabbitMQ, Keycloak, OpenSearch, Dashboards, and the OpenTelemetry Collector are defined in `docker-compose.yml` / `docker-compose.override.yml`).
 - Run API host: `dotnet run --project Bootstrapper/Api/Api.csproj`.
 - Run Angular client: `cd web-client && npm start` (serves on `http://localhost:4200`).
 - Add a migration for a module — note the project path differs per module (see folder-layout warning above):
@@ -96,7 +96,7 @@ Don't assume every module mirrors the same nesting. Actual layout:
   - Catalog: `dotnet ef migrations add <Name> -p Modules/Catalog/Catalog/Catalog.csproj -s Bootstrapper/Api/Api.csproj`
   - Basket: `dotnet ef migrations add <Name> -p Modules/Basket/Basket.csproj -s Bootstrapper/Api/Api.csproj`
   - Ordering: `dotnet ef migrations add <Name> -p Modules/Ordering/Ordering.csproj -s Bootstrapper/Api/Api.csproj`
-- Local ports (see `docker-compose.override.yml`): API `http://localhost:5004` / HTTPS `6060`, Fusion gateway `5002`, web-client `4200`, Postgres `5434`, Redis `6379`, Seq ingestion `5341` / UI `9091`, RabbitMQ AMQP `5672` / management `15672`, and Keycloak `9090`.
+- Local ports (see `docker-compose.override.yml`): API `http://localhost:5004` / HTTPS `6060`, Fusion gateway `5002`, web-client `4200`, Postgres `5434`, Redis `6379`, OpenSearch `9200`, Dashboards `5601`, OTLP gRPC `4317` / HTTP `4318`, RabbitMQ AMQP `5672` / management `15672`, and Keycloak `9090`.
 
 ## Skills
 - Inspect `.github/skills/` before implementation and follow every applicable repository skill. The currently checked-in `concise-responses` skill controls chat response length.

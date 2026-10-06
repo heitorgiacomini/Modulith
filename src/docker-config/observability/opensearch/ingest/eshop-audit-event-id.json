@@ -1,0 +1,11 @@
+{
+  "description": "Use the immutable Eshop audit event ID as the OpenSearch document ID.",
+  "processors": [
+    {
+      "set": {
+        "field": "_id",
+        "value": "{{{eventId}}}"
+      }
+    }
+  ]
+}

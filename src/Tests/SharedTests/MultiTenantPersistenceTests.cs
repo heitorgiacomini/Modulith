@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging.Abstractions;
 using Shared.Data;
 using Shared.Data.Auditing;
 using Shared.Data.Filtering;
@@ -155,7 +154,7 @@ public sealed class MultiTenantPersistenceTests
     AuditableEntityInterceptor auditInterceptor = new(
       new TestCurrentUser(),
       currentTenant,
-      NullLogger<AuditableEntityInterceptor>.Instance);
+      new NullAuditTrail());
     DbContextOptions<TenantDbContext> options = new DbContextOptionsBuilder<TenantDbContext>()
       .UseInMemoryDatabase(databaseName)
       .AddInterceptors(auditInterceptor, new MultiTenantEntityInterceptor(currentTenant))
@@ -197,5 +196,12 @@ public sealed class MultiTenantPersistenceTests
     public string? UserName => "test-user";
     public bool IsAuthenticated => true;
     public string? TraceId => "test-trace";
+  }
+
+  private sealed class NullAuditTrail : IAuditTrail
+  {
+    public void Write(AuditEventV1 auditEvent)
+    {
+    }
   }
 }

@@ -17,14 +17,35 @@ items:
   - uid: Shared.DDD.Aggregate`1
     name: Aggregate<TId>
     type: Class
+  - uid: Shared.DDD.AuditedAggregate`1
+    name: AuditedAggregate<TId>
+    type: Class
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity<T>
+    type: Class
   - uid: Shared.DDD.Entity`1
     name: Entity<T>
+    type: Class
+  - uid: Shared.DDD.FullAuditedAggregate`1
+    name: FullAuditedAggregate<TId>
+    type: Class
+  - uid: Shared.DDD.FullAuditedEntity`1
+    name: FullAuditedEntity<T>
     type: Class
   - uid: Shared.DDD.IAggregate
     name: IAggregate
     type: Interface
   - uid: Shared.DDD.IAggregate`1
     name: IAggregate<T>
+    type: Interface
+  - uid: Shared.DDD.IAuditedObject
+    name: IAuditedObject
+    type: Interface
+  - uid: Shared.DDD.ICreationAuditedObject
+    name: ICreationAuditedObject
+    type: Interface
+  - uid: Shared.DDD.IDeletionAuditedObject
+    name: IDeletionAuditedObject
     type: Interface
   - uid: Shared.DDD.IDomainEvent
     name: IDomainEvent
@@ -35,13 +56,84 @@ items:
   - uid: Shared.DDD.IEntity`1
     name: IEntity<T>
     type: Interface
+  - uid: Shared.DDD.IFullAuditedObject
+    name: IFullAuditedObject
+    type: Interface
+  - uid: Shared.DDD.IModificationAuditedObject
+    name: IModificationAuditedObject
+    type: Interface
+  - uid: Shared.DDD.IMultiTenant
+    name: IMultiTenant
+    type: Interface
+  - uid: Shared.DDD.ISoftDelete
+    name: ISoftDelete
+    type: Interface
 - uid: Shared.Data
   name: Shared.Data
   type: Namespace
   items:
+  - uid: Shared.Data.DataFilterModelBuilderExtensions
+    name: DataFilterModelBuilderExtensions
+    type: Class
   - uid: Shared.Data.Extentions
     name: Extentions
     type: Class
+- uid: Shared.Data.Auditing
+  name: Shared.Data.Auditing
+  type: Namespace
+  items:
+  - uid: Shared.Data.Auditing.AuditActorV1
+    name: AuditActorV1
+    type: Class
+  - uid: Shared.Data.Auditing.AuditCategory
+    name: AuditCategory
+    type: Enum
+  - uid: Shared.Data.Auditing.AuditEventV1
+    name: AuditEventV1
+    type: Class
+  - uid: Shared.Data.Auditing.AuditOutcome
+    name: AuditOutcome
+    type: Enum
+  - uid: Shared.Data.Auditing.AuditSensitiveAttribute
+    name: AuditSensitiveAttribute
+    type: Class
+  - uid: Shared.Data.Auditing.AuditSubjectV1
+    name: AuditSubjectV1
+    type: Class
+  - uid: Shared.Data.Auditing.AuditValueChangeV1
+    name: AuditValueChangeV1
+    type: Class
+  - uid: Shared.Data.Auditing.IAuditTrail
+    name: IAuditTrail
+    type: Interface
+  - uid: Shared.Data.Auditing.ICurrentUser
+    name: ICurrentUser
+    type: Interface
+- uid: Shared.Data.Filtering
+  name: Shared.Data.Filtering
+  type: Namespace
+  items:
+  - uid: Shared.Data.Filtering.DataFilter
+    name: DataFilter
+    type: Class
+  - uid: Shared.Data.Filtering.DataFilterOptions
+    name: DataFilterOptions
+    type: Class
+  - uid: Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+    name: DataFilterServiceCollectionExtensions
+    type: Class
+  - uid: Shared.Data.Filtering.DataFilter`1
+    name: DataFilter<TFilter>
+    type: Class
+  - uid: Shared.Data.Filtering.IDataFilter
+    name: IDataFilter
+    type: Interface
+  - uid: Shared.Data.Filtering.IDataFilterContext
+    name: IDataFilterContext
+    type: Interface
+  - uid: Shared.Data.Filtering.IDataFilter`1
+    name: IDataFilter<TFilter>
+    type: Interface
 - uid: Shared.Data.Interceptors
   name: Shared.Data.Interceptors
   type: Namespace
@@ -54,6 +146,22 @@ items:
     type: Class
   - uid: Shared.Data.Interceptors.Extensions
     name: Extensions
+    type: Class
+  - uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor
+    name: MultiTenantEntityInterceptor
+    type: Class
+- uid: Shared.Data.MultiTenancy
+  name: Shared.Data.MultiTenancy
+  type: Namespace
+  items:
+  - uid: Shared.Data.MultiTenancy.CurrentTenant
+    name: CurrentTenant
+    type: Class
+  - uid: Shared.Data.MultiTenancy.ICurrentTenant
+    name: ICurrentTenant
+    type: Interface
+  - uid: Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+    name: TenantAuthorizationPolicies
     type: Class
 - uid: Shared.Data.Seed
   name: Shared.Data.Seed
@@ -68,6 +176,9 @@ items:
   items:
   - uid: Shared.Exceptions.BadRequestException
     name: BadRequestException
+    type: Class
+  - uid: Shared.Exceptions.ForbiddenException
+    name: ForbiddenException
     type: Class
   - uid: Shared.Exceptions.InternalServerException
     name: InternalServerException

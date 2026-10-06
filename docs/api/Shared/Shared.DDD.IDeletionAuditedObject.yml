@@ -1,0 +1,214 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.DDD.IDeletionAuditedObject
+  commentId: T:Shared.DDD.IDeletionAuditedObject
+  id: IDeletionAuditedObject
+  parent: Shared.DDD
+  children:
+  - Shared.DDD.IDeletionAuditedObject.DeletedAt
+  - Shared.DDD.IDeletionAuditedObject.DeletedBy
+  langs:
+  - csharp
+  - vb
+  name: IDeletionAuditedObject
+  nameWithType: IDeletionAuditedObject
+  fullName: Shared.DDD.IDeletionAuditedObject
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IDeletionAuditedObject
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 18
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: 'public interface IDeletionAuditedObject : ISoftDelete'
+    content.vb: Public Interface IDeletionAuditedObject Inherits ISoftDelete
+  inheritedMembers:
+  - Shared.DDD.ISoftDelete.IsDeleted
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedAt
+  id: DeletedAt
+  parent: Shared.DDD.IDeletionAuditedObject
+  langs:
+  - csharp
+  - vb
+  name: DeletedAt
+  nameWithType: IDeletionAuditedObject.DeletedAt
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DeletedAt
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 20
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: DateTimeOffset? DeletedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Property DeletedAt As DateTimeOffset?
+  overload: Shared.DDD.IDeletionAuditedObject.DeletedAt*
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedBy
+  id: DeletedBy
+  parent: Shared.DDD.IDeletionAuditedObject
+  langs:
+  - csharp
+  - vb
+  name: DeletedBy
+  nameWithType: IDeletionAuditedObject.DeletedBy
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/DDD/AuditingInterfaces.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: DeletedBy
+    path: ../src/Shared/Shared/DDD/AuditingInterfaces.cs
+    startLine: 21
+  assemblies:
+  - Shared
+  namespace: Shared.DDD
+  syntax:
+    content: Guid? DeletedBy { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Property DeletedBy As Guid?
+  overload: Shared.DDD.IDeletionAuditedObject.DeletedBy*
+references:
+- uid: Shared.DDD
+  commentId: N:Shared.DDD
+  href: Shared.html
+  name: Shared.DDD
+  nameWithType: Shared.DDD
+  fullName: Shared.DDD
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.DDD
+    name: DDD
+    href: Shared.DDD.html
+- uid: Shared.DDD.ISoftDelete.IsDeleted
+  commentId: P:Shared.DDD.ISoftDelete.IsDeleted
+  parent: Shared.DDD.ISoftDelete
+  href: Shared.DDD.ISoftDelete.html#Shared_DDD_ISoftDelete_IsDeleted
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+- uid: Shared.DDD.ISoftDelete
+  commentId: T:Shared.DDD.ISoftDelete
+  parent: Shared.DDD
+  href: Shared.DDD.ISoftDelete.html
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Shared.DDD.ISoftDelete
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedAt*
+  commentId: Overload:Shared.DDD.IDeletionAuditedObject.DeletedAt
+  href: Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedAt
+  name: DeletedAt
+  nameWithType: IDeletionAuditedObject.DeletedAt
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedAt
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedBy*
+  commentId: Overload:Shared.DDD.IDeletionAuditedObject.DeletedBy
+  href: Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedBy
+  name: DeletedBy
+  nameWithType: IDeletionAuditedObject.DeletedBy
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedBy
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'

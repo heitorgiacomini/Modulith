@@ -23,7 +23,7 @@ This directory contains the reusable building blocks used by the Accounts, Baske
 | Hot Chocolate | Hosts the module GraphQL schemas |
 | ASP.NET Core rate limiting | Enforces per-user or per-IP fixed-window quotas at each HTTP host |
 | Mapperly | Generates compile-time mappings inside each module; `src/Directory.Build.props` carries the shared build dependency and Shared owns no business mapper |
-| Serilog | Emits structured application and audit logs from the bootstrapper and shared infrastructure |
+| OpenTelemetry logging | Exports structured `ILogger` events with trace correlation through the Collector |
 
 The dependency direction should remain toward these projects. Shared projects must not reference Accounts, Basket, Catalog, Ordering, or Bootstrapper. Reusable host-level infrastructure belongs in `Shared.Hosting`, application-specific HTTP implementations belong in Bootstrapper, and business-specific implementations belong in their module.
 
@@ -148,7 +148,7 @@ Creation metadata is not overwritten during modification or deletion. Existing d
 
 ### Structured audit events
 
-Before saving, the interceptor captures pending changes. It emits the structured log only after EF reports a successful save. Failed or canceled saves discard pending events. Events include:
+Before saving, the interceptor captures pending changes. It sends an `AuditEventV1` to `IAuditTrail` only after EF reports a successful save. Failed or canceled saves discard pending events. Events include:
 
 - module, derived from the DbContext name;
 - entity type and ID;
@@ -156,12 +156,14 @@ Before saving, the interceptor captures pending changes. It emits the structured
 - actor GUID;
 - active Keycloak organization UUID as `TenantId`;
 - UTC timestamp;
-- request/activity trace ID;
+- trace, span, and correlation IDs from the current W3C activity;
 - old and new values for changed properties.
 
-Only `IAuditedObject` entities emit detailed audit events. Audit metadata fields and primary keys are excluded from the change dictionary. Values are redacted when a property is marked with `[AuditSensitive]` or its name indicates passwords, secrets, tokens, authorization data, payment/card information, email, phone, or address data.
+Only `IAuditedObject` entities emit detailed audit events. Audit metadata fields and primary keys are excluded from the change dictionary. Values are redacted when a property is marked with `[AuditSensitive]` or its name indicates passwords, secrets, tokens, authorization data, bodies/documents, payment/card information, email, phone, or address data.
 
-Serilog receives these structured events and sends them to the configured sinks, including Seq. There is no audit-history entity or audit database table.
+`FileAuditTrail` writes one JSON object per line, rotates files at 128 MiB, and retains at most eight files. OpenTelemetry Collector tails those files with persistent checkpoints and writes them directly to operator-only `eshop-audit-*` indexes. The OpenSearch ingest pipeline uses `eventId` as the document ID, making replay idempotent. Explicit business actions, sensitive reads, denials, failures, and administrative actions can use the same `IAuditTrail` contract.
+
+This is deliberately a best-effort operational trail, not an immutable compliance ledger. A crash after the database commit but before the audit file flush can lose an event. There is no audit-history entity, temporal-table dependency, audit database, tenant-facing query, or Angular audit UI.
 
 Each module registers the three EF interceptors and attaches all registered `ISaveChangesInterceptor` instances to its DbContext:
 
@@ -437,7 +439,7 @@ docker compose ps --all
 Run the real-token multi-tenancy acceptance verifier inside the Compose network:
 
 ```powershell
-docker compose run --rm --no-deps keycloak-verifier node /verify-multitenancy.mjs
+docker compose run --rm --no-deps keycloak-configurator node /verify-multitenancy.mjs
 ```
 
 Run the automated .NET and Angular checks from the repository root and the running web container:

@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Extensions/StringExtension.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: StringExtension
     path: ../src/Shared/Shared/Extensions/StringExtension.cs
     startLine: 2
@@ -52,8 +52,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Extensions/StringExtension.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: HasContent
     path: ../src/Shared/Shared/Extensions/StringExtension.cs
     startLine: 4

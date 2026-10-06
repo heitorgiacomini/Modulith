@@ -7,6 +7,8 @@ docker compose up --build -d
 docker compose ps --all
 ```
 
+Copy `src/.env.observability.example` to `src/.env` and replace all example passwords before deployment. OpenSearch Dashboards is available at `http://localhost:5601`; see the [observability runbook](../../src/docker-config/observability/README.md) for security roles, retention, audit guarantees, and production sampling guidance.
+
 The Angular client is available at `http://localhost:4200`. It sends composed GraphQL operations through the Fusion gateway at `http://localhost:5002/graphql` and REST requests directly to the modular API at `http://localhost:5004`.
 
 ## Rate limiting

@@ -5,6 +5,7 @@ items:
   id: Shared.Exceptions
   children:
   - Shared.Exceptions.BadRequestException
+  - Shared.Exceptions.ForbiddenException
   - Shared.Exceptions.InternalServerException
   - Shared.Exceptions.NotFoundException
   langs:
@@ -23,6 +24,12 @@ references:
   name: BadRequestException
   nameWithType: BadRequestException
   fullName: Shared.Exceptions.BadRequestException
+- uid: Shared.Exceptions.ForbiddenException
+  commentId: T:Shared.Exceptions.ForbiddenException
+  href: Shared.Exceptions.ForbiddenException.html
+  name: ForbiddenException
+  nameWithType: ForbiddenException
+  fullName: Shared.Exceptions.ForbiddenException
 - uid: Shared.Exceptions.InternalServerException
   commentId: T:Shared.Exceptions.InternalServerException
   href: Shared.Exceptions.InternalServerException.html

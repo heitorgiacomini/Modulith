@@ -1,0 +1,164 @@
+extensions:
+  basicauth/client:
+    client_auth:
+      username: ${env:OPENSEARCH_INGEST_USERNAME}
+      password: ${env:OPENSEARCH_INGEST_PASSWORD}
+  file_storage:
+    directory: /var/lib/otelcol
+    create_directory: true
+  health_check:
+    endpoint: 0.0.0.0:13133
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+  file_log/audit:
+    include:
+      - /var/log/eshop/audit/*.ndjson
+    exclude:
+      - /var/log/eshop/audit/*.tmp
+    start_at: beginning
+    include_file_name: true
+    include_file_path: false
+    storage: file_storage
+    operators:
+      - id: parse-audit-json
+        type: json_parser
+        parse_from: body
+        parse_to: body
+        on_error: drop
+      - id: require-audit-event-id
+        type: filter
+        expr: 'body["eventId"] == nil || body["eventId"] == ""'
+      - id: use-audit-event-time
+        type: time_parser
+        parse_from: body["occurredAtUtc"]
+        layout_type: gotime
+        # Go's RFC3339 parser accepts the variable fractional-second precision
+        # emitted by System.Text.Json even when the layout omits the fraction.
+        layout: '2006-01-02T15:04:05Z07:00'
+        on_error: drop
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 384
+    spike_limit_mib: 96
+  tail_sampling:
+    decision_wait: 10s
+    num_traces: 50000
+    expected_new_traces_per_sec: 100
+    policies:
+      - name: errors
+        type: status_code
+        status_code:
+          status_codes: [ERROR]
+      - name: slow
+        type: latency
+        latency:
+          threshold_ms: 2000
+      - name: baseline
+        type: probabilistic
+        probabilistic:
+          sampling_percentage: ${env:OTEL_TAIL_SAMPLING_PERCENTAGE}
+  batch:
+    timeout: 2s
+    send_batch_size: 50
+    send_batch_max_size: 100
+
+connectors:
+  service_graph:
+    metrics_flush_interval: 60s
+
+exporters:
+  opensearch/application:
+    http:
+      endpoint: https://opensearch:9200
+      auth:
+        authenticator: basicauth/client
+      tls:
+        insecure_skip_verify: true
+    logs_index: eshop-app-logs
+    logs_index_time_format: yyyy.MM.dd
+    traces_index: otel-v1-apm-span
+    traces_index_time_format: yyyy.MM.dd
+    bulk_action: index
+    mapping:
+      mode: otel-v1
+      manage_index_template: false
+    sending_queue:
+      enabled: true
+      queue_size: 2048
+      storage: file_storage
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 30s
+      max_elapsed_time: 0s
+  opensearch/audit:
+    http:
+      endpoint: https://opensearch:9200
+      auth:
+        authenticator: basicauth/client
+      tls:
+        insecure_skip_verify: true
+    logs_index: eshop-audit
+    logs_index_time_format: yyyy.MM.dd
+    bulk_action: index
+    pipeline: eshop-audit-event-id
+    mapping:
+      mode: bodymap
+    sending_queue:
+      enabled: true
+      queue_size: 2048
+      storage: file_storage
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 30s
+      max_elapsed_time: 0s
+  # Collector 0.159.0 does not support metrics in the OpenSearch exporter.
+  # Keep accepting application and service-graph metrics without generating
+  # OTLP failures until the first official release containing PR #49570.
+  debug/metrics:
+    verbosity: basic
+    sampling_initial: 2
+    sampling_thereafter: 500
+
+service:
+  extensions: [basicauth/client, file_storage, health_check]
+  telemetry:
+    logs:
+      level: info
+    metrics:
+      level: normal
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: 0.0.0.0
+                port: 8888
+                without_scope_info: true
+                without_type_suffix: true
+                without_units: true
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, tail_sampling, batch]
+      exporters: [opensearch/application, service_graph]
+    metrics:
+      receivers: [otlp, service_graph]
+      processors: [memory_limiter, batch]
+      exporters: [debug/metrics]
+    logs/application:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [opensearch/application]
+    logs/audit:
+      receivers: [file_log/audit]
+      processors: [memory_limiter, batch]
+      exporters: [opensearch/audit]

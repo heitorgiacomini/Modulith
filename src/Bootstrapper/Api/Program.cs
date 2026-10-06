@@ -7,6 +7,8 @@ using Api.Infrastructure;
 using Shared.Data.Auditing;
 using Shared.Data.Filtering;
 using Shared.Data.MultiTenancy;
+using Shared.Hosting.Auditing;
+using Shared.Hosting.Observability;
 using Shared.Hosting.RateLimiting;
 
 namespace Api;
@@ -19,8 +21,8 @@ public partial class Program
   {
     WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
 
-    //webAppBuilder.Logging.ClearProviders();
-    UseSerilog(webAppBuilder);
+    _ = webAppBuilder.AddEshopObservability("eshop-api");
+    _ = webAppBuilder.Services.AddEshopAuditTrail(webAppBuilder.Configuration);
 
     Assembly catalogAssembly = typeof(CatalogModule).Assembly;
     Assembly basketAssembly = typeof(BasketModule).Assembly;
@@ -117,7 +119,7 @@ public partial class Program
     _ = webApp.MapGraphQLSchema("/graphql/ordering/schema.graphqls", OrderingModule.GraphQLSchemaName)
       .AllowAnonymous();
 
-    _ = webApp.UseSerilogRequestLogging();
+    _ = webApp.UseEshopRequestLogging();
     _ = webApp.UseExceptionHandler(options => { });
     _ = webApp.UseAuthentication();
     _ = webApp.UseRateLimiter();
@@ -155,24 +157,5 @@ public partial class Program
 
     //webApp.Run();
     await webApp.RunAsync();
-  }
-
-
-  /// <summary>
-  /// Configures Serilog as the logging provider for the application host.
-  /// </summary>
-  /// <param name="webAppBuilder">The <see cref="WebApplicationBuilder"/> used to configure the application and host.</param>
-  /// <remarks>
-  /// This method hooks Serilog into the generic host and instructs it to read
-  /// its configuration (sinks, minimum levels, enrichers, etc.) from the
-  /// application's configuration sources (for example, appsettings.json and environment variables).
-  /// Call this before building the <see cref="WebApplication"/>.
-  /// </remarks>
-  public static void UseSerilog(WebApplicationBuilder webAppBuilder)
-  {
-    _ = webAppBuilder.Host
-          .UseSerilog((context, config) =>
-            config.ReadFrom.Configuration(context.Configuration)
-        );
   }
 }

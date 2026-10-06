@@ -1,9 +1,11 @@
 using Gateway;
 using Keycloak.AuthServices.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Shared.Hosting.Observability;
 using Shared.Hosting.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddEshopObservability("eshop-gateway");
 
 var schemaPath = builder.Configuration["Fusion:SchemaPath"] ?? "gateway.far";
 await WaitForSchemaAsync(schemaPath, TimeSpan.FromMinutes(2));
@@ -25,6 +27,9 @@ builder.Services.PostConfigure<JwtBearerOptions>(
         options.TokenValidationParameters.ValidIssuer = publicIssuer;
     });
 builder.Services.AddAuthorization();
+builder.Services
+    .AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 builder.Services.AddApplicationRateLimiting(builder.Configuration, FrontendCorsPolicy);
 builder.Services.AddCors(options =>
 {
@@ -42,10 +47,12 @@ builder
     .AddFileSystemConfiguration(schemaPath);
 
 var app = builder.Build();
+app.UseEshopRequestLogging();
 app.UseAuthentication();
 app.UseRateLimiter();
 app.UseCors(FrontendCorsPolicy);
 app.UseAuthorization();
+app.MapReverseProxy().RequireAuthorization();
 app.MapGraphQL();
 await app.RunAsync();
 

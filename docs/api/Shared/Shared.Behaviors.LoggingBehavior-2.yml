@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Behaviors/LoggingBehavior.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: LoggingBehavior
     path: ../src/Shared/Shared/Behaviors/LoggingBehavior.cs
     startLine: 13
@@ -69,8 +69,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Behaviors/LoggingBehavior.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Behaviors/LoggingBehavior.cs
     startLine: 13
@@ -108,8 +108,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Behaviors/LoggingBehavior.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: Handle
     path: ../src/Shared/Shared/Behaviors/LoggingBehavior.cs
     startLine: 30

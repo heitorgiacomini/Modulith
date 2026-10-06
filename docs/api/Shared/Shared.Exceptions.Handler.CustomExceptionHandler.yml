@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: CustomExceptionHandler
     path: ../src/Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs
     startLine: 7
@@ -54,8 +54,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs
     startLine: 7
@@ -86,8 +86,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: TryHandleAsync
     path: ../src/Shared/Shared/Exceptions/Handler/CustomExceptionHandler.cs
     startLine: 11

@@ -1,0 +1,233 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Filtering.IDataFilterContext
+  commentId: T:Shared.Data.Filtering.IDataFilterContext
+  id: IDataFilterContext
+  parent: Shared.Data.Filtering
+  children:
+  - Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  - Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  - Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  langs:
+  - csharp
+  - vb
+  name: IDataFilterContext
+  nameWithType: IDataFilterContext
+  fullName: Shared.Data.Filtering.IDataFilterContext
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IDataFilterContext
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: public interface IDataFilterContext
+    content.vb: Public Interface IDataFilterContext
+- uid: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  id: IsSoftDeleteFilterEnabled
+  parent: Shared.Data.Filtering.IDataFilterContext
+  langs:
+  - csharp
+  - vb
+  name: IsSoftDeleteFilterEnabled
+  nameWithType: IDataFilterContext.IsSoftDeleteFilterEnabled
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsSoftDeleteFilterEnabled
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: bool IsSoftDeleteFilterEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsSoftDeleteFilterEnabled As Boolean
+  overload: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled*
+- uid: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  id: IsMultiTenantFilterEnabled
+  parent: Shared.Data.Filtering.IDataFilterContext
+  langs:
+  - csharp
+  - vb
+  name: IsMultiTenantFilterEnabled
+  nameWithType: IDataFilterContext.IsMultiTenantFilterEnabled
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsMultiTenantFilterEnabled
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: bool IsMultiTenantFilterEnabled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsMultiTenantFilterEnabled As Boolean
+  overload: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled*
+- uid: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  commentId: P:Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  id: CurrentTenantId
+  parent: Shared.Data.Filtering.IDataFilterContext
+  langs:
+  - csharp
+  - vb
+  name: CurrentTenantId
+  nameWithType: IDataFilterContext.CurrentTenantId
+  fullName: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: CurrentTenantId
+    path: ../src/Shared/Shared/Data/Filtering/IDataFilterContext.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Filtering
+  syntax:
+    content: Guid? CurrentTenantId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: ReadOnly Property CurrentTenantId As Guid?
+  overload: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId*
+references:
+- uid: Shared.Data.Filtering
+  commentId: N:Shared.Data.Filtering
+  href: Shared.html
+  name: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Filtering
+    name: Filtering
+    href: Shared.Data.Filtering.html
+- uid: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled*
+  commentId: Overload:Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  href: Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_IsSoftDeleteFilterEnabled
+  name: IsSoftDeleteFilterEnabled
+  nameWithType: IDataFilterContext.IsSoftDeleteFilterEnabled
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled*
+  commentId: Overload:Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  href: Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_IsMultiTenantFilterEnabled
+  name: IsMultiTenantFilterEnabled
+  nameWithType: IDataFilterContext.IsMultiTenantFilterEnabled
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+- uid: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId*
+  commentId: Overload:Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  href: Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_CurrentTenantId
+  name: CurrentTenantId
+  nameWithType: IDataFilterContext.CurrentTenantId
+  fullName: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

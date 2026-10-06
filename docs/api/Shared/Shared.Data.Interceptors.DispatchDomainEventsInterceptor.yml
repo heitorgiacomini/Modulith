@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: DispatchDomainEventsInterceptor
     path: ../src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
     startLine: 7
@@ -65,8 +65,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
     startLine: 7
@@ -97,8 +97,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: SavingChanges
     path: ../src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
     startLine: 9
@@ -155,8 +155,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: SavingChangesAsync
     path: ../src/Shared/Shared/Data/Interceptors/DispatchDomainEventsInterceptor.cs
     startLine: 15

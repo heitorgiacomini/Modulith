@@ -1,0 +1,295 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.MultiTenancy.ICurrentTenant
+  commentId: T:Shared.Data.MultiTenancy.ICurrentTenant
+  id: ICurrentTenant
+  parent: Shared.Data.MultiTenancy
+  children:
+  - Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  - Shared.Data.MultiTenancy.ICurrentTenant.Id
+  - Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  - Shared.Data.MultiTenancy.ICurrentTenant.Name
+  langs:
+  - csharp
+  - vb
+  name: ICurrentTenant
+  nameWithType: ICurrentTenant
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: ICurrentTenant
+    path: ../src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.MultiTenancy
+  syntax:
+    content: public interface ICurrentTenant
+    content.vb: Public Interface ICurrentTenant
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Id
+  commentId: P:Shared.Data.MultiTenancy.ICurrentTenant.Id
+  id: Id
+  parent: Shared.Data.MultiTenancy.ICurrentTenant
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ICurrentTenant.Id
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Id
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Id
+    path: ../src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.MultiTenancy
+  syntax:
+    content: Guid? Id { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: ReadOnly Property Id As Guid?
+  overload: Shared.Data.MultiTenancy.ICurrentTenant.Id*
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Name
+  commentId: P:Shared.Data.MultiTenancy.ICurrentTenant.Name
+  id: Name
+  parent: Shared.Data.MultiTenancy.ICurrentTenant
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ICurrentTenant.Name
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Name
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Name
+    path: ../src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.Data.MultiTenancy
+  syntax:
+    content: string? Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Shared.Data.MultiTenancy.ICurrentTenant.Name*
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  commentId: P:Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  id: IsAvailable
+  parent: Shared.Data.MultiTenancy.ICurrentTenant
+  langs:
+  - csharp
+  - vb
+  name: IsAvailable
+  nameWithType: ICurrentTenant.IsAvailable
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsAvailable
+    path: ../src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.Data.MultiTenancy
+  syntax:
+    content: bool IsAvailable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsAvailable As Boolean
+  overload: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable*
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  commentId: M:Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  id: Change(System.Nullable{System.Guid},System.String)
+  parent: Shared.Data.MultiTenancy.ICurrentTenant
+  langs:
+  - csharp
+  - vb
+  name: Change(Guid?, string?)
+  nameWithType: ICurrentTenant.Change(Guid?, string?)
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Guid?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Change
+    path: ../src/Shared/Shared/Data/MultiTenancy/ICurrentTenant.cs
+    startLine: 7
+  assemblies:
+  - Shared
+  namespace: Shared.Data.MultiTenancy
+  syntax:
+    content: IDisposable Change(Guid? id, string? name = null)
+    parameters:
+    - id: id
+      type: System.Nullable{System.Guid}
+    - id: name
+      type: System.String
+    return:
+      type: System.IDisposable
+    content.vb: Function Change(id As Guid?, name As String = Nothing) As IDisposable
+  overload: Shared.Data.MultiTenancy.ICurrentTenant.Change*
+  nameWithType.vb: ICurrentTenant.Change(Guid?, String)
+  fullName.vb: Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Guid?, String)
+  name.vb: Change(Guid?, String)
+references:
+- uid: Shared.Data.MultiTenancy
+  commentId: N:Shared.Data.MultiTenancy
+  href: Shared.html
+  name: Shared.Data.MultiTenancy
+  nameWithType: Shared.Data.MultiTenancy
+  fullName: Shared.Data.MultiTenancy
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.MultiTenancy
+    name: MultiTenancy
+    href: Shared.Data.MultiTenancy.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.MultiTenancy
+    name: MultiTenancy
+    href: Shared.Data.MultiTenancy.html
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Id*
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.Id
+  href: Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Id
+  name: Id
+  nameWithType: ICurrentTenant.Id
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Id
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Name*
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.Name
+  href: Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Name
+  name: Name
+  nameWithType: ICurrentTenant.Name
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable*
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  href: Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_IsAvailable
+  name: IsAvailable
+  nameWithType: ICurrentTenant.IsAvailable
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Change*
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.Change
+  href: Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Change_System_Nullable_System_Guid__System_String_
+  name: Change
+  nameWithType: ICurrentTenant.Change
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Change
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable

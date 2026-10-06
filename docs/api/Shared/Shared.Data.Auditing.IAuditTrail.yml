@@ -1,0 +1,102 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Auditing.IAuditTrail
+  commentId: T:Shared.Data.Auditing.IAuditTrail
+  id: IAuditTrail
+  parent: Shared.Data.Auditing
+  children:
+  - Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  langs:
+  - csharp
+  - vb
+  name: IAuditTrail
+  nameWithType: IAuditTrail
+  fullName: Shared.Data.Auditing.IAuditTrail
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/IAuditTrail.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IAuditTrail
+    path: ../src/Shared/Shared/Data/Auditing/IAuditTrail.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public interface IAuditTrail
+    content.vb: Public Interface IAuditTrail
+- uid: Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  commentId: M:Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  id: Write(Shared.Data.Auditing.AuditEventV1)
+  parent: Shared.Data.Auditing.IAuditTrail
+  langs:
+  - csharp
+  - vb
+  name: Write(AuditEventV1)
+  nameWithType: IAuditTrail.Write(AuditEventV1)
+  fullName: Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  type: Method
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/IAuditTrail.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Write
+    path: ../src/Shared/Shared/Data/Auditing/IAuditTrail.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: void Write(AuditEventV1 auditEvent)
+    parameters:
+    - id: auditEvent
+      type: Shared.Data.Auditing.AuditEventV1
+    content.vb: Sub Write(auditEvent As AuditEventV1)
+  overload: Shared.Data.Auditing.IAuditTrail.Write*
+references:
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  href: Shared.html
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+- uid: Shared.Data.Auditing.IAuditTrail.Write*
+  commentId: Overload:Shared.Data.Auditing.IAuditTrail.Write
+  href: Shared.Data.Auditing.IAuditTrail.html#Shared_Data_Auditing_IAuditTrail_Write_Shared_Data_Auditing_AuditEventV1_
+  name: Write
+  nameWithType: IAuditTrail.Write
+  fullName: Shared.Data.Auditing.IAuditTrail.Write
+- uid: Shared.Data.Auditing.AuditEventV1
+  commentId: T:Shared.Data.Auditing.AuditEventV1
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditEventV1.html
+  name: AuditEventV1
+  nameWithType: AuditEventV1
+  fullName: Shared.Data.Auditing.AuditEventV1

@@ -1,0 +1,280 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Auditing.ICurrentUser
+  commentId: T:Shared.Data.Auditing.ICurrentUser
+  id: ICurrentUser
+  parent: Shared.Data.Auditing
+  children:
+  - Shared.Data.Auditing.ICurrentUser.Id
+  - Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  - Shared.Data.Auditing.ICurrentUser.TraceId
+  - Shared.Data.Auditing.ICurrentUser.UserName
+  langs:
+  - csharp
+  - vb
+  name: ICurrentUser
+  nameWithType: ICurrentUser
+  fullName: Shared.Data.Auditing.ICurrentUser
+  type: Interface
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: ICurrentUser
+    path: ../src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+    startLine: 2
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public interface ICurrentUser
+    content.vb: Public Interface ICurrentUser
+- uid: Shared.Data.Auditing.ICurrentUser.Id
+  commentId: P:Shared.Data.Auditing.ICurrentUser.Id
+  id: Id
+  parent: Shared.Data.Auditing.ICurrentUser
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ICurrentUser.Id
+  fullName: Shared.Data.Auditing.ICurrentUser.Id
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Id
+    path: ../src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+    startLine: 4
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: Guid? Id { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: ReadOnly Property Id As Guid?
+  overload: Shared.Data.Auditing.ICurrentUser.Id*
+- uid: Shared.Data.Auditing.ICurrentUser.UserName
+  commentId: P:Shared.Data.Auditing.ICurrentUser.UserName
+  id: UserName
+  parent: Shared.Data.Auditing.ICurrentUser
+  langs:
+  - csharp
+  - vb
+  name: UserName
+  nameWithType: ICurrentUser.UserName
+  fullName: Shared.Data.Auditing.ICurrentUser.UserName
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: UserName
+    path: ../src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+    startLine: 5
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: string? UserName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property UserName As String
+  overload: Shared.Data.Auditing.ICurrentUser.UserName*
+- uid: Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  commentId: P:Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  id: IsAuthenticated
+  parent: Shared.Data.Auditing.ICurrentUser
+  langs:
+  - csharp
+  - vb
+  name: IsAuthenticated
+  nameWithType: ICurrentUser.IsAuthenticated
+  fullName: Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: IsAuthenticated
+    path: ../src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+    startLine: 6
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: bool IsAuthenticated { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsAuthenticated As Boolean
+  overload: Shared.Data.Auditing.ICurrentUser.IsAuthenticated*
+- uid: Shared.Data.Auditing.ICurrentUser.TraceId
+  commentId: P:Shared.Data.Auditing.ICurrentUser.TraceId
+  id: TraceId
+  parent: Shared.Data.Auditing.ICurrentUser
+  langs:
+  - csharp
+  - vb
+  name: TraceId
+  nameWithType: ICurrentUser.TraceId
+  fullName: Shared.Data.Auditing.ICurrentUser.TraceId
+  type: Property
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: TraceId
+    path: ../src/Shared/Shared/Data/Auditing/ICurrentUser.cs
+    startLine: 7
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: string? TraceId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property TraceId As String
+  overload: Shared.Data.Auditing.ICurrentUser.TraceId*
+references:
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  href: Shared.html
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+- uid: Shared.Data.Auditing.ICurrentUser.Id*
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.Id
+  href: Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_Id
+  name: Id
+  nameWithType: ICurrentUser.Id
+  fullName: Shared.Data.Auditing.ICurrentUser.Id
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Shared.Data.Auditing.ICurrentUser.UserName*
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.UserName
+  href: Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_UserName
+  name: UserName
+  nameWithType: ICurrentUser.UserName
+  fullName: Shared.Data.Auditing.ICurrentUser.UserName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Shared.Data.Auditing.ICurrentUser.IsAuthenticated*
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  href: Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_IsAuthenticated
+  name: IsAuthenticated
+  nameWithType: ICurrentUser.IsAuthenticated
+  fullName: Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Shared.Data.Auditing.ICurrentUser.TraceId*
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.TraceId
+  href: Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_TraceId
+  name: TraceId
+  nameWithType: ICurrentUser.TraceId
+  fullName: Shared.Data.Auditing.ICurrentUser.TraceId

@@ -5,7 +5,7 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "api": "StartWithoutDebugging",
-        "fusion-composer": "StartWithoutDebugging",
+        "graphql-gateway-configurator": "StartWithoutDebugging",
         "graphql-gateway": "StartWithoutDebugging",
         "web-client": "StartWithoutDebugging"
       }

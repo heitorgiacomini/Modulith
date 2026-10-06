@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Shared.Data.Auditing.AuditOutcome
+  commentId: T:Shared.Data.Auditing.AuditOutcome
+  id: AuditOutcome
+  parent: Shared.Data.Auditing
+  children:
+  - Shared.Data.Auditing.AuditOutcome.Denied
+  - Shared.Data.Auditing.AuditOutcome.Failed
+  - Shared.Data.Auditing.AuditOutcome.Succeeded
+  langs:
+  - csharp
+  - vb
+  name: AuditOutcome
+  nameWithType: AuditOutcome
+  fullName: Shared.Data.Auditing.AuditOutcome
+  type: Enum
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: AuditOutcome
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 13
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: public enum AuditOutcome
+    content.vb: Public Enum AuditOutcome
+- uid: Shared.Data.Auditing.AuditOutcome.Succeeded
+  commentId: F:Shared.Data.Auditing.AuditOutcome.Succeeded
+  id: Succeeded
+  parent: Shared.Data.Auditing.AuditOutcome
+  langs:
+  - csharp
+  - vb
+  name: Succeeded
+  nameWithType: AuditOutcome.Succeeded
+  fullName: Shared.Data.Auditing.AuditOutcome.Succeeded
+  type: Field
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Succeeded
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 15
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: Succeeded = 0
+    return:
+      type: Shared.Data.Auditing.AuditOutcome
+- uid: Shared.Data.Auditing.AuditOutcome.Failed
+  commentId: F:Shared.Data.Auditing.AuditOutcome.Failed
+  id: Failed
+  parent: Shared.Data.Auditing.AuditOutcome
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: AuditOutcome.Failed
+  fullName: Shared.Data.Auditing.AuditOutcome.Failed
+  type: Field
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Failed
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 16
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: Failed = 1
+    return:
+      type: Shared.Data.Auditing.AuditOutcome
+- uid: Shared.Data.Auditing.AuditOutcome.Denied
+  commentId: F:Shared.Data.Auditing.AuditOutcome.Denied
+  id: Denied
+  parent: Shared.Data.Auditing.AuditOutcome
+  langs:
+  - csharp
+  - vb
+  name: Denied
+  nameWithType: AuditOutcome.Denied
+  fullName: Shared.Data.Auditing.AuditOutcome.Denied
+  type: Field
+  source:
+    remote:
+      path: src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
+    id: Denied
+    path: ../src/Shared/Shared/Data/Auditing/AuditEventV1.cs
+    startLine: 17
+  assemblies:
+  - Shared
+  namespace: Shared.Data.Auditing
+  syntax:
+    content: Denied = 2
+    return:
+      type: Shared.Data.Auditing.AuditOutcome
+references:
+- uid: Shared.Data.Auditing
+  commentId: N:Shared.Data.Auditing
+  href: Shared.html
+  name: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  spec.csharp:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+  spec.vb:
+  - uid: Shared
+    name: Shared
+    href: Shared.html
+  - name: .
+  - uid: Shared.Data
+    name: Data
+    href: Shared.Data.html
+  - name: .
+  - uid: Shared.Data.Auditing
+    name: Auditing
+    href: Shared.Data.Auditing.html
+- uid: Shared.Data.Auditing.AuditOutcome
+  commentId: T:Shared.Data.Auditing.AuditOutcome
+  parent: Shared.Data.Auditing
+  href: Shared.Data.Auditing.AuditOutcome.html
+  name: AuditOutcome
+  nameWithType: AuditOutcome
+  fullName: Shared.Data.Auditing.AuditOutcome

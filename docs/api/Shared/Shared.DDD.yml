@@ -5,12 +5,23 @@ items:
   id: Shared.DDD
   children:
   - Shared.DDD.Aggregate`1
+  - Shared.DDD.AuditedAggregate`1
+  - Shared.DDD.AuditedEntity`1
   - Shared.DDD.Entity`1
+  - Shared.DDD.FullAuditedAggregate`1
+  - Shared.DDD.FullAuditedEntity`1
   - Shared.DDD.IAggregate
   - Shared.DDD.IAggregate`1
+  - Shared.DDD.IAuditedObject
+  - Shared.DDD.ICreationAuditedObject
+  - Shared.DDD.IDeletionAuditedObject
   - Shared.DDD.IDomainEvent
   - Shared.DDD.IEntity
   - Shared.DDD.IEntity`1
+  - Shared.DDD.IFullAuditedObject
+  - Shared.DDD.IModificationAuditedObject
+  - Shared.DDD.IMultiTenant
+  - Shared.DDD.ISoftDelete
   langs:
   - csharp
   - vb
@@ -46,6 +57,141 @@ references:
   - name: " "
   - name: TId
   - name: )
+- uid: Shared.DDD.AuditedAggregate`1
+  commentId: T:Shared.DDD.AuditedAggregate`1
+  href: Shared.DDD.AuditedAggregate-1.html
+  name: AuditedAggregate<TId>
+  nameWithType: AuditedAggregate<TId>
+  fullName: Shared.DDD.AuditedAggregate<TId>
+  nameWithType.vb: AuditedAggregate(Of TId)
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId)
+  name.vb: AuditedAggregate(Of TId)
+  spec.csharp:
+  - uid: Shared.DDD.AuditedAggregate`1
+    name: AuditedAggregate
+    href: Shared.DDD.AuditedAggregate-1.html
+  - name: <
+  - name: TId
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.AuditedAggregate`1
+    name: AuditedAggregate
+    href: Shared.DDD.AuditedAggregate-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TId
+  - name: )
+- uid: Shared.DDD.FullAuditedAggregate`1
+  commentId: T:Shared.DDD.FullAuditedAggregate`1
+  href: Shared.DDD.FullAuditedAggregate-1.html
+  name: FullAuditedAggregate<TId>
+  nameWithType: FullAuditedAggregate<TId>
+  fullName: Shared.DDD.FullAuditedAggregate<TId>
+  nameWithType.vb: FullAuditedAggregate(Of TId)
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId)
+  name.vb: FullAuditedAggregate(Of TId)
+  spec.csharp:
+  - uid: Shared.DDD.FullAuditedAggregate`1
+    name: FullAuditedAggregate
+    href: Shared.DDD.FullAuditedAggregate-1.html
+  - name: <
+  - name: TId
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.FullAuditedAggregate`1
+    name: FullAuditedAggregate
+    href: Shared.DDD.FullAuditedAggregate-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TId
+  - name: )
+- uid: Shared.DDD.AuditedEntity`1
+  commentId: T:Shared.DDD.AuditedEntity`1
+  href: Shared.DDD.AuditedEntity-1.html
+  name: AuditedEntity<T>
+  nameWithType: AuditedEntity<T>
+  fullName: Shared.DDD.AuditedEntity<T>
+  nameWithType.vb: AuditedEntity(Of T)
+  fullName.vb: Shared.DDD.AuditedEntity(Of T)
+  name.vb: AuditedEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity
+    href: Shared.DDD.AuditedEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.AuditedEntity`1
+    name: AuditedEntity
+    href: Shared.DDD.AuditedEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.FullAuditedEntity`1
+  commentId: T:Shared.DDD.FullAuditedEntity`1
+  href: Shared.DDD.FullAuditedEntity-1.html
+  name: FullAuditedEntity<T>
+  nameWithType: FullAuditedEntity<T>
+  fullName: Shared.DDD.FullAuditedEntity<T>
+  nameWithType.vb: FullAuditedEntity(Of T)
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T)
+  name.vb: FullAuditedEntity(Of T)
+  spec.csharp:
+  - uid: Shared.DDD.FullAuditedEntity`1
+    name: FullAuditedEntity
+    href: Shared.DDD.FullAuditedEntity-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Shared.DDD.FullAuditedEntity`1
+    name: FullAuditedEntity
+    href: Shared.DDD.FullAuditedEntity-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Shared.DDD.ICreationAuditedObject
+  commentId: T:Shared.DDD.ICreationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.ICreationAuditedObject.html
+  name: ICreationAuditedObject
+  nameWithType: ICreationAuditedObject
+  fullName: Shared.DDD.ICreationAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject
+  commentId: T:Shared.DDD.IModificationAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IModificationAuditedObject.html
+  name: IModificationAuditedObject
+  nameWithType: IModificationAuditedObject
+  fullName: Shared.DDD.IModificationAuditedObject
+- uid: Shared.DDD.IAuditedObject
+  commentId: T:Shared.DDD.IAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IAuditedObject.html
+  name: IAuditedObject
+  nameWithType: IAuditedObject
+  fullName: Shared.DDD.IAuditedObject
+- uid: Shared.DDD.IDeletionAuditedObject
+  commentId: T:Shared.DDD.IDeletionAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IDeletionAuditedObject.html
+  name: IDeletionAuditedObject
+  nameWithType: IDeletionAuditedObject
+  fullName: Shared.DDD.IDeletionAuditedObject
+- uid: Shared.DDD.IFullAuditedObject
+  commentId: T:Shared.DDD.IFullAuditedObject
+  parent: Shared.DDD
+  href: Shared.DDD.IFullAuditedObject.html
+  name: IFullAuditedObject
+  nameWithType: IFullAuditedObject
+  fullName: Shared.DDD.IFullAuditedObject
 - uid: Shared.DDD.Entity`1
   commentId: T:Shared.DDD.Entity`1
   href: Shared.DDD.Entity-1.html
@@ -142,6 +288,19 @@ references:
   name: IEntity
   nameWithType: IEntity
   fullName: Shared.DDD.IEntity
+- uid: Shared.DDD.IMultiTenant
+  commentId: T:Shared.DDD.IMultiTenant
+  href: Shared.DDD.IMultiTenant.html
+  name: IMultiTenant
+  nameWithType: IMultiTenant
+  fullName: Shared.DDD.IMultiTenant
+- uid: Shared.DDD.ISoftDelete
+  commentId: T:Shared.DDD.ISoftDelete
+  parent: Shared.DDD
+  href: Shared.DDD.ISoftDelete.html
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Shared.DDD.ISoftDelete
 - uid: Shared.DDD
   commentId: N:Shared.DDD
   href: Shared.html

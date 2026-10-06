@@ -5,9 +5,8 @@ using Microsoft.Extensions.Logging;
 namespace Shared.Behaviors;
 
 /// <summary>
-/// A MediatR pipeline behavior that logs the start and end of request handling,
-/// measures the time taken to handle the request and emits a warning when the
-/// handling time exceeds a configured threshold.
+/// A MediatR pipeline behavior that creates an internal activity and emits one
+/// structured completion event, including elapsed time and outcome.
 /// </summary>
 /// <typeparam name="TRequest">The request type. Must implement <see cref="IRequest{TResponse}"/>.</typeparam>
 /// <typeparam name="TResponse">The response type returned by the request handler.</typeparam>
@@ -17,12 +16,11 @@ public class LoggingBehavior<TRequest, TResponse>
   where TRequest : notnull, IRequest<TResponse>
   where TResponse : notnull
 {
+  private static readonly TimeSpan SlowRequestThreshold = TimeSpan.FromSeconds(3);
+
   /// <summary>
-  /// Handles the incoming request by:
-  /// 1. Logging the start of handling with request metadata.
-  /// 2. Measuring the time taken to invoke the next handler in the pipeline.
-  /// 3. Logging a performance warning if handling takes longer than the threshold.
-  /// 4. Logging the end of handling and returning the response.
+  /// Handles the request inside an internal activity and records one completion
+  /// event, using warning severity for slow requests and error severity for failures.
   /// </summary>
   /// <param name="request">The incoming request instance.</param>
   /// <param name="next">Delegate to the next handler in the pipeline.</param>
@@ -30,37 +28,56 @@ public class LoggingBehavior<TRequest, TResponse>
   /// <returns>The response returned by the next handler.</returns>
   public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
   {
-    // Log the start of the request handling. Include request and response type names for easier tracing.
-    logger.LogInformation(
-        "[START] Handle request={Request} - Response={Response} - RequestData={RequestData}",
-            typeof(TRequest).Name, typeof(TResponse).Name, request);
+    string requestType = typeof(TRequest).Name;
+    string responseType = typeof(TResponse).Name;
+    using Activity? activity = ApplicationTelemetry.ActivitySource.StartActivity(
+      $"MediatR {requestType}",
+      ActivityKind.Internal);
+    activity?.SetTag("mediatr.request.type", requestType);
+    activity?.SetTag("mediatr.response.type", responseType);
 
-    // Start a stopwatch to measure performance of the handler pipeline.
-    Stopwatch timer = new ();
-    timer.Start();
-
-    // Invoke the next behavior/handler in the pipeline.
-    // Note: MediatR's RequestHandlerDelegate does not accept a CancellationToken parameter here,
-    // so cancellation must be observed inside the handler itself if required.
-    TResponse response = await next();
-
-    // Stop the timer and calculate elapsed time.
-    timer.Stop();
-    TimeSpan timeTaken = timer.Elapsed;
-
-    // If the request took more than 3 seconds (using TotalSeconds for an accurate measurement),
-    // log a performance warning to help identify slow handlers.
-    if (timeTaken.TotalSeconds > 3)
+    Stopwatch timer = Stopwatch.StartNew();
+    try
     {
-      logger.LogWarning(
-          "[PERFORMANCE] The request {Request} took {TimeTakenSeconds} seconds.",
-          typeof(TRequest).Name, timeTaken.TotalSeconds);
+      // MediatR's delegate does not accept a token here; handlers observe their injected token.
+      TResponse response = await next();
+      timer.Stop();
+
+      activity?.SetTag("mediatr.outcome", "Success");
+      activity?.SetStatus(ActivityStatusCode.Ok);
+      LogLevel level = timer.Elapsed >= SlowRequestThreshold
+        ? LogLevel.Warning
+        : LogLevel.Information;
+      logger.Log(
+        level,
+        "Handled {RequestType} with {ResponseType} in {ElapsedMilliseconds:F2} ms ({Outcome})",
+        requestType,
+        responseType,
+        timer.Elapsed.TotalMilliseconds,
+        "Success");
+      return response;
     }
-
-    // Log the completion of request handling.
-    logger.LogInformation("[END] Handled {Request} with {Response}", typeof(TRequest).Name, typeof(TResponse).Name);
-
-    // Return the response from the handler pipeline.
-    return response;
+    catch (Exception exception)
+    {
+      timer.Stop();
+      activity?.SetTag("mediatr.outcome", "Failure");
+      activity?.SetStatus(ActivityStatusCode.Error, exception.Message);
+      activity?.AddEvent(new ActivityEvent(
+        "exception",
+        tags: new ActivityTagsCollection
+        {
+          ["exception.type"] = exception.GetType().FullName,
+          ["exception.message"] = exception.Message,
+          ["exception.stacktrace"] = exception.ToString()
+        }));
+      logger.LogError(
+        exception,
+        "Failed {RequestType} with {ResponseType} in {ElapsedMilliseconds:F2} ms ({Outcome})",
+        requestType,
+        responseType,
+        timer.Elapsed.TotalMilliseconds,
+        "Failure");
+      throw;
+    }
   }
 }

@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/NotFoundException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: NotFoundException
     path: ../src/Shared/Shared/Exceptions/NotFoundException.cs
     startLine: 2
@@ -65,8 +65,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/NotFoundException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Exceptions/NotFoundException.cs
     startLine: 4
@@ -97,8 +97,8 @@ items:
   source:
     remote:
       path: src/Shared/Shared/Exceptions/NotFoundException.cs
-      branch: main
-      repo: https://github.com/heitorgiacomini/Modulith.git
+      branch: audit-logs-tenant
+      repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Exceptions/NotFoundException.cs
     startLine: 8
