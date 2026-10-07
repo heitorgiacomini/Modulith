@@ -24,6 +24,12 @@ backend authentication. It is designed for one Linux VPS. Grafana must be
 reached through an existing TLS ingress, VPN, or SSH tunnel; that boundary is
 outside this Compose project.
 
+## Architecture diagram
+
+![Alloy collection, signal stores, and Grafana queries](../../../image.png)
+
+[Editable SVG](../../../architecture.svg). API/gateway traces and metrics use OTLP; Docker application logs and API audit files are collected separately. Grafana issues queries to the three stores; Tempo sends generated span metrics and service graphs to Prometheus. Regenerate the diagrams from the repository root with `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate-readme-diagrams.ps1 -PreserveExisting`.
+
 ## Versions, storage, and retention
 
 | Component | Version | Volume | Retention |

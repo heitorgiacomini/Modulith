@@ -1,15 +1,15 @@
 # .NET Modular Monolith E-Shop
 
-This repository is a reference e-commerce application built as a **modular monolith on .NET 10**. Catalog, Basket, Ordering, and Accounts are independently structured business modules hosted in one ASP.NET Core process. An Angular client uses a Hot Chocolate Fusion gateway for the composed GraphQL API and calls selected REST endpoints on the API host.
+This repository is a reference e-commerce application built as a **modular monolith on .NET 10**. Catalog, Basket, Ordering, and Accounts are independently structured business modules hosted in one ASP.NET Core process. An Angular client uses a Hot Chocolate Fusion gateway for the composed GraphQL API and sends REST calls through the gateway's authenticated YARP `/api` proxy. The API also exposes port 5004 for direct development access.
 
 
 ![Modular Monolith Architecture](ModularMonolithArchitecture.png)
 
-![Module Boundaries & Ownership](ModuleBoundaries&Ownership.png)
+![Module Boundaries & Ownership](ModuleBoundaries%26Ownership.png)
 
-![Docker Compose runtime and internal .NET modular-monolith architecture](image.png)
+![Runtime and internal module architecture with Grafana observability](image.png)
 
-The editable source for this diagram is [`architecture.svg`](architecture.svg).
+SVG companions: [runtime illustration](ModularMonolithArchitecture.svg) and [module ownership illustration](ModuleBoundaries%26Ownership.svg). The [two-panel architecture source](architecture.svg) is editable vector artwork. See [diagram regeneration](docs/articles/scripts.md#architecture-diagrams).
 
 ## Architecture at a glance
 
@@ -20,9 +20,9 @@ The Compose project in `src/` starts the following topology:
 1. The **Angular 21** client authenticates users with Keycloak.
 2. GraphQL requests go to the **Hot Chocolate Fusion gateway** at `http://localhost:5002/graphql`.
 3. The gateway delegates fields to the Catalog, Basket, and Ordering source schemas hosted by the modular API.
-4. REST requests, including the Accounts API, go directly to the API host at `http://localhost:5004`.
+4. REST requests, including Accounts, go to `http://localhost:5002/api`; YARP removes `/api` and forwards them to the API host. Direct API access remains available at `http://localhost:5004`.
 5. The short-lived **`graphql-gateway-configurator`** service downloads the three source schemas and generates `gateway.far` in a shared Docker volume before the gateway starts serving requests.
-6. The API uses PostgreSQL, Redis, RabbitMQ, and Keycloak, and exports observability signals through OpenTelemetry Collector to OpenSearch.
+6. The API uses PostgreSQL, Redis, RabbitMQ, and Keycloak, and exports traces and metrics through Grafana Alloy to Tempo and Prometheus. Alloy also collects Docker application logs and API audit files into Loki; Grafana provides the exploration UI.
 
 `graphql-gateway-configurator` is a startup job, not a long-running request-path service. If a source GraphQL schema changes, recreate the configurator and gateway so the Fusion archive is regenerated.
 
@@ -44,6 +44,7 @@ Shared projects are technical building blocks rather than business modules:
 - `Shared.Contracts` contains CQRS abstractions used with MediatR.
 - `Shared` contains common DDD types, validation/logging behaviors, EF Core interceptors, exceptions, pagination, and infrastructure extensions.
 - `Shared.Messaging` contains integration-event contracts and MassTransit/RabbitMQ setup.
+- `Shared.Hosting` contains shared rate limiting, telemetry, and API audit-trail infrastructure.
 - `Catalog.Contracts` is Catalog's explicit in-process contract consumed by Basket.
 
 Architecture tests enforce that business module assemblies do not directly depend on one another. The explicit Catalog contract is kept in a separate contracts assembly.
@@ -54,7 +55,7 @@ Architecture tests enforce that business module assemblies do not directly depen
 
 - Basket sends `GetProductByIdQuery`, defined by `Catalog.Contracts`, through the in-process MediatR pipeline before adding a product to a cart.
 - The Fusion gateway routes a single client GraphQL operation across the Catalog, Basket, and Ordering source schemas over HTTP.
-- Accounts operations use authenticated REST calls directly to the API host.
+- Accounts operations use authenticated REST calls through the gateway `/api/account/me` route, forwarded to API `/account/me`.
 
 ### Asynchronous communication
 
@@ -75,7 +76,7 @@ Architecture tests enforce that business module assemblies do not directly depen
 - REST endpoints with Carter and GraphQL with Hot Chocolate/Fusion
 - OAuth 2.0/OpenID Connect and JWT bearer authentication with Keycloak
 - Per-user and per-IP fixed-window rate limiting at the API and Fusion gateway
-- Structured, trace-correlated logging with OpenTelemetry Collector and OpenSearch
+- Structured, trace-correlated logs and API audit files collected by Alloy into Loki, with Tempo traces, Prometheus metrics, and Grafana dashboards
 - Angular and PrimeNG client organized by bounded context
 
 ## Prerequisites
@@ -89,6 +90,13 @@ PostgreSQL, Redis, RabbitMQ, and Keycloak installation is not required.
 ## Run with Docker Compose
 
 All commands in this section run from the repository root.
+
+### Configure observability
+
+Copy `src/.env.observability.example` to `src/.env` and set
+`GRAFANA_ADMIN_USER`, `GRAFANA_ADMIN_PASSWORD`, and `DOCKER_GID` before startup.
+On Docker Desktop, the Docker socket group is normally `0`; on Linux, use the
+numeric Docker group ID. See the [observability runbook](src/docker-config/observability/README.md#production-configuration-and-startup).
 
 ### Start the application
 
@@ -108,7 +116,7 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml logs
 ```
 
 When `graphql-gateway-configurator` exits with code `0`, schema composition completed
-successfully. The other application containers should remain running.
+successfully. `keycloak-configurator` also exits successfully after configuring organizations and authorization, and `observability-volume-init` prepares volume ownership. These are startup jobs; the application services remain running.
 
 ### Stop or reset the application
 
@@ -147,23 +155,20 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up -
 | --- | --- | --- |
 | Angular client | <http://localhost:4200> | Browser application |
 | Fusion GraphQL gateway | <http://localhost:5002/graphql> | Composed Catalog, Basket, and Ordering graph |
+| Gateway REST proxy | <http://localhost:5002/api> | Authenticated REST calls; removes `/api` before forwarding |
 | Modular API | <http://localhost:5004> | REST API and source GraphQL schemas |
 | Catalog source schema | <http://localhost:5004/graphql/catalog> | Catalog GraphQL endpoint |
 | Basket source schema | <http://localhost:5004/graphql/basket> | Basket GraphQL endpoint |
 | Ordering source schema | <http://localhost:5004/graphql/ordering> | Ordering GraphQL endpoint |
 | Keycloak | <http://localhost:9090> | Identity provider (`eshoprealm`) |
-| OpenSearch Dashboards | <http://localhost:5601> | Logs, sampled traces, audit searches, dashboards, and alerts |
+| Grafana | <http://localhost:5601> | Authenticated logs, traces, metrics, audit exploration, and dashboards |
+| Alloy diagnostics | <http://localhost:12345> | Collector component graph |
+| Alloy OTLP | `127.0.0.1:4317` / `127.0.0.1:4318` | Local gRPC / HTTP telemetry ingestion |
 | RabbitMQ management | <http://localhost:15672> | Broker administration UI |
 | PostgreSQL | `localhost:5434` | Development database |
 | Redis | `localhost:6379` | Distributed basket cache |
 
-OpenSearch Dashboards provides native trace and span lists, timelines, and
-drill-down from the stored `otel-v1-apm-span-*` data. For a clearer operational
-view, open **Dashboards > Eshop Trace Explorer** for status flags, trace and
-span tables, and a parent/child waterfall. Its native service-map view is
-intentionally empty; see the
-[known observability gap](src/docker-config/observability/README.md#known-observability-gap)
-for the Collector-only compatibility index and release-gated topology plan.
+Grafana queries Loki, Tempo, and Prometheus internally; these stores publish no host ports. Alloy collects application logs from labeled Docker containers and API audit NDJSON from a shared volume. API and gateway send OTLP traces and metrics to `http://alloy:4317`. See the [observability runbook](src/docker-config/observability/README.md) for retention, sampling, dashboards, and recovery.
 
 The sample Compose credentials for PostgreSQL and RabbitMQ are `eshopdb` / `eshopdb`. They are development-only values and must not be reused in production.
 
@@ -206,6 +211,10 @@ and Keycloak ports listed above.
 ## Authentication and authorization
 
 Compose imports `src/docker-config/keycloak/eshoprealm-realm.json` into Keycloak. Both the API and Fusion gateway validate Keycloak JWT bearer tokens, and the gateway forwards the caller's `Authorization` header to source schemas. Ordering applies scope-based authorization policies, while Accounts and user-owned Basket operations derive the customer identity from token claims.
+
+Keycloak organizations identify tenants by UUID. The API resolves tenant context from validated organization claims and requires tenant membership and the applicable customer/admin role. Module handlers enforce resource ownership and operation permissions; tenant filters and tenant-scoped cache keys isolate data. Message consumers and the Basket outbox restore tenant context explicitly.
+
+The API records audit NDJSON in a shared volume. Alloy collects it into Loki separately from ordinary application logs; Grafana supports actor, tenant, event, and trace correlation. Audit retention is 60 days, while application logs and traces retain 15 days.
 
 ## Rate limiting
 

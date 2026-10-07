@@ -8,7 +8,7 @@ This directory contains the reusable building blocks used by the Accounts, Baske
 | --- | --- | --- |
 | `Shared.Contracts` | Minimal CQRS contracts built on MediatR | Commands, queries, and their handlers in every module |
 | `Shared` | DDD primitives, auditing, EF Core filters and interceptors, pipeline behaviors, exceptions, pagination, and startup helpers | Bootstrapper and module projects |
-| `Shared.Hosting` | Reusable ASP.NET Core hosting concerns, including rate limiting and its HTTP rejection contract | API and gateway bootstrapper projects |
+| `Shared.Hosting` | Reusable ASP.NET Core hosting concerns: rate limiting, structured request logging, OpenTelemetry traces/metrics, and API audit-trail recording | API and gateway bootstrapper projects |
 | `Shared.Messaging` | Integration-event contracts and MassTransit/RabbitMQ registration | Modules that publish or consume cross-module events |
 
 ## Core libraries
@@ -23,7 +23,7 @@ This directory contains the reusable building blocks used by the Accounts, Baske
 | Hot Chocolate | Hosts the module GraphQL schemas |
 | ASP.NET Core rate limiting | Enforces per-user or per-IP fixed-window quotas at each HTTP host |
 | Mapperly | Generates compile-time mappings inside each module; `src/Directory.Build.props` carries the shared build dependency and Shared owns no business mapper |
-| OpenTelemetry logging | Exports structured `ILogger` events with trace correlation through the Collector |
+| OpenTelemetry and JSON console logging | Sends traces/metrics to Alloy; Alloy collects trace-correlated Docker stdout logs into Loki in Compose |
 
 The dependency direction should remain toward these projects. Shared projects must not reference Accounts, Basket, Catalog, Ordering, or Bootstrapper. Reusable host-level infrastructure belongs in `Shared.Hosting`, application-specific HTTP implementations belong in Bootstrapper, and business-specific implementations belong in their module.
 
@@ -499,3 +499,9 @@ Use this checklist when integrating another module:
 - Disabling a data filter changes visibility, not authorization.
 - Detailed audit logs are emitted only after a successful save and redact sensitive values.
 - Physical deletion remains available to entities that do not implement `ISoftDelete`.
+
+## Runtime observability and API audit trail
+
+API and Fusion/YARP gateway use `Shared.Hosting` to configure request logging and telemetry. Compose disables OTLP log export because Alloy reads the labeled Docker JSON stdout streams; OTLP traces and metrics still flow to Alloy. Alloy routes logs to Loki, traces to Tempo, and metrics to Prometheus. Grafana queries these stores internally.
+
+API audit recording writes NDJSON to the shared audit volume; it is separate from application logging. Alloy tails the files and preserves event, actor, tenant, and trace correlation metadata in Loki. The current stack retains application logs/traces for 15 days and audit records for 60 days. See the [observability runbook](../docker-config/observability/README.md) for file rotation, collection, retention, and recovery.

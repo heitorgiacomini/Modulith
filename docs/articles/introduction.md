@@ -1,21 +1,17 @@
-
 # Introduction
 
-Eshop is a Rapid Application Development (RAD) tool focused on generating enterprise-grade software.
-Instead of starting every project from scratch, Eshop aims to automate the repetitive setup work (solution structure, cross-cutting concerns, and common application patterns) so teams can ship features faster with consistent quality.
+E-Shop is a reference e-commerce application and learning companion for a .NET 10 modular monolith. Catalog, Basket, Ordering, and Accounts run in one ASP.NET Core API process while retaining ownership of their business models, handlers, persistence, and authorization rules.
 
-This repository is a reference implementation and learning companion for the kind of architecture Eshop targets.
-It demonstrates a modular-monolith approach with well-known patterns and supporting infrastructure, which Eshop is intended to produce (or integrate with) when scaffolding new systems.
+The Angular 21 / PrimeNG client uses a separate Hot Chocolate Fusion gateway for composed GraphQL operations and its authenticated YARP `/api` proxy for REST. Keycloak provides identity and organization-based tenancy. PostgreSQL stores module-owned schemas, Redis caches baskets, and RabbitMQ carries integration events through MassTransit.
 
-## What Eshop aims to generate
+![Runtime architecture](../images/ModularMonolithArchitecture.png)
 
-- A modular structure (bounded contexts/modules) with clear boundaries and contracts
-- A feature-first workflow (vertical slice) with CQRS-style commands/queries and validation
-- Production-ready defaults for persistence, messaging, caching, logging, rate limiting, and error handling
-- Consistent conventions across the codebase so teams can scale development safely
+## What the sample demonstrates
 
-## Why it exists
+- Feature-oriented vertical slices with CQRS, MediatR, FluentValidation, and Mapperly DTO mapping.
+- Explicit module contracts and architecture tests that prevent implementation dependencies between business modules.
+- Tenant-aware persistence, caching, authorization, and message processing.
+- A transactional Basket checkout outbox consumed by Ordering, plus Catalog price-change events consumed by Basket.
+- Independent API/gateway rate limits, structured logging, API audit records, and Alloy collection into Loki, Tempo, and Prometheus with Grafana exploration.
 
-Enterprise software typically needs the same foundational pieces: authentication, observability, background processing, reliable messaging, migrations, and predictable layering.
-Eshop’s goal is to provide those pieces as a repeatable baseline—reducing boilerplate, minimizing architectural drift, and making it easier to build and evolve large systems.
-
+Start with [Getting Started](getting-started.md), then read the [architecture guide](architecture.md). The repository demonstrates implemented application behavior; it does not provide a RAD code generator.

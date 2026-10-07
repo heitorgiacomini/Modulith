@@ -1,20 +1,20 @@
 # Getting Started
 
-Run the reference application from the repository's `src` directory:
+First copy `src/.env.observability.example` to `src/.env` and set the required Grafana credentials and `DOCKER_GID` (normally `0` on Docker Desktop; use the numeric Docker group on Linux). Then run from the repository's `src` directory:
 
 ```powershell
 docker compose up --build -d
 docker compose ps --all
 ```
 
-Copy `src/.env.observability.example` to `src/.env`, provide the required
-Grafana credentials, and set the Linux Docker group ID before deployment.
 Grafana is available at `http://localhost:5601`; see the
 [observability runbook](../../src/docker-config/observability/README.md) for
 Alloy Docker discovery, retention, audit guarantees, production sampling,
 encrypted snapshots, and restore testing.
 
-The Angular client is available at `http://localhost:4200`. It sends composed GraphQL operations through the Fusion gateway at `http://localhost:5002/graphql` and REST requests directly to the modular API at `http://localhost:5004`.
+The Angular client is available at `http://localhost:4200`. It sends composed GraphQL operations through the Fusion gateway at `http://localhost:5002/graphql` and REST requests through the authenticated gateway proxy at `http://localhost:5002/api`. The API remains directly accessible on port 5004 for development and hosts the three source schemas.
+
+See [architecture](architecture.md) for request paths, module ownership, startup jobs, and observability.
 
 ## Rate limiting
 
@@ -30,4 +30,4 @@ environment:
 
 Every request consumes quota, including CORS preflight, GraphQL schema downloads, health checks, authorization failures, and Fusion's downstream source requests. When a quota is exhausted, the host returns HTTP `429 Too Many Requests` as Problem Details and includes `Retry-After` when available.
 
-See the [main README](../../README.md#rate-limiting) for the complete topology and operational notes.
+See the [architecture guide](architecture.md#identity-tenancy-and-quotas) for the complete topology and operational notes.

@@ -2,6 +2,19 @@
 
 Each directory below `Modules` is an independently owned bounded context. A module owns its domain model, use cases, transport adapters, persistence, authorization rules, and tests. Modules may depend on the Shared projects and explicit contract projects, but they must not reference another module's implementation assembly.
 
+## Current runtime and boundaries
+
+Catalog, Basket, Ordering, and Accounts are registered in one API process. Catalog, Basket, and Ordering expose REST and GraphQL source schemas; Accounts exposes authenticated REST only. The Angular client reaches both transports through the separate Fusion/YARP gateway: `/graphql` for composition and `/api` for the REST proxy. Port 5004 exposes direct API access for development.
+
+| Module | PostgreSQL ownership | Additional boundary |
+| --- | --- | --- |
+| Catalog | `catalog` / `CatalogDbContext` | Explicit `Catalog.Contracts` lookup contract |
+| Basket | `basket` / `BasketDbContext` | Tenant-scoped Redis cache and transactional checkout outbox |
+| Ordering | `ordering` / `OrderingDbContext` | Consumes checkout integration events |
+| Accounts | `accounts` / `AccountsDbContext` | `/account/me` preferences, addresses, payment methods |
+
+Basket calls Catalog's `GetProductByIdQuery` through MediatR in-process. Catalog publishes `ProductPriceChangedIntegrationEvent` over RabbitMQ to Basket. Basket's checkout outbox publishes `BasketCheckoutIntegrationEvent` over RabbitMQ to Ordering. Tenant context accompanies each integration event and is restored during processing. Shared contracts do not grant access to another module's implementation or persistence.
+
 ## Standard layout
 
 ```text

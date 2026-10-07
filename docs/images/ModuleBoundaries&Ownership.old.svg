@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id='title'>Module Boundaries &amp; Ownership</title><desc id='desc'>One API process; module-owned data, explicit contracts, and tenant-aware communication</desc>
+<rect width="1600" height="1000" fill="white"/>
+<text x='65' y='83' font-family='Segoe UI,Arial,sans-serif' font-size='38' font-weight='700' fill='#13243b'>Module Boundaries &amp; Ownership</text>
+<text x='65' y='124' font-family='Segoe UI,Arial,sans-serif' font-size='21' font-weight='400' fill='#52647c'>One API process; module-owned data, explicit contracts, and tenant-aware communication</text>
+<rect x='35' y='145' width='1530' height='735' fill='none' stroke='#1e40af' stroke-width='2' stroke-dasharray='9 6'/>
+<text x='55' y='171' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='700' fill='#1e40af'>ASP.NET Core API host / shared PostgreSQL server, separate business schemas</text>
+<rect x='65' y='190' width='590' height='175' fill='white' stroke='#1e40af' stroke-width='2'/>
+<rect x='65' y='190' width='590' height='55' fill='#1e40af'/>
+<path d='M81 205 L95 208' stroke='white' stroke-width='2' fill='none'/>
+<path d='M95 208 L109 205' stroke='white' stroke-width='2' fill='none'/>
+<path d='M109 205 L109 229' stroke='white' stroke-width='2' fill='none'/>
+<path d='M109 229 L95 232' stroke='white' stroke-width='2' fill='none'/>
+<path d='M95 232 L81 229' stroke='white' stroke-width='2' fill='none'/>
+<path d='M81 229 L81 205' stroke='white' stroke-width='2' fill='none'/>
+<path d='M95 208 L95 232' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='227' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Catalog</text>
+<text x='87' y='272' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Products + pricing; REST + GraphQL</text>
+<text x='87' y='303' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>catalog schema / CatalogDbContext</text>
+<text x='87' y='334' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Catalog.Contracts: product lookup</text>
+<rect x='945' y='190' width='590' height='175' fill='white' stroke='#0f766e' stroke-width='2'/>
+<rect x='945' y='190' width='590' height='55' fill='#0f766e'/>
+<path d='M961 203 L966 203' stroke='white' stroke-width='2' fill='none'/>
+<path d='M966 203 L970 224' stroke='white' stroke-width='2' fill='none'/>
+<path d='M970 224 L988 224' stroke='white' stroke-width='2' fill='none'/>
+<path d='M968 209 L991 209' stroke='white' stroke-width='2' fill='none'/>
+<path d='M991 209 L988 220' stroke='white' stroke-width='2' fill='none'/>
+<path d='M988 220 L970 220' stroke='white' stroke-width='2' fill='none'/>
+<path d='M975 209 L975 220' stroke='white' stroke-width='2' fill='none'/>
+<path d='M983 209 L983 220' stroke='white' stroke-width='2' fill='none'/>
+<path d='M972 230 L974 230' stroke='white' stroke-width='2' fill='none'/>
+<path d='M985 230 L987 230' stroke='white' stroke-width='2' fill='none'/>
+<text x='1005' y='227' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Basket</text>
+<text x='967' y='272' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Carts + checkout; REST + GraphQL</text>
+<text x='967' y='303' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>basket schema / BasketDbContext + Redis</text>
+<text x='967' y='334' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Transactional checkout outbox</text>
+<path d='M945 225 L655 225 M666.4086 218.7675 L655 225 L666.4086 231.2325' fill='none' stroke='#1e40af' stroke-width='3' />
+<text x='680' y='202' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#1e40af'>MediatR product lookup</text>
+<path d='M655 320 L945 320 M933.5914 326.2325 L945 320 L933.5914 313.7675' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='680' y='292' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#ea580c'>Price change via RabbitMQ</text>
+<rect x='65' y='500' width='590' height='175' fill='white' stroke='#ea580c' stroke-width='2'/>
+<rect x='65' y='500' width='590' height='55' fill='#ea580c'/>
+<path d='M84 511 L103 511' stroke='white' stroke-width='2' fill='none'/>
+<path d='M103 511 L110 518' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 518 L110 542' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 542 L84 542' stroke='white' stroke-width='2' fill='none'/>
+<path d='M84 542 L84 511' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 523 L104 523' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 530 L104 530' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 537 L104 537' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='537' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Ordering</text>
+<text x='87' y='582' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Orders; REST + GraphQL</text>
+<text x='87' y='613' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>ordering schema / OrderingDbContext</text>
+<text x='87' y='644' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Consumes checkout; permission checks</text>
+<rect x='945' y='500' width='590' height='175' fill='white' stroke='#7c3aed' stroke-width='2'/>
+<rect x='945' y='500' width='590' height='55' fill='#7c3aed'/>
+<path d='M971 513 L982 513' stroke='white' stroke-width='2' fill='none'/>
+<path d='M982 513 L982 523' stroke='white' stroke-width='2' fill='none'/>
+<path d='M982 523 L971 523' stroke='white' stroke-width='2' fill='none'/>
+<path d='M971 523 L971 513' stroke='white' stroke-width='2' fill='none'/>
+<path d='M964 541 L964 534' stroke='white' stroke-width='2' fill='none'/>
+<path d='M964 534 L976 528' stroke='white' stroke-width='2' fill='none'/>
+<path d='M976 528 L989 534' stroke='white' stroke-width='2' fill='none'/>
+<path d='M989 534 L989 541' stroke='white' stroke-width='2' fill='none'/>
+<path d='M989 541 L964 541' stroke='white' stroke-width='2' fill='none'/>
+<text x='1005' y='537' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Accounts</text>
+<text x='967' y='582' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Authenticated /account/me REST only</text>
+<text x='967' y='613' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>accounts schema / AccountsDbContext</text>
+<text x='967' y='644' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Preferences, addresses, payment methods</text>
+<path d='M1240 365 L1240 420 M1233.767 408.5914 L1240 420 L1246.233 408.5914' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<path d='M1240 420 L360 420 M371.4086 413.7675 L360 420 L371.4086 426.2325' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<path d='M360 420 L360 500 M353.7675 488.5914 L360 500 L366.2325 488.5914' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='530' y='453' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='400' fill='#ea580c'>BasketCheckoutIntegrationEvent: outbox -&gt; RabbitMQ -&gt; Ordering</text>
+<rect x='65' y='735' width='1470' height='135' fill='white' stroke='#64748b' stroke-width='2'/>
+<rect x='65' y='735' width='1470' height='55' fill='#64748b'/>
+<path d='M96 746 L110 754' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 754 L110 770' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 770 L96 778' stroke='white' stroke-width='2' fill='none'/>
+<path d='M96 778 L82 770' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 770 L82 754' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 754 L96 746' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 754 L96 762' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 754 L96 762' stroke='white' stroke-width='2' fill='none'/>
+<path d='M96 762 L96 778' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='772' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Shared technical building blocks</text>
+<text x='87' y='817' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Shared.Contracts: CQRS | Shared: DDD, EF filters/interceptors, behaviors | Shared.Messaging: events</text>
+<text x='87' y='848' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Shared.Hosting: rate limits, telemetry, auditing | Organization UUID = tenant; no module implementation references</text>
+<path d='M65 955 L105 955 M93.59142 961.2325 L105 955 L93.59142 948.7675' fill='none' stroke='#1e40af' stroke-width='3' />
+<text x='115' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Request / query</text>
+<path d='M365 955 L405 955 M393.5914 961.2325 L405 955 L393.5914 948.7675' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='415' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Integration event</text>
+<path d='M665 955 L705 955 M693.5914 961.2325 L705 955 L693.5914 948.7675' fill='none' stroke='#7c3aed' stroke-width='3' />
+<text x='715' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Identity</text>
+<path d='M965 955 L1005 955 M993.5914 961.2325 L1005 955 L993.5914 948.7675' fill='none' stroke='#0891b2' stroke-width='3' />
+<text x='1015' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Telemetry</text>
+<path d='M1265 955 L1305 955 M1293.591 961.2325 L1305 955 L1293.591 948.7675' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='1315' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Startup artifact</text>
+</svg>

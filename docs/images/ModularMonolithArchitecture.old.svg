@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id='title'>Modular Monolith Architecture</title><desc id='desc'>Browser requests, one modular API process, and Docker Compose infrastructure</desc>
+<rect width="1600" height="1000" fill="white"/>
+<text x='65' y='83' font-family='Segoe UI,Arial,sans-serif' font-size='38' font-weight='700' fill='#13243b'>Modular Monolith Architecture</text>
+<text x='65' y='124' font-family='Segoe UI,Arial,sans-serif' font-size='21' font-weight='400' fill='#52647c'>Browser requests, one modular API process, and Docker Compose infrastructure</text>
+<path d='M615 145H1565V900H35V350H615Z' fill='none' stroke='#1e40af' stroke-width='2' stroke-dasharray='9 6'/>
+<text x='640' y='169' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='700' fill='#1e40af'>Docker Compose runtime</text>
+<rect x='65' y='190' width='410' height='135' fill='white' stroke='#1e40af' stroke-width='2'/>
+<rect x='65' y='190' width='410' height='55' fill='#1e40af'/>
+<path d='M81 201 L111 201' stroke='white' stroke-width='2' fill='none'/>
+<path d='M111 201 L111 231' stroke='white' stroke-width='2' fill='none'/>
+<path d='M111 231 L81 231' stroke='white' stroke-width='2' fill='none'/>
+<path d='M81 231 L81 201' stroke='white' stroke-width='2' fill='none'/>
+<path d='M81 208 L111 208' stroke='white' stroke-width='2' fill='none'/>
+<path d='M87 218 L105 218' stroke='white' stroke-width='2' fill='none'/>
+<path d='M96 211 L96 228' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='227' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Angular 21 + PrimeNG</text>
+<text x='87' y='272' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Browser :4200</text>
+<text x='87' y='303' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>/graphql and /api on gateway</text>
+<rect x='1115' y='190' width='420' height='135' fill='white' stroke='#7c3aed' stroke-width='2'/>
+<rect x='1115' y='190' width='420' height='55' fill='#7c3aed'/>
+<path d='M1146 201 L1160 207' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1160 207 L1157 223' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1157 223 L1146 233' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1146 233 L1135 223' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1135 223 L1132 207' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1132 207 L1146 201' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1140 216 L1145 222' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1145 222 L1153 212' stroke='white' stroke-width='2' fill='none'/>
+<text x='1175' y='227' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Keycloak :9090</text>
+<text x='1137' y='272' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>OIDC / JWT; eshoprealm</text>
+<text x='1137' y='303' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Organizations identify tenants</text>
+<path d='M475 250 L1115 250 M1103.591 256.2325 L1115 250 L1103.591 243.7675' fill='none' stroke='#7c3aed' stroke-width='3' />
+<text x='650' y='233' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='400' fill='#7c3aed'>Sign in / tokens</text>
+<rect x='65' y='400' width='410' height='166' fill='white' stroke='#0f766e' stroke-width='2'/>
+<rect x='65' y='400' width='410' height='55' fill='#0f766e'/>
+<path d='M96 411 L110 419' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 419 L110 435' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 435 L96 443' stroke='white' stroke-width='2' fill='none'/>
+<path d='M96 443 L82 435' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 435 L82 419' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 419 L96 411' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 419 L96 427' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 419 L96 427' stroke='white' stroke-width='2' fill='none'/>
+<path d='M96 427 L96 443' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='437' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Fusion + YARP :5002</text>
+<text x='87' y='482' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>/graphql: composed graph</text>
+<text x='87' y='513' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>/api: authenticated REST proxy</text>
+<text x='87' y='544' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Forwards Authorization header</text>
+<path d='M270 325 L270 400 M263.7675 388.5914 L270 400 L276.2325 388.5914' fill='none' stroke='#1e40af' stroke-width='3' />
+<rect x='635' y='400' width='900' height='166' fill='white' stroke='#1e40af' stroke-width='2'/>
+<rect x='635' y='400' width='900' height='55' fill='#1e40af'/>
+<path d='M666 411 L680 419' stroke='white' stroke-width='2' fill='none'/>
+<path d='M680 419 L680 435' stroke='white' stroke-width='2' fill='none'/>
+<path d='M680 435 L666 443' stroke='white' stroke-width='2' fill='none'/>
+<path d='M666 443 L652 435' stroke='white' stroke-width='2' fill='none'/>
+<path d='M652 435 L652 419' stroke='white' stroke-width='2' fill='none'/>
+<path d='M652 419 L666 411' stroke='white' stroke-width='2' fill='none'/>
+<path d='M652 419 L666 427' stroke='white' stroke-width='2' fill='none'/>
+<path d='M680 419 L666 427' stroke='white' stroke-width='2' fill='none'/>
+<path d='M666 427 L666 443' stroke='white' stroke-width='2' fill='none'/>
+<text x='695' y='437' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>ASP.NET Core API / .NET 10 :5004</text>
+<text x='657' y='482' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Catalog | Basket | Ordering | Accounts in one process</text>
+<text x='657' y='513' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Carter REST + Catalog, Basket, Ordering GraphQL schemas</text>
+<text x='657' y='544' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Tenant context, authorization, independent rate limit, audit</text>
+<path d='M475 485 L635 485 M623.5914 491.2325 L635 485 L623.5914 478.7675' fill='none' stroke='#1e40af' stroke-width='3' />
+<text x='490' y='461' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='400' fill='#13243b'>HTTP</text>
+<path d='M1325 325 L1325 400 M1318.767 388.5914 L1325 400 L1331.233 388.5914' fill='none' stroke='#7c3aed' stroke-width='3' />
+<text x='1340' y='367' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#7c3aed'>JWT validation</text>
+<rect x='65' y='650' width='410' height='166' fill='white' stroke='#64748b' stroke-width='2'/>
+<rect x='65' y='650' width='410' height='55' fill='#64748b'/>
+<path d='M84 661 L103 661' stroke='white' stroke-width='2' fill='none'/>
+<path d='M103 661 L110 668' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 668 L110 692' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 692 L84 692' stroke='white' stroke-width='2' fill='none'/>
+<path d='M84 692 L84 661' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 673 L104 673' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 680 L104 680' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 687 L104 687' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='687' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Gateway configurator</text>
+<text x='87' y='732' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Downloads API source schemas</text>
+<text x='87' y='763' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Composes gateway.far in volume</text>
+<text x='87' y='794' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>One-shot startup job</text>
+<path d='M270 650 L270 560 M276.2325 571.4086 L270 560 L263.7675 571.4086' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='285' y='609' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#64748b'>gateway.far</text>
+<path d='M475 675 L635 550 M629.8468 561.935 L635 550 L622.1727 552.1122' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<rect x='635' y='625' width='275' height='170' fill='white' stroke='#1e40af' stroke-width='2'/>
+<rect x='635' y='625' width='275' height='55' fill='#1e40af'/>
+<ellipse cx='665.5' cy='640.5' rx='14.5' ry='4.5' fill='none' stroke='white' stroke-width='2'/>
+<ellipse cx='665.5' cy='651.5' rx='14.5' ry='4.5' fill='none' stroke='white' stroke-width='2'/>
+<ellipse cx='665.5' cy='662.5' rx='14.5' ry='4.5' fill='none' stroke='white' stroke-width='2'/>
+<path d='M651 640v22 M680 640v22' fill='none' stroke='white' stroke-width='2'/>
+<text x='695' y='662' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>PostgreSQL 18</text>
+<text x='657' y='707' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>eshopdb :5434</text>
+<text x='657' y='738' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Module-owned schemas</text>
+<text x='657' y='769' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Keycloak schema</text>
+<rect x='945' y='625' width='275' height='170' fill='white' stroke='#0f766e' stroke-width='2'/>
+<rect x='945' y='625' width='275' height='55' fill='#0f766e'/>
+<ellipse cx='975.5' cy='640.5' rx='14.5' ry='4.5' fill='none' stroke='white' stroke-width='2'/>
+<ellipse cx='975.5' cy='651.5' rx='14.5' ry='4.5' fill='none' stroke='white' stroke-width='2'/>
+<ellipse cx='975.5' cy='662.5' rx='14.5' ry='4.5' fill='none' stroke='white' stroke-width='2'/>
+<path d='M961 640v22 M990 640v22' fill='none' stroke='white' stroke-width='2'/>
+<text x='1005' y='662' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Redis :6379</text>
+<text x='967' y='707' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Basket cache</text>
+<text x='967' y='738' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Tenant-scoped keys</text>
+<rect x='1255' y='625' width='280' height='170' fill='white' stroke='#ea580c' stroke-width='2'/>
+<rect x='1255' y='625' width='280' height='55' fill='#ea580c'/>
+<path d='M1273 638 L1273 664' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1273 664 L1299 664' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1299 664 L1299 651' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1299 651 L1273 651' stroke='white' stroke-width='2' fill='none'/>
+<path d='M1285 638 L1285 651' stroke='white' stroke-width='2' fill='none'/>
+<text x='1315' y='662' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>RabbitMQ</text>
+<text x='1277' y='707' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>MassTransit events :5672</text>
+<text x='1277' y='738' font-family='Segoe UI,Arial,sans-serif' font-size='19' font-weight='400' fill='#52647c'>Management UI :15672</text>
+<path d='M770 560 L770 625 M763.7675 613.5914 L770 625 L776.2325 613.5914' fill='none' stroke='#1e40af' stroke-width='3' />
+<path d='M1080 560 L1080 625 M1073.767 613.5914 L1080 625 L1086.233 613.5914' fill='none' stroke='#1e40af' stroke-width='3' />
+<path d='M1395 560 L1395 625 M1388.767 613.5914 L1395 625 L1401.233 613.5914' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<rect x='65' y='825' width='520' height='73' fill='white' stroke='#64748b' stroke-width='2'/>
+<rect x='65' y='825' width='520' height='55' fill='#64748b'/>
+<path d='M96 836 L110 842' stroke='white' stroke-width='2' fill='none'/>
+<path d='M110 842 L107 858' stroke='white' stroke-width='2' fill='none'/>
+<path d='M107 858 L96 868' stroke='white' stroke-width='2' fill='none'/>
+<path d='M96 868 L85 858' stroke='white' stroke-width='2' fill='none'/>
+<path d='M85 858 L82 842' stroke='white' stroke-width='2' fill='none'/>
+<path d='M82 842 L96 836' stroke='white' stroke-width='2' fill='none'/>
+<path d='M90 851 L95 857' stroke='white' stroke-width='2' fill='none'/>
+<path d='M95 857 L103 847' stroke='white' stroke-width='2' fill='none'/>
+<text x='125' y='862' font-family='Segoe UI,Arial,sans-serif' font-size='23' font-weight='700' fill='white'>Keycloak configurator (one-shot)</text>
+<path d='M65 850 L50 850 M61.40857 843.7675 L50 850 L61.40857 856.2325' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<path d='M50 850 L50 180 M56.23253 191.4086 L50 180 L43.76747 191.4086' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<path d='M50 180 L1325 180 M1313.591 186.2325 L1325 180 L1313.591 173.7675' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<path d='M1325 180 L1325 190 M1318.767 178.5914 L1325 190 L1331.233 178.5914' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='655' y='843' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='400' fill='#13243b'>API :5004 also exposes direct REST / source-schema access.</text>
+<text x='655' y='873' font-family='Segoe UI,Arial,sans-serif' font-size='18' font-weight='400' fill='#0891b2'>API + gateway telemetry -&gt; Alloy (see observability diagram).</text>
+<path d='M65 955 L105 955 M93.59142 961.2325 L105 955 L93.59142 948.7675' fill='none' stroke='#1e40af' stroke-width='3' />
+<text x='115' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Request / query</text>
+<path d='M365 955 L405 955 M393.5914 961.2325 L405 955 L393.5914 948.7675' fill='none' stroke='#ea580c' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='415' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Integration event</text>
+<path d='M665 955 L705 955 M693.5914 961.2325 L705 955 L693.5914 948.7675' fill='none' stroke='#7c3aed' stroke-width='3' />
+<text x='715' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Identity</text>
+<path d='M965 955 L1005 955 M993.5914 961.2325 L1005 955 L993.5914 948.7675' fill='none' stroke='#0891b2' stroke-width='3' />
+<text x='1015' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Telemetry</text>
+<path d='M1265 955 L1305 955 M1293.591 961.2325 L1305 955 L1293.591 948.7675' fill='none' stroke='#64748b' stroke-width='3' stroke-dasharray='9 6'/>
+<text x='1315' y='959' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='400' fill='#13243b'>Startup artifact</text>
+</svg>

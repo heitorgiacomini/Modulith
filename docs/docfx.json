@@ -47,6 +47,15 @@
     ],
     "content": [
       {
+        "src": "..",
+        "files": [
+          "src/Modules/module.md",
+          "src/Shared/shared.md",
+          "src/docker-config/observability/README.md"
+        ],
+        "dest": "reference"
+      },
+      {
         "files": [
           "*.md",
           "toc.yml"
@@ -67,11 +76,24 @@
     ],
     "resource": [
       {
+        "src": "..",
+        "files": [
+          "ModularMonolithArchitecture.png",
+          "ModularMonolithArchitecture.svg",
+          "ModuleBoundaries&Ownership.png",
+          "ModuleBoundaries&Ownership.svg",
+          "image.png",
+          "architecture.svg"
+        ],
+        "dest": "reference"
+      },
+      {
         "files": [
           "styles/**",
           "images/**",
           "index.html"
-        ]
+        ],
+        "exclude": ["images/**.old.png", "images/**.old.svg"]
       }
     ],
     "dest": "_site",
