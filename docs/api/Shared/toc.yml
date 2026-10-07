@@ -4,6 +4,9 @@ items:
   name: Shared.Behaviors
   type: Namespace
   items:
+  - uid: Shared.Behaviors.ApplicationTelemetry
+    name: ApplicationTelemetry
+    type: Class
   - uid: Shared.Behaviors.LoggingBehavior`2
     name: LoggingBehavior<TRequest, TResponse>
     type: Class

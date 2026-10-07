@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/new/main/apiSpec/new?filename=Shared_Data_Interceptors_AuditableEntityInterceptor.md&amp;value=---%0Auid%3A%20Shared.Data.Interceptors.AuditableEntityInterceptor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/new/audit-logs-tenant/apiSpec/new?filename=Shared_Data_Interceptors_AuditableEntityInterceptor.md&amp;value=---%0Auid%3A%20Shared.Data.Interceptors.AuditableEntityInterceptor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Shared_Data_Interceptors_AuditableEntityInterceptor" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor" class="text-break">
-Class AuditableEntityInterceptor  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Class AuditableEntityInterceptor  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -101,7 +101,7 @@ Class AuditableEntityInterceptor  <a class="header-action link-secondary" title=
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AuditableEntityInterceptor : SaveChangesInterceptor, ISaveChangesInterceptor, IInterceptor</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AuditableEntityInterceptor : SaveChangesInterceptor, ISaveChangesInterceptor, IInterceptor</code></pre>
   </div>
 
 
@@ -129,24 +129,6 @@ Class AuditableEntityInterceptor  <a class="header-action link-secondary" title=
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchanges">SaveChangesInterceptor.SavedChanges(SaveChangesCompletedEventData, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailed">SaveChangesInterceptor.SaveChangesFailed(DbContextErrorEventData)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savedchangesasync">SaveChangesInterceptor.SavedChangesAsync(SaveChangesCompletedEventData, int, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangesfailedasync">SaveChangesInterceptor.SaveChangesFailedAsync(DbContextErrorEventData, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceled">SaveChangesInterceptor.SaveChangesCanceled(DbContextEventData)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.savechangescanceledasync">SaveChangesInterceptor.SaveChangesCanceledAsync(DbContextEventData, CancellationToken)</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangesinterceptor.throwingconcurrencyexception">SaveChangesInterceptor.ThrowingConcurrencyException(ConcurrencyExceptionEventData, InterceptionResult)</a>
     </div>
     <div>
@@ -165,9 +147,6 @@ Class AuditableEntityInterceptor  <a class="header-action link-secondary" title=
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
@@ -180,15 +159,323 @@ Class AuditableEntityInterceptor  <a class="header-action link-secondary" title=
 
 
 
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor__ctor_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.#ctor*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor__ctor_Shared_Data_Auditing_ICurrentUser_Shared_Data_MultiTenancy_ICurrentTenant_Shared_Data_Auditing_IAuditTrail_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.#ctor(Shared.Data.Auditing.ICurrentUser,Shared.Data.MultiTenancy.ICurrentTenant,Shared.Data.Auditing.IAuditTrail)">
+  AuditableEntityInterceptor(ICurrentUser, ICurrentTenant, IAuditTrail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuditableEntityInterceptor(ICurrentUser currentUser, ICurrentTenant currentTenant, IAuditTrail auditTrail)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentUser</code> <a class="xref" href="Shared.Data.Auditing.ICurrentUser.html">ICurrentUser</a></dt>
+    <dd></dd>
+    <dt><code>currentTenant</code> <a class="xref" href="Shared.Data.MultiTenancy.ICurrentTenant.html">ICurrentTenant</a></dt>
+    <dd></dd>
+    <dt><code>auditTrail</code> <a class="xref" href="Shared.Data.Auditing.IAuditTrail.html">IAuditTrail</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceled_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceled_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)">
+  SaveChangesCanceled(DbContextEventData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when <see cref="O:DbContext.SaveChanges"></see> was canceled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SaveChangesCanceled(DbContextEventData eventData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata">DbContextEventData</a></dt>
+    <dd><p>Contextual information about the failure.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceledAsync_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceledAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_System_Threading_CancellationToken_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)">
+  SaveChangesCanceledAsync(DbContextEventData, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when <see cref="O:DbContext.SaveChangesAsync"></see> was canceled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task SaveChangesCanceledAsync(DbContextEventData eventData, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexteventdata">DbContextEventData</a></dt>
+    <dd><p>Contextual information about the failure.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> to observe while waiting for the task to complete.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a></dt>
+    <dd><p>If the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> is canceled.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailed_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailed_Microsoft_EntityFrameworkCore_Diagnostics_DbContextErrorEventData_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)">
+  SaveChangesFailed(DbContextErrorEventData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when an exception has been thrown in <see cref="O:DbContext.SaveChanges"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SaveChangesFailed(DbContextErrorEventData eventData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexterroreventdata">DbContextErrorEventData</a></dt>
+    <dd><p>Contextual information about the failure.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailedAsync_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailedAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextErrorEventData_System_Threading_CancellationToken_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)">
+  SaveChangesFailedAsync(DbContextErrorEventData, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when an exception has been thrown in <see cref="O:DbContext.SaveChangesAsync"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task SaveChangesFailedAsync(DbContextErrorEventData eventData, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.dbcontexterroreventdata">DbContextErrorEventData</a></dt>
+    <dd><p>Contextual information about the failure.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> to observe while waiting for the task to complete.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a></dt>
+    <dd><p>If the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> is canceled.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChanges_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChanges_Microsoft_EntityFrameworkCore_Diagnostics_SaveChangesCompletedEventData_System_Int32_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)">
+  SavedChanges(SaveChangesCompletedEventData, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called at the end of <see cref="O:DbContext.SaveChanges"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int SavedChanges(SaveChangesCompletedEventData eventData, int result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangescompletedeventdata">SaveChangesCompletedEventData</a></dt>
+    <dd><p>Contextual information about the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext">DbContext</a> being used.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The result of the call to <see cref="O:DbContext.SaveChanges"></see>.
+This value is typically used as the return value for the implementation of this method.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The result that EF will use.
+An implementation of this method for any interceptor that is not attempting to change the result
+is to return the <code class="paramref">result</code> value passed in.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChanges_Microsoft_EntityFrameworkCore_Diagnostics_SaveChangesCompletedEventData_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is still called if an interceptor suppressed creation of a command in <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.isavechangesinterceptor.savingchanges">SavingChanges(DbContextEventData, InterceptionResult&lt;int&gt;)</a>.
+In this case, <code class="paramref">result</code> is the result returned by <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.isavechangesinterceptor.savingchanges">SavingChanges(DbContextEventData, InterceptionResult&lt;int&gt;)</a>.</p>
+</div>
+
+
+
+
+  <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChangesAsync_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync*"></a>
+
+  <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_SaveChangesCompletedEventData_System_Int32_System_Threading_CancellationToken_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)">
+  SavedChangesAsync(SaveChangesCompletedEventData, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called at the end of <see cref="O:DbContext.SaveChangesAsync"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ValueTask&lt;int&gt; SavedChangesAsync(SaveChangesCompletedEventData eventData, int result, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.savechangescompletedeventdata">SaveChangesCompletedEventData</a></dt>
+    <dd><p>Contextual information about the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext">DbContext</a> being used.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The result of the call to <see cref="O:DbContext.SaveChangesAsync"></see>.
+This value is typically used as the return value for the implementation of this method.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> to observe while waiting for the task to complete.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The result that EF will use.
+An implementation of this method for any interceptor that is not attempting to change the result
+is to return the <code class="paramref">result</code> value passed in.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_SaveChangesCompletedEventData_System_Int32_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is still called if an interceptor suppressed creation of a command in <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.isavechangesinterceptor.savingchangesasync">SavingChangesAsync(DbContextEventData, InterceptionResult&lt;int&gt;, CancellationToken)</a>.
+In this case, <code class="paramref">result</code> is the result returned by <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.diagnostics.isavechangesinterceptor.savingchangesasync">SavingChangesAsync(DbContextEventData, InterceptionResult&lt;int&gt;, CancellationToken)</a>.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a></dt>
+    <dd><p>If the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a> is canceled.</p>
+</dd>
+  </dl>
+
 
 
   <a id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChanges_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges*"></a>
 
   <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChanges_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})">
   SavingChanges(DbContextEventData, InterceptionResult&lt;int&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called at the start of <see cref="O:DbContext.SaveChanges"></see>.</p>
@@ -237,7 +524,7 @@ is to return the <code class="paramref">result</code> value passed in.</p>
 
   <h3 id="Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__System_Threading_CancellationToken_" data-uid="Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)">
   SavingChangesAsync(DbContextEventData, InterceptionResult&lt;int&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Called at the start of <see cref="O:DbContext.SaveChangesAsync"></see>.</p>
@@ -295,7 +582,7 @@ is to return the <code class="paramref">result</code> value passed in.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Interceptors/AuditableEntityInterceptor.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

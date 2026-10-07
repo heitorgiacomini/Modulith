@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AuditEventV1 | ESHOP </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AuditEventV1 | ESHOP ">
+      
+      
+      <link rel="icon" href="../../images/eshop-logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/new/audit-logs-tenant/apiSpec/new?filename=Shared_Data_Auditing_AuditEventV1.md&amp;value=---%0Auid%3A%20Shared.Data.Auditing.AuditEventV1%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/eshop-logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Shared.Data.Auditing.AuditEventV1">
+
+
+
+  <h1 id="Shared_Data_Auditing_AuditEventV1" data-uid="Shared.Data.Auditing.AuditEventV1" class="text-break">
+Class AuditEventV1  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Shared.html">Shared</a>.<a class="xref" href="Shared.Data.html">Data</a>.<a class="xref" href="Shared.Data.Auditing.html">Auditing</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Shared.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed record AuditEventV1 : IEquatable&lt;AuditEventV1&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AuditEventV1</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Shared.Data.Auditing.AuditEventV1.html">AuditEventV1</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_CurrentSchemaVersion" data-uid="Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion">
+  CurrentSchemaVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int CurrentSchemaVersion = 1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Action_" data-uid="Shared.Data.Auditing.AuditEventV1.Action*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Action" data-uid="Shared.Data.Auditing.AuditEventV1.Action">
+  Action
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string Action { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Actor_" data-uid="Shared.Data.Auditing.AuditEventV1.Actor*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Actor" data-uid="Shared.Data.Auditing.AuditEventV1.Actor">
+  Actor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required AuditActorV1 Actor { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Shared.Data.Auditing.AuditActorV1.html">AuditActorV1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Category_" data-uid="Shared.Data.Auditing.AuditEventV1.Category*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Category" data-uid="Shared.Data.Auditing.AuditEventV1.Category">
+  Category
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStringEnumConverter&lt;AuditCategory&gt;))]
+public required AuditCategory Category { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Shared.Data.Auditing.AuditCategory.html">AuditCategory</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Changes_" data-uid="Shared.Data.Auditing.AuditEventV1.Changes*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Changes" data-uid="Shared.Data.Auditing.AuditEventV1.Changes">
+  Changes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;string, AuditValueChangeV1&gt; Changes { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Shared.Data.Auditing.AuditValueChangeV1.html">AuditValueChangeV1</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_CorrelationId_" data-uid="Shared.Data.Auditing.AuditEventV1.CorrelationId*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_CorrelationId" data-uid="Shared.Data.Auditing.AuditEventV1.CorrelationId">
+  CorrelationId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? CorrelationId { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_EventId_" data-uid="Shared.Data.Auditing.AuditEventV1.EventId*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_EventId" data-uid="Shared.Data.Auditing.AuditEventV1.EventId">
+  EventId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required Guid EventId { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Metadata_" data-uid="Shared.Data.Auditing.AuditEventV1.Metadata*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Metadata" data-uid="Shared.Data.Auditing.AuditEventV1.Metadata">
+  Metadata
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyDictionary&lt;string, object?&gt; Metadata { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Module_" data-uid="Shared.Data.Auditing.AuditEventV1.Module*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Module" data-uid="Shared.Data.Auditing.AuditEventV1.Module">
+  Module
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string Module { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_OccurredAtUtc_" data-uid="Shared.Data.Auditing.AuditEventV1.OccurredAtUtc*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_OccurredAtUtc" data-uid="Shared.Data.Auditing.AuditEventV1.OccurredAtUtc">
+  OccurredAtUtc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required DateTimeOffset OccurredAtUtc { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Outcome_" data-uid="Shared.Data.Auditing.AuditEventV1.Outcome*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Outcome" data-uid="Shared.Data.Auditing.AuditEventV1.Outcome">
+  Outcome
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonStringEnumConverter&lt;AuditOutcome&gt;))]
+public required AuditOutcome Outcome { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Shared.Data.Auditing.AuditOutcome.html">AuditOutcome</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_SchemaVersion_" data-uid="Shared.Data.Auditing.AuditEventV1.SchemaVersion*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_SchemaVersion" data-uid="Shared.Data.Auditing.AuditEventV1.SchemaVersion">
+  SchemaVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SchemaVersion { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Service_" data-uid="Shared.Data.Auditing.AuditEventV1.Service*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Service" data-uid="Shared.Data.Auditing.AuditEventV1.Service">
+  Service
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required string Service { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_SpanId_" data-uid="Shared.Data.Auditing.AuditEventV1.SpanId*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_SpanId" data-uid="Shared.Data.Auditing.AuditEventV1.SpanId">
+  SpanId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SpanId { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_Subject_" data-uid="Shared.Data.Auditing.AuditEventV1.Subject*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_Subject" data-uid="Shared.Data.Auditing.AuditEventV1.Subject">
+  Subject
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public required AuditSubjectV1 Subject { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Shared.Data.Auditing.AuditSubjectV1.html">AuditSubjectV1</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_TenantId_" data-uid="Shared.Data.Auditing.AuditEventV1.TenantId*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_TenantId" data-uid="Shared.Data.Auditing.AuditEventV1.TenantId">
+  TenantId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid? TenantId { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Shared_Data_Auditing_AuditEventV1_TraceId_" data-uid="Shared.Data.Auditing.AuditEventV1.TraceId*"></a>
+
+  <h3 id="Shared_Data_Auditing_AuditEventV1_TraceId" data-uid="Shared.Data.Auditing.AuditEventV1.TraceId">
+  TraceId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? TraceId { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Data/Auditing/AuditEventV1.cs/#L27" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © 2026 Eshop. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

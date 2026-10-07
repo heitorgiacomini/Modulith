@@ -161,7 +161,14 @@ Before saving, the interceptor captures pending changes. It sends an `AuditEvent
 
 Only `IAuditedObject` entities emit detailed audit events. Audit metadata fields and primary keys are excluded from the change dictionary. Values are redacted when a property is marked with `[AuditSensitive]` or its name indicates passwords, secrets, tokens, authorization data, bodies/documents, payment/card information, email, phone, or address data.
 
-`FileAuditTrail` writes one JSON object per line, rotates files at 128 MiB, and retains at most eight files. OpenTelemetry Collector tails those files with persistent checkpoints and writes them directly to operator-only `eshop-audit-*` indexes. The OpenSearch ingest pipeline uses `eventId` as the document ID, making replay idempotent. Explicit business actions, sensitive reads, denials, failures, and administrative actions can use the same `IAuditTrail` contract.
+`FileAuditTrail` writes one JSON object per line, rotates files at 128 MiB, and
+retains at most eight files. Grafana Alloy tails those files with persistent
+positions, rejects malformed records, and sends valid records to a 60-day Loki
+audit stream. Event, actor, tenant, trace, span, and correlation IDs are stored
+as structured metadata rather than high-cardinality stream labels. Ingestion is
+append-only: repeated `eventId` values remain visible and the provisioned Audit
+Explorer flags them. Explicit business actions, sensitive reads, denials,
+failures, and administrative actions can use the same `IAuditTrail` contract.
 
 This is deliberately a best-effort operational trail, not an immutable compliance ledger. A crash after the database commit but before the audit file flush can lose an event. There is no audit-history entity, temporal-table dependency, audit database, tenant-facing query, or Angular audit UI.
 

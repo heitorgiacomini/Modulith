@@ -7,31 +7,401 @@ references:
   commentId: N:Api
   fullName: Api
   nameWithType: Api
+- uid: Api.Infrastructure
+  name: Api.Infrastructure
+  href: api/Bootstrapper/Api.Infrastructure.html
+  commentId: N:Api.Infrastructure
+  fullName: Api.Infrastructure
+  nameWithType: Api.Infrastructure
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  name: CurrentTenantAuthorizationHandler
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.html
+  commentId: T:Api.Infrastructure.CurrentTenantAuthorizationHandler
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler
+  nameWithType: CurrentTenantAuthorizationHandler
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  name: CurrentTenantAuthorizationHandler(ICurrentTenant)
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.html#Api_Infrastructure_CurrentTenantAuthorizationHandler__ctor_Shared_Data_MultiTenancy_ICurrentTenant_
+  commentId: M:Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  name.vb: New(ICurrentTenant)
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler(Shared.Data.MultiTenancy.ICurrentTenant)
+  fullName.vb: Api.Infrastructure.CurrentTenantAuthorizationHandler.New(Shared.Data.MultiTenancy.ICurrentTenant)
+  nameWithType: CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler(ICurrentTenant)
+  nameWithType.vb: CurrentTenantAuthorizationHandler.New(ICurrentTenant)
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor*
+  name: CurrentTenantAuthorizationHandler
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.html#Api_Infrastructure_CurrentTenantAuthorizationHandler__ctor_
+  commentId: Overload:Api.Infrastructure.CurrentTenantAuthorizationHandler.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler
+  fullName.vb: Api.Infrastructure.CurrentTenantAuthorizationHandler.New
+  nameWithType: CurrentTenantAuthorizationHandler.CurrentTenantAuthorizationHandler
+  nameWithType.vb: CurrentTenantAuthorizationHandler.New
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  name: HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.html#Api_Infrastructure_CurrentTenantAuthorizationHandler_HandleRequirementAsync_Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Api_Infrastructure_CurrentTenantRequirement_
+  commentId: M:Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.CurrentTenantRequirement)
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, Api.Infrastructure.CurrentTenantRequirement)
+  nameWithType: CurrentTenantAuthorizationHandler.HandleRequirementAsync(AuthorizationHandlerContext, CurrentTenantRequirement)
+- uid: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync*
+  name: HandleRequirementAsync
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.html#Api_Infrastructure_CurrentTenantAuthorizationHandler_HandleRequirementAsync_
+  commentId: Overload:Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync
+  isSpec: "True"
+  fullName: Api.Infrastructure.CurrentTenantAuthorizationHandler.HandleRequirementAsync
+  nameWithType: CurrentTenantAuthorizationHandler.HandleRequirementAsync
+- uid: Api.Infrastructure.CurrentTenantMiddleware
+  name: CurrentTenantMiddleware
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.html
+  commentId: T:Api.Infrastructure.CurrentTenantMiddleware
+  fullName: Api.Infrastructure.CurrentTenantMiddleware
+  nameWithType: CurrentTenantMiddleware
+- uid: Api.Infrastructure.CurrentTenantMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)
+  name: CurrentTenantMiddleware(RequestDelegate)
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.html#Api_Infrastructure_CurrentTenantMiddleware__ctor_Microsoft_AspNetCore_Http_RequestDelegate_
+  commentId: M:Api.Infrastructure.CurrentTenantMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)
+  name.vb: New(RequestDelegate)
+  fullName: Api.Infrastructure.CurrentTenantMiddleware.CurrentTenantMiddleware(Microsoft.AspNetCore.Http.RequestDelegate)
+  fullName.vb: Api.Infrastructure.CurrentTenantMiddleware.New(Microsoft.AspNetCore.Http.RequestDelegate)
+  nameWithType: CurrentTenantMiddleware.CurrentTenantMiddleware(RequestDelegate)
+  nameWithType.vb: CurrentTenantMiddleware.New(RequestDelegate)
+- uid: Api.Infrastructure.CurrentTenantMiddleware.#ctor*
+  name: CurrentTenantMiddleware
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.html#Api_Infrastructure_CurrentTenantMiddleware__ctor_
+  commentId: Overload:Api.Infrastructure.CurrentTenantMiddleware.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.CurrentTenantMiddleware.CurrentTenantMiddleware
+  fullName.vb: Api.Infrastructure.CurrentTenantMiddleware.New
+  nameWithType: CurrentTenantMiddleware.CurrentTenantMiddleware
+  nameWithType.vb: CurrentTenantMiddleware.New
+- uid: Api.Infrastructure.CurrentTenantMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Shared.Data.MultiTenancy.ICurrentTenant)
+  name: InvokeAsync(HttpContext, ICurrentTenant)
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.html#Api_Infrastructure_CurrentTenantMiddleware_InvokeAsync_Microsoft_AspNetCore_Http_HttpContext_Shared_Data_MultiTenancy_ICurrentTenant_
+  commentId: M:Api.Infrastructure.CurrentTenantMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Shared.Data.MultiTenancy.ICurrentTenant)
+  fullName: Api.Infrastructure.CurrentTenantMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext, Shared.Data.MultiTenancy.ICurrentTenant)
+  nameWithType: CurrentTenantMiddleware.InvokeAsync(HttpContext, ICurrentTenant)
+- uid: Api.Infrastructure.CurrentTenantMiddleware.InvokeAsync*
+  name: InvokeAsync
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.html#Api_Infrastructure_CurrentTenantMiddleware_InvokeAsync_
+  commentId: Overload:Api.Infrastructure.CurrentTenantMiddleware.InvokeAsync
+  isSpec: "True"
+  fullName: Api.Infrastructure.CurrentTenantMiddleware.InvokeAsync
+  nameWithType: CurrentTenantMiddleware.InvokeAsync
+- uid: Api.Infrastructure.CurrentTenantRequirement
+  name: CurrentTenantRequirement
+  href: api/Bootstrapper/Api.Infrastructure.CurrentTenantRequirement.html
+  commentId: T:Api.Infrastructure.CurrentTenantRequirement
+  fullName: Api.Infrastructure.CurrentTenantRequirement
+  nameWithType: CurrentTenantRequirement
+- uid: Api.Infrastructure.HttpContextCurrentUser
+  name: HttpContextCurrentUser
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html
+  commentId: T:Api.Infrastructure.HttpContextCurrentUser
+  fullName: Api.Infrastructure.HttpContextCurrentUser
+  nameWithType: HttpContextCurrentUser
+- uid: Api.Infrastructure.HttpContextCurrentUser.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  name: HttpContextCurrentUser(IHttpContextAccessor)
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser__ctor_Microsoft_AspNetCore_Http_IHttpContextAccessor_
+  commentId: M:Api.Infrastructure.HttpContextCurrentUser.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  name.vb: New(IHttpContextAccessor)
+  fullName: Api.Infrastructure.HttpContextCurrentUser.HttpContextCurrentUser(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  fullName.vb: Api.Infrastructure.HttpContextCurrentUser.New(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  nameWithType: HttpContextCurrentUser.HttpContextCurrentUser(IHttpContextAccessor)
+  nameWithType.vb: HttpContextCurrentUser.New(IHttpContextAccessor)
+- uid: Api.Infrastructure.HttpContextCurrentUser.#ctor*
+  name: HttpContextCurrentUser
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser__ctor_
+  commentId: Overload:Api.Infrastructure.HttpContextCurrentUser.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.HttpContextCurrentUser.HttpContextCurrentUser
+  fullName.vb: Api.Infrastructure.HttpContextCurrentUser.New
+  nameWithType: HttpContextCurrentUser.HttpContextCurrentUser
+  nameWithType.vb: HttpContextCurrentUser.New
+- uid: Api.Infrastructure.HttpContextCurrentUser.Id
+  name: Id
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_Id
+  commentId: P:Api.Infrastructure.HttpContextCurrentUser.Id
+  fullName: Api.Infrastructure.HttpContextCurrentUser.Id
+  nameWithType: HttpContextCurrentUser.Id
+- uid: Api.Infrastructure.HttpContextCurrentUser.Id*
+  name: Id
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_Id_
+  commentId: Overload:Api.Infrastructure.HttpContextCurrentUser.Id
+  isSpec: "True"
+  fullName: Api.Infrastructure.HttpContextCurrentUser.Id
+  nameWithType: HttpContextCurrentUser.Id
+- uid: Api.Infrastructure.HttpContextCurrentUser.IsAuthenticated
+  name: IsAuthenticated
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_IsAuthenticated
+  commentId: P:Api.Infrastructure.HttpContextCurrentUser.IsAuthenticated
+  fullName: Api.Infrastructure.HttpContextCurrentUser.IsAuthenticated
+  nameWithType: HttpContextCurrentUser.IsAuthenticated
+- uid: Api.Infrastructure.HttpContextCurrentUser.IsAuthenticated*
+  name: IsAuthenticated
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_IsAuthenticated_
+  commentId: Overload:Api.Infrastructure.HttpContextCurrentUser.IsAuthenticated
+  isSpec: "True"
+  fullName: Api.Infrastructure.HttpContextCurrentUser.IsAuthenticated
+  nameWithType: HttpContextCurrentUser.IsAuthenticated
+- uid: Api.Infrastructure.HttpContextCurrentUser.TraceId
+  name: TraceId
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_TraceId
+  commentId: P:Api.Infrastructure.HttpContextCurrentUser.TraceId
+  fullName: Api.Infrastructure.HttpContextCurrentUser.TraceId
+  nameWithType: HttpContextCurrentUser.TraceId
+- uid: Api.Infrastructure.HttpContextCurrentUser.TraceId*
+  name: TraceId
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_TraceId_
+  commentId: Overload:Api.Infrastructure.HttpContextCurrentUser.TraceId
+  isSpec: "True"
+  fullName: Api.Infrastructure.HttpContextCurrentUser.TraceId
+  nameWithType: HttpContextCurrentUser.TraceId
+- uid: Api.Infrastructure.HttpContextCurrentUser.UserName
+  name: UserName
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_UserName
+  commentId: P:Api.Infrastructure.HttpContextCurrentUser.UserName
+  fullName: Api.Infrastructure.HttpContextCurrentUser.UserName
+  nameWithType: HttpContextCurrentUser.UserName
+- uid: Api.Infrastructure.HttpContextCurrentUser.UserName*
+  name: UserName
+  href: api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html#Api_Infrastructure_HttpContextCurrentUser_UserName_
+  commentId: Overload:Api.Infrastructure.HttpContextCurrentUser.UserName
+  isSpec: "True"
+  fullName: Api.Infrastructure.HttpContextCurrentUser.UserName
+  nameWithType: HttpContextCurrentUser.UserName
+- uid: Api.Infrastructure.KeycloakOrganization
+  name: KeycloakOrganization
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html
+  commentId: T:Api.Infrastructure.KeycloakOrganization
+  fullName: Api.Infrastructure.KeycloakOrganization
+  nameWithType: KeycloakOrganization
+- uid: Api.Infrastructure.KeycloakOrganization.#ctor(System.Guid,System.String,System.Collections.Generic.IReadOnlySet{System.String})
+  name: KeycloakOrganization(Guid, string, IReadOnlySet<string>)
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization__ctor_System_Guid_System_String_System_Collections_Generic_IReadOnlySet_System_String__
+  commentId: M:Api.Infrastructure.KeycloakOrganization.#ctor(System.Guid,System.String,System.Collections.Generic.IReadOnlySet{System.String})
+  name.vb: New(Guid, String, IReadOnlySet(Of String))
+  fullName: Api.Infrastructure.KeycloakOrganization.KeycloakOrganization(System.Guid, string, System.Collections.Generic.IReadOnlySet<string>)
+  fullName.vb: Api.Infrastructure.KeycloakOrganization.New(System.Guid, String, System.Collections.Generic.IReadOnlySet(Of String))
+  nameWithType: KeycloakOrganization.KeycloakOrganization(Guid, string, IReadOnlySet<string>)
+  nameWithType.vb: KeycloakOrganization.New(Guid, String, IReadOnlySet(Of String))
+- uid: Api.Infrastructure.KeycloakOrganization.#ctor*
+  name: KeycloakOrganization
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization__ctor_
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.KeycloakOrganization.KeycloakOrganization
+  fullName.vb: Api.Infrastructure.KeycloakOrganization.New
+  nameWithType: KeycloakOrganization.KeycloakOrganization
+  nameWithType.vb: KeycloakOrganization.New
+- uid: Api.Infrastructure.KeycloakOrganization.Alias
+  name: Alias
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Alias
+  commentId: P:Api.Infrastructure.KeycloakOrganization.Alias
+  fullName: Api.Infrastructure.KeycloakOrganization.Alias
+  nameWithType: KeycloakOrganization.Alias
+- uid: Api.Infrastructure.KeycloakOrganization.Alias*
+  name: Alias
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Alias_
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.Alias
+  isSpec: "True"
+  fullName: Api.Infrastructure.KeycloakOrganization.Alias
+  nameWithType: KeycloakOrganization.Alias
+- uid: Api.Infrastructure.KeycloakOrganization.Id
+  name: Id
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Id
+  commentId: P:Api.Infrastructure.KeycloakOrganization.Id
+  fullName: Api.Infrastructure.KeycloakOrganization.Id
+  nameWithType: KeycloakOrganization.Id
+- uid: Api.Infrastructure.KeycloakOrganization.Id*
+  name: Id
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Id_
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.Id
+  isSpec: "True"
+  fullName: Api.Infrastructure.KeycloakOrganization.Id
+  nameWithType: KeycloakOrganization.Id
+- uid: Api.Infrastructure.KeycloakOrganization.Roles
+  name: Roles
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Roles
+  commentId: P:Api.Infrastructure.KeycloakOrganization.Roles
+  fullName: Api.Infrastructure.KeycloakOrganization.Roles
+  nameWithType: KeycloakOrganization.Roles
+- uid: Api.Infrastructure.KeycloakOrganization.Roles*
+  name: Roles
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html#Api_Infrastructure_KeycloakOrganization_Roles_
+  commentId: Overload:Api.Infrastructure.KeycloakOrganization.Roles
+  isSpec: "True"
+  fullName: Api.Infrastructure.KeycloakOrganization.Roles
+  nameWithType: KeycloakOrganization.Roles
+- uid: Api.Infrastructure.KeycloakOrganizationClaimParser
+  name: KeycloakOrganizationClaimParser
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganizationClaimParser.html
+  commentId: T:Api.Infrastructure.KeycloakOrganizationClaimParser
+  fullName: Api.Infrastructure.KeycloakOrganizationClaimParser
+  nameWithType: KeycloakOrganizationClaimParser
+- uid: Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse(System.String,Api.Infrastructure.KeycloakOrganization@)
+  name: TryParse(string?, out KeycloakOrganization?)
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganizationClaimParser.html#Api_Infrastructure_KeycloakOrganizationClaimParser_TryParse_System_String_Api_Infrastructure_KeycloakOrganization__
+  commentId: M:Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse(System.String,Api.Infrastructure.KeycloakOrganization@)
+  name.vb: TryParse(String, KeycloakOrganization)
+  fullName: Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse(string?, out Api.Infrastructure.KeycloakOrganization?)
+  fullName.vb: Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse(String, Api.Infrastructure.KeycloakOrganization)
+  nameWithType: KeycloakOrganizationClaimParser.TryParse(string?, out KeycloakOrganization?)
+  nameWithType.vb: KeycloakOrganizationClaimParser.TryParse(String, KeycloakOrganization)
+- uid: Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse*
+  name: TryParse
+  href: api/Bootstrapper/Api.Infrastructure.KeycloakOrganizationClaimParser.html#Api_Infrastructure_KeycloakOrganizationClaimParser_TryParse_
+  commentId: Overload:Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse
+  isSpec: "True"
+  fullName: Api.Infrastructure.KeycloakOrganizationClaimParser.TryParse
+  nameWithType: KeycloakOrganizationClaimParser.TryParse
+- uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler
+  name: OrganizationRoleAuthorizationHandler
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.html
+  commentId: T:Api.Infrastructure.OrganizationRoleAuthorizationHandler
+  fullName: Api.Infrastructure.OrganizationRoleAuthorizationHandler
+  nameWithType: OrganizationRoleAuthorizationHandler
+- uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  name: OrganizationRoleAuthorizationHandler(IHttpContextAccessor)
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.html#Api_Infrastructure_OrganizationRoleAuthorizationHandler__ctor_Microsoft_AspNetCore_Http_IHttpContextAccessor_
+  commentId: M:Api.Infrastructure.OrganizationRoleAuthorizationHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  name.vb: New(IHttpContextAccessor)
+  fullName: Api.Infrastructure.OrganizationRoleAuthorizationHandler.OrganizationRoleAuthorizationHandler(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  fullName.vb: Api.Infrastructure.OrganizationRoleAuthorizationHandler.New(Microsoft.AspNetCore.Http.IHttpContextAccessor)
+  nameWithType: OrganizationRoleAuthorizationHandler.OrganizationRoleAuthorizationHandler(IHttpContextAccessor)
+  nameWithType.vb: OrganizationRoleAuthorizationHandler.New(IHttpContextAccessor)
+- uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler.#ctor*
+  name: OrganizationRoleAuthorizationHandler
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.html#Api_Infrastructure_OrganizationRoleAuthorizationHandler__ctor_
+  commentId: Overload:Api.Infrastructure.OrganizationRoleAuthorizationHandler.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.OrganizationRoleAuthorizationHandler.OrganizationRoleAuthorizationHandler
+  fullName.vb: Api.Infrastructure.OrganizationRoleAuthorizationHandler.New
+  nameWithType: OrganizationRoleAuthorizationHandler.OrganizationRoleAuthorizationHandler
+  nameWithType.vb: OrganizationRoleAuthorizationHandler.New
+- uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.OrganizationRoleRequirement)
+  name: HandleRequirementAsync(AuthorizationHandlerContext, OrganizationRoleRequirement)
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.html#Api_Infrastructure_OrganizationRoleAuthorizationHandler_HandleRequirementAsync_Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Api_Infrastructure_OrganizationRoleRequirement_
+  commentId: M:Api.Infrastructure.OrganizationRoleAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Api.Infrastructure.OrganizationRoleRequirement)
+  fullName: Api.Infrastructure.OrganizationRoleAuthorizationHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext, Api.Infrastructure.OrganizationRoleRequirement)
+  nameWithType: OrganizationRoleAuthorizationHandler.HandleRequirementAsync(AuthorizationHandlerContext, OrganizationRoleRequirement)
+- uid: Api.Infrastructure.OrganizationRoleAuthorizationHandler.HandleRequirementAsync*
+  name: HandleRequirementAsync
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.html#Api_Infrastructure_OrganizationRoleAuthorizationHandler_HandleRequirementAsync_
+  commentId: Overload:Api.Infrastructure.OrganizationRoleAuthorizationHandler.HandleRequirementAsync
+  isSpec: "True"
+  fullName: Api.Infrastructure.OrganizationRoleAuthorizationHandler.HandleRequirementAsync
+  nameWithType: OrganizationRoleAuthorizationHandler.HandleRequirementAsync
+- uid: Api.Infrastructure.OrganizationRoleRequirement
+  name: OrganizationRoleRequirement
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.html
+  commentId: T:Api.Infrastructure.OrganizationRoleRequirement
+  fullName: Api.Infrastructure.OrganizationRoleRequirement
+  nameWithType: OrganizationRoleRequirement
+- uid: Api.Infrastructure.OrganizationRoleRequirement.#ctor(System.String[])
+  name: OrganizationRoleRequirement(params string[])
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.html#Api_Infrastructure_OrganizationRoleRequirement__ctor_System_String___
+  commentId: M:Api.Infrastructure.OrganizationRoleRequirement.#ctor(System.String[])
+  name.vb: New(ParamArray String())
+  fullName: Api.Infrastructure.OrganizationRoleRequirement.OrganizationRoleRequirement(params string[])
+  fullName.vb: Api.Infrastructure.OrganizationRoleRequirement.New(ParamArray String())
+  nameWithType: OrganizationRoleRequirement.OrganizationRoleRequirement(params string[])
+  nameWithType.vb: OrganizationRoleRequirement.New(ParamArray String())
+- uid: Api.Infrastructure.OrganizationRoleRequirement.#ctor*
+  name: OrganizationRoleRequirement
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.html#Api_Infrastructure_OrganizationRoleRequirement__ctor_
+  commentId: Overload:Api.Infrastructure.OrganizationRoleRequirement.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.OrganizationRoleRequirement.OrganizationRoleRequirement
+  fullName.vb: Api.Infrastructure.OrganizationRoleRequirement.New
+  nameWithType: OrganizationRoleRequirement.OrganizationRoleRequirement
+  nameWithType.vb: OrganizationRoleRequirement.New
+- uid: Api.Infrastructure.OrganizationRoleRequirement.Roles
+  name: Roles
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.html#Api_Infrastructure_OrganizationRoleRequirement_Roles
+  commentId: P:Api.Infrastructure.OrganizationRoleRequirement.Roles
+  fullName: Api.Infrastructure.OrganizationRoleRequirement.Roles
+  nameWithType: OrganizationRoleRequirement.Roles
+- uid: Api.Infrastructure.OrganizationRoleRequirement.Roles*
+  name: Roles
+  href: api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.html#Api_Infrastructure_OrganizationRoleRequirement_Roles_
+  commentId: Overload:Api.Infrastructure.OrganizationRoleRequirement.Roles
+  isSpec: "True"
+  fullName: Api.Infrastructure.OrganizationRoleRequirement.Roles
+  nameWithType: OrganizationRoleRequirement.Roles
+- uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+  name: TenantAuthorizationMiddlewareResultHandler
+  href: api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html
+  commentId: T:Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+  fullName: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler
+  nameWithType: TenantAuthorizationMiddlewareResultHandler
+- uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  name: TenantAuthorizationMiddlewareResultHandler(ICurrentTenant)
+  href: api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html#Api_Infrastructure_TenantAuthorizationMiddlewareResultHandler__ctor_Shared_Data_MultiTenancy_ICurrentTenant_
+  commentId: M:Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  name.vb: New(ICurrentTenant)
+  fullName: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.TenantAuthorizationMiddlewareResultHandler(Shared.Data.MultiTenancy.ICurrentTenant)
+  fullName.vb: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.New(Shared.Data.MultiTenancy.ICurrentTenant)
+  nameWithType: TenantAuthorizationMiddlewareResultHandler.TenantAuthorizationMiddlewareResultHandler(ICurrentTenant)
+  nameWithType.vb: TenantAuthorizationMiddlewareResultHandler.New(ICurrentTenant)
+- uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.#ctor*
+  name: TenantAuthorizationMiddlewareResultHandler
+  href: api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html#Api_Infrastructure_TenantAuthorizationMiddlewareResultHandler__ctor_
+  commentId: Overload:Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.TenantAuthorizationMiddlewareResultHandler
+  fullName.vb: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.New
+  nameWithType: TenantAuthorizationMiddlewareResultHandler.TenantAuthorizationMiddlewareResultHandler
+  nameWithType.vb: TenantAuthorizationMiddlewareResultHandler.New
+- uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.HandleAsync(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Authorization.AuthorizationPolicy,Microsoft.AspNetCore.Authorization.Policy.PolicyAuthorizationResult)
+  name: HandleAsync(RequestDelegate, HttpContext, AuthorizationPolicy, PolicyAuthorizationResult)
+  href: api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html#Api_Infrastructure_TenantAuthorizationMiddlewareResultHandler_HandleAsync_Microsoft_AspNetCore_Http_RequestDelegate_Microsoft_AspNetCore_Http_HttpContext_Microsoft_AspNetCore_Authorization_AuthorizationPolicy_Microsoft_AspNetCore_Authorization_Policy_PolicyAuthorizationResult_
+  commentId: M:Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.HandleAsync(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Authorization.AuthorizationPolicy,Microsoft.AspNetCore.Authorization.Policy.PolicyAuthorizationResult)
+  fullName: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.HandleAsync(Microsoft.AspNetCore.Http.RequestDelegate, Microsoft.AspNetCore.Http.HttpContext, Microsoft.AspNetCore.Authorization.AuthorizationPolicy, Microsoft.AspNetCore.Authorization.Policy.PolicyAuthorizationResult)
+  nameWithType: TenantAuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate, HttpContext, AuthorizationPolicy, PolicyAuthorizationResult)
+- uid: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.HandleAsync*
+  name: HandleAsync
+  href: api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html#Api_Infrastructure_TenantAuthorizationMiddlewareResultHandler_HandleAsync_
+  commentId: Overload:Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.HandleAsync
+  isSpec: "True"
+  fullName: Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.HandleAsync
+  nameWithType: TenantAuthorizationMiddlewareResultHandler.HandleAsync
 - uid: Api.Program
   name: Program
   href: api/Bootstrapper/Api.Program.html
   commentId: T:Api.Program
   fullName: Api.Program
   nameWithType: Program
-- uid: Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  name: UseSerilog(WebApplicationBuilder)
-  href: api/Bootstrapper/Api.Program.html#Api_Program_UseSerilog_Microsoft_AspNetCore_Builder_WebApplicationBuilder_
-  commentId: M:Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  fullName: Api.Program.UseSerilog(Microsoft.AspNetCore.Builder.WebApplicationBuilder)
-  nameWithType: Program.UseSerilog(WebApplicationBuilder)
-- uid: Api.Program.UseSerilog*
-  name: UseSerilog
-  href: api/Bootstrapper/Api.Program.html#Api_Program_UseSerilog_
-  commentId: Overload:Api.Program.UseSerilog
-  isSpec: "True"
-  fullName: Api.Program.UseSerilog
-  nameWithType: Program.UseSerilog
 - uid: Shared.Behaviors
   name: Shared.Behaviors
   href: api/Shared/Shared.Behaviors.html
   commentId: N:Shared.Behaviors
   fullName: Shared.Behaviors
   nameWithType: Shared.Behaviors
+- uid: Shared.Behaviors.ApplicationTelemetry
+  name: ApplicationTelemetry
+  href: api/Shared/Shared.Behaviors.ApplicationTelemetry.html
+  commentId: T:Shared.Behaviors.ApplicationTelemetry
+  fullName: Shared.Behaviors.ApplicationTelemetry
+  nameWithType: ApplicationTelemetry
+- uid: Shared.Behaviors.ApplicationTelemetry.ActivitySource
+  name: ActivitySource
+  href: api/Shared/Shared.Behaviors.ApplicationTelemetry.html#Shared_Behaviors_ApplicationTelemetry_ActivitySource
+  commentId: F:Shared.Behaviors.ApplicationTelemetry.ActivitySource
+  fullName: Shared.Behaviors.ApplicationTelemetry.ActivitySource
+  nameWithType: ApplicationTelemetry.ActivitySource
+- uid: Shared.Behaviors.ApplicationTelemetry.SourceName
+  name: SourceName
+  href: api/Shared/Shared.Behaviors.ApplicationTelemetry.html#Shared_Behaviors_ApplicationTelemetry_SourceName
+  commentId: F:Shared.Behaviors.ApplicationTelemetry.SourceName
+  fullName: Shared.Behaviors.ApplicationTelemetry.SourceName
+  nameWithType: ApplicationTelemetry.SourceName
 - uid: Shared.Behaviors.LoggingBehavior`2
   name: LoggingBehavior<TRequest, TResponse>
   href: api/Shared/Shared.Behaviors.LoggingBehavior-2.html
@@ -190,6 +560,160 @@ references:
   fullName.vb: Shared.DDD.Aggregate(Of TId).DomainEvents
   nameWithType: Aggregate<TId>.DomainEvents
   nameWithType.vb: Aggregate(Of TId).DomainEvents
+- uid: Shared.DDD.AuditedAggregate`1
+  name: AuditedAggregate<TId>
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html
+  commentId: T:Shared.DDD.AuditedAggregate`1
+  name.vb: AuditedAggregate(Of TId)
+  fullName: Shared.DDD.AuditedAggregate<TId>
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId)
+  nameWithType: AuditedAggregate<TId>
+  nameWithType.vb: AuditedAggregate(Of TId)
+- uid: Shared.DDD.AuditedAggregate`1.CreatedAt
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_CreatedAt
+  commentId: P:Shared.DDD.AuditedAggregate`1.CreatedAt
+  fullName: Shared.DDD.AuditedAggregate<TId>.CreatedAt
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).CreatedAt
+  nameWithType: AuditedAggregate<TId>.CreatedAt
+  nameWithType.vb: AuditedAggregate(Of TId).CreatedAt
+- uid: Shared.DDD.AuditedAggregate`1.CreatedAt*
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_CreatedAt_
+  commentId: Overload:Shared.DDD.AuditedAggregate`1.CreatedAt
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedAggregate<TId>.CreatedAt
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).CreatedAt
+  nameWithType: AuditedAggregate<TId>.CreatedAt
+  nameWithType.vb: AuditedAggregate(Of TId).CreatedAt
+- uid: Shared.DDD.AuditedAggregate`1.CreatedBy
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_CreatedBy
+  commentId: P:Shared.DDD.AuditedAggregate`1.CreatedBy
+  fullName: Shared.DDD.AuditedAggregate<TId>.CreatedBy
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).CreatedBy
+  nameWithType: AuditedAggregate<TId>.CreatedBy
+  nameWithType.vb: AuditedAggregate(Of TId).CreatedBy
+- uid: Shared.DDD.AuditedAggregate`1.CreatedBy*
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_CreatedBy_
+  commentId: Overload:Shared.DDD.AuditedAggregate`1.CreatedBy
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedAggregate<TId>.CreatedBy
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).CreatedBy
+  nameWithType: AuditedAggregate<TId>.CreatedBy
+  nameWithType.vb: AuditedAggregate(Of TId).CreatedBy
+- uid: Shared.DDD.AuditedAggregate`1.LastModified
+  name: LastModified
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_LastModified
+  commentId: P:Shared.DDD.AuditedAggregate`1.LastModified
+  fullName: Shared.DDD.AuditedAggregate<TId>.LastModified
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).LastModified
+  nameWithType: AuditedAggregate<TId>.LastModified
+  nameWithType.vb: AuditedAggregate(Of TId).LastModified
+- uid: Shared.DDD.AuditedAggregate`1.LastModified*
+  name: LastModified
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_LastModified_
+  commentId: Overload:Shared.DDD.AuditedAggregate`1.LastModified
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedAggregate<TId>.LastModified
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).LastModified
+  nameWithType: AuditedAggregate<TId>.LastModified
+  nameWithType.vb: AuditedAggregate(Of TId).LastModified
+- uid: Shared.DDD.AuditedAggregate`1.LastModifiedBy
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_LastModifiedBy
+  commentId: P:Shared.DDD.AuditedAggregate`1.LastModifiedBy
+  fullName: Shared.DDD.AuditedAggregate<TId>.LastModifiedBy
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).LastModifiedBy
+  nameWithType: AuditedAggregate<TId>.LastModifiedBy
+  nameWithType.vb: AuditedAggregate(Of TId).LastModifiedBy
+- uid: Shared.DDD.AuditedAggregate`1.LastModifiedBy*
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.AuditedAggregate-1.html#Shared_DDD_AuditedAggregate_1_LastModifiedBy_
+  commentId: Overload:Shared.DDD.AuditedAggregate`1.LastModifiedBy
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedAggregate<TId>.LastModifiedBy
+  fullName.vb: Shared.DDD.AuditedAggregate(Of TId).LastModifiedBy
+  nameWithType: AuditedAggregate<TId>.LastModifiedBy
+  nameWithType.vb: AuditedAggregate(Of TId).LastModifiedBy
+- uid: Shared.DDD.AuditedEntity`1
+  name: AuditedEntity<T>
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html
+  commentId: T:Shared.DDD.AuditedEntity`1
+  name.vb: AuditedEntity(Of T)
+  fullName: Shared.DDD.AuditedEntity<T>
+  fullName.vb: Shared.DDD.AuditedEntity(Of T)
+  nameWithType: AuditedEntity<T>
+  nameWithType.vb: AuditedEntity(Of T)
+- uid: Shared.DDD.AuditedEntity`1.CreatedAt
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedAt
+  commentId: P:Shared.DDD.AuditedEntity`1.CreatedAt
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedAt
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedAt
+  nameWithType: AuditedEntity<T>.CreatedAt
+  nameWithType.vb: AuditedEntity(Of T).CreatedAt
+- uid: Shared.DDD.AuditedEntity`1.CreatedAt*
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedAt_
+  commentId: Overload:Shared.DDD.AuditedEntity`1.CreatedAt
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedAt
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedAt
+  nameWithType: AuditedEntity<T>.CreatedAt
+  nameWithType.vb: AuditedEntity(Of T).CreatedAt
+- uid: Shared.DDD.AuditedEntity`1.CreatedBy
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedBy
+  commentId: P:Shared.DDD.AuditedEntity`1.CreatedBy
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedBy
+  nameWithType: AuditedEntity<T>.CreatedBy
+  nameWithType.vb: AuditedEntity(Of T).CreatedBy
+- uid: Shared.DDD.AuditedEntity`1.CreatedBy*
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_CreatedBy_
+  commentId: Overload:Shared.DDD.AuditedEntity`1.CreatedBy
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedEntity<T>.CreatedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).CreatedBy
+  nameWithType: AuditedEntity<T>.CreatedBy
+  nameWithType.vb: AuditedEntity(Of T).CreatedBy
+- uid: Shared.DDD.AuditedEntity`1.LastModified
+  name: LastModified
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModified
+  commentId: P:Shared.DDD.AuditedEntity`1.LastModified
+  fullName: Shared.DDD.AuditedEntity<T>.LastModified
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModified
+  nameWithType: AuditedEntity<T>.LastModified
+  nameWithType.vb: AuditedEntity(Of T).LastModified
+- uid: Shared.DDD.AuditedEntity`1.LastModified*
+  name: LastModified
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModified_
+  commentId: Overload:Shared.DDD.AuditedEntity`1.LastModified
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedEntity<T>.LastModified
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModified
+  nameWithType: AuditedEntity<T>.LastModified
+  nameWithType.vb: AuditedEntity(Of T).LastModified
+- uid: Shared.DDD.AuditedEntity`1.LastModifiedBy
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModifiedBy
+  commentId: P:Shared.DDD.AuditedEntity`1.LastModifiedBy
+  fullName: Shared.DDD.AuditedEntity<T>.LastModifiedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModifiedBy
+  nameWithType: AuditedEntity<T>.LastModifiedBy
+  nameWithType.vb: AuditedEntity(Of T).LastModifiedBy
+- uid: Shared.DDD.AuditedEntity`1.LastModifiedBy*
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.AuditedEntity-1.html#Shared_DDD_AuditedEntity_1_LastModifiedBy_
+  commentId: Overload:Shared.DDD.AuditedEntity`1.LastModifiedBy
+  isSpec: "True"
+  fullName: Shared.DDD.AuditedEntity<T>.LastModifiedBy
+  fullName.vb: Shared.DDD.AuditedEntity(Of T).LastModifiedBy
+  nameWithType: AuditedEntity<T>.LastModifiedBy
+  nameWithType.vb: AuditedEntity(Of T).LastModifiedBy
 - uid: Shared.DDD.Entity`1
   name: Entity<T>
   href: api/Shared/Shared.DDD.Entity-1.html
@@ -199,40 +723,6 @@ references:
   fullName.vb: Shared.DDD.Entity(Of T)
   nameWithType: Entity<T>
   nameWithType.vb: Entity(Of T)
-- uid: Shared.DDD.Entity`1.CreatedAt
-  name: CreatedAt
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt
-  commentId: P:Shared.DDD.Entity`1.CreatedAt
-  fullName: Shared.DDD.Entity<T>.CreatedAt
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
-  nameWithType: Entity<T>.CreatedAt
-  nameWithType.vb: Entity(Of T).CreatedAt
-- uid: Shared.DDD.Entity`1.CreatedAt*
-  name: CreatedAt
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedAt_
-  commentId: Overload:Shared.DDD.Entity`1.CreatedAt
-  isSpec: "True"
-  fullName: Shared.DDD.Entity<T>.CreatedAt
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedAt
-  nameWithType: Entity<T>.CreatedAt
-  nameWithType.vb: Entity(Of T).CreatedAt
-- uid: Shared.DDD.Entity`1.CreatedBy
-  name: CreatedBy
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy
-  commentId: P:Shared.DDD.Entity`1.CreatedBy
-  fullName: Shared.DDD.Entity<T>.CreatedBy
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
-  nameWithType: Entity<T>.CreatedBy
-  nameWithType.vb: Entity(Of T).CreatedBy
-- uid: Shared.DDD.Entity`1.CreatedBy*
-  name: CreatedBy
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_CreatedBy_
-  commentId: Overload:Shared.DDD.Entity`1.CreatedBy
-  isSpec: "True"
-  fullName: Shared.DDD.Entity<T>.CreatedBy
-  fullName.vb: Shared.DDD.Entity(Of T).CreatedBy
-  nameWithType: Entity<T>.CreatedBy
-  nameWithType.vb: Entity(Of T).CreatedBy
 - uid: Shared.DDD.Entity`1.Id
   name: Id
   href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_Id
@@ -250,40 +740,126 @@ references:
   fullName.vb: Shared.DDD.Entity(Of T).Id
   nameWithType: Entity<T>.Id
   nameWithType.vb: Entity(Of T).Id
-- uid: Shared.DDD.Entity`1.LastModified
-  name: LastModified
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified
-  commentId: P:Shared.DDD.Entity`1.LastModified
-  fullName: Shared.DDD.Entity<T>.LastModified
-  fullName.vb: Shared.DDD.Entity(Of T).LastModified
-  nameWithType: Entity<T>.LastModified
-  nameWithType.vb: Entity(Of T).LastModified
-- uid: Shared.DDD.Entity`1.LastModified*
-  name: LastModified
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModified_
-  commentId: Overload:Shared.DDD.Entity`1.LastModified
+- uid: Shared.DDD.FullAuditedAggregate`1
+  name: FullAuditedAggregate<TId>
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html
+  commentId: T:Shared.DDD.FullAuditedAggregate`1
+  name.vb: FullAuditedAggregate(Of TId)
+  fullName: Shared.DDD.FullAuditedAggregate<TId>
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId)
+  nameWithType: FullAuditedAggregate<TId>
+  nameWithType.vb: FullAuditedAggregate(Of TId)
+- uid: Shared.DDD.FullAuditedAggregate`1.DeletedAt
+  name: DeletedAt
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html#Shared_DDD_FullAuditedAggregate_1_DeletedAt
+  commentId: P:Shared.DDD.FullAuditedAggregate`1.DeletedAt
+  fullName: Shared.DDD.FullAuditedAggregate<TId>.DeletedAt
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId).DeletedAt
+  nameWithType: FullAuditedAggregate<TId>.DeletedAt
+  nameWithType.vb: FullAuditedAggregate(Of TId).DeletedAt
+- uid: Shared.DDD.FullAuditedAggregate`1.DeletedAt*
+  name: DeletedAt
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html#Shared_DDD_FullAuditedAggregate_1_DeletedAt_
+  commentId: Overload:Shared.DDD.FullAuditedAggregate`1.DeletedAt
   isSpec: "True"
-  fullName: Shared.DDD.Entity<T>.LastModified
-  fullName.vb: Shared.DDD.Entity(Of T).LastModified
-  nameWithType: Entity<T>.LastModified
-  nameWithType.vb: Entity(Of T).LastModified
-- uid: Shared.DDD.Entity`1.LastModifiedBy
-  name: LastModifiedBy
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy
-  commentId: P:Shared.DDD.Entity`1.LastModifiedBy
-  fullName: Shared.DDD.Entity<T>.LastModifiedBy
-  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
-  nameWithType: Entity<T>.LastModifiedBy
-  nameWithType.vb: Entity(Of T).LastModifiedBy
-- uid: Shared.DDD.Entity`1.LastModifiedBy*
-  name: LastModifiedBy
-  href: api/Shared/Shared.DDD.Entity-1.html#Shared_DDD_Entity_1_LastModifiedBy_
-  commentId: Overload:Shared.DDD.Entity`1.LastModifiedBy
+  fullName: Shared.DDD.FullAuditedAggregate<TId>.DeletedAt
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId).DeletedAt
+  nameWithType: FullAuditedAggregate<TId>.DeletedAt
+  nameWithType.vb: FullAuditedAggregate(Of TId).DeletedAt
+- uid: Shared.DDD.FullAuditedAggregate`1.DeletedBy
+  name: DeletedBy
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html#Shared_DDD_FullAuditedAggregate_1_DeletedBy
+  commentId: P:Shared.DDD.FullAuditedAggregate`1.DeletedBy
+  fullName: Shared.DDD.FullAuditedAggregate<TId>.DeletedBy
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId).DeletedBy
+  nameWithType: FullAuditedAggregate<TId>.DeletedBy
+  nameWithType.vb: FullAuditedAggregate(Of TId).DeletedBy
+- uid: Shared.DDD.FullAuditedAggregate`1.DeletedBy*
+  name: DeletedBy
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html#Shared_DDD_FullAuditedAggregate_1_DeletedBy_
+  commentId: Overload:Shared.DDD.FullAuditedAggregate`1.DeletedBy
   isSpec: "True"
-  fullName: Shared.DDD.Entity<T>.LastModifiedBy
-  fullName.vb: Shared.DDD.Entity(Of T).LastModifiedBy
-  nameWithType: Entity<T>.LastModifiedBy
-  nameWithType.vb: Entity(Of T).LastModifiedBy
+  fullName: Shared.DDD.FullAuditedAggregate<TId>.DeletedBy
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId).DeletedBy
+  nameWithType: FullAuditedAggregate<TId>.DeletedBy
+  nameWithType.vb: FullAuditedAggregate(Of TId).DeletedBy
+- uid: Shared.DDD.FullAuditedAggregate`1.IsDeleted
+  name: IsDeleted
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html#Shared_DDD_FullAuditedAggregate_1_IsDeleted
+  commentId: P:Shared.DDD.FullAuditedAggregate`1.IsDeleted
+  fullName: Shared.DDD.FullAuditedAggregate<TId>.IsDeleted
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId).IsDeleted
+  nameWithType: FullAuditedAggregate<TId>.IsDeleted
+  nameWithType.vb: FullAuditedAggregate(Of TId).IsDeleted
+- uid: Shared.DDD.FullAuditedAggregate`1.IsDeleted*
+  name: IsDeleted
+  href: api/Shared/Shared.DDD.FullAuditedAggregate-1.html#Shared_DDD_FullAuditedAggregate_1_IsDeleted_
+  commentId: Overload:Shared.DDD.FullAuditedAggregate`1.IsDeleted
+  isSpec: "True"
+  fullName: Shared.DDD.FullAuditedAggregate<TId>.IsDeleted
+  fullName.vb: Shared.DDD.FullAuditedAggregate(Of TId).IsDeleted
+  nameWithType: FullAuditedAggregate<TId>.IsDeleted
+  nameWithType.vb: FullAuditedAggregate(Of TId).IsDeleted
+- uid: Shared.DDD.FullAuditedEntity`1
+  name: FullAuditedEntity<T>
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html
+  commentId: T:Shared.DDD.FullAuditedEntity`1
+  name.vb: FullAuditedEntity(Of T)
+  fullName: Shared.DDD.FullAuditedEntity<T>
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T)
+  nameWithType: FullAuditedEntity<T>
+  nameWithType.vb: FullAuditedEntity(Of T)
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedAt
+  name: DeletedAt
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_DeletedAt
+  commentId: P:Shared.DDD.FullAuditedEntity`1.DeletedAt
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedAt
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedAt
+  nameWithType: FullAuditedEntity<T>.DeletedAt
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedAt
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedAt*
+  name: DeletedAt
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_DeletedAt_
+  commentId: Overload:Shared.DDD.FullAuditedEntity`1.DeletedAt
+  isSpec: "True"
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedAt
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedAt
+  nameWithType: FullAuditedEntity<T>.DeletedAt
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedAt
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedBy
+  name: DeletedBy
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_DeletedBy
+  commentId: P:Shared.DDD.FullAuditedEntity`1.DeletedBy
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedBy
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedBy
+  nameWithType: FullAuditedEntity<T>.DeletedBy
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedBy
+- uid: Shared.DDD.FullAuditedEntity`1.DeletedBy*
+  name: DeletedBy
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_DeletedBy_
+  commentId: Overload:Shared.DDD.FullAuditedEntity`1.DeletedBy
+  isSpec: "True"
+  fullName: Shared.DDD.FullAuditedEntity<T>.DeletedBy
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).DeletedBy
+  nameWithType: FullAuditedEntity<T>.DeletedBy
+  nameWithType.vb: FullAuditedEntity(Of T).DeletedBy
+- uid: Shared.DDD.FullAuditedEntity`1.IsDeleted
+  name: IsDeleted
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_IsDeleted
+  commentId: P:Shared.DDD.FullAuditedEntity`1.IsDeleted
+  fullName: Shared.DDD.FullAuditedEntity<T>.IsDeleted
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).IsDeleted
+  nameWithType: FullAuditedEntity<T>.IsDeleted
+  nameWithType.vb: FullAuditedEntity(Of T).IsDeleted
+- uid: Shared.DDD.FullAuditedEntity`1.IsDeleted*
+  name: IsDeleted
+  href: api/Shared/Shared.DDD.FullAuditedEntity-1.html#Shared_DDD_FullAuditedEntity_1_IsDeleted_
+  commentId: Overload:Shared.DDD.FullAuditedEntity`1.IsDeleted
+  isSpec: "True"
+  fullName: Shared.DDD.FullAuditedEntity<T>.IsDeleted
+  fullName.vb: Shared.DDD.FullAuditedEntity(Of T).IsDeleted
+  nameWithType: FullAuditedEntity<T>.IsDeleted
+  nameWithType.vb: FullAuditedEntity(Of T).IsDeleted
 - uid: Shared.DDD.IAggregate
   name: IAggregate
   href: api/Shared/Shared.DDD.IAggregate.html
@@ -325,6 +901,76 @@ references:
   fullName.vb: Shared.DDD.IAggregate(Of T)
   nameWithType: IAggregate<T>
   nameWithType.vb: IAggregate(Of T)
+- uid: Shared.DDD.IAuditedObject
+  name: IAuditedObject
+  href: api/Shared/Shared.DDD.IAuditedObject.html
+  commentId: T:Shared.DDD.IAuditedObject
+  fullName: Shared.DDD.IAuditedObject
+  nameWithType: IAuditedObject
+- uid: Shared.DDD.ICreationAuditedObject
+  name: ICreationAuditedObject
+  href: api/Shared/Shared.DDD.ICreationAuditedObject.html
+  commentId: T:Shared.DDD.ICreationAuditedObject
+  fullName: Shared.DDD.ICreationAuditedObject
+  nameWithType: ICreationAuditedObject
+- uid: Shared.DDD.ICreationAuditedObject.CreatedAt
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedAt
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedAt
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedAt
+  nameWithType: ICreationAuditedObject.CreatedAt
+- uid: Shared.DDD.ICreationAuditedObject.CreatedAt*
+  name: CreatedAt
+  href: api/Shared/Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedAt_
+  commentId: Overload:Shared.DDD.ICreationAuditedObject.CreatedAt
+  isSpec: "True"
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedAt
+  nameWithType: ICreationAuditedObject.CreatedAt
+- uid: Shared.DDD.ICreationAuditedObject.CreatedBy
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedBy
+  commentId: P:Shared.DDD.ICreationAuditedObject.CreatedBy
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedBy
+  nameWithType: ICreationAuditedObject.CreatedBy
+- uid: Shared.DDD.ICreationAuditedObject.CreatedBy*
+  name: CreatedBy
+  href: api/Shared/Shared.DDD.ICreationAuditedObject.html#Shared_DDD_ICreationAuditedObject_CreatedBy_
+  commentId: Overload:Shared.DDD.ICreationAuditedObject.CreatedBy
+  isSpec: "True"
+  fullName: Shared.DDD.ICreationAuditedObject.CreatedBy
+  nameWithType: ICreationAuditedObject.CreatedBy
+- uid: Shared.DDD.IDeletionAuditedObject
+  name: IDeletionAuditedObject
+  href: api/Shared/Shared.DDD.IDeletionAuditedObject.html
+  commentId: T:Shared.DDD.IDeletionAuditedObject
+  fullName: Shared.DDD.IDeletionAuditedObject
+  nameWithType: IDeletionAuditedObject
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  name: DeletedAt
+  href: api/Shared/Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedAt
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedAt
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  nameWithType: IDeletionAuditedObject.DeletedAt
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedAt*
+  name: DeletedAt
+  href: api/Shared/Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedAt_
+  commentId: Overload:Shared.DDD.IDeletionAuditedObject.DeletedAt
+  isSpec: "True"
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedAt
+  nameWithType: IDeletionAuditedObject.DeletedAt
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  name: DeletedBy
+  href: api/Shared/Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedBy
+  commentId: P:Shared.DDD.IDeletionAuditedObject.DeletedBy
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  nameWithType: IDeletionAuditedObject.DeletedBy
+- uid: Shared.DDD.IDeletionAuditedObject.DeletedBy*
+  name: DeletedBy
+  href: api/Shared/Shared.DDD.IDeletionAuditedObject.html#Shared_DDD_IDeletionAuditedObject_DeletedBy_
+  commentId: Overload:Shared.DDD.IDeletionAuditedObject.DeletedBy
+  isSpec: "True"
+  fullName: Shared.DDD.IDeletionAuditedObject.DeletedBy
+  nameWithType: IDeletionAuditedObject.DeletedBy
 - uid: Shared.DDD.IDomainEvent
   name: IDomainEvent
   href: api/Shared/Shared.DDD.IDomainEvent.html
@@ -376,58 +1022,6 @@ references:
   commentId: T:Shared.DDD.IEntity
   fullName: Shared.DDD.IEntity
   nameWithType: IEntity
-- uid: Shared.DDD.IEntity.CreatedAt
-  name: CreatedAt
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt
-  commentId: P:Shared.DDD.IEntity.CreatedAt
-  fullName: Shared.DDD.IEntity.CreatedAt
-  nameWithType: IEntity.CreatedAt
-- uid: Shared.DDD.IEntity.CreatedAt*
-  name: CreatedAt
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedAt_
-  commentId: Overload:Shared.DDD.IEntity.CreatedAt
-  isSpec: "True"
-  fullName: Shared.DDD.IEntity.CreatedAt
-  nameWithType: IEntity.CreatedAt
-- uid: Shared.DDD.IEntity.CreatedBy
-  name: CreatedBy
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy
-  commentId: P:Shared.DDD.IEntity.CreatedBy
-  fullName: Shared.DDD.IEntity.CreatedBy
-  nameWithType: IEntity.CreatedBy
-- uid: Shared.DDD.IEntity.CreatedBy*
-  name: CreatedBy
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_CreatedBy_
-  commentId: Overload:Shared.DDD.IEntity.CreatedBy
-  isSpec: "True"
-  fullName: Shared.DDD.IEntity.CreatedBy
-  nameWithType: IEntity.CreatedBy
-- uid: Shared.DDD.IEntity.LastModified
-  name: LastModified
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified
-  commentId: P:Shared.DDD.IEntity.LastModified
-  fullName: Shared.DDD.IEntity.LastModified
-  nameWithType: IEntity.LastModified
-- uid: Shared.DDD.IEntity.LastModified*
-  name: LastModified
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModified_
-  commentId: Overload:Shared.DDD.IEntity.LastModified
-  isSpec: "True"
-  fullName: Shared.DDD.IEntity.LastModified
-  nameWithType: IEntity.LastModified
-- uid: Shared.DDD.IEntity.LastModifiedBy
-  name: LastModifiedBy
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy
-  commentId: P:Shared.DDD.IEntity.LastModifiedBy
-  fullName: Shared.DDD.IEntity.LastModifiedBy
-  nameWithType: IEntity.LastModifiedBy
-- uid: Shared.DDD.IEntity.LastModifiedBy*
-  name: LastModifiedBy
-  href: api/Shared/Shared.DDD.IEntity.html#Shared_DDD_IEntity_LastModifiedBy_
-  commentId: Overload:Shared.DDD.IEntity.LastModifiedBy
-  isSpec: "True"
-  fullName: Shared.DDD.IEntity.LastModifiedBy
-  nameWithType: IEntity.LastModifiedBy
 - uid: Shared.DDD.IEntity`1
   name: IEntity<T>
   href: api/Shared/Shared.DDD.IEntity-1.html
@@ -454,12 +1048,616 @@ references:
   fullName.vb: Shared.DDD.IEntity(Of T).Id
   nameWithType: IEntity<T>.Id
   nameWithType.vb: IEntity(Of T).Id
+- uid: Shared.DDD.IFullAuditedObject
+  name: IFullAuditedObject
+  href: api/Shared/Shared.DDD.IFullAuditedObject.html
+  commentId: T:Shared.DDD.IFullAuditedObject
+  fullName: Shared.DDD.IFullAuditedObject
+  nameWithType: IFullAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject
+  name: IModificationAuditedObject
+  href: api/Shared/Shared.DDD.IModificationAuditedObject.html
+  commentId: T:Shared.DDD.IModificationAuditedObject
+  fullName: Shared.DDD.IModificationAuditedObject
+  nameWithType: IModificationAuditedObject
+- uid: Shared.DDD.IModificationAuditedObject.LastModified
+  name: LastModified
+  href: api/Shared/Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModified
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModified
+  fullName: Shared.DDD.IModificationAuditedObject.LastModified
+  nameWithType: IModificationAuditedObject.LastModified
+- uid: Shared.DDD.IModificationAuditedObject.LastModified*
+  name: LastModified
+  href: api/Shared/Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModified_
+  commentId: Overload:Shared.DDD.IModificationAuditedObject.LastModified
+  isSpec: "True"
+  fullName: Shared.DDD.IModificationAuditedObject.LastModified
+  nameWithType: IModificationAuditedObject.LastModified
+- uid: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModifiedBy
+  commentId: P:Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  fullName: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  nameWithType: IModificationAuditedObject.LastModifiedBy
+- uid: Shared.DDD.IModificationAuditedObject.LastModifiedBy*
+  name: LastModifiedBy
+  href: api/Shared/Shared.DDD.IModificationAuditedObject.html#Shared_DDD_IModificationAuditedObject_LastModifiedBy_
+  commentId: Overload:Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  isSpec: "True"
+  fullName: Shared.DDD.IModificationAuditedObject.LastModifiedBy
+  nameWithType: IModificationAuditedObject.LastModifiedBy
+- uid: Shared.DDD.IMultiTenant
+  name: IMultiTenant
+  href: api/Shared/Shared.DDD.IMultiTenant.html
+  commentId: T:Shared.DDD.IMultiTenant
+  fullName: Shared.DDD.IMultiTenant
+  nameWithType: IMultiTenant
+- uid: Shared.DDD.IMultiTenant.TenantId
+  name: TenantId
+  href: api/Shared/Shared.DDD.IMultiTenant.html#Shared_DDD_IMultiTenant_TenantId
+  commentId: P:Shared.DDD.IMultiTenant.TenantId
+  fullName: Shared.DDD.IMultiTenant.TenantId
+  nameWithType: IMultiTenant.TenantId
+- uid: Shared.DDD.IMultiTenant.TenantId*
+  name: TenantId
+  href: api/Shared/Shared.DDD.IMultiTenant.html#Shared_DDD_IMultiTenant_TenantId_
+  commentId: Overload:Shared.DDD.IMultiTenant.TenantId
+  isSpec: "True"
+  fullName: Shared.DDD.IMultiTenant.TenantId
+  nameWithType: IMultiTenant.TenantId
+- uid: Shared.DDD.ISoftDelete
+  name: ISoftDelete
+  href: api/Shared/Shared.DDD.ISoftDelete.html
+  commentId: T:Shared.DDD.ISoftDelete
+  fullName: Shared.DDD.ISoftDelete
+  nameWithType: ISoftDelete
+- uid: Shared.DDD.ISoftDelete.IsDeleted
+  name: IsDeleted
+  href: api/Shared/Shared.DDD.ISoftDelete.html#Shared_DDD_ISoftDelete_IsDeleted
+  commentId: P:Shared.DDD.ISoftDelete.IsDeleted
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+- uid: Shared.DDD.ISoftDelete.IsDeleted*
+  name: IsDeleted
+  href: api/Shared/Shared.DDD.ISoftDelete.html#Shared_DDD_ISoftDelete_IsDeleted_
+  commentId: Overload:Shared.DDD.ISoftDelete.IsDeleted
+  isSpec: "True"
+  fullName: Shared.DDD.ISoftDelete.IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
 - uid: Shared.Data
   name: Shared.Data
   href: api/Shared/Shared.Data.html
   commentId: N:Shared.Data
   fullName: Shared.Data
   nameWithType: Shared.Data
+- uid: Shared.Data.Auditing
+  name: Shared.Data.Auditing
+  href: api/Shared/Shared.Data.Auditing.html
+  commentId: N:Shared.Data.Auditing
+  fullName: Shared.Data.Auditing
+  nameWithType: Shared.Data.Auditing
+- uid: Shared.Data.Auditing.AuditActorV1
+  name: AuditActorV1
+  href: api/Shared/Shared.Data.Auditing.AuditActorV1.html
+  commentId: T:Shared.Data.Auditing.AuditActorV1
+  fullName: Shared.Data.Auditing.AuditActorV1
+  nameWithType: AuditActorV1
+- uid: Shared.Data.Auditing.AuditActorV1.#ctor(System.Nullable{System.Guid})
+  name: AuditActorV1(Guid?)
+  href: api/Shared/Shared.Data.Auditing.AuditActorV1.html#Shared_Data_Auditing_AuditActorV1__ctor_System_Nullable_System_Guid__
+  commentId: M:Shared.Data.Auditing.AuditActorV1.#ctor(System.Nullable{System.Guid})
+  name.vb: New(Guid?)
+  fullName: Shared.Data.Auditing.AuditActorV1.AuditActorV1(System.Guid?)
+  fullName.vb: Shared.Data.Auditing.AuditActorV1.New(System.Guid?)
+  nameWithType: AuditActorV1.AuditActorV1(Guid?)
+  nameWithType.vb: AuditActorV1.New(Guid?)
+- uid: Shared.Data.Auditing.AuditActorV1.#ctor*
+  name: AuditActorV1
+  href: api/Shared/Shared.Data.Auditing.AuditActorV1.html#Shared_Data_Auditing_AuditActorV1__ctor_
+  commentId: Overload:Shared.Data.Auditing.AuditActorV1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Auditing.AuditActorV1.AuditActorV1
+  fullName.vb: Shared.Data.Auditing.AuditActorV1.New
+  nameWithType: AuditActorV1.AuditActorV1
+  nameWithType.vb: AuditActorV1.New
+- uid: Shared.Data.Auditing.AuditActorV1.Id
+  name: Id
+  href: api/Shared/Shared.Data.Auditing.AuditActorV1.html#Shared_Data_Auditing_AuditActorV1_Id
+  commentId: P:Shared.Data.Auditing.AuditActorV1.Id
+  fullName: Shared.Data.Auditing.AuditActorV1.Id
+  nameWithType: AuditActorV1.Id
+- uid: Shared.Data.Auditing.AuditActorV1.Id*
+  name: Id
+  href: api/Shared/Shared.Data.Auditing.AuditActorV1.html#Shared_Data_Auditing_AuditActorV1_Id_
+  commentId: Overload:Shared.Data.Auditing.AuditActorV1.Id
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditActorV1.Id
+  nameWithType: AuditActorV1.Id
+- uid: Shared.Data.Auditing.AuditCategory
+  name: AuditCategory
+  href: api/Shared/Shared.Data.Auditing.AuditCategory.html
+  commentId: T:Shared.Data.Auditing.AuditCategory
+  fullName: Shared.Data.Auditing.AuditCategory
+  nameWithType: AuditCategory
+- uid: Shared.Data.Auditing.AuditCategory.Administration
+  name: Administration
+  href: api/Shared/Shared.Data.Auditing.AuditCategory.html#Shared_Data_Auditing_AuditCategory_Administration
+  commentId: F:Shared.Data.Auditing.AuditCategory.Administration
+  fullName: Shared.Data.Auditing.AuditCategory.Administration
+  nameWithType: AuditCategory.Administration
+- uid: Shared.Data.Auditing.AuditCategory.BusinessAction
+  name: BusinessAction
+  href: api/Shared/Shared.Data.Auditing.AuditCategory.html#Shared_Data_Auditing_AuditCategory_BusinessAction
+  commentId: F:Shared.Data.Auditing.AuditCategory.BusinessAction
+  fullName: Shared.Data.Auditing.AuditCategory.BusinessAction
+  nameWithType: AuditCategory.BusinessAction
+- uid: Shared.Data.Auditing.AuditCategory.DataChange
+  name: DataChange
+  href: api/Shared/Shared.Data.Auditing.AuditCategory.html#Shared_Data_Auditing_AuditCategory_DataChange
+  commentId: F:Shared.Data.Auditing.AuditCategory.DataChange
+  fullName: Shared.Data.Auditing.AuditCategory.DataChange
+  nameWithType: AuditCategory.DataChange
+- uid: Shared.Data.Auditing.AuditCategory.Security
+  name: Security
+  href: api/Shared/Shared.Data.Auditing.AuditCategory.html#Shared_Data_Auditing_AuditCategory_Security
+  commentId: F:Shared.Data.Auditing.AuditCategory.Security
+  fullName: Shared.Data.Auditing.AuditCategory.Security
+  nameWithType: AuditCategory.Security
+- uid: Shared.Data.Auditing.AuditCategory.SensitiveRead
+  name: SensitiveRead
+  href: api/Shared/Shared.Data.Auditing.AuditCategory.html#Shared_Data_Auditing_AuditCategory_SensitiveRead
+  commentId: F:Shared.Data.Auditing.AuditCategory.SensitiveRead
+  fullName: Shared.Data.Auditing.AuditCategory.SensitiveRead
+  nameWithType: AuditCategory.SensitiveRead
+- uid: Shared.Data.Auditing.AuditEventV1
+  name: AuditEventV1
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html
+  commentId: T:Shared.Data.Auditing.AuditEventV1
+  fullName: Shared.Data.Auditing.AuditEventV1
+  nameWithType: AuditEventV1
+- uid: Shared.Data.Auditing.AuditEventV1.Action
+  name: Action
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Action
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Action
+  fullName: Shared.Data.Auditing.AuditEventV1.Action
+  nameWithType: AuditEventV1.Action
+- uid: Shared.Data.Auditing.AuditEventV1.Action*
+  name: Action
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Action_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Action
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Action
+  nameWithType: AuditEventV1.Action
+- uid: Shared.Data.Auditing.AuditEventV1.Actor
+  name: Actor
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Actor
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Actor
+  fullName: Shared.Data.Auditing.AuditEventV1.Actor
+  nameWithType: AuditEventV1.Actor
+- uid: Shared.Data.Auditing.AuditEventV1.Actor*
+  name: Actor
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Actor_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Actor
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Actor
+  nameWithType: AuditEventV1.Actor
+- uid: Shared.Data.Auditing.AuditEventV1.Category
+  name: Category
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Category
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Category
+  fullName: Shared.Data.Auditing.AuditEventV1.Category
+  nameWithType: AuditEventV1.Category
+- uid: Shared.Data.Auditing.AuditEventV1.Category*
+  name: Category
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Category_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Category
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Category
+  nameWithType: AuditEventV1.Category
+- uid: Shared.Data.Auditing.AuditEventV1.Changes
+  name: Changes
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Changes
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Changes
+  fullName: Shared.Data.Auditing.AuditEventV1.Changes
+  nameWithType: AuditEventV1.Changes
+- uid: Shared.Data.Auditing.AuditEventV1.Changes*
+  name: Changes
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Changes_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Changes
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Changes
+  nameWithType: AuditEventV1.Changes
+- uid: Shared.Data.Auditing.AuditEventV1.CorrelationId
+  name: CorrelationId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_CorrelationId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.CorrelationId
+  fullName: Shared.Data.Auditing.AuditEventV1.CorrelationId
+  nameWithType: AuditEventV1.CorrelationId
+- uid: Shared.Data.Auditing.AuditEventV1.CorrelationId*
+  name: CorrelationId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_CorrelationId_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.CorrelationId
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.CorrelationId
+  nameWithType: AuditEventV1.CorrelationId
+- uid: Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  name: CurrentSchemaVersion
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_CurrentSchemaVersion
+  commentId: F:Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  fullName: Shared.Data.Auditing.AuditEventV1.CurrentSchemaVersion
+  nameWithType: AuditEventV1.CurrentSchemaVersion
+- uid: Shared.Data.Auditing.AuditEventV1.EventId
+  name: EventId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_EventId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.EventId
+  fullName: Shared.Data.Auditing.AuditEventV1.EventId
+  nameWithType: AuditEventV1.EventId
+- uid: Shared.Data.Auditing.AuditEventV1.EventId*
+  name: EventId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_EventId_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.EventId
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.EventId
+  nameWithType: AuditEventV1.EventId
+- uid: Shared.Data.Auditing.AuditEventV1.Metadata
+  name: Metadata
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Metadata
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Metadata
+  fullName: Shared.Data.Auditing.AuditEventV1.Metadata
+  nameWithType: AuditEventV1.Metadata
+- uid: Shared.Data.Auditing.AuditEventV1.Metadata*
+  name: Metadata
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Metadata_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Metadata
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Metadata
+  nameWithType: AuditEventV1.Metadata
+- uid: Shared.Data.Auditing.AuditEventV1.Module
+  name: Module
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Module
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Module
+  fullName: Shared.Data.Auditing.AuditEventV1.Module
+  nameWithType: AuditEventV1.Module
+- uid: Shared.Data.Auditing.AuditEventV1.Module*
+  name: Module
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Module_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Module
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Module
+  nameWithType: AuditEventV1.Module
+- uid: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  name: OccurredAtUtc
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_OccurredAtUtc
+  commentId: P:Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  fullName: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  nameWithType: AuditEventV1.OccurredAtUtc
+- uid: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc*
+  name: OccurredAtUtc
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_OccurredAtUtc_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.OccurredAtUtc
+  nameWithType: AuditEventV1.OccurredAtUtc
+- uid: Shared.Data.Auditing.AuditEventV1.Outcome
+  name: Outcome
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Outcome
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Outcome
+  fullName: Shared.Data.Auditing.AuditEventV1.Outcome
+  nameWithType: AuditEventV1.Outcome
+- uid: Shared.Data.Auditing.AuditEventV1.Outcome*
+  name: Outcome
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Outcome_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Outcome
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Outcome
+  nameWithType: AuditEventV1.Outcome
+- uid: Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  name: SchemaVersion
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_SchemaVersion
+  commentId: P:Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  fullName: Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  nameWithType: AuditEventV1.SchemaVersion
+- uid: Shared.Data.Auditing.AuditEventV1.SchemaVersion*
+  name: SchemaVersion
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_SchemaVersion_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.SchemaVersion
+  nameWithType: AuditEventV1.SchemaVersion
+- uid: Shared.Data.Auditing.AuditEventV1.Service
+  name: Service
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Service
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Service
+  fullName: Shared.Data.Auditing.AuditEventV1.Service
+  nameWithType: AuditEventV1.Service
+- uid: Shared.Data.Auditing.AuditEventV1.Service*
+  name: Service
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Service_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Service
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Service
+  nameWithType: AuditEventV1.Service
+- uid: Shared.Data.Auditing.AuditEventV1.SpanId
+  name: SpanId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_SpanId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.SpanId
+  fullName: Shared.Data.Auditing.AuditEventV1.SpanId
+  nameWithType: AuditEventV1.SpanId
+- uid: Shared.Data.Auditing.AuditEventV1.SpanId*
+  name: SpanId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_SpanId_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.SpanId
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.SpanId
+  nameWithType: AuditEventV1.SpanId
+- uid: Shared.Data.Auditing.AuditEventV1.Subject
+  name: Subject
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Subject
+  commentId: P:Shared.Data.Auditing.AuditEventV1.Subject
+  fullName: Shared.Data.Auditing.AuditEventV1.Subject
+  nameWithType: AuditEventV1.Subject
+- uid: Shared.Data.Auditing.AuditEventV1.Subject*
+  name: Subject
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_Subject_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.Subject
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.Subject
+  nameWithType: AuditEventV1.Subject
+- uid: Shared.Data.Auditing.AuditEventV1.TenantId
+  name: TenantId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_TenantId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.TenantId
+  fullName: Shared.Data.Auditing.AuditEventV1.TenantId
+  nameWithType: AuditEventV1.TenantId
+- uid: Shared.Data.Auditing.AuditEventV1.TenantId*
+  name: TenantId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_TenantId_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.TenantId
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.TenantId
+  nameWithType: AuditEventV1.TenantId
+- uid: Shared.Data.Auditing.AuditEventV1.TraceId
+  name: TraceId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_TraceId
+  commentId: P:Shared.Data.Auditing.AuditEventV1.TraceId
+  fullName: Shared.Data.Auditing.AuditEventV1.TraceId
+  nameWithType: AuditEventV1.TraceId
+- uid: Shared.Data.Auditing.AuditEventV1.TraceId*
+  name: TraceId
+  href: api/Shared/Shared.Data.Auditing.AuditEventV1.html#Shared_Data_Auditing_AuditEventV1_TraceId_
+  commentId: Overload:Shared.Data.Auditing.AuditEventV1.TraceId
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditEventV1.TraceId
+  nameWithType: AuditEventV1.TraceId
+- uid: Shared.Data.Auditing.AuditOutcome
+  name: AuditOutcome
+  href: api/Shared/Shared.Data.Auditing.AuditOutcome.html
+  commentId: T:Shared.Data.Auditing.AuditOutcome
+  fullName: Shared.Data.Auditing.AuditOutcome
+  nameWithType: AuditOutcome
+- uid: Shared.Data.Auditing.AuditOutcome.Denied
+  name: Denied
+  href: api/Shared/Shared.Data.Auditing.AuditOutcome.html#Shared_Data_Auditing_AuditOutcome_Denied
+  commentId: F:Shared.Data.Auditing.AuditOutcome.Denied
+  fullName: Shared.Data.Auditing.AuditOutcome.Denied
+  nameWithType: AuditOutcome.Denied
+- uid: Shared.Data.Auditing.AuditOutcome.Failed
+  name: Failed
+  href: api/Shared/Shared.Data.Auditing.AuditOutcome.html#Shared_Data_Auditing_AuditOutcome_Failed
+  commentId: F:Shared.Data.Auditing.AuditOutcome.Failed
+  fullName: Shared.Data.Auditing.AuditOutcome.Failed
+  nameWithType: AuditOutcome.Failed
+- uid: Shared.Data.Auditing.AuditOutcome.Succeeded
+  name: Succeeded
+  href: api/Shared/Shared.Data.Auditing.AuditOutcome.html#Shared_Data_Auditing_AuditOutcome_Succeeded
+  commentId: F:Shared.Data.Auditing.AuditOutcome.Succeeded
+  fullName: Shared.Data.Auditing.AuditOutcome.Succeeded
+  nameWithType: AuditOutcome.Succeeded
+- uid: Shared.Data.Auditing.AuditSensitiveAttribute
+  name: AuditSensitiveAttribute
+  href: api/Shared/Shared.Data.Auditing.AuditSensitiveAttribute.html
+  commentId: T:Shared.Data.Auditing.AuditSensitiveAttribute
+  fullName: Shared.Data.Auditing.AuditSensitiveAttribute
+  nameWithType: AuditSensitiveAttribute
+- uid: Shared.Data.Auditing.AuditSubjectV1
+  name: AuditSubjectV1
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html
+  commentId: T:Shared.Data.Auditing.AuditSubjectV1
+  fullName: Shared.Data.Auditing.AuditSubjectV1
+  nameWithType: AuditSubjectV1
+- uid: Shared.Data.Auditing.AuditSubjectV1.#ctor(System.String,System.String)
+  name: AuditSubjectV1(string, string)
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1__ctor_System_String_System_String_
+  commentId: M:Shared.Data.Auditing.AuditSubjectV1.#ctor(System.String,System.String)
+  name.vb: New(String, String)
+  fullName: Shared.Data.Auditing.AuditSubjectV1.AuditSubjectV1(string, string)
+  fullName.vb: Shared.Data.Auditing.AuditSubjectV1.New(String, String)
+  nameWithType: AuditSubjectV1.AuditSubjectV1(string, string)
+  nameWithType.vb: AuditSubjectV1.New(String, String)
+- uid: Shared.Data.Auditing.AuditSubjectV1.#ctor*
+  name: AuditSubjectV1
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1__ctor_
+  commentId: Overload:Shared.Data.Auditing.AuditSubjectV1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Auditing.AuditSubjectV1.AuditSubjectV1
+  fullName.vb: Shared.Data.Auditing.AuditSubjectV1.New
+  nameWithType: AuditSubjectV1.AuditSubjectV1
+  nameWithType.vb: AuditSubjectV1.New
+- uid: Shared.Data.Auditing.AuditSubjectV1.Id
+  name: Id
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1_Id
+  commentId: P:Shared.Data.Auditing.AuditSubjectV1.Id
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Id
+  nameWithType: AuditSubjectV1.Id
+- uid: Shared.Data.Auditing.AuditSubjectV1.Id*
+  name: Id
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1_Id_
+  commentId: Overload:Shared.Data.Auditing.AuditSubjectV1.Id
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Id
+  nameWithType: AuditSubjectV1.Id
+- uid: Shared.Data.Auditing.AuditSubjectV1.Type
+  name: Type
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1_Type
+  commentId: P:Shared.Data.Auditing.AuditSubjectV1.Type
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Type
+  nameWithType: AuditSubjectV1.Type
+- uid: Shared.Data.Auditing.AuditSubjectV1.Type*
+  name: Type
+  href: api/Shared/Shared.Data.Auditing.AuditSubjectV1.html#Shared_Data_Auditing_AuditSubjectV1_Type_
+  commentId: Overload:Shared.Data.Auditing.AuditSubjectV1.Type
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditSubjectV1.Type
+  nameWithType: AuditSubjectV1.Type
+- uid: Shared.Data.Auditing.AuditValueChangeV1
+  name: AuditValueChangeV1
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html
+  commentId: T:Shared.Data.Auditing.AuditValueChangeV1
+  fullName: Shared.Data.Auditing.AuditValueChangeV1
+  nameWithType: AuditValueChangeV1
+- uid: Shared.Data.Auditing.AuditValueChangeV1.#ctor(System.Object,System.Object)
+  name: AuditValueChangeV1(object?, object?)
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html#Shared_Data_Auditing_AuditValueChangeV1__ctor_System_Object_System_Object_
+  commentId: M:Shared.Data.Auditing.AuditValueChangeV1.#ctor(System.Object,System.Object)
+  name.vb: New(Object, Object)
+  fullName: Shared.Data.Auditing.AuditValueChangeV1.AuditValueChangeV1(object?, object?)
+  fullName.vb: Shared.Data.Auditing.AuditValueChangeV1.New(Object, Object)
+  nameWithType: AuditValueChangeV1.AuditValueChangeV1(object?, object?)
+  nameWithType.vb: AuditValueChangeV1.New(Object, Object)
+- uid: Shared.Data.Auditing.AuditValueChangeV1.#ctor*
+  name: AuditValueChangeV1
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html#Shared_Data_Auditing_AuditValueChangeV1__ctor_
+  commentId: Overload:Shared.Data.Auditing.AuditValueChangeV1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Auditing.AuditValueChangeV1.AuditValueChangeV1
+  fullName.vb: Shared.Data.Auditing.AuditValueChangeV1.New
+  nameWithType: AuditValueChangeV1.AuditValueChangeV1
+  nameWithType.vb: AuditValueChangeV1.New
+- uid: Shared.Data.Auditing.AuditValueChangeV1.NewValue
+  name: NewValue
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html#Shared_Data_Auditing_AuditValueChangeV1_NewValue
+  commentId: P:Shared.Data.Auditing.AuditValueChangeV1.NewValue
+  fullName: Shared.Data.Auditing.AuditValueChangeV1.NewValue
+  nameWithType: AuditValueChangeV1.NewValue
+- uid: Shared.Data.Auditing.AuditValueChangeV1.NewValue*
+  name: NewValue
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html#Shared_Data_Auditing_AuditValueChangeV1_NewValue_
+  commentId: Overload:Shared.Data.Auditing.AuditValueChangeV1.NewValue
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditValueChangeV1.NewValue
+  nameWithType: AuditValueChangeV1.NewValue
+- uid: Shared.Data.Auditing.AuditValueChangeV1.OldValue
+  name: OldValue
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html#Shared_Data_Auditing_AuditValueChangeV1_OldValue
+  commentId: P:Shared.Data.Auditing.AuditValueChangeV1.OldValue
+  fullName: Shared.Data.Auditing.AuditValueChangeV1.OldValue
+  nameWithType: AuditValueChangeV1.OldValue
+- uid: Shared.Data.Auditing.AuditValueChangeV1.OldValue*
+  name: OldValue
+  href: api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html#Shared_Data_Auditing_AuditValueChangeV1_OldValue_
+  commentId: Overload:Shared.Data.Auditing.AuditValueChangeV1.OldValue
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.AuditValueChangeV1.OldValue
+  nameWithType: AuditValueChangeV1.OldValue
+- uid: Shared.Data.Auditing.IAuditTrail
+  name: IAuditTrail
+  href: api/Shared/Shared.Data.Auditing.IAuditTrail.html
+  commentId: T:Shared.Data.Auditing.IAuditTrail
+  fullName: Shared.Data.Auditing.IAuditTrail
+  nameWithType: IAuditTrail
+- uid: Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  name: Write(AuditEventV1)
+  href: api/Shared/Shared.Data.Auditing.IAuditTrail.html#Shared_Data_Auditing_IAuditTrail_Write_Shared_Data_Auditing_AuditEventV1_
+  commentId: M:Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  fullName: Shared.Data.Auditing.IAuditTrail.Write(Shared.Data.Auditing.AuditEventV1)
+  nameWithType: IAuditTrail.Write(AuditEventV1)
+- uid: Shared.Data.Auditing.IAuditTrail.Write*
+  name: Write
+  href: api/Shared/Shared.Data.Auditing.IAuditTrail.html#Shared_Data_Auditing_IAuditTrail_Write_
+  commentId: Overload:Shared.Data.Auditing.IAuditTrail.Write
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.IAuditTrail.Write
+  nameWithType: IAuditTrail.Write
+- uid: Shared.Data.Auditing.ICurrentUser
+  name: ICurrentUser
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html
+  commentId: T:Shared.Data.Auditing.ICurrentUser
+  fullName: Shared.Data.Auditing.ICurrentUser
+  nameWithType: ICurrentUser
+- uid: Shared.Data.Auditing.ICurrentUser.Id
+  name: Id
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_Id
+  commentId: P:Shared.Data.Auditing.ICurrentUser.Id
+  fullName: Shared.Data.Auditing.ICurrentUser.Id
+  nameWithType: ICurrentUser.Id
+- uid: Shared.Data.Auditing.ICurrentUser.Id*
+  name: Id
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_Id_
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.Id
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.ICurrentUser.Id
+  nameWithType: ICurrentUser.Id
+- uid: Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  name: IsAuthenticated
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_IsAuthenticated
+  commentId: P:Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  fullName: Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  nameWithType: ICurrentUser.IsAuthenticated
+- uid: Shared.Data.Auditing.ICurrentUser.IsAuthenticated*
+  name: IsAuthenticated
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_IsAuthenticated_
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.ICurrentUser.IsAuthenticated
+  nameWithType: ICurrentUser.IsAuthenticated
+- uid: Shared.Data.Auditing.ICurrentUser.TraceId
+  name: TraceId
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_TraceId
+  commentId: P:Shared.Data.Auditing.ICurrentUser.TraceId
+  fullName: Shared.Data.Auditing.ICurrentUser.TraceId
+  nameWithType: ICurrentUser.TraceId
+- uid: Shared.Data.Auditing.ICurrentUser.TraceId*
+  name: TraceId
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_TraceId_
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.TraceId
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.ICurrentUser.TraceId
+  nameWithType: ICurrentUser.TraceId
+- uid: Shared.Data.Auditing.ICurrentUser.UserName
+  name: UserName
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_UserName
+  commentId: P:Shared.Data.Auditing.ICurrentUser.UserName
+  fullName: Shared.Data.Auditing.ICurrentUser.UserName
+  nameWithType: ICurrentUser.UserName
+- uid: Shared.Data.Auditing.ICurrentUser.UserName*
+  name: UserName
+  href: api/Shared/Shared.Data.Auditing.ICurrentUser.html#Shared_Data_Auditing_ICurrentUser_UserName_
+  commentId: Overload:Shared.Data.Auditing.ICurrentUser.UserName
+  isSpec: "True"
+  fullName: Shared.Data.Auditing.ICurrentUser.UserName
+  nameWithType: ICurrentUser.UserName
+- uid: Shared.Data.DataFilterModelBuilderExtensions
+  name: DataFilterModelBuilderExtensions
+  href: api/Shared/Shared.Data.DataFilterModelBuilderExtensions.html
+  commentId: T:Shared.Data.DataFilterModelBuilderExtensions
+  fullName: Shared.Data.DataFilterModelBuilderExtensions
+  nameWithType: DataFilterModelBuilderExtensions
+- uid: Shared.Data.DataFilterModelBuilderExtensions.ApplyDataFilters(Microsoft.EntityFrameworkCore.ModelBuilder,Shared.Data.Filtering.IDataFilterContext)
+  name: ApplyDataFilters(ModelBuilder, IDataFilterContext)
+  href: api/Shared/Shared.Data.DataFilterModelBuilderExtensions.html#Shared_Data_DataFilterModelBuilderExtensions_ApplyDataFilters_Microsoft_EntityFrameworkCore_ModelBuilder_Shared_Data_Filtering_IDataFilterContext_
+  commentId: M:Shared.Data.DataFilterModelBuilderExtensions.ApplyDataFilters(Microsoft.EntityFrameworkCore.ModelBuilder,Shared.Data.Filtering.IDataFilterContext)
+  fullName: Shared.Data.DataFilterModelBuilderExtensions.ApplyDataFilters(Microsoft.EntityFrameworkCore.ModelBuilder, Shared.Data.Filtering.IDataFilterContext)
+  nameWithType: DataFilterModelBuilderExtensions.ApplyDataFilters(ModelBuilder, IDataFilterContext)
+- uid: Shared.Data.DataFilterModelBuilderExtensions.ApplyDataFilters*
+  name: ApplyDataFilters
+  href: api/Shared/Shared.Data.DataFilterModelBuilderExtensions.html#Shared_Data_DataFilterModelBuilderExtensions_ApplyDataFilters_
+  commentId: Overload:Shared.Data.DataFilterModelBuilderExtensions.ApplyDataFilters
+  isSpec: "True"
+  fullName: Shared.Data.DataFilterModelBuilderExtensions.ApplyDataFilters
+  nameWithType: DataFilterModelBuilderExtensions.ApplyDataFilters
 - uid: Shared.Data.Extentions
   name: Extentions
   href: api/Shared/Shared.Data.Extentions.html
@@ -482,6 +1680,377 @@ references:
   fullName.vb: Shared.Data.Extentions.UseMigration(Of TContext)(Microsoft.AspNetCore.Builder.IApplicationBuilder)
   nameWithType: Extentions.UseMigration<TContext>(IApplicationBuilder)
   nameWithType.vb: Extentions.UseMigration(Of TContext)(IApplicationBuilder)
+- uid: Shared.Data.Filtering
+  name: Shared.Data.Filtering
+  href: api/Shared/Shared.Data.Filtering.html
+  commentId: N:Shared.Data.Filtering
+  fullName: Shared.Data.Filtering
+  nameWithType: Shared.Data.Filtering
+- uid: Shared.Data.Filtering.DataFilter
+  name: DataFilter
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html
+  commentId: T:Shared.Data.Filtering.DataFilter
+  fullName: Shared.Data.Filtering.DataFilter
+  nameWithType: DataFilter
+- uid: Shared.Data.Filtering.DataFilter.#ctor(System.IServiceProvider)
+  name: DataFilter(IServiceProvider)
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter__ctor_System_IServiceProvider_
+  commentId: M:Shared.Data.Filtering.DataFilter.#ctor(System.IServiceProvider)
+  name.vb: New(IServiceProvider)
+  fullName: Shared.Data.Filtering.DataFilter.DataFilter(System.IServiceProvider)
+  fullName.vb: Shared.Data.Filtering.DataFilter.New(System.IServiceProvider)
+  nameWithType: DataFilter.DataFilter(IServiceProvider)
+  nameWithType.vb: DataFilter.New(IServiceProvider)
+- uid: Shared.Data.Filtering.DataFilter.#ctor*
+  name: DataFilter
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter__ctor_
+  commentId: Overload:Shared.Data.Filtering.DataFilter.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Filtering.DataFilter.DataFilter
+  fullName.vb: Shared.Data.Filtering.DataFilter.New
+  nameWithType: DataFilter.DataFilter
+  nameWithType.vb: DataFilter.New
+- uid: Shared.Data.Filtering.DataFilter.Disable*
+  name: Disable
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter_Disable_
+  commentId: Overload:Shared.Data.Filtering.DataFilter.Disable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilter.Disable
+  nameWithType: DataFilter.Disable
+- uid: Shared.Data.Filtering.DataFilter.Disable``1
+  name: Disable<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter_Disable__1
+  commentId: M:Shared.Data.Filtering.DataFilter.Disable``1
+  name.vb: Disable(Of TFilter)()
+  fullName: Shared.Data.Filtering.DataFilter.Disable<TFilter>()
+  fullName.vb: Shared.Data.Filtering.DataFilter.Disable(Of TFilter)()
+  nameWithType: DataFilter.Disable<TFilter>()
+  nameWithType.vb: DataFilter.Disable(Of TFilter)()
+- uid: Shared.Data.Filtering.DataFilter.Enable*
+  name: Enable
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter_Enable_
+  commentId: Overload:Shared.Data.Filtering.DataFilter.Enable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilter.Enable
+  nameWithType: DataFilter.Enable
+- uid: Shared.Data.Filtering.DataFilter.Enable``1
+  name: Enable<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter_Enable__1
+  commentId: M:Shared.Data.Filtering.DataFilter.Enable``1
+  name.vb: Enable(Of TFilter)()
+  fullName: Shared.Data.Filtering.DataFilter.Enable<TFilter>()
+  fullName.vb: Shared.Data.Filtering.DataFilter.Enable(Of TFilter)()
+  nameWithType: DataFilter.Enable<TFilter>()
+  nameWithType.vb: DataFilter.Enable(Of TFilter)()
+- uid: Shared.Data.Filtering.DataFilter.IsEnabled*
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter_IsEnabled_
+  commentId: Overload:Shared.Data.Filtering.DataFilter.IsEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilter.IsEnabled
+  nameWithType: DataFilter.IsEnabled
+- uid: Shared.Data.Filtering.DataFilter.IsEnabled``1
+  name: IsEnabled<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.DataFilter.html#Shared_Data_Filtering_DataFilter_IsEnabled__1
+  commentId: M:Shared.Data.Filtering.DataFilter.IsEnabled``1
+  name.vb: IsEnabled(Of TFilter)()
+  fullName: Shared.Data.Filtering.DataFilter.IsEnabled<TFilter>()
+  fullName.vb: Shared.Data.Filtering.DataFilter.IsEnabled(Of TFilter)()
+  nameWithType: DataFilter.IsEnabled<TFilter>()
+  nameWithType.vb: DataFilter.IsEnabled(Of TFilter)()
+- uid: Shared.Data.Filtering.DataFilterOptions
+  name: DataFilterOptions
+  href: api/Shared/Shared.Data.Filtering.DataFilterOptions.html
+  commentId: T:Shared.Data.Filtering.DataFilterOptions
+  fullName: Shared.Data.Filtering.DataFilterOptions
+  nameWithType: DataFilterOptions
+- uid: Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  name: DefaultStates
+  href: api/Shared/Shared.Data.Filtering.DataFilterOptions.html#Shared_Data_Filtering_DataFilterOptions_DefaultStates
+  commentId: P:Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  fullName: Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  nameWithType: DataFilterOptions.DefaultStates
+- uid: Shared.Data.Filtering.DataFilterOptions.DefaultStates*
+  name: DefaultStates
+  href: api/Shared/Shared.Data.Filtering.DataFilterOptions.html#Shared_Data_Filtering_DataFilterOptions_DefaultStates_
+  commentId: Overload:Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilterOptions.DefaultStates
+  nameWithType: DataFilterOptions.DefaultStates
+- uid: Shared.Data.Filtering.DataFilterOptions.IsEnabled*
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.DataFilterOptions.html#Shared_Data_Filtering_DataFilterOptions_IsEnabled_
+  commentId: Overload:Shared.Data.Filtering.DataFilterOptions.IsEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilterOptions.IsEnabled
+  nameWithType: DataFilterOptions.IsEnabled
+- uid: Shared.Data.Filtering.DataFilterOptions.IsEnabled``1
+  name: IsEnabled<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.DataFilterOptions.html#Shared_Data_Filtering_DataFilterOptions_IsEnabled__1
+  commentId: M:Shared.Data.Filtering.DataFilterOptions.IsEnabled``1
+  name.vb: IsEnabled(Of TFilter)()
+  fullName: Shared.Data.Filtering.DataFilterOptions.IsEnabled<TFilter>()
+  fullName.vb: Shared.Data.Filtering.DataFilterOptions.IsEnabled(Of TFilter)()
+  nameWithType: DataFilterOptions.IsEnabled<TFilter>()
+  nameWithType.vb: DataFilterOptions.IsEnabled(Of TFilter)()
+- uid: Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+  name: DataFilterServiceCollectionExtensions
+  href: api/Shared/Shared.Data.Filtering.DataFilterServiceCollectionExtensions.html
+  commentId: T:Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+  fullName: Shared.Data.Filtering.DataFilterServiceCollectionExtensions
+  nameWithType: DataFilterServiceCollectionExtensions
+- uid: Shared.Data.Filtering.DataFilterServiceCollectionExtensions.AddDataFilters(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddDataFilters(IServiceCollection)
+  href: api/Shared/Shared.Data.Filtering.DataFilterServiceCollectionExtensions.html#Shared_Data_Filtering_DataFilterServiceCollectionExtensions_AddDataFilters_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Shared.Data.Filtering.DataFilterServiceCollectionExtensions.AddDataFilters(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Shared.Data.Filtering.DataFilterServiceCollectionExtensions.AddDataFilters(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: DataFilterServiceCollectionExtensions.AddDataFilters(IServiceCollection)
+- uid: Shared.Data.Filtering.DataFilterServiceCollectionExtensions.AddDataFilters*
+  name: AddDataFilters
+  href: api/Shared/Shared.Data.Filtering.DataFilterServiceCollectionExtensions.html#Shared_Data_Filtering_DataFilterServiceCollectionExtensions_AddDataFilters_
+  commentId: Overload:Shared.Data.Filtering.DataFilterServiceCollectionExtensions.AddDataFilters
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilterServiceCollectionExtensions.AddDataFilters
+  nameWithType: DataFilterServiceCollectionExtensions.AddDataFilters
+- uid: Shared.Data.Filtering.DataFilter`1
+  name: DataFilter<TFilter>
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html
+  commentId: T:Shared.Data.Filtering.DataFilter`1
+  name.vb: DataFilter(Of TFilter)
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter)
+  nameWithType: DataFilter<TFilter>
+  nameWithType.vb: DataFilter(Of TFilter)
+- uid: Shared.Data.Filtering.DataFilter`1.#ctor(Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions})
+  name: DataFilter(IOptions<DataFilterOptions>)
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1__ctor_Microsoft_Extensions_Options_IOptions_Shared_Data_Filtering_DataFilterOptions__
+  commentId: M:Shared.Data.Filtering.DataFilter`1.#ctor(Microsoft.Extensions.Options.IOptions{Shared.Data.Filtering.DataFilterOptions})
+  name.vb: New(IOptions(Of DataFilterOptions))
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.DataFilter(Microsoft.Extensions.Options.IOptions<Shared.Data.Filtering.DataFilterOptions>)
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).New(Microsoft.Extensions.Options.IOptions(Of Shared.Data.Filtering.DataFilterOptions))
+  nameWithType: DataFilter<TFilter>.DataFilter(IOptions<DataFilterOptions>)
+  nameWithType.vb: DataFilter(Of TFilter).New(IOptions(Of DataFilterOptions))
+- uid: Shared.Data.Filtering.DataFilter`1.#ctor*
+  name: DataFilter
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1__ctor_
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.DataFilter
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).New
+  nameWithType: DataFilter<TFilter>.DataFilter
+  nameWithType.vb: DataFilter(Of TFilter).New
+- uid: Shared.Data.Filtering.DataFilter`1.Disable
+  name: Disable()
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_Disable
+  commentId: M:Shared.Data.Filtering.DataFilter`1.Disable
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Disable()
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Disable()
+  nameWithType: DataFilter<TFilter>.Disable()
+  nameWithType.vb: DataFilter(Of TFilter).Disable()
+- uid: Shared.Data.Filtering.DataFilter`1.Disable*
+  name: Disable
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_Disable_
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.Disable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Disable
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Disable
+  nameWithType: DataFilter<TFilter>.Disable
+  nameWithType.vb: DataFilter(Of TFilter).Disable
+- uid: Shared.Data.Filtering.DataFilter`1.Enable
+  name: Enable()
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_Enable
+  commentId: M:Shared.Data.Filtering.DataFilter`1.Enable
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Enable()
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Enable()
+  nameWithType: DataFilter<TFilter>.Enable()
+  nameWithType.vb: DataFilter(Of TFilter).Enable()
+- uid: Shared.Data.Filtering.DataFilter`1.Enable*
+  name: Enable
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_Enable_
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.Enable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.Enable
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).Enable
+  nameWithType: DataFilter<TFilter>.Enable
+  nameWithType.vb: DataFilter(Of TFilter).Enable
+- uid: Shared.Data.Filtering.DataFilter`1.IsEnabled
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_IsEnabled
+  commentId: P:Shared.Data.Filtering.DataFilter`1.IsEnabled
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.IsEnabled
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).IsEnabled
+  nameWithType: DataFilter<TFilter>.IsEnabled
+  nameWithType.vb: DataFilter(Of TFilter).IsEnabled
+- uid: Shared.Data.Filtering.DataFilter`1.IsEnabled*
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.DataFilter-1.html#Shared_Data_Filtering_DataFilter_1_IsEnabled_
+  commentId: Overload:Shared.Data.Filtering.DataFilter`1.IsEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.DataFilter<TFilter>.IsEnabled
+  fullName.vb: Shared.Data.Filtering.DataFilter(Of TFilter).IsEnabled
+  nameWithType: DataFilter<TFilter>.IsEnabled
+  nameWithType.vb: DataFilter(Of TFilter).IsEnabled
+- uid: Shared.Data.Filtering.IDataFilter
+  name: IDataFilter
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html
+  commentId: T:Shared.Data.Filtering.IDataFilter
+  fullName: Shared.Data.Filtering.IDataFilter
+  nameWithType: IDataFilter
+- uid: Shared.Data.Filtering.IDataFilter.Disable*
+  name: Disable
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_Disable_
+  commentId: Overload:Shared.Data.Filtering.IDataFilter.Disable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilter.Disable
+  nameWithType: IDataFilter.Disable
+- uid: Shared.Data.Filtering.IDataFilter.Disable``1
+  name: Disable<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_Disable__1
+  commentId: M:Shared.Data.Filtering.IDataFilter.Disable``1
+  name.vb: Disable(Of TFilter)()
+  fullName: Shared.Data.Filtering.IDataFilter.Disable<TFilter>()
+  fullName.vb: Shared.Data.Filtering.IDataFilter.Disable(Of TFilter)()
+  nameWithType: IDataFilter.Disable<TFilter>()
+  nameWithType.vb: IDataFilter.Disable(Of TFilter)()
+- uid: Shared.Data.Filtering.IDataFilter.Enable*
+  name: Enable
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_Enable_
+  commentId: Overload:Shared.Data.Filtering.IDataFilter.Enable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilter.Enable
+  nameWithType: IDataFilter.Enable
+- uid: Shared.Data.Filtering.IDataFilter.Enable``1
+  name: Enable<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_Enable__1
+  commentId: M:Shared.Data.Filtering.IDataFilter.Enable``1
+  name.vb: Enable(Of TFilter)()
+  fullName: Shared.Data.Filtering.IDataFilter.Enable<TFilter>()
+  fullName.vb: Shared.Data.Filtering.IDataFilter.Enable(Of TFilter)()
+  nameWithType: IDataFilter.Enable<TFilter>()
+  nameWithType.vb: IDataFilter.Enable(Of TFilter)()
+- uid: Shared.Data.Filtering.IDataFilter.IsEnabled*
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_IsEnabled_
+  commentId: Overload:Shared.Data.Filtering.IDataFilter.IsEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilter.IsEnabled
+  nameWithType: IDataFilter.IsEnabled
+- uid: Shared.Data.Filtering.IDataFilter.IsEnabled``1
+  name: IsEnabled<TFilter>()
+  href: api/Shared/Shared.Data.Filtering.IDataFilter.html#Shared_Data_Filtering_IDataFilter_IsEnabled__1
+  commentId: M:Shared.Data.Filtering.IDataFilter.IsEnabled``1
+  name.vb: IsEnabled(Of TFilter)()
+  fullName: Shared.Data.Filtering.IDataFilter.IsEnabled<TFilter>()
+  fullName.vb: Shared.Data.Filtering.IDataFilter.IsEnabled(Of TFilter)()
+  nameWithType: IDataFilter.IsEnabled<TFilter>()
+  nameWithType.vb: IDataFilter.IsEnabled(Of TFilter)()
+- uid: Shared.Data.Filtering.IDataFilterContext
+  name: IDataFilterContext
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html
+  commentId: T:Shared.Data.Filtering.IDataFilterContext
+  fullName: Shared.Data.Filtering.IDataFilterContext
+  nameWithType: IDataFilterContext
+- uid: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  name: CurrentTenantId
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_CurrentTenantId
+  commentId: P:Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  fullName: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  nameWithType: IDataFilterContext.CurrentTenantId
+- uid: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId*
+  name: CurrentTenantId
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_CurrentTenantId_
+  commentId: Overload:Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilterContext.CurrentTenantId
+  nameWithType: IDataFilterContext.CurrentTenantId
+- uid: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  name: IsMultiTenantFilterEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_IsMultiTenantFilterEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  nameWithType: IDataFilterContext.IsMultiTenantFilterEnabled
+- uid: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled*
+  name: IsMultiTenantFilterEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_IsMultiTenantFilterEnabled_
+  commentId: Overload:Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsMultiTenantFilterEnabled
+  nameWithType: IDataFilterContext.IsMultiTenantFilterEnabled
+- uid: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  name: IsSoftDeleteFilterEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_IsSoftDeleteFilterEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  nameWithType: IDataFilterContext.IsSoftDeleteFilterEnabled
+- uid: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled*
+  name: IsSoftDeleteFilterEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilterContext.html#Shared_Data_Filtering_IDataFilterContext_IsSoftDeleteFilterEnabled_
+  commentId: Overload:Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilterContext.IsSoftDeleteFilterEnabled
+  nameWithType: IDataFilterContext.IsSoftDeleteFilterEnabled
+- uid: Shared.Data.Filtering.IDataFilter`1
+  name: IDataFilter<TFilter>
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html
+  commentId: T:Shared.Data.Filtering.IDataFilter`1
+  name.vb: IDataFilter(Of TFilter)
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter)
+  nameWithType: IDataFilter<TFilter>
+  nameWithType.vb: IDataFilter(Of TFilter)
+- uid: Shared.Data.Filtering.IDataFilter`1.Disable
+  name: Disable()
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable
+  commentId: M:Shared.Data.Filtering.IDataFilter`1.Disable
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Disable()
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Disable()
+  nameWithType: IDataFilter<TFilter>.Disable()
+  nameWithType.vb: IDataFilter(Of TFilter).Disable()
+- uid: Shared.Data.Filtering.IDataFilter`1.Disable*
+  name: Disable
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Disable_
+  commentId: Overload:Shared.Data.Filtering.IDataFilter`1.Disable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Disable
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Disable
+  nameWithType: IDataFilter<TFilter>.Disable
+  nameWithType.vb: IDataFilter(Of TFilter).Disable
+- uid: Shared.Data.Filtering.IDataFilter`1.Enable
+  name: Enable()
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable
+  commentId: M:Shared.Data.Filtering.IDataFilter`1.Enable
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Enable()
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Enable()
+  nameWithType: IDataFilter<TFilter>.Enable()
+  nameWithType.vb: IDataFilter(Of TFilter).Enable()
+- uid: Shared.Data.Filtering.IDataFilter`1.Enable*
+  name: Enable
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_Enable_
+  commentId: Overload:Shared.Data.Filtering.IDataFilter`1.Enable
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.Enable
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).Enable
+  nameWithType: IDataFilter<TFilter>.Enable
+  nameWithType.vb: IDataFilter(Of TFilter).Enable
+- uid: Shared.Data.Filtering.IDataFilter`1.IsEnabled
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_IsEnabled
+  commentId: P:Shared.Data.Filtering.IDataFilter`1.IsEnabled
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.IsEnabled
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).IsEnabled
+  nameWithType: IDataFilter<TFilter>.IsEnabled
+  nameWithType.vb: IDataFilter(Of TFilter).IsEnabled
+- uid: Shared.Data.Filtering.IDataFilter`1.IsEnabled*
+  name: IsEnabled
+  href: api/Shared/Shared.Data.Filtering.IDataFilter-1.html#Shared_Data_Filtering_IDataFilter_1_IsEnabled_
+  commentId: Overload:Shared.Data.Filtering.IDataFilter`1.IsEnabled
+  isSpec: "True"
+  fullName: Shared.Data.Filtering.IDataFilter<TFilter>.IsEnabled
+  fullName.vb: Shared.Data.Filtering.IDataFilter(Of TFilter).IsEnabled
+  nameWithType: IDataFilter<TFilter>.IsEnabled
+  nameWithType.vb: IDataFilter(Of TFilter).IsEnabled
 - uid: Shared.Data.Interceptors
   name: Shared.Data.Interceptors
   href: api/Shared/Shared.Data.Interceptors.html
@@ -494,6 +2063,109 @@ references:
   commentId: T:Shared.Data.Interceptors.AuditableEntityInterceptor
   fullName: Shared.Data.Interceptors.AuditableEntityInterceptor
   nameWithType: AuditableEntityInterceptor
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.#ctor(Shared.Data.Auditing.ICurrentUser,Shared.Data.MultiTenancy.ICurrentTenant,Shared.Data.Auditing.IAuditTrail)
+  name: AuditableEntityInterceptor(ICurrentUser, ICurrentTenant, IAuditTrail)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor__ctor_Shared_Data_Auditing_ICurrentUser_Shared_Data_MultiTenancy_ICurrentTenant_Shared_Data_Auditing_IAuditTrail_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.#ctor(Shared.Data.Auditing.ICurrentUser,Shared.Data.MultiTenancy.ICurrentTenant,Shared.Data.Auditing.IAuditTrail)
+  name.vb: New(ICurrentUser, ICurrentTenant, IAuditTrail)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.AuditableEntityInterceptor(Shared.Data.Auditing.ICurrentUser, Shared.Data.MultiTenancy.ICurrentTenant, Shared.Data.Auditing.IAuditTrail)
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.New(Shared.Data.Auditing.ICurrentUser, Shared.Data.MultiTenancy.ICurrentTenant, Shared.Data.Auditing.IAuditTrail)
+  nameWithType: AuditableEntityInterceptor.AuditableEntityInterceptor(ICurrentUser, ICurrentTenant, IAuditTrail)
+  nameWithType.vb: AuditableEntityInterceptor.New(ICurrentUser, ICurrentTenant, IAuditTrail)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.#ctor*
+  name: AuditableEntityInterceptor
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor__ctor_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.AuditableEntityInterceptor
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.New
+  nameWithType: AuditableEntityInterceptor.AuditableEntityInterceptor
+  nameWithType.vb: AuditableEntityInterceptor.New
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  name: SaveChangesCanceled(DbContextEventData)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceled_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData)
+  nameWithType: AuditableEntityInterceptor.SaveChangesCanceled(DbContextEventData)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled*
+  name: SaveChangesCanceled
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceled_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceled
+  nameWithType: AuditableEntityInterceptor.SaveChangesCanceled
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+  name: SaveChangesCanceledAsync(DbContextEventData, CancellationToken)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceledAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_System_Threading_CancellationToken_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,System.Threading.CancellationToken)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, System.Threading.CancellationToken)
+  nameWithType: AuditableEntityInterceptor.SaveChangesCanceledAsync(DbContextEventData, CancellationToken)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync*
+  name: SaveChangesCanceledAsync
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesCanceledAsync_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesCanceledAsync
+  nameWithType: AuditableEntityInterceptor.SaveChangesCanceledAsync
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  name: SaveChangesFailed(DbContextErrorEventData)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailed_Microsoft_EntityFrameworkCore_Diagnostics_DbContextErrorEventData_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData)
+  nameWithType: AuditableEntityInterceptor.SaveChangesFailed(DbContextErrorEventData)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed*
+  name: SaveChangesFailed
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailed_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailed
+  nameWithType: AuditableEntityInterceptor.SaveChangesFailed
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+  name: SaveChangesFailedAsync(DbContextErrorEventData, CancellationToken)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailedAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextErrorEventData_System_Threading_CancellationToken_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData,System.Threading.CancellationToken)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextErrorEventData, System.Threading.CancellationToken)
+  nameWithType: AuditableEntityInterceptor.SaveChangesFailedAsync(DbContextErrorEventData, CancellationToken)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync*
+  name: SaveChangesFailedAsync
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SaveChangesFailedAsync_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SaveChangesFailedAsync
+  nameWithType: AuditableEntityInterceptor.SaveChangesFailedAsync
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+  name: SavedChanges(SaveChangesCompletedEventData, int)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChanges_Microsoft_EntityFrameworkCore_Diagnostics_SaveChangesCompletedEventData_System_Int32_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32)
+  name.vb: SavedChanges(SaveChangesCompletedEventData, Integer)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, int)
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, Integer)
+  nameWithType: AuditableEntityInterceptor.SavedChanges(SaveChangesCompletedEventData, int)
+  nameWithType.vb: AuditableEntityInterceptor.SavedChanges(SaveChangesCompletedEventData, Integer)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges*
+  name: SavedChanges
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChanges_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChanges
+  nameWithType: AuditableEntityInterceptor.SavedChanges
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+  name: SavedChangesAsync(SaveChangesCompletedEventData, int, CancellationToken)
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_SaveChangesCompletedEventData_System_Int32_System_Threading_CancellationToken_
+  commentId: M:Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData,System.Int32,System.Threading.CancellationToken)
+  name.vb: SavedChangesAsync(SaveChangesCompletedEventData, Integer, CancellationToken)
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, int, System.Threading.CancellationToken)
+  fullName.vb: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesCompletedEventData, Integer, System.Threading.CancellationToken)
+  nameWithType: AuditableEntityInterceptor.SavedChangesAsync(SaveChangesCompletedEventData, int, CancellationToken)
+  nameWithType.vb: AuditableEntityInterceptor.SavedChangesAsync(SaveChangesCompletedEventData, Integer, CancellationToken)
+- uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync*
+  name: SavedChangesAsync
+  href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavedChangesAsync_
+  commentId: Overload:Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.AuditableEntityInterceptor.SavedChangesAsync
+  nameWithType: AuditableEntityInterceptor.SavedChangesAsync
 - uid: Shared.Data.Interceptors.AuditableEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
   name: SavingChanges(DbContextEventData, InterceptionResult<int>)
   href: api/Shared/Shared.Data.Interceptors.AuditableEntityInterceptor.html#Shared_Data_Interceptors_AuditableEntityInterceptor_SavingChanges_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__
@@ -602,6 +2274,209 @@ references:
   isSpec: "True"
   fullName: Shared.Data.Interceptors.Extensions.HasChangedOwnedEntities
   nameWithType: Extensions.HasChangedOwnedEntities
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor
+  name: MultiTenantEntityInterceptor
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html
+  commentId: T:Shared.Data.Interceptors.MultiTenantEntityInterceptor
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor
+  nameWithType: MultiTenantEntityInterceptor
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  name: MultiTenantEntityInterceptor(ICurrentTenant)
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html#Shared_Data_Interceptors_MultiTenantEntityInterceptor__ctor_Shared_Data_MultiTenancy_ICurrentTenant_
+  commentId: M:Shared.Data.Interceptors.MultiTenantEntityInterceptor.#ctor(Shared.Data.MultiTenancy.ICurrentTenant)
+  name.vb: New(ICurrentTenant)
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor.MultiTenantEntityInterceptor(Shared.Data.MultiTenancy.ICurrentTenant)
+  fullName.vb: Shared.Data.Interceptors.MultiTenantEntityInterceptor.New(Shared.Data.MultiTenancy.ICurrentTenant)
+  nameWithType: MultiTenantEntityInterceptor.MultiTenantEntityInterceptor(ICurrentTenant)
+  nameWithType.vb: MultiTenantEntityInterceptor.New(ICurrentTenant)
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor.#ctor*
+  name: MultiTenantEntityInterceptor
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html#Shared_Data_Interceptors_MultiTenantEntityInterceptor__ctor_
+  commentId: Overload:Shared.Data.Interceptors.MultiTenantEntityInterceptor.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor.MultiTenantEntityInterceptor
+  fullName.vb: Shared.Data.Interceptors.MultiTenantEntityInterceptor.New
+  nameWithType: MultiTenantEntityInterceptor.MultiTenantEntityInterceptor
+  nameWithType.vb: MultiTenantEntityInterceptor.New
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  name: SavingChanges(DbContextEventData, InterceptionResult<int>)
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html#Shared_Data_Interceptors_MultiTenantEntityInterceptor_SavingChanges_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__
+  commentId: M:Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32})
+  name.vb: SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>)
+  fullName.vb: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer))
+  nameWithType: MultiTenantEntityInterceptor.SavingChanges(DbContextEventData, InterceptionResult<int>)
+  nameWithType.vb: MultiTenantEntityInterceptor.SavingChanges(DbContextEventData, InterceptionResult(Of Integer))
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges*
+  name: SavingChanges
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html#Shared_Data_Interceptors_MultiTenantEntityInterceptor_SavingChanges_
+  commentId: Overload:Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChanges
+  nameWithType: MultiTenantEntityInterceptor.SavingChanges
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  name: SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html#Shared_Data_Interceptors_MultiTenantEntityInterceptor_SavingChangesAsync_Microsoft_EntityFrameworkCore_Diagnostics_DbContextEventData_Microsoft_EntityFrameworkCore_Diagnostics_InterceptionResult_System_Int32__System_Threading_CancellationToken_
+  commentId: M:Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData,Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult{System.Int32},System.Threading.CancellationToken)
+  name.vb: SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<int>, System.Threading.CancellationToken)
+  fullName.vb: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync(Microsoft.EntityFrameworkCore.Diagnostics.DbContextEventData, Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult(Of Integer), System.Threading.CancellationToken)
+  nameWithType: MultiTenantEntityInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult<int>, CancellationToken)
+  nameWithType.vb: MultiTenantEntityInterceptor.SavingChangesAsync(DbContextEventData, InterceptionResult(Of Integer), CancellationToken)
+- uid: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync*
+  name: SavingChangesAsync
+  href: api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html#Shared_Data_Interceptors_MultiTenantEntityInterceptor_SavingChangesAsync_
+  commentId: Overload:Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync
+  isSpec: "True"
+  fullName: Shared.Data.Interceptors.MultiTenantEntityInterceptor.SavingChangesAsync
+  nameWithType: MultiTenantEntityInterceptor.SavingChangesAsync
+- uid: Shared.Data.MultiTenancy
+  name: Shared.Data.MultiTenancy
+  href: api/Shared/Shared.Data.MultiTenancy.html
+  commentId: N:Shared.Data.MultiTenancy
+  fullName: Shared.Data.MultiTenancy
+  nameWithType: Shared.Data.MultiTenancy
+- uid: Shared.Data.MultiTenancy.CurrentTenant
+  name: CurrentTenant
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html
+  commentId: T:Shared.Data.MultiTenancy.CurrentTenant
+  fullName: Shared.Data.MultiTenancy.CurrentTenant
+  nameWithType: CurrentTenant
+- uid: Shared.Data.MultiTenancy.CurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  name: Change(Guid?, string?)
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_Change_System_Nullable_System_Guid__System_String_
+  commentId: M:Shared.Data.MultiTenancy.CurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  name.vb: Change(Guid?, String)
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.Change(System.Guid?, string?)
+  fullName.vb: Shared.Data.MultiTenancy.CurrentTenant.Change(System.Guid?, String)
+  nameWithType: CurrentTenant.Change(Guid?, string?)
+  nameWithType.vb: CurrentTenant.Change(Guid?, String)
+- uid: Shared.Data.MultiTenancy.CurrentTenant.Change*
+  name: Change
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_Change_
+  commentId: Overload:Shared.Data.MultiTenancy.CurrentTenant.Change
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.Change
+  nameWithType: CurrentTenant.Change
+- uid: Shared.Data.MultiTenancy.CurrentTenant.Id
+  name: Id
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_Id
+  commentId: P:Shared.Data.MultiTenancy.CurrentTenant.Id
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.Id
+  nameWithType: CurrentTenant.Id
+- uid: Shared.Data.MultiTenancy.CurrentTenant.Id*
+  name: Id
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_Id_
+  commentId: Overload:Shared.Data.MultiTenancy.CurrentTenant.Id
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.Id
+  nameWithType: CurrentTenant.Id
+- uid: Shared.Data.MultiTenancy.CurrentTenant.IsAvailable
+  name: IsAvailable
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_IsAvailable
+  commentId: P:Shared.Data.MultiTenancy.CurrentTenant.IsAvailable
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.IsAvailable
+  nameWithType: CurrentTenant.IsAvailable
+- uid: Shared.Data.MultiTenancy.CurrentTenant.IsAvailable*
+  name: IsAvailable
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_IsAvailable_
+  commentId: Overload:Shared.Data.MultiTenancy.CurrentTenant.IsAvailable
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.IsAvailable
+  nameWithType: CurrentTenant.IsAvailable
+- uid: Shared.Data.MultiTenancy.CurrentTenant.Name
+  name: Name
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_Name
+  commentId: P:Shared.Data.MultiTenancy.CurrentTenant.Name
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.Name
+  nameWithType: CurrentTenant.Name
+- uid: Shared.Data.MultiTenancy.CurrentTenant.Name*
+  name: Name
+  href: api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html#Shared_Data_MultiTenancy_CurrentTenant_Name_
+  commentId: Overload:Shared.Data.MultiTenancy.CurrentTenant.Name
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.CurrentTenant.Name
+  nameWithType: CurrentTenant.Name
+- uid: Shared.Data.MultiTenancy.ICurrentTenant
+  name: ICurrentTenant
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html
+  commentId: T:Shared.Data.MultiTenancy.ICurrentTenant
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant
+  nameWithType: ICurrentTenant
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  name: Change(Guid?, string?)
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Change_System_Nullable_System_Guid__System_String_
+  commentId: M:Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Nullable{System.Guid},System.String)
+  name.vb: Change(Guid?, String)
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Guid?, string?)
+  fullName.vb: Shared.Data.MultiTenancy.ICurrentTenant.Change(System.Guid?, String)
+  nameWithType: ICurrentTenant.Change(Guid?, string?)
+  nameWithType.vb: ICurrentTenant.Change(Guid?, String)
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Change*
+  name: Change
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Change_
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.Change
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Change
+  nameWithType: ICurrentTenant.Change
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Id
+  name: Id
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Id
+  commentId: P:Shared.Data.MultiTenancy.ICurrentTenant.Id
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Id
+  nameWithType: ICurrentTenant.Id
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Id*
+  name: Id
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Id_
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.Id
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Id
+  nameWithType: ICurrentTenant.Id
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  name: IsAvailable
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_IsAvailable
+  commentId: P:Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  nameWithType: ICurrentTenant.IsAvailable
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable*
+  name: IsAvailable
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_IsAvailable_
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.IsAvailable
+  nameWithType: ICurrentTenant.IsAvailable
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Name
+  name: Name
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Name
+  commentId: P:Shared.Data.MultiTenancy.ICurrentTenant.Name
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Name
+  nameWithType: ICurrentTenant.Name
+- uid: Shared.Data.MultiTenancy.ICurrentTenant.Name*
+  name: Name
+  href: api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html#Shared_Data_MultiTenancy_ICurrentTenant_Name_
+  commentId: Overload:Shared.Data.MultiTenancy.ICurrentTenant.Name
+  isSpec: "True"
+  fullName: Shared.Data.MultiTenancy.ICurrentTenant.Name
+  nameWithType: ICurrentTenant.Name
+- uid: Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+  name: TenantAuthorizationPolicies
+  href: api/Shared/Shared.Data.MultiTenancy.TenantAuthorizationPolicies.html
+  commentId: T:Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+  fullName: Shared.Data.MultiTenancy.TenantAuthorizationPolicies
+  nameWithType: TenantAuthorizationPolicies
+- uid: Shared.Data.MultiTenancy.TenantAuthorizationPolicies.Admin
+  name: Admin
+  href: api/Shared/Shared.Data.MultiTenancy.TenantAuthorizationPolicies.html#Shared_Data_MultiTenancy_TenantAuthorizationPolicies_Admin
+  commentId: F:Shared.Data.MultiTenancy.TenantAuthorizationPolicies.Admin
+  fullName: Shared.Data.MultiTenancy.TenantAuthorizationPolicies.Admin
+  nameWithType: TenantAuthorizationPolicies.Admin
+- uid: Shared.Data.MultiTenancy.TenantAuthorizationPolicies.Member
+  name: Member
+  href: api/Shared/Shared.Data.MultiTenancy.TenantAuthorizationPolicies.html#Shared_Data_MultiTenancy_TenantAuthorizationPolicies_Member
+  commentId: F:Shared.Data.MultiTenancy.TenantAuthorizationPolicies.Member
+  fullName: Shared.Data.MultiTenancy.TenantAuthorizationPolicies.Member
+  nameWithType: TenantAuthorizationPolicies.Member
 - uid: Shared.Data.Seed
   name: Shared.Data.Seed
   href: api/Shared/Shared.Data.Seed.html
@@ -680,6 +2555,31 @@ references:
   isSpec: "True"
   fullName: Shared.Exceptions.BadRequestException.Details
   nameWithType: BadRequestException.Details
+- uid: Shared.Exceptions.ForbiddenException
+  name: ForbiddenException
+  href: api/Shared/Shared.Exceptions.ForbiddenException.html
+  commentId: T:Shared.Exceptions.ForbiddenException
+  fullName: Shared.Exceptions.ForbiddenException
+  nameWithType: ForbiddenException
+- uid: Shared.Exceptions.ForbiddenException.#ctor(System.String)
+  name: ForbiddenException(string)
+  href: api/Shared/Shared.Exceptions.ForbiddenException.html#Shared_Exceptions_ForbiddenException__ctor_System_String_
+  commentId: M:Shared.Exceptions.ForbiddenException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Shared.Exceptions.ForbiddenException.ForbiddenException(string)
+  fullName.vb: Shared.Exceptions.ForbiddenException.New(String)
+  nameWithType: ForbiddenException.ForbiddenException(string)
+  nameWithType.vb: ForbiddenException.New(String)
+- uid: Shared.Exceptions.ForbiddenException.#ctor*
+  name: ForbiddenException
+  href: api/Shared/Shared.Exceptions.ForbiddenException.html#Shared_Exceptions_ForbiddenException__ctor_
+  commentId: Overload:Shared.Exceptions.ForbiddenException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Shared.Exceptions.ForbiddenException.ForbiddenException
+  fullName.vb: Shared.Exceptions.ForbiddenException.New
+  nameWithType: ForbiddenException.ForbiddenException
+  nameWithType.vb: ForbiddenException.New
 - uid: Shared.Exceptions.Handler
   name: Shared.Exceptions.Handler
   href: api/Shared/Shared.Exceptions.Handler.html

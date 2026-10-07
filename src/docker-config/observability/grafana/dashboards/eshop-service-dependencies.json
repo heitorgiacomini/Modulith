@@ -1,0 +1,43 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "panels": [
+    {
+      "datasource": {"type": "tempo", "uid": "tempo"},
+      "gridPos": {"h": 18, "w": 16, "x": 0, "y": 0},
+      "id": 1,
+      "options": {"edges": {}, "nodes": {}},
+      "targets": [{"queryType": "serviceMap", "refId": "A"}],
+      "title": "Service dependency graph",
+      "type": "nodeGraph"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "fieldConfig": {"defaults": {"unit": "reqps"}, "overrides": []},
+      "gridPos": {"h": 9, "w": 8, "x": 16, "y": 0},
+      "id": 2,
+      "options": {"legend": {"displayMode": "table", "placement": "bottom"}},
+      "targets": [{"expr": "sum by (client, server) (rate(traces_service_graph_request_total[5m]))", "legendFormat": "{{client}} → {{server}}", "refId": "A"}],
+      "title": "Dependency request rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "fieldConfig": {"defaults": {"unit": "s"}, "overrides": []},
+      "gridPos": {"h": 9, "w": 8, "x": 16, "y": 9},
+      "id": 3,
+      "options": {"legend": {"displayMode": "table", "placement": "bottom"}},
+      "targets": [{"expr": "histogram_quantile(0.95, sum by (le, client, server) (rate(traces_service_graph_request_server_seconds_bucket[5m])))", "legendFormat": "{{client}} → {{server}}", "refId": "A"}],
+      "title": "Dependency p95 latency",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 41,
+  "tags": ["eshop", "service-map"],
+  "time": {"from": "now-6h", "to": "now"},
+  "timezone": "browser",
+  "title": "EShop Service Dependencies",
+  "uid": "eshop-service-dependencies",
+  "version": 1
+}

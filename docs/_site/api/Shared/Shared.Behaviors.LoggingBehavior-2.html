@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class LoggingBehavior&lt;TRequest, TResponse&gt; | ESHOP ">
       
-      <meta name="description" content="A MediatR pipeline behavior that logs the start and end of request handling, measures the time taken to handle the request and emits a warning when the handling time exceeds a configured threshold.">
+      <meta name="description" content="A MediatR pipeline behavior that creates an internal activity and emits one structured completion event, including elapsed time and outcome.">
       <link rel="icon" href="../../images/eshop-logo.png">
       <link rel="stylesheet" href="../../public/docfx.min.css">
       <link rel="stylesheet" href="../../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/new/main/apiSpec/new?filename=Shared_Behaviors_LoggingBehavior_2.md&amp;value=---%0Auid%3A%20Shared.Behaviors.LoggingBehavior%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/new/audit-logs-tenant/apiSpec/new?filename=Shared_Behaviors_LoggingBehavior_2.md&amp;value=---%0Auid%3A%20Shared.Behaviors.LoggingBehavior%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Shared_Behaviors_LoggingBehavior_2" data-uid="Shared.Behaviors.LoggingBehavior`2" class="text-break">
-Class LoggingBehavior&lt;TRequest, TResponse&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class LoggingBehavior&lt;TRequest, TResponse&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,9 +97,8 @@ Class LoggingBehavior&lt;TRequest, TResponse&gt;  <a class="header-action link-s
   <dl><dt>Assembly</dt><dd>Shared.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A MediatR pipeline behavior that logs the start and end of request handling,
-measures the time taken to handle the request and emits a warning when the
-handling time exceeds a configured threshold.</p>
+  <div class="markdown summary"><p>A MediatR pipeline behavior that creates an internal activity and emits one
+structured completion event, including elapsed time and outcome.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -174,12 +173,11 @@ handling time exceeds a configured threshold.</p>
 
   <h3 id="Shared_Behaviors_LoggingBehavior_2__ctor_Microsoft_Extensions_Logging_ILogger_Shared_Behaviors_LoggingBehavior__0__1___" data-uid="Shared.Behaviors.LoggingBehavior`2.#ctor(Microsoft.Extensions.Logging.ILogger{Shared.Behaviors.LoggingBehavior{`0,`1}})">
   LoggingBehavior(ILogger&lt;LoggingBehavior&lt;TRequest, TResponse&gt;&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>A MediatR pipeline behavior that logs the start and end of request handling,
-measures the time taken to handle the request and emits a warning when the
-handling time exceeds a configured threshold.</p>
+  <div class="markdown level1 summary"><p>A MediatR pipeline behavior that creates an internal activity and emits one
+structured completion event, including elapsed time and outcome.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -212,16 +210,11 @@ handling time exceeds a configured threshold.</p>
 
   <h3 id="Shared_Behaviors_LoggingBehavior_2_Handle__0_MediatR_RequestHandlerDelegate__1__System_Threading_CancellationToken_" data-uid="Shared.Behaviors.LoggingBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
   Handle(TRequest, RequestHandlerDelegate&lt;TResponse&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Handles the incoming request by:</p>
-<ol>
-<li>Logging the start of handling with request metadata.</li>
-<li>Measuring the time taken to invoke the next handler in the pipeline.</li>
-<li>Logging a performance warning if handling takes longer than the threshold.</li>
-<li>Logging the end of handling and returning the response.</li>
-</ol>
+  <div class="markdown level1 summary"><p>Handles the request inside an internal activity and records one completion
+event, using warning severity for slow requests and error severity for failures.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -263,7 +256,7 @@ handling time exceeds a configured threshold.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/heitorgiacomini/Modulith/blob/main/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/src/Shared/Shared/Behaviors/LoggingBehavior.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

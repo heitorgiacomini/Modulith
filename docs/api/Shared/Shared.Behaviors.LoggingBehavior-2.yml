@@ -21,16 +21,14 @@ items:
       repo: git@github.com:heitorgiacomini/Modulith.git
     id: LoggingBehavior
     path: ../src/Shared/Shared/Behaviors/LoggingBehavior.cs
-    startLine: 13
+    startLine: 12
   assemblies:
   - Shared
   namespace: Shared.Behaviors
   summary: >-
-    A MediatR pipeline behavior that logs the start and end of request handling,
+    A MediatR pipeline behavior that creates an internal activity and emits one
 
-    measures the time taken to handle the request and emits a warning when the
-
-    handling time exceeds a configured threshold.
+    structured completion event, including elapsed time and outcome.
   example: []
   syntax:
     content: 'public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse> where TResponse : notnull'
@@ -73,16 +71,14 @@ items:
       repo: git@github.com:heitorgiacomini/Modulith.git
     id: .ctor
     path: ../src/Shared/Shared/Behaviors/LoggingBehavior.cs
-    startLine: 13
+    startLine: 12
   assemblies:
   - Shared
   namespace: Shared.Behaviors
   summary: >-
-    A MediatR pipeline behavior that logs the start and end of request handling,
+    A MediatR pipeline behavior that creates an internal activity and emits one
 
-    measures the time taken to handle the request and emits a warning when the
-
-    handling time exceeds a configured threshold.
+    structured completion event, including elapsed time and outcome.
   example: []
   syntax:
     content: public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
@@ -112,20 +108,14 @@ items:
       repo: git@github.com:heitorgiacomini/Modulith.git
     id: Handle
     path: ../src/Shared/Shared/Behaviors/LoggingBehavior.cs
-    startLine: 30
+    startLine: 28
   assemblies:
   - Shared
   namespace: Shared.Behaviors
   summary: >-
-    Handles the incoming request by:
+    Handles the request inside an internal activity and records one completion
 
-    1. Logging the start of handling with request metadata.
-
-    2. Measuring the time taken to invoke the next handler in the pipeline.
-
-    3. Logging a performance warning if handling takes longer than the threshold.
-
-    4. Logging the end of handling and returning the response.
+    event, using warning severity for slow requests and error severity for failures.
   example: []
   syntax:
     content: public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)

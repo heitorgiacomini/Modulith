@@ -1,0 +1,50 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "panels": [
+    {
+      "datasource": {"type": "loki", "uid": "loki"},
+      "gridPos": {"h": 7, "w": 24, "x": 0, "y": 0},
+      "id": 1,
+      "options": {"legend": {"displayMode": "table", "placement": "bottom"}},
+      "targets": [{"expr": "sum by (category, outcome) (count_over_time({log_type=\"audit\",environment=~\"$environment\"} | json | category=~\"$category\" | outcome=~\"$outcome\" [$__auto]))", "legendFormat": "{{category}} {{outcome}}", "queryType": "range", "refId": "A"}],
+      "title": "Audit activity",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "loki", "uid": "loki"},
+      "gridPos": {"h": 6, "w": 24, "x": 0, "y": 7},
+      "id": 2,
+      "options": {"showHeader": true},
+      "targets": [{"expr": "sum by (eventId) (count_over_time({log_type=\"audit\",environment=~\"$environment\"} | json | eventId=~\"$event_id\" [$__range])) > 1", "queryType": "instant", "refId": "A"}],
+      "title": "Repeated event IDs (append-only replay signal)",
+      "transformations": [{"id": "labelsToFields", "options": {"mode": "columns"}}],
+      "type": "table"
+    },
+    {
+      "datasource": {"type": "loki", "uid": "loki"},
+      "gridPos": {"h": 13, "w": 24, "x": 0, "y": 13},
+      "id": 3,
+      "options": {"dedupStrategy": "none", "enableLogDetails": true, "showLabels": true, "showTime": true, "sortOrder": "Descending", "wrapLogMessage": true},
+      "targets": [{"expr": "{log_type=\"audit\",environment=~\"$environment\"} | json | category=~\"$category\" | outcome=~\"$outcome\" | eventId=~\"$event_id\" | actor_id=~\"$user_id\" | trace_id=~\"$trace_id\"", "queryType": "range", "refId": "A"}],
+      "title": "Audit events",
+      "type": "logs"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 41,
+  "tags": ["eshop", "audit"],
+  "templating": {"list": [
+    {"current": {"text": "All", "value": "$__all"}, "datasource": {"type": "loki", "uid": "loki"}, "includeAll": true, "label": "Environment", "multi": true, "name": "environment", "query": "label_values({log_type=\"audit\"}, environment)", "refresh": 1, "type": "query"},
+    {"current": {"text": ".*", "value": ".*"}, "label": "Category", "name": "category", "query": ".*", "type": "textbox"},
+    {"current": {"text": ".*", "value": ".*"}, "label": "Outcome", "name": "outcome", "query": ".*", "type": "textbox"},
+    {"current": {"text": ".*", "value": ".*"}, "label": "Event ID", "name": "event_id", "query": ".*", "type": "textbox"},
+    {"current": {"text": ".*", "value": ".*"}, "label": "User ID", "name": "user_id", "query": ".*", "type": "textbox"},
+    {"current": {"text": ".*", "value": ".*"}, "label": "Trace ID", "name": "trace_id", "query": ".*", "type": "textbox"}
+  ]},
+  "time": {"from": "now-24h", "to": "now"},
+  "timezone": "browser",
+  "title": "EShop Audit Explorer",
+  "uid": "eshop-audit-explorer",
+  "version": 1
+}

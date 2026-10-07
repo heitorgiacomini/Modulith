@@ -1,0 +1,83 @@
+groups:
+  - name: eshop-observability
+    rules:
+      - alert: ApplicationTraceErrors
+        expr: increase(traces_spanmetrics_calls_total{status_code=~"STATUS_CODE_ERROR|ERROR"}[5m]) > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Application traces contain errors
+          description: At least one error span was recorded during the last five minutes.
+
+      - alert: ObservabilityTargetUnavailable
+        expr: up{job=~"prometheus|alloy|loki|tempo|grafana"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Observability target is unavailable
+          description: The {{ $labels.job }} target has been unavailable for two minutes.
+
+      - alert: AlloyLogIngestionFailures
+        expr: increase(loki_write_dropped_entries_total[5m]) > 0 or increase(loki_process_dropped_lines_total{drop_counter_reason!~"audit_invalid_json_or_missing_event_id"}[5m]) > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Alloy is dropping log entries
+          description: Alloy reported unexpected Loki write or processing drops.
+
+      - alert: ContainerRestarting
+        expr: changes(container_start_time_seconds{name!=""}[15m]) > 1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: Container restarted repeatedly
+          description: Container {{ $labels.name }} restarted more than once in fifteen minutes.
+
+      - alert: ContainerMemoryPressure
+        expr: (container_memory_working_set_bytes{name!=""} / container_spec_memory_limit_bytes{name!=""}) > 0.9 and container_spec_memory_limit_bytes{name!=""} > 0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Container memory pressure
+          description: Container {{ $labels.name }} is above 90% of its configured memory limit.
+
+      - alert: ContainerCpuPressure
+        expr: rate(container_cpu_usage_seconds_total{name!=""}[5m]) > 0.9
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Container CPU pressure
+          description: Container {{ $labels.name }} has sustained high CPU use.
+
+      - alert: HostDiskUsage70Percent
+        expr: 100 * (1 - node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay|squashfs"}) >= 70
+        for: 15m
+        labels:
+          severity: info
+        annotations:
+          summary: Host disk usage is at least 70%
+          description: Filesystem {{ $labels.mountpoint }} on {{ $labels.instance }} is filling up.
+
+      - alert: HostDiskUsage80Percent
+        expr: 100 * (1 - node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay|squashfs"}) >= 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Host disk usage is at least 80%
+          description: Filesystem {{ $labels.mountpoint }} on {{ $labels.instance }} needs attention.
+
+      - alert: HostDiskUsage85Percent
+        expr: 100 * (1 - node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"} / node_filesystem_size_bytes{fstype!~"tmpfs|overlay|squashfs"}) >= 85
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: Host disk usage is at least 85%
+          description: Filesystem {{ $labels.mountpoint }} on {{ $labels.instance }} is critically full.

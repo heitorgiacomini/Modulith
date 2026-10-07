@@ -95,10 +95,14 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="Shared.Behaviors.ApplicationTelemetry.html">ApplicationTelemetry</a></dt>
+      <dd><p>Defines application-owned OpenTelemetry instrumentation sources.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Shared.Behaviors.LoggingBehavior-2.html">LoggingBehavior&lt;TRequest, TResponse&gt;</a></dt>
-      <dd><p>A MediatR pipeline behavior that logs the start and end of request handling,
-measures the time taken to handle the request and emits a warning when the
-handling time exceeds a configured threshold.</p>
+      <dd><p>A MediatR pipeline behavior that creates an internal activity and emits one
+structured completion event, including elapsed time and outcome.</p>
 </dd>
     </dl>
     <dl class="jumplist">

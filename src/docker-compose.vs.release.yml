@@ -1,0 +1,11 @@
+services:
+  api:
+    healthcheck:
+      disable: true
+
+  graphql-gateway:
+    depends_on:
+      api:
+        condition: service_started
+    healthcheck:
+      disable: true

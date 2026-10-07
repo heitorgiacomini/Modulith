@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Shared.Exceptions;
 using Shared.Exceptions.Handler;
@@ -18,6 +19,29 @@ namespace SharedTests;
 
 public sealed class ObservabilityLoggingTests
 {
+  [Theory]
+  [InlineData(null, true)]
+  [InlineData("true", true)]
+  [InlineData("false", false)]
+  public void OpenTelemetry_log_export_is_enabled_by_default_and_can_be_disabled(
+    string? configuredValue,
+    bool expected)
+  {
+    HostApplicationBuilder builder = Host.CreateApplicationBuilder();
+    if (configuredValue is not null)
+    {
+      builder.Configuration["OpenTelemetry:ExportLogs"] = configuredValue;
+    }
+
+    _ = builder.AddEshopObservability("test-service");
+    using IHost host = builder.Build();
+
+    bool hasOpenTelemetryLogger = host.Services
+      .GetServices<ILoggerProvider>()
+      .Any(provider => provider.GetType().FullName == "OpenTelemetry.Logs.OpenTelemetryLoggerProvider");
+    Assert.Equal(expected, hasOpenTelemetryLogger);
+  }
+
   [Theory]
   [InlineData(200, LogLevel.Information)]
   [InlineData(404, LogLevel.Warning)]

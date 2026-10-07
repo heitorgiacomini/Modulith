@@ -1,0 +1,27 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "panels": [
+    {
+      "datasource": {"type": "tempo", "uid": "tempo"},
+      "gridPos": {"h": 18, "w": 24, "x": 0, "y": 0},
+      "id": 1,
+      "options": {"spanBar": {"type": "Tag", "tag": "http.route"}},
+      "targets": [{"limit": 100, "query": "{ resource.service.name =~ \"$service\" && duration >= $minimum_duration }", "queryType": "traceql", "refId": "A", "tableType": "traces"}],
+      "title": "Traces",
+      "type": "traces"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 41,
+  "tags": ["eshop", "traces"],
+  "templating": {"list": [
+    {"current": {"text": ".*", "value": ".*"}, "label": "Service", "name": "service", "query": ".*", "type": "textbox"},
+    {"current": {"text": "0ms", "value": "0ms"}, "label": "Minimum duration", "name": "minimum_duration", "query": "0ms", "type": "textbox"}
+  ]},
+  "time": {"from": "now-1h", "to": "now"},
+  "timezone": "browser",
+  "title": "EShop Trace Explorer",
+  "uid": "eshop-trace-explorer",
+  "version": 1
+}

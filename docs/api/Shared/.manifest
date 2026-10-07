@@ -1,5 +1,8 @@
 {
   "Shared.Behaviors": "Shared.Behaviors.yml",
+  "Shared.Behaviors.ApplicationTelemetry": "Shared.Behaviors.ApplicationTelemetry.yml",
+  "Shared.Behaviors.ApplicationTelemetry.ActivitySource": "Shared.Behaviors.ApplicationTelemetry.yml",
+  "Shared.Behaviors.ApplicationTelemetry.SourceName": "Shared.Behaviors.ApplicationTelemetry.yml",
   "Shared.Behaviors.LoggingBehavior`2": "Shared.Behaviors.LoggingBehavior-2.yml",
   "Shared.Behaviors.LoggingBehavior`2.#ctor(Microsoft.Extensions.Logging.ILogger{Shared.Behaviors.LoggingBehavior{`0,`1}})": "Shared.Behaviors.LoggingBehavior-2.yml",
   "Shared.Behaviors.LoggingBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)": "Shared.Behaviors.LoggingBehavior-2.yml",

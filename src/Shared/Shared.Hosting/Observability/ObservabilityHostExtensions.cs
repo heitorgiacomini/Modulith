@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -39,15 +40,23 @@ public static class ObservabilityHostExtensions
     string instanceId =
       builder.Configuration["OTEL_SERVICE_INSTANCE_ID"] ??
       $"{Environment.MachineName}:{Environment.ProcessId}";
+    bool exportLogs = builder.Configuration.GetValue("OpenTelemetry:ExportLogs", true);
 
     builder.Logging.ClearProviders();
-    _ = builder.Logging.AddSimpleConsole(options =>
+    _ = builder.Logging.AddJsonConsole(options =>
     {
-      options.SingleLine = true;
-      options.TimestampFormat = "yyyy-MM-ddTHH:mm:ss.fffK ";
+      options.IncludeScopes = true;
+      options.TimestampFormat = "yyyy-MM-ddTHH:mm:ss.fffK";
+      options.UseUtcTimestamp = true;
+      options.JsonWriterOptions = new JsonWriterOptions { Indented = false };
     });
+    _ = builder.Logging.Configure(options =>
+      options.ActivityTrackingOptions =
+        ActivityTrackingOptions.TraceId |
+        ActivityTrackingOptions.SpanId |
+        ActivityTrackingOptions.ParentId);
 
-    _ = builder.Services
+    var openTelemetry = builder.Services
       .AddOpenTelemetry()
       .ConfigureResource(resource => resource
         .AddService(serviceName, serviceVersion: serviceVersion, serviceInstanceId: instanceId)
@@ -56,15 +65,21 @@ public static class ObservabilityHostExtensions
           new KeyValuePair<string, object>("deployment.environment.name", environmentName),
           new KeyValuePair<string, object>("host.name", Environment.MachineName),
           new KeyValuePair<string, object>("process.pid", Environment.ProcessId)
-        ]))
-      .WithLogging(
+        ]));
+
+    if (exportLogs)
+    {
+      _ = openTelemetry.WithLogging(
         logging => logging.AddOtlpExporter(),
         options =>
         {
           options.IncludeFormattedMessage = true;
           options.IncludeScopes = true;
           options.ParseStateValues = false;
-        })
+        });
+    }
+
+    _ = openTelemetry
       .WithTracing(tracing => tracing
         .AddSource(
           EshopTelemetry.SourceName,

@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/blob/main/docs/articles/getting-started.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/docs/articles/getting-started.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,11 +87,31 @@
         <article data-uid="">
 <h1 id="getting-started">Getting Started</h1>
 
+<p>Run the reference application from the repository's <code>src</code> directory:</p>
+<pre><code class="lang-powershell">docker compose up --build -d
+docker compose ps --all
+</code></pre>
+<p>Copy <code>src/.env.observability.example</code> to <code>src/.env</code>, provide the required
+Grafana credentials, and set the Linux Docker group ID before deployment.
+Grafana is available at <code>http://localhost:5601</code>; see the
+<a href="../../src/docker-config/observability/README.md">observability runbook</a> for
+Alloy Docker discovery, retention, audit guarantees, production sampling,
+encrypted snapshots, and restore testing.</p>
+<p>The Angular client is available at <code>http://localhost:4200</code>. It sends composed GraphQL operations through the Fusion gateway at <code>http://localhost:5002/graphql</code> and REST requests directly to the modular API at <code>http://localhost:5004</code>.</p>
+<h2 id="rate-limiting">Rate limiting</h2>
+<p>Both HTTP hosts enforce independent, process-local fixed-window quotas. The checked-in configuration permits 60 requests per caller every 60 seconds with no queue. Authenticated callers are identified by the JWT <code>sub</code> claim and anonymous callers by their connection IP address.</p>
+<p>Override the defaults independently for either container with standard ASP.NET Core environment variables:</p>
+<pre><code class="lang-yaml">environment:
+  - RateLimiting__PermitLimit=60
+  - RateLimiting__WindowSeconds=60
+</code></pre>
+<p>Every request consumes quota, including CORS preflight, GraphQL schema downloads, health checks, authorization failures, and Fusion's downstream source requests. When a quota is exhausted, the host returns HTTP <code>429 Too Many Requests</code> as Problem Details and includes <code>Retry-After</code> when available.</p>
+<p>See the <a href="../../README.md#rate-limiting">main README</a> for the complete topology and operational notes.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/heitorgiacomini/Modulith/blob/main/docs/articles/getting-started.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/heitorgiacomini/Modulith/blob/audit-logs-tenant/docs/articles/getting-started.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

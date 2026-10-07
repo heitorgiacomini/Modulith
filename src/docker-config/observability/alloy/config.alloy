@@ -1,0 +1,319 @@
+logging {
+  level  = "info"
+  format = "logfmt"
+}
+
+// Docker logs are deliberately opt-in. Add observability.logs=true to a
+// container to collect it; no unlabeled container is tailed.
+discovery.docker "containers" {
+  host             = "unix:///var/run/docker.sock"
+  refresh_interval = "5s"
+}
+
+discovery.relabel "observable_containers" {
+  targets = discovery.docker.containers.targets
+
+  rule {
+    source_labels = ["__meta_docker_container_label_observability_logs"]
+    regex         = "true"
+    action        = "keep"
+  }
+
+  rule {
+    source_labels = ["__meta_docker_container_name"]
+    regex         = "/(.*)"
+    target_label  = "container"
+  }
+
+  rule {
+    source_labels = ["__meta_docker_container_label_com_docker_compose_service"]
+    target_label  = "compose_service"
+  }
+
+  rule {
+    source_labels = ["__meta_docker_container_label_observability_service_name"]
+    target_label  = "service_name"
+  }
+
+  rule {
+    source_labels = ["__meta_docker_container_label_observability_environment"]
+    target_label  = "environment"
+  }
+}
+
+loki.source.docker "applications" {
+  host       = "unix:///var/run/docker.sock"
+  targets    = discovery.relabel.observable_containers.output
+  labels     = { platform = "docker", log_type = "application" }
+  forward_to = [loki.process.applications.receiver]
+}
+
+loki.process "applications" {
+  forward_to = [loki.write.local.receiver]
+
+  // .NET's JSON console provider emits these fields. Plain-text lines pass
+  // through unchanged when parsing does not match.
+  stage.json {
+    expressions = {
+      timestamp = "Timestamp",
+      severity  = "LogLevel",
+      category  = "Category",
+      trace_id  = "Scopes[0].TraceId",
+      span_id   = "Scopes[0].SpanId",
+      parent_id = "Scopes[0].ParentId",
+      state     = "State",
+      scopes    = "Scopes",
+    }
+  }
+
+  stage.json {
+    source = "state"
+    expressions = {
+      request_method = "RequestMethod",
+      request_path   = "RequestPath",
+      route           = "RoutePattern",
+      status          = "StatusCode",
+      duration_ms     = "ElapsedMilliseconds",
+    }
+  }
+
+  stage.labels {
+    values = {
+      severity = "",
+      category = "",
+    }
+  }
+
+  stage.structured_metadata {
+    values = {
+      trace_id       = "",
+      span_id        = "",
+      parent_id      = "",
+      request_method = "",
+      request_path   = "",
+      route          = "",
+      status         = "",
+      duration_ms    = "",
+      scopes         = "",
+    }
+  }
+}
+
+local.file_match "audit" {
+  path_targets = [{
+    __path__     = "/var/log/eshop/audit/*.ndjson",
+    service_name = "eshop-api",
+    environment  = sys.env("DEPLOYMENT_ENVIRONMENT"),
+    log_type     = "audit",
+  }]
+}
+
+loki.source.file "audit" {
+  targets       = local.file_match.audit.targets
+  tail_from_end = false
+  forward_to    = [loki.process.audit.receiver]
+}
+
+loki.process "audit" {
+  forward_to = [loki.write.local.receiver]
+
+  stage.json {
+    expressions = {
+      event_id       = "eventId",
+      occurred_at    = "occurredAtUtc",
+      actor_id       = "actor.id",
+      tenant_id      = "tenantId",
+      trace_id       = "traceId",
+      span_id        = "spanId",
+      correlation_id = "correlationId",
+    }
+  }
+
+  // Always create an explicit validity marker: stage.drop ignores a source
+  // that is absent, which is exactly what malformed JSON or a missing ID
+  // would otherwise produce.
+  stage.template {
+    source   = "event_id_validity"
+    template = `{{ if .event_id }}valid{{ else }}invalid{{ end }}`
+  }
+
+  stage.drop {
+    source              = "event_id_validity"
+    expression          = "^invalid$"
+    drop_counter_reason = "audit_invalid_json_or_missing_event_id"
+  }
+
+  // mustToDate performs real calendar validation (not just a shape check).
+  // A template execution error leaves validated_occurred_at unset, and the
+  // following stage drops that entry before its timestamp can be applied.
+  stage.template {
+    source   = "validated_occurred_at"
+    template = `{{- $parsed := mustToDate "2006-01-02T15:04:05.999999999Z07:00" .occurred_at -}}{{ .occurred_at }}`
+  }
+
+  stage.drop {
+    source              = "validated_occurred_at"
+    expression          = "^$"
+    drop_counter_reason = "audit_invalid_occurred_at"
+  }
+
+  stage.timestamp {
+    source            = "validated_occurred_at"
+    format            = "RFC3339Nano"
+    action_on_failure = "skip"
+  }
+
+  stage.structured_metadata {
+    values = {
+      event_id       = "",
+      actor_id       = "",
+      tenant_id      = "",
+      trace_id       = "",
+      span_id        = "",
+      correlation_id = "",
+    }
+  }
+}
+
+loki.write "local" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}
+
+otelcol.receiver.otlp "applications" {
+  grpc {
+    endpoint = "0.0.0.0:4317"
+  }
+
+  http {
+    endpoint = "0.0.0.0:4318"
+  }
+
+  output {
+    traces  = [otelcol.processor.memory_limiter.applications.input]
+    metrics = [otelcol.processor.memory_limiter.applications.input]
+  }
+}
+
+otelcol.processor.memory_limiter "applications" {
+  check_interval = "1s"
+  limit          = "512MiB"
+  spike_limit    = "128MiB"
+
+  output {
+    traces  = [otelcol.processor.tail_sampling.applications.input]
+    metrics = [otelcol.processor.batch.metrics.input]
+  }
+}
+
+otelcol.processor.tail_sampling "applications" {
+  decision_wait               = "10s"
+  num_traces                  = 50000
+  expected_new_traces_per_sec = 100
+
+  policy {
+    name = "errors"
+    type = "status_code"
+
+    status_code {
+      status_codes = ["ERROR"]
+    }
+  }
+
+  policy {
+    name = "slow"
+    type = "latency"
+
+    latency {
+      threshold_ms = 2000
+    }
+  }
+
+  policy {
+    name = "baseline"
+    type = "probabilistic"
+
+    probabilistic {
+      sampling_percentage = sys.env("OTEL_TAIL_SAMPLING_PERCENTAGE")
+    }
+  }
+
+  output {
+    traces = [otelcol.processor.batch.traces.input]
+  }
+}
+
+otelcol.processor.batch "traces" {
+  timeout             = "2s"
+  send_batch_size     = 50
+  send_batch_max_size = 100
+
+  output {
+    traces = [otelcol.exporter.otlphttp.tempo.input]
+  }
+}
+
+otelcol.exporter.otlphttp "tempo" {
+  client {
+    endpoint = "http://tempo:4318"
+  }
+}
+
+otelcol.processor.batch "metrics" {
+  timeout             = "2s"
+  send_batch_size     = 500
+  send_batch_max_size = 1000
+
+  output {
+    metrics = [otelcol.exporter.prometheus.applications.input]
+  }
+}
+
+otelcol.exporter.prometheus "applications" {
+  forward_to = [prometheus.remote_write.local.receiver]
+}
+
+prometheus.exporter.unix "host" {
+  rootfs_path = "/rootfs"
+  procfs_path = "/rootfs/proc"
+  sysfs_path  = "/sys"
+  disable_collectors = ["diskstats"]
+}
+
+prometheus.exporter.cadvisor "containers" {
+  docker_host               = "unix:///var/run/docker.sock"
+  docker_only               = true
+  disable_root_cgroup_stats = true
+  enabled_metrics           = ["cpu", "cpuLoad", "memory", "network", "oom_event"]
+  storage_duration          = "5m"
+}
+
+prometheus.scrape "host" {
+  targets         = prometheus.exporter.unix.host.targets
+  forward_to      = [prometheus.remote_write.local.receiver]
+  scrape_interval = "15s"
+}
+
+prometheus.scrape "containers" {
+  targets         = prometheus.exporter.cadvisor.containers.targets
+  forward_to      = [prometheus.remote_write.local.receiver]
+  scrape_interval = "15s"
+}
+
+prometheus.remote_write "local" {
+  external_labels = {
+    environment = sys.env("DEPLOYMENT_ENVIRONMENT"),
+    collector   = "alloy",
+  }
+
+  endpoint {
+    url = "http://prometheus:9090/api/v1/write"
+
+    queue_config {
+      capacity          = 5000
+      max_shards        = 4
+      max_samples_per_send = 1000
+    }
+  }
+}

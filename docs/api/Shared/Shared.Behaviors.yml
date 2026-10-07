@@ -4,6 +4,7 @@ items:
   commentId: N:Shared.Behaviors
   id: Shared.Behaviors
   children:
+  - Shared.Behaviors.ApplicationTelemetry
   - Shared.Behaviors.LoggingBehavior`2
   - Shared.Behaviors.ValidationBehavior`2
   langs:
@@ -16,6 +17,12 @@ items:
   assemblies:
   - Shared
 references:
+- uid: Shared.Behaviors.ApplicationTelemetry
+  commentId: T:Shared.Behaviors.ApplicationTelemetry
+  href: Shared.Behaviors.ApplicationTelemetry.html
+  name: ApplicationTelemetry
+  nameWithType: ApplicationTelemetry
+  fullName: Shared.Behaviors.ApplicationTelemetry
 - uid: Shared.Behaviors.LoggingBehavior`2
   commentId: T:Shared.Behaviors.LoggingBehavior`2
   href: Shared.Behaviors.LoggingBehavior-2.html

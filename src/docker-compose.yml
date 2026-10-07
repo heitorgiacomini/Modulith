@@ -18,23 +18,23 @@ services:
   keycloak-configurator:
     image: node:24-alpine
 
-  opensearch:
-    image: opensearchproject/opensearch:2.19.6
+  loki:
+    image: grafana/loki:3.7.7
 
-  opensearch-configurator:
-    image: curlimages/curl:8.16.0
+  tempo:
+    image: grafana/tempo:3.0.3
 
-  opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:2.19.6
+  prometheus:
+    image: prom/prometheus:v3.14.0
 
-  opensearch-dashboards-configurator:
-    image: curlimages/curl:8.16.0
+  grafana:
+    image: grafana/grafana:13.2.0
 
-  otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.159.0
+  alloy:
+    image: grafana/alloy:v1.18.0
 
-  otel-collector-configurator:
-    image: curlimages/curl:8.16.0
+  observability-volume-init:
+    image: alpine:3.22
 
   api:
     image: ${DOCKER_REGISTRY-}api
@@ -68,9 +68,12 @@ volumes:
   postgres_eshopdb:
   angular_node_modules:
   fusion_gateway:
-  opensearch_data:
-  otel_collector_state:
   audit_logs:
+  alloy_data:
+  grafana_data:
+  loki_data:
+  prometheus_data:
+  tempo_data:
 
 
 

@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/_0PROJETOS/.NET/ESHOP/ModulithCourse/docs",
+  "source_base_path": "C:/_0PROJETOS/.NET/SINTER/samples/ModulithCourse/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,6 +9,146 @@
           "relative_path": "index.json"
         }
       }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.CurrentTenantAuthorizationHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.CurrentTenantAuthorizationHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.CurrentTenantMiddleware.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.CurrentTenantMiddleware",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.CurrentTenantRequirement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.CurrentTenantRequirement.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.CurrentTenantRequirement",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.HttpContextCurrentUser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.HttpContextCurrentUser",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.KeycloakOrganization.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.KeycloakOrganization",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.KeycloakOrganizationClaimParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.KeycloakOrganizationClaimParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.KeycloakOrganizationClaimParser",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.OrganizationRoleAuthorizationHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.OrganizationRoleAuthorizationHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.OrganizationRoleRequirement.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.OrganizationRoleRequirement",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure.TenantAuthorizationMiddlewareResultHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bootstrapper/Api.Infrastructure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bootstrapper/Api.Infrastructure.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Api.Infrastructure",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -53,6 +193,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Behaviors.ApplicationTelemetry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Behaviors.ApplicationTelemetry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Behaviors.ApplicationTelemetry",
+      "Summary": "<p sourcefile=\"api/Shared/Shared.Behaviors.ApplicationTelemetry.yml\" sourcestartlinenumber=\"1\">Defines application-owned OpenTelemetry instrumentation sources.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Shared/Shared.Behaviors.LoggingBehavior-2.yml",
       "output": {
         ".html": {
@@ -63,7 +217,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Shared.Behaviors.LoggingBehavior<TRequest, TResponse>",
-      "Summary": "<p sourcefile=\"api/Shared/Shared.Behaviors.LoggingBehavior-2.yml\" sourcestartlinenumber=\"1\">A MediatR pipeline behavior that logs the start and end of request handling,\nmeasures the time taken to handle the request and emits a warning when the\nhandling time exceeds a configured threshold.</p>\n"
+      "Summary": "<p sourcefile=\"api/Shared/Shared.Behaviors.LoggingBehavior-2.yml\" sourcestartlinenumber=\"1\">A MediatR pipeline behavior that creates an internal activity and emits one\nstructured completion event, including elapsed time and outcome.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -109,6 +263,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.AuditedAggregate-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.AuditedAggregate-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.AuditedAggregate<TId>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.AuditedEntity-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.AuditedEntity-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.AuditedEntity<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Shared/Shared.DDD.Entity-1.yml",
       "output": {
         ".html": {
@@ -119,6 +301,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Shared.DDD.Entity<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.FullAuditedAggregate-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.FullAuditedAggregate-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.FullAuditedAggregate<TId>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.FullAuditedEntity-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.FullAuditedEntity-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.FullAuditedEntity<T>",
       "Summary": null
     },
     {
@@ -147,6 +357,48 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Shared.DDD.IAggregate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.IAuditedObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.IAuditedObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.IAuditedObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.ICreationAuditedObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.ICreationAuditedObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.ICreationAuditedObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.IDeletionAuditedObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.IDeletionAuditedObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.IDeletionAuditedObject",
       "Summary": null
     },
     {
@@ -193,6 +445,62 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.IFullAuditedObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.IFullAuditedObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.IFullAuditedObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.IModificationAuditedObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.IModificationAuditedObject.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.IModificationAuditedObject",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.IMultiTenant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.IMultiTenant.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.IMultiTenant",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.DDD.ISoftDelete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.DDD.ISoftDelete.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.DDD.ISoftDelete",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Shared/Shared.DDD.yml",
       "output": {
         ".html": {
@@ -207,6 +515,160 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditActorV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditActorV1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditActorV1",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditCategory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditCategory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditEventV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditEventV1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditEventV1",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditOutcome",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditSensitiveAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditSensitiveAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditSensitiveAttribute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditSubjectV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditSubjectV1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditSubjectV1",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.AuditValueChangeV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.AuditValueChangeV1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.AuditValueChangeV1",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.IAuditTrail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.IAuditTrail.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.IAuditTrail",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.ICurrentUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.ICurrentUser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing.ICurrentUser",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Auditing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Auditing.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Auditing",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.DataFilterModelBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.DataFilterModelBuilderExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.DataFilterModelBuilderExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Shared/Shared.Data.Extentions.yml",
       "output": {
         ".html": {
@@ -217,6 +679,118 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Shared.Data.Extentions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.DataFilter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.DataFilter-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.DataFilter<TFilter>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.DataFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.DataFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.DataFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.DataFilterOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.DataFilterOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.DataFilterOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.DataFilterServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.DataFilterServiceCollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.DataFilterServiceCollectionExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.IDataFilter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.IDataFilter-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.IDataFilter<TFilter>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.IDataFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.IDataFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.IDataFilter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.IDataFilterContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.IDataFilterContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering.IDataFilterContext",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Filtering.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Filtering.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Filtering",
       "Summary": null
     },
     {
@@ -263,6 +837,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.Interceptors.MultiTenantEntityInterceptor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.Interceptors.MultiTenantEntityInterceptor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Shared/Shared.Data.Interceptors.yml",
       "output": {
         ".html": {
@@ -273,6 +861,62 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Shared.Data.Interceptors",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.MultiTenancy.CurrentTenant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.MultiTenancy.CurrentTenant.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.MultiTenancy.CurrentTenant",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.MultiTenancy.ICurrentTenant.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.MultiTenancy.ICurrentTenant",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.MultiTenancy.TenantAuthorizationPolicies.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.MultiTenancy.TenantAuthorizationPolicies.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.MultiTenancy.TenantAuthorizationPolicies",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Data.MultiTenancy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Data.MultiTenancy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Data.MultiTenancy",
       "Summary": null
     },
     {
@@ -329,6 +973,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Shared.Exceptions.BadRequestException",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Shared/Shared.Exceptions.ForbiddenException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Shared/Shared.Exceptions.ForbiddenException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Shared.Exceptions.ForbiddenException",
       "Summary": null
     },
     {
@@ -630,10 +1288,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/eshop-logo.png",
+      "source_relative_path": "images/sinter-logo.png",
       "output": {
         "resource": {
-          "relative_path": "images/eshop-logo.png"
+          "relative_path": "images/sinter-logo.png"
         }
       },
       "version": ""

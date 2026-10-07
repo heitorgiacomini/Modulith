@@ -1,3 +1,9 @@
+x-bounded-logging: &bounded-logging
+  driver: local
+  options:
+    max-size: "10m"
+    max-file: "5"
+
 services:
   postgres:
     environment:
@@ -15,6 +21,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    logging: *bounded-logging
 
   # make postgres create schema before using keycloak
   keycloak:
@@ -45,6 +52,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    logging: *bounded-logging
 
   keycloak-configurator:
     environment:
@@ -60,11 +68,13 @@ services:
       keycloak:
         condition: service_started
     restart: "no"
+    logging: *bounded-logging
 
   redis:
     restart: always
     ports:
       - "127.0.0.1:6379:6379"
+    logging: *bounded-logging
 
   rabbitmq:
     hostname: ecommerce-mq
@@ -75,13 +85,13 @@ services:
     ports:
       - "127.0.0.1:5672:5672"
       - "127.0.0.1:15672:15672"
+    logging: *bounded-logging
 
 
   api:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=postgres;Port=5432;Database=eshopdb;User Id=eshopdb;Password=eshopdb;Include Error Detail=true
       - ConnectionStrings__Redis=redis:6379
       - MessageBroker__Host=amqp://rabbitmq:5672
@@ -90,15 +100,16 @@ services:
       - Keycloak__AuthServerUrl=http://keycloak:9090/
       - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
       - OTEL_SERVICE_NAME=eshop-api
-      - OTEL_DEPLOYMENT_ENVIRONMENT=Development
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_DEPLOYMENT_ENVIRONMENT=${DEPLOYMENT_ENVIRONMENT:-Production}
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://alloy:4317
       - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - OpenTelemetry__ExportLogs=false
       - AuditTrail__DirectoryPath=/var/log/eshop/audit
       - AuditTrail__FileNamePrefix=eshop-audit
       - AuditTrail__MaxFileSizeBytes=134217728
       - AuditTrail__RetainedFileCount=8
     depends_on:
-      otel-collector:
+      alloy:
         condition: service_healthy
       postgres:
         condition: service_started
@@ -110,13 +121,18 @@ services:
         condition: service_completed_successfully
     ports:
       - "5004:8080"
-      - "6060:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - audit_logs:/var/log/eshop/audit
+    labels:
+      observability.logs: "true"
+      observability.service_name: eshop-api
+      observability.environment: ${DEPLOYMENT_ENVIRONMENT:-Production}
+    logging: *bounded-logging
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 1g
     healthcheck:
       test: ["CMD", "curl", "--fail", "--silent", "http://localhost:8080/graphql/catalog/schema.graphqls"]
       interval: 5s
@@ -126,25 +142,40 @@ services:
 
   graphql-gateway:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
       - ASPNETCORE_HTTP_PORTS=8080
       - Fusion__SchemaPath=/app/fusion/gateway.far
       - ReverseProxy__Clusters__api__Destinations__primary__Address=http://api:8080/
       - Keycloak__AuthServerUrl=http://keycloak:9090/
       - Keycloak__PublicIssuer=http://localhost:9090/realms/eshoprealm
       - OTEL_SERVICE_NAME=eshop-gateway
-      - OTEL_DEPLOYMENT_ENVIRONMENT=Development
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_DEPLOYMENT_ENVIRONMENT=${DEPLOYMENT_ENVIRONMENT:-Production}
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://alloy:4317
       - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - OpenTelemetry__ExportLogs=false
     volumes:
       - fusion_gateway:/app/fusion:ro
     depends_on:
       graphql-gateway-configurator:
         condition: service_completed_successfully
-      otel-collector:
+      alloy:
         condition: service_healthy
       api:
         condition: service_healthy
+    labels:
+      observability.logs: "true"
+      observability.service_name: eshop-gateway
+      observability.environment: ${DEPLOYMENT_ENVIRONMENT:-Production}
+    logging: *bounded-logging
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "--location", "--output", "/dev/null", "http://localhost:8080/graphql/"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
 
   graphql-gateway-configurator:
     working_dir: /workspace
@@ -160,6 +191,7 @@ services:
       api:
         condition: service_started
     restart: "no"
+    logging: *bounded-logging
 
   web-client:
     environment:
@@ -173,122 +205,199 @@ services:
       - ./web-client:/app
       - angular_node_modules:/app/node_modules
     command: sh -c "npm install && npm start -- --host 0.0.0.0 --port 4200 --poll 1000"
+    logging: *bounded-logging
 
-  opensearch:
-    environment:
-      - cluster.name=eshop-observability
-      - node.name=eshop-opensearch
-      - discovery.type=single-node
-      - cluster.default_number_of_replicas=0
-      - bootstrap.memory_lock=true
-      - OPENSEARCH_JAVA_OPTS=-Xms3g -Xmx3g
-      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_ADMIN_PASSWORD:-V7!qR2@nL9%P4kX6}
-    restart: unless-stopped
-    mem_limit: 6g
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    volumes:
-      - opensearch_data:/usr/share/opensearch/data
-    ports:
-      - "127.0.0.1:9200:9200"
-      - "127.0.0.1:9600:9600"
-    healthcheck:
-      test:
-        - CMD-SHELL
-        - curl --fail --silent --insecure --user admin:$$OPENSEARCH_INITIAL_ADMIN_PASSWORD https://localhost:9200/_cluster/health >/dev/null
-      interval: 10s
-      timeout: 5s
-      retries: 30
-      start_period: 30s
-
-  opensearch-configurator:
-    environment:
-      - OPENSEARCH_ADMIN_PASSWORD=${OPENSEARCH_ADMIN_PASSWORD:-V7!qR2@nL9%P4kX6}
-      - OPENSEARCH_INGEST_USERNAME=${OPENSEARCH_INGEST_USERNAME:-eshop_ingest}
-      - OPENSEARCH_INGEST_PASSWORD=${OPENSEARCH_INGEST_PASSWORD:-J4@vM8!zQ2%tL7cN5}
-      - OPENSEARCH_OPERATOR_USERNAME=${OPENSEARCH_OPERATOR_USERNAME:-eshop_operator}
-      - OPENSEARCH_OPERATOR_PASSWORD=${OPENSEARCH_OPERATOR_PASSWORD:-P9!hN3@xC7%rW5qK2}
-    entrypoint: ["sh", "/bootstrap/bootstrap.sh"]
-    volumes:
-      - ./docker-config/observability/opensearch:/bootstrap:ro
-    depends_on:
-      opensearch:
-        condition: service_healthy
-    restart: "no"
-
-  opensearch-dashboards:
-    environment:
-      - OPENSEARCH_HOSTS=["https://opensearch:9200"]
-      # Use the Security plugin's server account; operators authenticate separately.
-      - OPENSEARCH_USERNAME=kibanaserver
-      - OPENSEARCH_PASSWORD=kibanaserver
-      - SERVER_HOST=0.0.0.0
-    restart: unless-stopped
-    mem_limit: 1g
-    ports:
-      - "127.0.0.1:5601:5601"
-    depends_on:
-      opensearch:
-        condition: service_healthy
-      opensearch-configurator:
-        condition: service_completed_successfully
-
-  opensearch-dashboards-configurator:
-    environment:
-      - OPENSEARCH_ADMIN_PASSWORD=${OPENSEARCH_ADMIN_PASSWORD:-V7!qR2@nL9%P4kX6}
-    entrypoint: ["sh", "/bootstrap/dashboards-bootstrap.sh"]
-    volumes:
-      - ./docker-config/observability:/bootstrap:ro
-      - ./docker-config/observability/dashboards:/dashboards:ro
-    depends_on:
-      opensearch-dashboards:
-        condition: service_started
-    restart: "no"
-
-  otel-collector:
-    command: ["--config=/etc/otelcol-contrib/config.yaml"]
-    environment:
-      - OTEL_TAIL_SAMPLING_PERCENTAGE=${OTEL_TAIL_SAMPLING_PERCENTAGE:-100}
-      - OPENSEARCH_INGEST_USERNAME=${OPENSEARCH_INGEST_USERNAME:-eshop_ingest}
-      - OPENSEARCH_INGEST_PASSWORD=${OPENSEARCH_INGEST_PASSWORD:-J4@vM8!zQ2%tL7cN5}
-    restart: unless-stopped
-    mem_limit: 512m
-    volumes:
-      - ./docker-config/observability/otel-collector.yaml:/etc/otelcol-contrib/config.yaml:ro
-      - audit_logs:/var/log/eshop/audit:ro
-      - otel_collector_state:/var/lib/otelcol
-    ports:
-      - "127.0.0.1:4317:4317"
-      - "127.0.0.1:4318:4318"
-      - "127.0.0.1:8888:8888"
-      - "127.0.0.1:13133:13133"
-    healthcheck:
-      test: ["CMD", "/otelcol-contrib", "validate", "--config=/etc/otelcol-contrib/config.yaml"]
-      interval: 10s
-      timeout: 5s
-      retries: 12
-      start_period: 10s
-    depends_on:
-      opensearch-configurator:
-        condition: service_completed_successfully
-      otel-collector-configurator:
-        condition: service_completed_successfully
-
-  otel-collector-configurator:
+  observability-volume-init:
     user: "0:0"
     entrypoint: ["/bin/sh", "-c"]
     command:
       - >-
-        mkdir -p /var/lib/otelcol /var/log/eshop/audit &&
-        chown -R 10001:10001 /var/lib/otelcol &&
-        chown -R 1654:10001 /var/log/eshop/audit &&
-        chmod 0750 /var/log/eshop/audit
+        mkdir -p /var/lib/alloy /var/lib/grafana /var/lib/loki /var/lib/prometheus /var/lib/tempo /var/log/eshop/audit &&
+        chown -R 473:473 /var/lib/alloy &&
+        chown -R 472:472 /var/lib/grafana &&
+        chown -R 10001:10001 /var/lib/loki /var/lib/tempo &&
+        chown -R 65534:65534 /var/lib/prometheus &&
+        chmod 0750 /var/log/eshop/audit &&
+        chown -R 1654:473 /var/log/eshop/audit
     restart: "no"
     volumes:
-      - otel_collector_state:/var/lib/otelcol
+      - alloy_data:/var/lib/alloy
+      - grafana_data:/var/lib/grafana
+      - loki_data:/var/lib/loki
+      - prometheus_data:/var/lib/prometheus
+      - tempo_data:/var/lib/tempo
       - audit_logs:/var/log/eshop/audit
+    cap_drop: [ALL]
+    cap_add: [CHOWN, DAC_OVERRIDE, FOWNER]
+    security_opt: [no-new-privileges:true]
+    logging: *bounded-logging
+
+  loki:
+    command: ["-config.file=/etc/loki/loki.yaml"]
+    user: "10001:10001"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 1g
+    read_only: true
+    tmpfs: ["/tmp:size=64m,noexec,nosuid,nodev"]
+    volumes:
+      - ./docker-config/observability/loki/loki.yaml:/etc/loki/loki.yaml:ro
+      - loki_data:/var/lib/loki
+    healthcheck:
+      test: ["CMD", "/usr/bin/loki", "-health"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    depends_on:
+      observability-volume-init:
+        condition: service_completed_successfully
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *bounded-logging
+
+  tempo:
+    command: ["-target=all", "-config.file=/etc/tempo/tempo.yaml"]
+    user: "10001:10001"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 1g
+    read_only: true
+    tmpfs: ["/tmp:size=64m,noexec,nosuid,nodev"]
+    volumes:
+      - ./docker-config/observability/tempo/tempo.yaml:/etc/tempo/tempo.yaml:ro
+      - tempo_data:/var/lib/tempo
+    healthcheck:
+      test: ["CMD", "/tempo", "-health", "-health.url=http://127.0.0.1:3200/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    depends_on:
+      observability-volume-init:
+        condition: service_completed_successfully
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *bounded-logging
+
+  prometheus:
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=30d
+      - --storage.tsdb.retention.size=10GB
+      - --web.enable-remote-write-receiver
+      - --enable-feature=exemplar-storage
+    user: "65534:65534"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 1g
+    read_only: true
+    tmpfs: ["/tmp:size=64m,noexec,nosuid,nodev"]
+    volumes:
+      - ./docker-config/observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./docker-config/observability/prometheus/rules:/etc/prometheus/rules:ro
+      - prometheus_data:/prometheus
+    healthcheck:
+      test: ["CMD", "/bin/promtool", "query", "instant", "http://127.0.0.1:9090", "up"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    depends_on:
+      observability-volume-init:
+        condition: service_completed_successfully
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *bounded-logging
+
+  grafana:
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:?Set GRAFANA_ADMIN_USER in the environment}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD in the environment}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_ANALYTICS_REPORTING_ENABLED=false
+      - GF_ANALYTICS_CHECK_FOR_UPDATES=false
+      - GF_PLUGINS_PREINSTALL_DISABLED=true
+      - GF_PLUGINS_PLUGIN_ADMIN_ENABLED=false
+      - GF_SERVER_ROOT_URL=${GRAFANA_ROOT_URL:-http://localhost:5601}
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/eshop-overview.json
+    user: "472:472"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 512m
+    read_only: true
+    tmpfs: ["/tmp:size=64m,noexec,nosuid,nodev"]
+    volumes:
+      - ./docker-config/observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./docker-config/observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "127.0.0.1:5601:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/api/health >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    depends_on:
+      observability-volume-init:
+        condition: service_completed_successfully
+      loki:
+        condition: service_healthy
+      tempo:
+        condition: service_healthy
+      prometheus:
+        condition: service_healthy
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *bounded-logging
+
+  alloy:
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+    environment:
+      - OTEL_TAIL_SAMPLING_PERCENTAGE=${OTEL_TAIL_SAMPLING_PERCENTAGE:-100}
+      - DEPLOYMENT_ENVIRONMENT=${DEPLOYMENT_ENVIRONMENT:-Development}
+    user: "473:473"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    mem_limit: 768m
+    group_add:
+      - "${DOCKER_GID:-0}"
+    volumes:
+      - ./docker-config/observability/alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - alloy_data:/var/lib/alloy
+      - audit_logs:/var/log/eshop/audit:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    ports:
+      - "127.0.0.1:4317:4317"
+      - "127.0.0.1:4318:4318"
+      - "127.0.0.1:12345:12345"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -ec 'exec 3<>/dev/tcp/127.0.0.1/12345'"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    depends_on:
+      observability-volume-init:
+        condition: service_completed_successfully
+      loki:
+        condition: service_healthy
+      tempo:
+        condition: service_healthy
+      prometheus:
+        condition: service_healthy
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging: *bounded-logging
