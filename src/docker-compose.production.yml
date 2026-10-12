@@ -1,0 +1,276 @@
+# Standalone production topology. Do not merge with docker-compose.override.yml.
+x-bounded-logging: &bounded-logging
+  driver: local
+  options:
+    max-size: "10m"
+    max-file: "5"
+
+x-api-environment: &api-environment
+  ASPNETCORE_ENVIRONMENT: Production
+  ASPNETCORE_HTTP_PORTS: 8080
+  Keycloak__auth-server-url: http://keycloak:9090/
+  Keycloak__PublicIssuer: ${KEYCLOAK_PUBLIC_URL:?Set KEYCLOAK_PUBLIC_URL}/realms/eshoprealm
+  Cors__Origins__0: ${APP_PUBLIC_URL:?Set APP_PUBLIC_URL}
+  ConnectionStrings__Redis: redis:6379,password=${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+  MessageBroker__Host: amqp://rabbitmq:5672
+  MessageBroker__UserName: eshop
+  MessageBroker__Password: ${RABBITMQ_PASSWORD:?Set RABBITMQ_PASSWORD}
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://alloy:4317
+  OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+  OTEL_DEPLOYMENT_ENVIRONMENT: Production
+  OpenTelemetry__ExportLogs: "false"
+  AuditTrail__DirectoryPath: /var/log/eshop/audit
+  Logging__LogLevel__Microsoft.EntityFrameworkCore.Database.Command: Warning
+
+services:
+  postgres:
+    logging: *bounded-logging
+    mem_limit: 1g
+    image: postgres:18.0
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: eshop_admin
+      POSTGRES_DB: eshopdb
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      MIGRATION_PASSWORD: ${MIGRATION_PASSWORD:?Set MIGRATION_PASSWORD}
+      CATALOG_PASSWORD: ${CATALOG_PASSWORD:?Set CATALOG_PASSWORD}
+      BASKET_PASSWORD: ${BASKET_PASSWORD:?Set BASKET_PASSWORD}
+      ORDERING_PASSWORD: ${ORDERING_PASSWORD:?Set ORDERING_PASSWORD}
+      ACCOUNTS_PASSWORD: ${ACCOUNTS_PASSWORD:?Set ACCOUNTS_PASSWORD}
+      KEYCLOAK_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:?Set KEYCLOAK_DB_PASSWORD}
+    volumes:
+      - postgres_eshopdb:/var/lib/postgresql
+      - ./docker-config/postgres/production-init.sh:/docker-entrypoint-initdb.d/01-roles.sh:ro
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U eshop_admin -d eshopdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  redis:
+    logging: *bounded-logging
+    mem_limit: 256m
+    image: redis:8.2.1-alpine
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD}
+    command: [sh, -c, 'exec redis-server --requirepass "$$REDIS_PASSWORD" --appendonly yes --maxmemory 192mb --maxmemory-policy allkeys-lru']
+    volumes: [redis_data:/data]
+    healthcheck:
+      test: [CMD-SHELL, 'REDISCLI_AUTH="$$REDIS_PASSWORD" redis-cli ping | grep -q PONG']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  rabbitmq:
+    logging: *bounded-logging
+    mem_limit: 1g
+    image: rabbitmq:4.1.4-management-alpine
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: eshop
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Set RABBITMQ_PASSWORD}
+    volumes: [rabbitmq_data:/var/lib/rabbitmq]
+    healthcheck:
+      test: [CMD, rabbitmq-diagnostics, -q, check_running]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+  db-migrator:
+    logging: *bounded-logging
+    mem_limit: 1g
+    image: ${API_IMAGE:-eshop-api:local}
+    build:
+      context: .
+      dockerfile: Bootstrapper/Api/Dockerfile
+    command: [--migrate]
+    environment:
+      <<: *api-environment
+      ConnectionStrings__Database: Host=postgres;Database=eshopdb;Username=eshop_migrator;Password=${MIGRATION_PASSWORD:?Set MIGRATION_PASSWORD}
+      Database__Seed: "false"
+    depends_on:
+      postgres: {condition: service_healthy}
+    restart: "no"
+  db-permissions:
+    logging: *bounded-logging
+    image: postgres:18.0
+    environment:
+      PGHOST: postgres
+      PGDATABASE: eshopdb
+      PGUSER: eshop_migrator
+      PGPASSWORD: ${MIGRATION_PASSWORD:?Set MIGRATION_PASSWORD}
+    command: [psql, --set=ON_ERROR_STOP=1, --file=/runtime-permissions.sql]
+    volumes:
+      - ./docker-config/postgres/runtime-permissions.sql:/runtime-permissions.sql:ro
+    depends_on:
+      db-migrator: {condition: service_completed_successfully}
+    restart: "no"
+  keycloak:
+    logging: *bounded-logging
+    mem_limit: 1g
+    image: ${KEYCLOAK_IMAGE:-eshop-keycloak:local}
+    build:
+      context: .
+      dockerfile: docker-config/keycloak/Dockerfile
+    command: [start, --optimized, --import-realm]
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/eshopdb
+      KC_DB_SCHEMA: keycloak
+      KC_DB_USERNAME: keycloak_app
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:?Set KEYCLOAK_DB_PASSWORD}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN_USER:?Set KEYCLOAK_ADMIN_USER}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Set KEYCLOAK_ADMIN_PASSWORD}
+      KC_HTTP_ENABLED: "true"
+      KC_HTTP_PORT: "9090"
+      KC_HOSTNAME: ${KEYCLOAK_PUBLIC_URL:?Set KEYCLOAK_PUBLIC_URL}
+      KC_PROXY_HEADERS: xforwarded
+    healthcheck:
+      test: [CMD-SHELL, "bash -ec 'exec 3<>/dev/tcp/127.0.0.1/9000; printf \"GET /health/ready HTTP/1.0\\r\\n\\r\\n\" >&3; grep -q \"200 OK\" <&3'"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    volumes:
+      - ./docker-config/keycloak/production/eshoprealm-realm.json:/opt/keycloak/data/import/eshoprealm-realm.json:ro
+    depends_on:
+      postgres: {condition: service_healthy}
+    restart: unless-stopped
+  keycloak-configurator:
+    logging: *bounded-logging
+    image: node:22.16.0-alpine
+    environment:
+      KEYCLOAK_URL: http://keycloak:9090
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN_USER:?Set KEYCLOAK_ADMIN_USER}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Set KEYCLOAK_ADMIN_PASSWORD}
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL:?Set APP_PUBLIC_URL}
+      ORDERING_CLIENT_SECRET: ${ORDERING_CLIENT_SECRET:?Set ORDERING_CLIENT_SECRET}
+    command: [node, /configure-production.mjs]
+    volumes:
+      - ./docker-config/keycloak/configure-production.mjs:/configure-production.mjs:ro
+      - ./docker-config/keycloak/configure-organizations.mjs:/configure-organizations.mjs:ro
+    depends_on:
+      keycloak: {condition: service_started}
+    restart: "no"
+  api:
+    logging: *bounded-logging
+    mem_limit: 1g
+    image: ${API_IMAGE:-eshop-api:local}
+    build:
+      context: .
+      dockerfile: Bootstrapper/Api/Dockerfile
+    environment:
+      <<: *api-environment
+      ConnectionStrings__Catalog: Host=postgres;Database=eshopdb;Username=catalog_app;Password=${CATALOG_PASSWORD:?Set CATALOG_PASSWORD}
+      ConnectionStrings__Basket: Host=postgres;Database=eshopdb;Username=basket_app;Password=${BASKET_PASSWORD:?Set BASKET_PASSWORD}
+      ConnectionStrings__Ordering: Host=postgres;Database=eshopdb;Username=ordering_app;Password=${ORDERING_PASSWORD:?Set ORDERING_PASSWORD}
+      ConnectionStrings__Accounts: Host=postgres;Database=eshopdb;Username=accounts_app;Password=${ACCOUNTS_PASSWORD:?Set ACCOUNTS_PASSWORD}
+      OTEL_SERVICE_NAME: eshop-api
+    volumes: [audit_logs:/var/log/eshop/audit]
+    labels:
+      observability.logs: "true"
+      observability.service_name: eshop-api
+      observability.environment: Production
+    depends_on:
+      db-permissions: {condition: service_completed_successfully}
+      keycloak-configurator: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+      rabbitmq: {condition: service_healthy}
+      observability-volume-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://localhost:8080/health/ready]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped
+    stop_grace_period: 60s
+  graphql-gateway-configurator:
+    logging: *bounded-logging
+    image: ${FUSION_IMAGE:-eshop-fusion-configurator:local}
+    build:
+      context: .
+      dockerfile: docker-config/fusion/Dockerfile
+    environment:
+      API_URL: http://api:8080
+      SCHEMA_ROOT: /tmp/fusion
+      ARCHIVE_DIRECTORY: /fusion-output
+    volumes: [fusion_gateway:/fusion-output]
+    depends_on:
+      api: {condition: service_healthy}
+    restart: "no"
+  graphql-gateway:
+    logging: *bounded-logging
+    mem_limit: 512m
+    image: ${GATEWAY_IMAGE:-eshop-gateway:local}
+    build:
+      context: .
+      dockerfile: Bootstrapper/Gateway/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: 8080
+      Fusion__SchemaPath: /app/fusion/gateway.far
+      ReverseProxy__Clusters__api__Destinations__primary__Address: http://api:8080/
+      Keycloak__auth-server-url: http://keycloak:9090/
+      Keycloak__PublicIssuer: ${KEYCLOAK_PUBLIC_URL:?Set KEYCLOAK_PUBLIC_URL}/realms/eshoprealm
+      Cors__Origins__0: ${APP_PUBLIC_URL:?Set APP_PUBLIC_URL}
+      OTEL_SERVICE_NAME: eshop-gateway
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://alloy:4317
+      OpenTelemetry__ExportLogs: "false"
+    volumes: [fusion_gateway:/app/fusion:ro]
+    depends_on:
+      graphql-gateway-configurator: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://localhost:8080/health/ready]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    labels:
+      observability.logs: "true"
+      observability.service_name: eshop-gateway
+      observability.environment: Production
+    restart: unless-stopped
+  web-client:
+    logging: *bounded-logging
+    mem_limit: 256m
+    image: ${WEB_IMAGE:-eshop-web:local}
+    build:
+      context: ./web-client
+      dockerfile: Dockerfile.production
+    environment:
+      KEYCLOAK_PUBLIC_URL: ${KEYCLOAK_PUBLIC_URL:?Set KEYCLOAK_PUBLIC_URL}
+    depends_on:
+      graphql-gateway: {condition: service_healthy}
+    restart: unless-stopped
+    # TLS ingress (e.g. Dokploy) connects here and to keycloak:9090 on the private network.
+  observability-volume-init:
+    extends: {file: docker-compose.override.yml, service: observability-volume-init}
+    image: alpine:3.22
+  loki:
+    extends: {file: docker-compose.override.yml, service: loki}
+    image: grafana/loki:3.7.7
+  tempo:
+    extends: {file: docker-compose.override.yml, service: tempo}
+    image: grafana/tempo:3.0.3
+  prometheus:
+    extends: {file: docker-compose.override.yml, service: prometheus}
+    image: prom/prometheus:v3.14.0
+  grafana:
+    extends: {file: docker-compose.override.yml, service: grafana}
+    image: grafana/grafana:13.2.0
+  alloy:
+    extends: {file: docker-compose.override.yml, service: alloy}
+    image: grafana/alloy:v1.18.0
+    environment:
+      DEPLOYMENT_ENVIRONMENT: Production
+      OTEL_TAIL_SAMPLING_PERCENTAGE: ${OTEL_TAIL_SAMPLING_PERCENTAGE:-100}
+
+volumes:
+  postgres_eshopdb:
+  redis_data:
+  rabbitmq_data:
+  fusion_gateway:
+  audit_logs:
+  alloy_data:
+  grafana_data:
+  loki_data:
+  prometheus_data:
+  tempo_data:

@@ -153,8 +153,7 @@ public sealed class MultiTenantPersistenceTests
   {
     AuditableEntityInterceptor auditInterceptor = new(
       new TestCurrentUser(),
-      currentTenant,
-      new NullAuditTrail());
+      currentTenant);
     DbContextOptions<TenantDbContext> options = new DbContextOptionsBuilder<TenantDbContext>()
       .UseInMemoryDatabase(databaseName)
       .AddInterceptors(auditInterceptor, new MultiTenantEntityInterceptor(currentTenant))

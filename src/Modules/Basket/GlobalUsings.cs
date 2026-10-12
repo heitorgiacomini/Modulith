@@ -1,7 +1,7 @@
 global using Shared.DDD;
 global using Basket.Basket.Domain;
 global using Basket.Basket.Mapping;
-global using Basket.Data.Outbox;
+global using Shared.Messaging.Outbox;
 global using Microsoft.EntityFrameworkCore;
 global using System.Reflection;
 global using Basket.Data;

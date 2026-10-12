@@ -1,4 +1,4 @@
-﻿namespace Ordering.Data;
+namespace Ordering.Data;
 public class OrderingDbContext : DbContext, IDataFilterContext
 {
     private readonly IDataFilter dataFilter;
@@ -20,6 +20,11 @@ public class OrderingDbContext : DbContext, IDataFilterContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.Entity<CheckoutReceipt>(entity =>
+        {
+            entity.ToTable("CheckoutReceipts", "ordering");
+            entity.HasKey(receipt => new { receipt.TenantId, receipt.EventId });
+        });
         builder.HasDefaultSchema("ordering");
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         builder.ApplyDataFilters(this);

@@ -1,6 +1,24 @@
 groups:
   - name: eshop-observability
     rules:
+      - alert: BusinessAuditProjectionFailures
+        expr: increase(eshop_audit_write_failures_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: Audit export is failing
+          description: Inspect audit delivery checkpoints; committed business audit records remain in PostgreSQL.
+
+      - alert: IntegrationOutboxDeliveryFailures
+        expr: increase(eshop_outbox_delivery_failures_total[10m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: Integration event delivery is failing
+          description: Inspect the module outbox and broker connectivity; events remain pending for retry.
+
       - alert: ApplicationTraceErrors
         expr: increase(traces_spanmetrics_calls_total{status_code=~"STATUS_CODE_ERROR|ERROR"}[5m]) > 0
         for: 2m

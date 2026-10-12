@@ -24,11 +24,11 @@ public sealed class CheckoutOrderCreationTests
             .AddInterceptors(new MultiTenantEntityInterceptor(currentTenant))
             .Options;
         await using OrderingDbContext dbContext = new(options, new EnabledDataFilter(), currentTenant);
-        CreateOrderFromCheckoutHandler handler = new(dbContext);
+        CreateOrderFromCheckoutHandler handler = new(dbContext, currentTenant);
         OrderDto order = CreateOrder(customerId);
 
         CreateOrderFromCheckoutResult result = await handler.Handle(
-            new CreateOrderFromCheckoutCommand(order),
+            new CreateOrderFromCheckoutCommand(order, Guid.NewGuid()),
             CancellationToken.None);
 
         var persisted = Assert.Single(dbContext.ChangeTracker.Entries<Order>()).Entity;
@@ -36,6 +36,12 @@ public sealed class CheckoutOrderCreationTests
         Assert.Equal(customerId, persisted.CustomerId);
         Assert.Equal(tenantId, persisted.TenantId);
         Assert.Single(persisted.Items);
+
+        Guid eventId = Guid.NewGuid();
+        var first = await handler.Handle(new CreateOrderFromCheckoutCommand(order, eventId), CancellationToken.None);
+        var replay = await handler.Handle(new CreateOrderFromCheckoutCommand(order, eventId), CancellationToken.None);
+        Assert.Equal(first.Id, replay.Id);
+        Assert.Equal(2, await dbContext.Orders.CountAsync());
     }
 
     private static OrderDto CreateOrder(Guid customerId)

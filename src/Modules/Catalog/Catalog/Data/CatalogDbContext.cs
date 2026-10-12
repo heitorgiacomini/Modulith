@@ -1,4 +1,5 @@
-﻿namespace Catalog.Data;
+using Shared.Messaging.Outbox;
+namespace Catalog.Data;
 
 public class CatalogDbContext : DbContext, IDataFilterContext
 {
@@ -25,6 +26,7 @@ public class CatalogDbContext : DbContext, IDataFilterContext
 		//modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogDbContext).Assembly);
 		_ = modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		_ = modelBuilder.ApplyDataFilters(this);
+		modelBuilder.AddIntegrationOutbox();
 
 		base.OnModelCreating(modelBuilder);
 	}

@@ -1,0 +1,88 @@
+name: Verify
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18.0
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ci-postgres
+          POSTGRES_DB: postgres
+        ports: [5432:5432]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      POSTGRES_TEST_CONNECTION: Host=localhost;Database=postgres;Username=postgres;Password=ci-postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Unit, architecture, and PostgreSQL failure tests
+        run: |
+          for project in src/Tests/*/*.csproj; do
+            dotnet test "$project" --configuration Release --logger "trx;LogFileName=results.trx" --results-directory "artifacts/$(basename "$(dirname "$project")")"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-results
+          path: artifacts/**/*.trx
+      - name: Verify database backup restoration
+        env:
+          POSTGRES_TEST_CONTAINER: ${{ job.services.postgres.id }}
+        run: bash src/docker-config/postgres/verify-backup-restore.sh
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/web-client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: npm
+          cache-dependency-path: src/web-client/package-lock.json
+      - run: npm ci
+      - run: npm run check:boundaries
+      - run: npm run build -- --configuration production
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate production configuration
+        run: |
+          sed 's/=$/=ci-test-placeholder/' src/.env.production.example > /tmp/eshop-ci.env
+          docker compose --env-file /tmp/eshop-ci.env -f src/docker-compose.production.yml config --quiet
+      - name: Build application containers
+        run: |
+          docker compose --env-file /tmp/eshop-ci.env -f src/docker-compose.production.yml build api graphql-gateway web-client keycloak graphql-gateway-configurator
+      - name: Verify production startup and readiness
+        run: |
+          docker compose --env-file /tmp/eshop-ci.env -p eshop-ci -f src/docker-compose.production.yml up -d api graphql-gateway web-client
+          for service in api graphql-gateway web-client keycloak; do
+            container=$(docker compose --env-file /tmp/eshop-ci.env -p eshop-ci -f src/docker-compose.production.yml ps -q "$service")
+            ready=false
+            for attempt in $(seq 1 60); do
+              if [ "$(docker inspect --format '{{.State.Health.Status}}' "$container")" = healthy ]; then
+                ready=true
+                break
+              fi
+              sleep 2
+            done
+            test "$ready" = true
+          done
+      - name: Collect startup diagnostics
+        if: failure()
+        run: docker compose --env-file /tmp/eshop-ci.env -p eshop-ci -f src/docker-compose.production.yml logs --no-color --tail 100
+      - name: Remove CI containers and volumes
+        if: always()
+        run: docker compose --env-file /tmp/eshop-ci.env -p eshop-ci -f src/docker-compose.production.yml down --volumes

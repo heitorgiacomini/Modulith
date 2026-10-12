@@ -59,8 +59,8 @@ Architecture tests enforce that business module assemblies do not directly depen
 
 ### Asynchronous communication
 
-- When a Catalog product price changes, Catalog publishes `ProductPriceChangedIntegrationEvent` through MassTransit and RabbitMQ; Basket consumes it and updates matching cart items.
-- Basket checkout stores `BasketCheckoutIntegrationEvent` in its outbox in the same database transaction. `OutboxProcessor` later publishes it to RabbitMQ; Ordering consumes it and creates the order.
+- Catalog price changes and Basket checkout store integration events in their module outboxes in the same transaction as the business change. Shared dispatchers coordinate replicas with PostgreSQL row locks and publish stable message IDs through MassTransit/RabbitMQ.
+- Basket consumes price changes; Ordering stores a durable checkout receipt alongside the order so duplicate deliveries create only one order.
 - Domain events are dispatched in-process by the EF Core save-changes interceptor and MediatR.
 
 ## Patterns and technologies
@@ -116,7 +116,7 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml logs
 ```
 
 When `graphql-gateway-configurator` exits with code `0`, schema composition completed
-successfully. `keycloak-configurator` also exits successfully after configuring organizations and authorization, and `observability-volume-init` prepares volume ownership. These are startup jobs; the application services remain running.
+successfully. `db-migrator` applies module migrations and development seeds before the API starts. `keycloak-configurator` configures organizations and authorization, and `observability-volume-init` prepares volume ownership. These are startup jobs; the application services remain running.
 
 ### Stop or reset the application
 
@@ -171,6 +171,12 @@ docker compose -f src/docker-compose.yml -f src/docker-compose.override.yml up -
 Grafana queries Loki, Tempo, and Prometheus internally; these stores publish no host ports. Alloy collects application logs from labeled Docker containers and API audit NDJSON from a shared volume. API and gateway send OTLP traces and metrics to `http://alloy:4317`. See the [observability runbook](src/docker-config/observability/README.md) for retention, sampling, dashboards, and recovery.
 
 The sample Compose credentials for PostgreSQL and RabbitMQ are `eshopdb` / `eshopdb`. They are development-only values and must not be reused in production.
+
+For production, use the standalone [production Compose topology](src/docker-compose.production.yml)
+and follow the [deployment, audit durability, and recovery runbook](docs/articles/production-readiness.md).
+It uses compiled Angular assets, production Keycloak startup, separate migration/runtime
+database roles, and explicit readiness endpoints. Entity audits are stored transactionally
+in PostgreSQL; files and Loki are an asynchronous observability projection.
 
 ## Test with Docker
 

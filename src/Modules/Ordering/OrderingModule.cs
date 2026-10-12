@@ -24,11 +24,11 @@ public static class OrderingModule
         // 2. Application Use Case services
 
         // 3. Data - Infrastructure services
-        var connectionString = configuration.GetConnectionString("Database");
+        var connectionString = configuration.GetConnectionString("Ordering") ?? configuration.GetConnectionString("Database");
 
-        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
 
         services.AddDbContext<OrderingDbContext>((sp, options) =>
         {
@@ -79,4 +79,3 @@ public static class OrderingModule
         return app;
     }
 }
-

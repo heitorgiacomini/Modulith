@@ -5,7 +5,7 @@ RUN jar --create --file /selected-organization-policies.jar -C /policy .
 
 FROM docker.io/keycloak/keycloak:26.7.0 AS keycloak-builder
 COPY --from=policy-builder /selected-organization-policies.jar /opt/keycloak/providers/
-RUN /opt/keycloak/bin/kc.sh build --features=scripts
+RUN /opt/keycloak/bin/kc.sh build --features=scripts --db=postgres --health-enabled=true
 
 FROM docker.io/keycloak/keycloak:26.7.0
 ENV KC_FEATURES=scripts

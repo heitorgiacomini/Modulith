@@ -22,14 +22,14 @@ public sealed class AuditableEntityInterceptorTests
   public void Basic_and_outbox_entities_are_not_audited_or_soft_deletable()
   {
     Assert.False(typeof(ISoftDelete).IsAssignableFrom(typeof(BasicEntity)));
-    Assert.False(typeof(IAuditedObject).IsAssignableFrom(typeof(Basket.Data.Outbox.OutboxMessage)));
-    Assert.False(typeof(ISoftDelete).IsAssignableFrom(typeof(Basket.Data.Outbox.OutboxMessage)));
+    Assert.False(typeof(IAuditedObject).IsAssignableFrom(typeof(Shared.Messaging.Outbox.IntegrationOutboxMessage)));
+    Assert.False(typeof(ISoftDelete).IsAssignableFrom(typeof(Shared.Messaging.Outbox.IntegrationOutboxMessage)));
   }
 
   [Fact]
   public async Task Query_filter_is_applied_only_to_soft_deletable_entities()
   {
-    await using TestDbContext dbContext = CreateContext(null, new ListAuditTrail());
+    await using TestDbContext dbContext = CreateContext(null);
 
     Assert.NotEmpty(dbContext.Model.FindEntityType(typeof(TestEntity))!.GetDeclaredQueryFilters());
     Assert.Empty(dbContext.Model.FindEntityType(typeof(BasicEntity))!.GetDeclaredQueryFilters());
@@ -39,8 +39,7 @@ public sealed class AuditableEntityInterceptorTests
   public async Task Save_sets_authenticated_user_audit_metadata()
   {
     Guid userId = Guid.NewGuid();
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(userId, auditTrail);
+    await using TestDbContext dbContext = CreateContext(userId);
     TestEntity entity = new() { Id = Guid.NewGuid(), Name = "Original", Secret = "hidden" };
 
     dbContext.Entities.Add(entity);
@@ -51,19 +50,18 @@ public sealed class AuditableEntityInterceptorTests
     Assert.Null(entity.LastModified);
     Assert.NotEqual(default, entity.CreatedAt);
     Assert.Equal(TimeSpan.Zero, entity.CreatedAt.Offset);
-    AuditEventV1 auditEvent = Assert.Single(auditTrail.Events);
+    AuditEventV1 auditEvent = Assert.Single(dbContext.Set<AuditRecord>().AsEnumerable()).ToEvent();
     Assert.Equal("Created", auditEvent.Action);
     Assert.DoesNotContain(auditEvent.Changes.Values, change =>
       Equals(change.OldValue, "hidden") || Equals(change.NewValue, "hidden"));
-    Assert.Equal("[REDACTED]", auditEvent.Changes[nameof(TestEntity.Secret)].NewValue);
+    Assert.Equal("[REDACTED]", auditEvent.Changes[nameof(TestEntity.Secret)].NewValue?.ToString());
   }
 
   [Fact]
   public async Task Audit_event_contains_current_tenant_id()
   {
     Guid tenantId = Guid.NewGuid();
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(Guid.NewGuid(), auditTrail, tenantId);
+    await using TestDbContext dbContext = CreateContext(Guid.NewGuid(), tenantId);
     dbContext.Entities.Add(new TestEntity
     {
       Id = Guid.NewGuid(),
@@ -73,15 +71,14 @@ public sealed class AuditableEntityInterceptorTests
 
     await dbContext.SaveChangesAsync();
 
-    Assert.Equal(tenantId, Assert.Single(auditTrail.Events).TenantId);
+    Assert.Equal(tenantId, Assert.Single(dbContext.Set<AuditRecord>().AsEnumerable()).ToEvent().TenantId);
   }
 
   [Fact]
   public async Task Update_preserves_creation_metadata_and_sets_modifier()
   {
     Guid creatorId = Guid.NewGuid();
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(creatorId, auditTrail);
+    await using TestDbContext dbContext = CreateContext(creatorId);
     TestEntity entity = new() { Id = Guid.NewGuid(), Name = "Original", Secret = "hidden" };
     dbContext.Entities.Add(entity);
     await dbContext.SaveChangesAsync();
@@ -102,8 +99,7 @@ public sealed class AuditableEntityInterceptorTests
   public async Task Remove_soft_deletes_and_default_query_filter_hides_entity()
   {
     Guid userId = Guid.NewGuid();
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(userId, auditTrail);
+    await using TestDbContext dbContext = CreateContext(userId);
     TestEntity entity = new() { Id = Guid.NewGuid(), Name = "Original", Secret = "hidden" };
     dbContext.Entities.Add(entity);
     await dbContext.SaveChangesAsync();
@@ -119,14 +115,13 @@ public sealed class AuditableEntityInterceptorTests
     {
       Assert.Single(await dbContext.Entities.ToListAsync());
     }
-    Assert.Contains(auditTrail.Events, auditEvent => auditEvent.Action == "Deleted");
+    Assert.Contains(dbContext.Set<AuditRecord>().AsEnumerable().Select(record => record.ToEvent()), auditEvent => auditEvent.Action == "Deleted");
   }
 
   [Fact]
   public async Task Background_save_uses_null_actor()
   {
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(null, auditTrail);
+    await using TestDbContext dbContext = CreateContext(null);
     TestEntity entity = new() { Id = Guid.NewGuid(), Name = "Background", Secret = "hidden" };
 
     dbContext.Entities.Add(entity);
@@ -140,8 +135,7 @@ public sealed class AuditableEntityInterceptorTests
   public async Task Repeated_delete_preserves_original_deletion_metadata()
   {
     Guid originalDeleter = Guid.NewGuid();
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(originalDeleter, auditTrail);
+    await using TestDbContext dbContext = CreateContext(originalDeleter);
     TestEntity entity = new() { Id = Guid.NewGuid(), Name = "Original", Secret = "hidden" };
     dbContext.Entities.Add(entity);
     await dbContext.SaveChangesAsync();
@@ -161,8 +155,7 @@ public sealed class AuditableEntityInterceptorTests
   public async Task Owned_entity_change_updates_aggregate_metadata()
   {
     Guid modifier = Guid.NewGuid();
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(modifier, auditTrail);
+    await using TestDbContext dbContext = CreateContext(modifier);
     TestEntity entity = new() { Id = Guid.NewGuid(), Name = "Original", Secret = "hidden" };
     dbContext.Entities.Add(entity);
     await dbContext.SaveChangesAsync();
@@ -177,9 +170,8 @@ public sealed class AuditableEntityInterceptorTests
   [Fact]
   public async Task Failed_save_does_not_emit_successful_audit_event()
   {
-    ListAuditTrail auditTrail = new();
     TestCurrentUser currentUser = new() { Id = Guid.NewGuid() };
-    AuditableEntityInterceptor auditInterceptor = new(currentUser, new CurrentTenant(), auditTrail);
+    AuditableEntityInterceptor auditInterceptor = new(currentUser, new CurrentTenant());
     DbContextOptions<TestDbContext> options = new DbContextOptionsBuilder<TestDbContext>()
       .UseInMemoryDatabase(Guid.NewGuid().ToString())
       .AddInterceptors(auditInterceptor, new FailingSaveInterceptor())
@@ -189,27 +181,25 @@ public sealed class AuditableEntityInterceptorTests
 
     await Assert.ThrowsAsync<InvalidOperationException>(() => dbContext.SaveChangesAsync());
 
-    Assert.Empty(auditTrail.Events);
+    Assert.Empty(await dbContext.Set<AuditRecord>().ToListAsync());
   }
 
   [Fact]
   public async Task Basic_entity_is_physically_deleted_without_audit_event()
   {
-    ListAuditTrail auditTrail = new();
-    await using TestDbContext dbContext = CreateContext(Guid.NewGuid(), auditTrail);
+    await using TestDbContext dbContext = CreateContext(Guid.NewGuid());
     BasicEntity entity = new() { Id = Guid.NewGuid(), Name = "Basic" };
     dbContext.BasicEntities.Add(entity);
     await dbContext.SaveChangesAsync();
-    auditTrail.Events.Clear();
 
     dbContext.BasicEntities.Remove(entity);
     await dbContext.SaveChangesAsync();
 
     Assert.Empty(await dbContext.BasicEntities.ToListAsync());
-    Assert.Empty(auditTrail.Events);
+    Assert.Empty(await dbContext.Set<AuditRecord>().ToListAsync());
   }
 
-  private static TestDbContext CreateContext(Guid? userId, ListAuditTrail auditTrail, Guid? tenantId = null)
+  private static TestDbContext CreateContext(Guid? userId, Guid? tenantId = null)
   {
     TestCurrentUser currentUser = new() { Id = userId };
     CurrentTenant currentTenant = new();
@@ -218,7 +208,7 @@ public sealed class AuditableEntityInterceptorTests
       _ = currentTenant.Change(tenantId, "test");
     }
 
-    AuditableEntityInterceptor interceptor = new(currentUser, currentTenant, auditTrail);
+    AuditableEntityInterceptor interceptor = new(currentUser, currentTenant);
     DbContextOptions<TestDbContext> options = new DbContextOptionsBuilder<TestDbContext>()
       .UseInMemoryDatabase(Guid.NewGuid().ToString())
       .AddInterceptors(interceptor)
@@ -298,13 +288,6 @@ public sealed class AuditableEntityInterceptorTests
     {
       public void Dispose() => restore();
     }
-  }
-
-  private sealed class ListAuditTrail : IAuditTrail
-  {
-    public List<AuditEventV1> Events { get; } = [];
-
-    public void Write(AuditEventV1 auditEvent) => Events.Add(auditEvent);
   }
 
   private sealed class FailingSaveInterceptor : SaveChangesInterceptor

@@ -1,3 +1,11 @@
+using Accounts.Data;
+using Basket.Data;
+using Catalog.Data;
+using Ordering.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Shared.Data.Seed;
+using Shared.Messaging.Outbox;
 using Keycloak.AuthServices.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -19,7 +27,8 @@ public partial class Program
 
   private static async Task Main(String[] args)
   {
-    WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
+    WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(
+      args.Where(argument => argument != "--migrate").ToArray());
 
     _ = webAppBuilder.AddEshopObservability("eshop-api");
     _ = webAppBuilder.Services.AddEshopAuditTrail(webAppBuilder.Configuration);
@@ -61,7 +70,8 @@ public partial class Program
     );
 
     _ = webAppBuilder.Services.AddKeycloakWebApiAuthentication(webAppBuilder.Configuration);
-    string publicIssuer = webAppBuilder.Configuration["Keycloak:public-issuer"]
+    string publicIssuer = webAppBuilder.Configuration["Keycloak:PublicIssuer"]
+      ?? webAppBuilder.Configuration["Keycloak:public-issuer"]
       ?? throw new InvalidOperationException("Keycloak:public-issuer is required.");
     webAppBuilder.Services.PostConfigure<JwtBearerOptions>(
       JwtBearerDefaults.AuthenticationScheme,
@@ -92,7 +102,7 @@ public partial class Program
     {
       options.AddPolicy(FrontendCorsPolicy, policy =>
         policy
-          .WithOrigins("http://localhost:4200", "http://127.0.0.1:4200")
+          .WithOrigins(webAppBuilder.Configuration.GetSection("Cors:Origins").Get<string[]>() ?? ["http://localhost:4200", "http://127.0.0.1:4200"])
           .AllowAnyHeader()
           .AllowAnyMethod());
     });
@@ -104,9 +114,41 @@ public partial class Program
       .AddBasketModule(webAppBuilder.Configuration)
       .AddAccountsModule(webAppBuilder.Configuration);
 
+    webAppBuilder.Services.AddHealthChecks()
+      .AddCheck<DatabaseReadinessCheck<CatalogDbContext>>("catalog-db", tags: ["ready"])
+      .AddCheck<DatabaseReadinessCheck<BasketDbContext>>("basket-db", tags: ["ready"])
+      .AddCheck<DatabaseReadinessCheck<OrderingDbContext>>("ordering-db", tags: ["ready"])
+      .AddCheck<DatabaseReadinessCheck<AccountsDbContext>>("accounts-db", tags: ["ready"]);
+    webAppBuilder.Services.AddHostedService<IntegrationOutboxDispatcher<CatalogDbContext>>();
+    webAppBuilder.Services.AddHostedService<IntegrationOutboxDispatcher<BasketDbContext>>();
+    webAppBuilder.Services.AddHostedService<AuditExportWorker<CatalogDbContext>>();
+    webAppBuilder.Services.AddHostedService<AuditExportWorker<BasketDbContext>>();
+    webAppBuilder.Services.AddHostedService<AuditExportWorker<OrderingDbContext>>();
+    webAppBuilder.Services.AddHostedService<AuditExportWorker<AccountsDbContext>>();
+
     _ = webAppBuilder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
     WebApplication webApp = webAppBuilder.Build();
+
+    if (args.Contains("--migrate", StringComparer.Ordinal))
+    {
+      await using var scope = webApp.Services.CreateAsyncScope();
+      DbContext[] contexts = [
+        scope.ServiceProvider.GetRequiredService<CatalogDbContext>(),
+        scope.ServiceProvider.GetRequiredService<BasketDbContext>(),
+        scope.ServiceProvider.GetRequiredService<OrderingDbContext>(),
+        scope.ServiceProvider.GetRequiredService<AccountsDbContext>()];
+      foreach (DbContext context in contexts)
+        await context.Database.MigrateAsync();
+      if (webAppBuilder.Configuration.GetValue("Database:Seed", false))
+        foreach (IDataSeeder seeder in scope.ServiceProvider.GetServices<IDataSeeder>())
+          await seeder.SeedAllAsync();
+      await webApp.DisposeAsync();
+      return;
+    }
+
+    webApp.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false }).AllowAnonymous();
+    webApp.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = _ => true }).AllowAnonymous();
 
     _ = webApp.MapCarter();
     _ = webApp.MapGraphQL("/graphql/catalog", CatalogModule.GraphQLSchemaName);
@@ -127,35 +169,6 @@ public partial class Program
     _ = webApp.UseMiddleware<CurrentTenantMiddleware>();
     _ = webApp.UseAuthorization();
 
-    if (webAppBuilder.Configuration.GetValue("Database:RunMigrations", true))
-    {
-      _ = webApp
-        .UseCatalogModule()
-        .UseOrderingModule()
-        .UseBasketModule()
-        .UseAccountsModule();
-    }
-
-
-
-
-    //Configure the HTTP request pipeline.
-
-    //app.UseStaticFiles();
-
-    //app.UseRouting();
-
-    //app.UseAuthentication();
-
-    //app.UseAuthorization();
-
-
-    //app.UseEndpoints(endpoints =>
-    //{
-    //	endpoints.MapControllers();
-    //});
-
-    //webApp.Run();
     await webApp.RunAsync();
   }
 }

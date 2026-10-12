@@ -28,7 +28,8 @@ public static class AuditTrailServiceCollectionExtensions
         "AuditTrail files must have a combined maximum size of 1 GiB or less.")
       .ValidateOnStart();
 
-    services.TryAddSingleton<IAuditTrail, FileAuditTrail>();
+    services.TryAddSingleton<FileAuditTrail>();
+    services.TryAddSingleton<IAuditTrail>(provider => provider.GetRequiredService<FileAuditTrail>());
     return services;
   }
 }

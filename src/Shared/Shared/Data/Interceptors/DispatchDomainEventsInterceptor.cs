@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shared.DDD;
@@ -15,11 +15,11 @@ public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesIn
 
 	public override async ValueTask<InterceptionResult<Int32>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<Int32> result, CancellationToken cancellationToken = default)
 	{
-		this.DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
+		await this.DispatchDomainEvents(eventData.Context, cancellationToken);
 		return await base.SavingChangesAsync(eventData, result, cancellationToken);
 	}
 
-	private async Task DispatchDomainEvents(DbContext? context)
+	private async Task DispatchDomainEvents(DbContext? context, CancellationToken cancellationToken = default)
 	{
 		if (context is null)
 		{
@@ -37,7 +37,7 @@ public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesIn
 
 		foreach (IDomainEvent domainEvent in domainEvents)
 		{
-			await mediator.Publish(domainEvent);
+			await mediator.Publish(domainEvent, cancellationToken);
 		}
 	}
 }

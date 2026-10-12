@@ -17,7 +17,8 @@ builder.Services
     .AddHttpClient("fusion")
     .AddHttpMessageHandler<AuthorizationForwardingHandler>();
 builder.Services.AddKeycloakWebApiAuthentication(builder.Configuration);
-string publicIssuer = builder.Configuration["Keycloak:public-issuer"]
+string publicIssuer = builder.Configuration["Keycloak:PublicIssuer"]
+    ?? builder.Configuration["Keycloak:public-issuer"]
     ?? throw new InvalidOperationException("Keycloak:public-issuer is required.");
 builder.Services.PostConfigure<JwtBearerOptions>(
     JwtBearerDefaults.AuthenticationScheme,
@@ -35,7 +36,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(FrontendCorsPolicy, policy =>
         policy
-            .WithOrigins("http://localhost:4200", "http://127.0.0.1:4200")
+            .WithOrigins(builder.Configuration.GetSection("Cors:Origins").Get<string[]>() ?? ["http://localhost:4200", "http://127.0.0.1:4200"])
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
@@ -46,6 +47,8 @@ builder
         options.IncludeExceptionDetails = builder.Environment.IsDevelopment())
     .AddFileSystemConfiguration(schemaPath);
 
+builder.Services.AddHealthChecks();
+builder.Services.AddHttpClient("readiness", client => client.Timeout = TimeSpan.FromSeconds(3));
 var app = builder.Build();
 app.UseEshopRequestLogging();
 app.UseAuthentication();
@@ -54,6 +57,21 @@ app.UseCors(FrontendCorsPolicy);
 app.UseAuthorization();
 app.MapReverseProxy().RequireAuthorization();
 app.MapGraphQL();
+app.MapHealthChecks("/health/live", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions { Predicate = _ => false }).AllowAnonymous();
+app.MapGet("/health/ready", async (IHttpClientFactory clients, CancellationToken token) =>
+{
+    string address = builder.Configuration["ReverseProxy:Clusters:api:Destinations:primary:Address"] ?? "http://api:8080/";
+    try
+    {
+        using var response = await clients.CreateClient("readiness").GetAsync(new Uri(new Uri(address), "health/ready"), token);
+        return response.IsSuccessStatusCode && File.Exists(schemaPath) && new FileInfo(schemaPath).Length > 0
+            ? Results.Ok() : Results.StatusCode(503);
+    }
+    catch (Exception exception) when (exception is HttpRequestException or OperationCanceledException)
+    {
+        return Results.StatusCode(503);
+    }
+}).AllowAnonymous();
 await app.RunAsync();
 
 static async Task WaitForSchemaAsync(string schemaPath, TimeSpan timeout)

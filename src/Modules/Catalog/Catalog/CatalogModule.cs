@@ -1,4 +1,4 @@
-﻿using Catalog.GraphQL;
+using Catalog.GraphQL;
 using Catalog.Products.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -30,13 +30,12 @@ public static class CatalogModule
         //    _ = cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
         //});
         //_ = services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        // Data infrastructure services
+        String? connectionString = configuration.GetConnectionString("Catalog") ?? configuration.GetConnectionString("Database");
 
-        //Data — Infrastructure servlces
-        String? connectionString = configuration.GetConnectionString("Database");
-
-        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
         services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
+        services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
 
         _ = services.AddDbContext<CatalogDbContext>((serviceProvider, options) =>
         {
@@ -68,8 +67,7 @@ public static class CatalogModule
     {
         // Api Endpoint services
         // Application Use Case services
-        //Data — Infrastructure servlces
-
+        // Data infrastructure services
         _ = app.UseMigration<CatalogDbContext>();
         return app;
     }

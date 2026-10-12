@@ -418,6 +418,7 @@ await admin('', { method: 'PUT', body: { organizationsEnabled: true } });
 await configureOrganizationScope();
 await configureOrderingAuthorization();
 
+if (process.env.PRODUCTION_SETUP !== "true") {
 const shoppers = await admin('/users?username=shopper&exact=true');
 if (shoppers.length !== 1) {
   throw new Error('Expected exactly one seeded shopper user.');
@@ -438,4 +439,5 @@ for (const tenant of tenants) {
   await ensureOrganization(tenant, shopper, roles);
 }
 
+}
 console.log('Keycloak organizations, groups, memberships, roles, and token mappers are configured.');

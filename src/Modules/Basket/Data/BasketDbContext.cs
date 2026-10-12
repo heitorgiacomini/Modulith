@@ -20,13 +20,14 @@ public class BasketDbContext : DbContext, IDataFilterContext
 
   public DbSet<ShoppingCart> ShoppingCarts => this.Set<ShoppingCart>();
   public DbSet<ShoppingCartItem> ShoppingCartItems => this.Set<ShoppingCartItem>();
-  public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
+  public DbSet<IntegrationOutboxMessage> OutboxMessages => Set<IntegrationOutboxMessage>();
 
   protected override void OnModelCreating(ModelBuilder builder)
   {
     _ = builder.HasDefaultSchema("basket");
     _ = builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     _ = builder.ApplyDataFilters(this);
+    builder.AddIntegrationOutbox();
     base.OnModelCreating(builder);
   }
 }

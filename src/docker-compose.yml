@@ -45,6 +45,13 @@ services:
     ports:
       - "5004:8080"
 
+  db-migrator:
+    image: ${DOCKER_REGISTRY-}api
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Bootstrapper/Api/Dockerfile
+
   graphql-gateway:
     image: ${DOCKER_REGISTRY-}graphql-gateway
     pull_policy: never

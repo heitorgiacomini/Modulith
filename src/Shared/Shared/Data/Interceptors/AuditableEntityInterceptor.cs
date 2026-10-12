@@ -1,4 +1,3 @@
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +11,7 @@ namespace Shared.Data.Interceptors;
 
 public sealed class AuditableEntityInterceptor(
   ICurrentUser currentUser,
-  ICurrentTenant currentTenant,
-  IAuditTrail auditTrail) : SaveChangesInterceptor
+  ICurrentTenant currentTenant) : SaveChangesInterceptor
 {
   private static readonly HashSet<string> AuditPropertyNames =
   [
@@ -28,9 +26,7 @@ public sealed class AuditableEntityInterceptor(
     "password", "secret", "token", "authorization", "card", "payment", "expiration", "last4",
     "email", "phone", "address", "postal", "body", "query", "document",
     "credential", "apikey", "cookie"
-  ]; //, "graphql"
-
-  private readonly ConcurrentDictionary<Guid, IReadOnlyList<PendingAuditEvent>> pendingEvents = [];
+  ];
 
   public override InterceptionResult<int> SavingChanges(
     DbContextEventData eventData,
@@ -49,49 +45,6 @@ public sealed class AuditableEntityInterceptor(
     return base.SavingChangesAsync(eventData, result, cancellationToken);
   }
 
-  public override int SavedChanges(SaveChangesCompletedEventData eventData, int result)
-  {
-    WriteAuditEvents(eventData.Context);
-    return base.SavedChanges(eventData, result);
-  }
-
-  public override ValueTask<int> SavedChangesAsync(
-    SaveChangesCompletedEventData eventData,
-    int result,
-    CancellationToken cancellationToken = default)
-  {
-    WriteAuditEvents(eventData.Context);
-    return base.SavedChangesAsync(eventData, result, cancellationToken);
-  }
-
-  public override void SaveChangesFailed(DbContextErrorEventData eventData)
-  {
-    DiscardAuditEvents(eventData.Context);
-    base.SaveChangesFailed(eventData);
-  }
-
-  public override Task SaveChangesFailedAsync(
-    DbContextErrorEventData eventData,
-    CancellationToken cancellationToken = default)
-  {
-    DiscardAuditEvents(eventData.Context);
-    return base.SaveChangesFailedAsync(eventData, cancellationToken);
-  }
-
-  public override void SaveChangesCanceled(DbContextEventData eventData)
-  {
-    DiscardAuditEvents(eventData.Context);
-    base.SaveChangesCanceled(eventData);
-  }
-
-  public override Task SaveChangesCanceledAsync(
-    DbContextEventData eventData,
-    CancellationToken cancellationToken = default)
-  {
-    DiscardAuditEvents(eventData.Context);
-    return base.SaveChangesCanceledAsync(eventData, cancellationToken);
-  }
-
   private void PrepareAudit(DbContext? context)
   {
     if (context is null)
@@ -99,6 +52,11 @@ public sealed class AuditableEntityInterceptor(
       return;
     }
 
+    // A failed SaveChanges can leave staged rows in the tracker. Rebuild them on retry.
+    foreach (var entry in context.ChangeTracker.Entries<AuditDelivery>().Where(entry => entry.State == EntityState.Added).ToArray())
+      entry.State = EntityState.Detached;
+    foreach (var entry in context.ChangeTracker.Entries<AuditRecord>().Where(entry => entry.State == EntityState.Added).ToArray())
+      entry.State = EntityState.Detached;
     context.ChangeTracker.DetectChanges();
     DateTimeOffset timestamp = DateTimeOffset.UtcNow;
     Guid? actorId = currentUser.Id;
@@ -172,14 +130,7 @@ public sealed class AuditableEntityInterceptor(
       }
     }
 
-    if (events.Count == 0)
-    {
-      pendingEvents.TryRemove(context.ContextId.InstanceId, out _);
-    }
-    else
-    {
-      pendingEvents[context.ContextId.InstanceId] = events;
-    }
+    StageAuditRecords(context, events);
   }
 
   private static Dictionary<string, AuditValueChangeV1> CaptureChanges(
@@ -256,16 +207,11 @@ public sealed class AuditableEntityInterceptor(
     return Convert.ToString(key?.CurrentValue, System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty;
   }
 
-  private void WriteAuditEvents(DbContext? context)
+  private static void StageAuditRecords(DbContext context, IReadOnlyList<PendingAuditEvent> events)
   {
-    if (context is null || !pendingEvents.TryRemove(context.ContextId.InstanceId, out var events))
-    {
-      return;
-    }
-
     foreach (PendingAuditEvent auditEvent in events)
     {
-      auditTrail.Write(new AuditEventV1
+      AuditRecord record = AuditRecord.From(new AuditEventV1
       {
         EventId = Guid.NewGuid(),
         OccurredAtUtc = auditEvent.TimestampUtc,
@@ -283,14 +229,8 @@ public sealed class AuditableEntityInterceptor(
         CorrelationId = auditEvent.CorrelationId,
         Changes = auditEvent.Changes
       });
-    }
-  }
-
-  private void DiscardAuditEvents(DbContext? context)
-  {
-    if (context is not null)
-    {
-      pendingEvents.TryRemove(context.ContextId.InstanceId, out _);
+      context.Add(record);
+      context.Add(new AuditDelivery { Id = record.Id });
     }
   }
 

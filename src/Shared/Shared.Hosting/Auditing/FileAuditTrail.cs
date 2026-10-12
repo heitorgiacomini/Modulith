@@ -53,22 +53,7 @@ public sealed class FileAuditTrail : IAuditTrail, IDisposable
 
     try
     {
-      AuditEventV1 safeAuditEvent = RedactSensitiveValues(auditEvent);
-      string json = JsonSerializer.Serialize(safeAuditEvent, SerializerOptions);
-      int encodedLength = Encoding.UTF8.GetByteCount(json) + Environment.NewLine.Length;
-
-      lock (sync)
-      {
-        ObjectDisposedException.ThrowIf(disposed, this);
-        EnsureWriter(encodedLength);
-        writer!.WriteLine(json);
-        writer.Flush();
-        currentFileLength += encodedLength;
-      }
-
-      EshopTelemetry.AuditEventsWritten.Add(
-        1,
-        new KeyValuePair<string, object?>("audit.outcome", auditEvent.Outcome.ToString()));
+      WriteConfirmed(auditEvent);
     }
     catch (Exception exception)
     {
@@ -78,6 +63,27 @@ public sealed class FileAuditTrail : IAuditTrail, IDisposable
         "Best-effort audit event {AuditEventId} could not be written.",
         auditEvent.EventId);
     }
+  }
+
+  public void WriteConfirmed(AuditEventV1 auditEvent)
+  {
+    ArgumentNullException.ThrowIfNull(auditEvent);
+    AuditEventV1 safeAuditEvent = RedactSensitiveValues(auditEvent);
+    string json = JsonSerializer.Serialize(safeAuditEvent, SerializerOptions);
+    int encodedLength = Encoding.UTF8.GetByteCount(json) + Environment.NewLine.Length;
+
+    lock (sync)
+    {
+      ObjectDisposedException.ThrowIf(disposed, this);
+      EnsureWriter(encodedLength);
+      writer!.WriteLine(json);
+      writer.Flush();
+      currentFileLength += encodedLength;
+    }
+
+    EshopTelemetry.AuditEventsWritten.Add(
+      1,
+      new KeyValuePair<string, object?>("audit.outcome", auditEvent.Outcome.ToString()));
   }
 
   private static AuditEventV1 RedactSensitiveValues(AuditEventV1 auditEvent) => auditEvent with

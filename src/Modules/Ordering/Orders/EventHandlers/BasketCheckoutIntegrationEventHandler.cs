@@ -1,4 +1,4 @@
-﻿using MassTransit;
+using MassTransit;
 using Ordering.Orders.Features.CreateOrder;
 using Shared.Messaging.Events;
 
@@ -14,6 +14,6 @@ public class BasketCheckoutIntegrationEventHandler
 
         // Create new order and start order fullfillment process
         var createOrderCommand = OrderingMapper.ToCommand(context.Message);
-        await sender.Send(createOrderCommand);
+        await sender.Send(createOrderCommand, context.CancellationToken);
     }
 }

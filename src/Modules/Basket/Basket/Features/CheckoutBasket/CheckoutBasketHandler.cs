@@ -60,16 +60,7 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext, ICurrentTenant c
             };
 
             // Write a message to the outbox
-            var outboxMessage = new OutboxMessage
-            {
-                Id = Guid.NewGuid(),
-                TenantId = eventMessage.TenantId,
-                Type = typeof(BasketCheckoutIntegrationEvent).AssemblyQualifiedName!,
-                Content = JsonSerializer.Serialize(eventMessage),
-                OccuredOn = DateTime.UtcNow
-            };
-
-            dbContext.OutboxMessages.Add(outboxMessage);
+            dbContext.OutboxMessages.Add(IntegrationOutboxMessage.From(eventMessage));
 
             // Delete the basket
             dbContext.ShoppingCarts.Remove(basket);
@@ -82,7 +73,7 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext, ICurrentTenant c
         catch
         {
             await transaction.RollbackAsync(cancellationToken);
-            return new CheckoutBasketResult(false);
+            throw;
         }
 
         ///////////////////// CHECKOUT BASKET WITHOUT OUTBOX

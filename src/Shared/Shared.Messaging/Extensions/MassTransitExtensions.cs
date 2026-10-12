@@ -33,6 +33,7 @@ public static class MassTransitExtentions
                 host.Username(configuration["MessageBroker:UserName"]!);
                 host.Password(configuration["MessageBroker:Password"]!);
               });
+          configurator.UseMessageRetry(retry => retry.Intervals(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(15)));
           configurator.ConfigureEndpoints(context);
         });
     });

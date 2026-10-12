@@ -1,5 +1,5 @@
 using Basket.Basket.GraphQL;
-using Basket.Data.Processors;
+
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,11 +25,11 @@ public static class BasketModule
     //});
 
 
-    String? connectionString = configuration.GetConnectionString("Database");
+    String? connectionString = configuration.GetConnectionString("Basket") ?? configuration.GetConnectionString("Database");
 
-    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
 
     _ = services.AddDbContext<BasketDbContext>((serviceProvider, options) =>
     {
@@ -39,7 +39,7 @@ public static class BasketModule
 
 
     //_ = services.AddScoped<IDataSeeder, BasketDataSeeder>();
-    _ = services.AddHostedService<OutboxProcessor>();
+
 
     _ = services
       .AddGraphQLServer(GraphQLSchemaName)
@@ -59,4 +59,3 @@ public static class BasketModule
   }
 
 }
-

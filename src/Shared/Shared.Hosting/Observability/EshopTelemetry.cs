@@ -13,9 +13,9 @@ public static class EshopTelemetry
 
   public static readonly Counter<long> AuditEventsWritten = Meter.CreateCounter<long>(
     "eshop.audit.events.written",
-    description: "Number of best-effort audit events written to the local audit trail.");
+    description: "Number of audit events exported to the local observability projection.");
 
   public static readonly Counter<long> AuditWriteFailures = Meter.CreateCounter<long>(
     "eshop.audit.write.failures",
-    description: "Number of best-effort audit events that could not be written.");
+    description: "Number of failed audit projection writes; committed business audits remain in PostgreSQL.");
 }

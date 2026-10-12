@@ -13,11 +13,11 @@ public static class AccountsModule
     this IServiceCollection services,
     IConfiguration configuration)
   {
-    string? connectionString = configuration.GetConnectionString("Database");
+    string? connectionString = configuration.GetConnectionString("Accounts") ?? configuration.GetConnectionString("Database");
 
-    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, MultiTenantEntityInterceptor>());
     services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>());
+    services.TryAddEnumerable(ServiceDescriptor.Scoped<ISaveChangesInterceptor, AuditableEntityInterceptor>());
     services.AddDbContext<AccountsDbContext>((serviceProvider, options) =>
     {
       options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());

@@ -1,3 +1,4 @@
+using Shared.Data.Auditing;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Shared.Data.Filtering;
@@ -11,6 +12,7 @@ public static class DataFilterModelBuilderExtensions
     this ModelBuilder modelBuilder,
     IDataFilterContext filterContext)
   {
+    modelBuilder.AddAuditPersistence();
     foreach (var entityType in modelBuilder.Model.GetEntityTypes())
     {
       bool softDelete = typeof(ISoftDelete).IsAssignableFrom(entityType.ClrType);

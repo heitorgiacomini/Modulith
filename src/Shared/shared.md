@@ -148,7 +148,7 @@ Creation metadata is not overwritten during modification or deletion. Existing d
 
 ### Structured audit events
 
-Before saving, the interceptor captures pending changes. It sends an `AuditEventV1` to `IAuditTrail` only after EF reports a successful save. Failed or canceled saves discard pending events. Events include:
+Before saving, the interceptor captures changes and stages an `AuditRecord` plus an export checkpoint in the owning module's DbContext. These rows commit or roll back with the business change. Export workers project committed records to the existing file/Loki pipeline; a successful SaveChanges inside an uncommitted transaction does not emit a file event. Events include:
 
 - module, derived from the DbContext name;
 - entity type and ID;
@@ -412,7 +412,7 @@ Responses include the request path and trace ID. Validation responses also inclu
 
 `UseMigration<TContext>()` creates a scope, runs `Database.MigrateAsync()` for the requested DbContext, and then resolves and runs all registered `IDataSeeder` implementations.
 
-Each module exposes a `Use...Module()` startup method that invokes this helper for its DbContext. Bootstrapper calls these methods when `Database:RunMigrations` is enabled.
+Each module still exposes a `Use...Module()` helper, but the API does not invoke it during normal startup. Running the API image with `--migrate` applies all four module migrations and, when `Database:Seed=true`, runs each registered seeder once. Compose executes this as a one-shot job before starting the API.
 
 Because all registered seeders are resolved each time `UseMigration<TContext>()` runs, seed implementations must be idempotent.
 
@@ -487,7 +487,7 @@ Use this checklist when integrating another module:
 
 ## Important invariants
 
-- Shared contains no domain-specific aggregate or audit-history table.
+- Shared contains no domain-specific aggregate. It defines technical audit record types; their tables belong to each module's schema.
 - Keycloak `sub` parsed as a GUID is the only persisted user identity for auditing.
 - Audit timestamps use UTC.
 - Soft deletion is selected by `ISoftDelete`, including through inherited interfaces.
@@ -497,11 +497,11 @@ Use this checklist when integrating another module:
 - Outbox rows are host-visible infrastructure records but always carry tenant routing context.
 - Data-filter state is scoped to the asynchronous flow and restored on disposal.
 - Disabling a data filter changes visibility, not authorization.
-- Detailed audit logs are emitted only after a successful save and redact sensitive values.
+- Detailed entity audits commit with the business transaction and redact sensitive values; asynchronous projection reads only committed records.
 - Physical deletion remains available to entities that do not implement `ISoftDelete`.
 
 ## Runtime observability and API audit trail
 
 API and Fusion/YARP gateway use `Shared.Hosting` to configure request logging and telemetry. Compose disables OTLP log export because Alloy reads the labeled Docker JSON stdout streams; OTLP traces and metrics still flow to Alloy. Alloy routes logs to Loki, traces to Tempo, and metrics to Prometheus. Grafana queries these stores internally.
 
-API audit recording writes NDJSON to the shared audit volume; it is separate from application logging. Alloy tails the files and preserves event, actor, tenant, and trace correlation metadata in Loki. The current stack retains application logs/traces for 15 days and audit records for 60 days. See the [observability runbook](../docker-config/observability/README.md) for file rotation, collection, retention, and recovery.
+Transactional entity audit records are authoritative in PostgreSQL and retained indefinitely by default. Workers project them to NDJSON on the shared audit volume. Other `IAuditTrail` callers continue to write best-effort operational events. Alloy tails the files and preserves event, actor, tenant, and trace correlation metadata in Loki. The observability stack retains application logs/traces for 15 days and its audit projection for 60 days. See the [observability runbook](../docker-config/observability/README.md) for collection and the [production runbook](../../docs/articles/production-readiness.md) for durability, deployment, and recovery.

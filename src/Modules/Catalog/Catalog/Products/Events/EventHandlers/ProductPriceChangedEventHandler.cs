@@ -1,14 +1,15 @@
+using Shared.Messaging.Outbox;
 using MassTransit;
 using Shared.Messaging.Events;
 
 namespace Catalog.Products.Events.EventHandlers;
 
 public class ProductPriceChangedEventHandler
-  (IBus bus, ICurrentTenant currentTenant, ILogger<ProductPriceChangedEventHandler> logger)
+  (CatalogDbContext dbContext, ICurrentTenant currentTenant, ILogger<ProductPriceChangedEventHandler> logger)
     : INotificationHandler<ProductPriceChangedEvent>
 {
 
-  public async Task Handle(ProductPriceChangedEvent notification, CancellationToken cancellationToken)
+  public Task Handle(ProductPriceChangedEvent notification, CancellationToken cancellationToken)
   {
     logger.LogInformation(
         "Domain Event handled: {DomainEvent}", notification.GetType().Name);
@@ -27,6 +28,7 @@ public class ProductPriceChangedEventHandler
       Price = notification.Product.Price //set updated product price
     };
 
-    await bus.Publish(integrationEvent, cancellationToken);
+    dbContext.Add(IntegrationOutboxMessage.From(integrationEvent));
+    return Task.CompletedTask;
   }
 }
